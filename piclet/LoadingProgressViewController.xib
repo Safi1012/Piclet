@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoadingProgressViewController" customModule="piclet" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicator" destination="x2V-Cf-GeU" id="cqk-KV-nmT"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" alpha="0.65500000000000003" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="329" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAk-BL-Lam" userLabel="loadingView">
+                    <rect key="frame" x="126" y="69" width="77" height="62"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="x2V-Cf-GeU">
+                            <rect key="frame" x="28" y="8" width="20" height="20"/>
+                            <animations/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnx-en-9UG">
+                            <rect key="frame" x="8" y="36" width="61" height="21"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="vnx-en-9UG" secondAttribute="trailing" constant="8" id="41M-QB-LWR"/>
+                        <constraint firstItem="x2V-Cf-GeU" firstAttribute="top" secondItem="YAk-BL-Lam" secondAttribute="top" constant="8" id="Arg-k3-tt1"/>
+                        <constraint firstItem="vnx-en-9UG" firstAttribute="leading" secondItem="YAk-BL-Lam" secondAttribute="leading" constant="8" id="OdG-eG-Idk"/>
+                        <constraint firstItem="x2V-Cf-GeU" firstAttribute="centerX" secondItem="YAk-BL-Lam" secondAttribute="centerX" id="Rwl-U0-OWM"/>
+                        <constraint firstItem="vnx-en-9UG" firstAttribute="top" secondItem="x2V-Cf-GeU" secondAttribute="bottom" constant="8" id="SOY-w6-rng"/>
+                        <constraint firstAttribute="bottom" secondItem="vnx-en-9UG" secondAttribute="bottom" constant="5" id="Tm6-rF-m17"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="YAk-BL-Lam" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="45S-xD-FY6"/>
+                <constraint firstItem="YAk-BL-Lam" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Q5J-kc-di0"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="273.5" y="308"/>
+        </view>
+    </objects>
+</document>
