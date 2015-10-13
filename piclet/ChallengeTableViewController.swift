@@ -25,19 +25,21 @@ class ChallengeTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         
         
+        // invalidator after 5 min
         
+        showLoadingSpinner()
         
         
         apiProxy.getChallenges(nil, offset: "10", success: { (challenges) -> () in
+            self.hideLoadingSpinner()
             self.challenges = challenges
             self.tableView.reloadData()
-            
-            
         }) { (errorCode) -> () in
+            self.hideLoadingSpinner()
+            
+            
+            
             print("Failed")
-            
-            
-            
         }
     }
     
@@ -46,24 +48,18 @@ class ChallengeTableViewController: UITableViewController {
     
     // MARK: - UI
     
-//    func showLoadingSpinner() {
-//        dispatch_async(dispatch_get_main_queue()) {
-//            
-//            self.addChildViewController(self.loadingProgressViewController)
-//            self.loadingProgressContainerView.addSubview(self.loadingProgressViewController.view)
-//            self.didMoveToParentViewController(self)
-//            self.pinSubviewToSuperview()
-//        }
-//    }
-//    
-//    func hideLoadingSpinner() {
-//        dispatch_async(dispatch_get_main_queue()) {
-//            
-//            self.willMoveToParentViewController(nil)
-//            self.loadingProgressViewController.view.removeFromSuperview()
-//            self.loadingProgressViewController.removeFromParentViewController()
-//        }
-//    }
+    func showLoadingSpinner() {
+        let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingSpinner.labelText = "Loading Data"
+    }
+    
+    func hideLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+
     
 
 
@@ -74,20 +70,24 @@ class ChallengeTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenges.count
+        return 10 //challenges.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
 
-        cell.titleLabel.text = challenges[indexPath.row].title
-        cell.timePostedLabel.text = challenges[indexPath.row].posted
-        cell.votesLabel.text = challenges[indexPath.row].votes
-        cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
+//        cell.titleLabel.text = challenges[indexPath.row].title
+//        cell.timePostedLabel.text = "2 min ago" // challenges[indexPath.row].posted
+//        // cell.votesLabel.text = "TTT" //challenges[indexPath.row].votes
+//        cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
         
         return cell
     }
 
+//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Fehler"
+//    }
+    
 
     /*
     // Override to support conditional editing of the table view.

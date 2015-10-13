@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3583529F2DF1C017B513ABEA /* libPods-piclet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */; };
 		D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; settings = {ASSET_TAGS = (); }; };
 		D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CC01BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -69,6 +70,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-piclet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A94E4F64F20443B08DCF0BF5 /* Pods-piclet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piclet.release.xcconfig"; path = "Pods/Target Support Files/Pods-piclet/Pods-piclet.release.xcconfig"; sourceTree = "<group>"; };
+		C675D24041E73B5EAB477F92 /* Pods-piclet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piclet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-piclet/Pods-piclet.debug.xcconfig"; sourceTree = "<group>"; };
 		D4105BEE1BBE65AC006D742D /* ApiProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiProxy.swift; sourceTree = "<group>"; };
 		D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
 		D4181CC71BAC4456001155B6 /* UserDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidator.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 		D46912351BAC03C40012CE7C /* picletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picletUITests.swift; sourceTree = "<group>"; };
 		D46912371BAC03C40012CE7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46912461BAC0D970012CE7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D48E3C791BCCC901006C702A /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
 		D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMangedObject+MCPAdditions.swift"; sourceTree = "<group>"; };
 		D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProgressViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3583529F2DF1C017B513ABEA /* libPods-piclet.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +131,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D46912061BAC03C30012CE7C = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +146,8 @@
 				D46912291BAC03C30012CE7C /* picletTests */,
 				D46912341BAC03C30012CE7C /* picletUITests */,
 				D46912101BAC03C30012CE7C /* Products */,
+				DB8690D07496EA79BEFF9105 /* Pods */,
+				7244FEF7F9F0A29AAA20F52B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,6 +230,7 @@
 		D469124A1BAC0DB60012CE7C /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				D48E3C791BCCC901006C702A /* piclet-Bridging-Header.h */,
 				D46912121BAC03C30012CE7C /* AppDelegate.swift */,
 				D469121C1BAC03C30012CE7C /* Assets.xcassets */,
 				D46912211BAC03C30012CE7C /* Info.plist */,
@@ -232,6 +249,15 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		DB8690D07496EA79BEFF9105 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C675D24041E73B5EAB477F92 /* Pods-piclet.debug.xcconfig */,
+				A94E4F64F20443B08DCF0BF5 /* Pods-piclet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,9 +265,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D469123A1BAC03C40012CE7C /* Build configuration list for PBXNativeTarget "piclet" */;
 			buildPhases = (
+				37B38DCE2E146551AC2ED448 /* Check Pods Manifest.lock */,
 				D469120B1BAC03C30012CE7C /* Sources */,
 				D469120C1BAC03C30012CE7C /* Frameworks */,
 				D469120D1BAC03C30012CE7C /* Resources */,
+				9C1CC5D171015C15DEBE6600 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -294,6 +322,7 @@
 		D46912071BAC03C30012CE7C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Filipe Santos Correa";
 				TargetAttributes = {
@@ -358,6 +387,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37B38DCE2E146551AC2ED448 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9C1CC5D171015C15DEBE6600 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-piclet/Pods-piclet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D469120B1BAC03C30012CE7C /* Sources */ = {
@@ -539,27 +601,34 @@
 		};
 		D469123B1BAC03C40012CE7C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C675D24041E73B5EAB477F92 /* Pods-piclet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = piclet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "piclet/piclet-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		D469123C1BAC03C40012CE7C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A94E4F64F20443B08DCF0BF5 /* Pods-piclet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = piclet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "piclet/piclet-Bridging-Header.h";
 			};
 			name = Release;
 		};
