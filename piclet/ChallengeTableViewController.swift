@@ -12,7 +12,6 @@ class ChallengeTableViewController: UITableViewController {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let apiProxy = ApiProxy()
-    
     var challenges = [Challenge]()
     let loadingProgressViewController = LoadingProgressViewController()
     
@@ -78,10 +77,10 @@ class ChallengeTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
-
+        
         cell.titleLabel.text = challenges[indexPath.row].title
-        cell.timePostedLabel.text = challenges[indexPath.row].posted
-        cell.votesLabel.text = challenges[indexPath.row].votes ?? "0"
+        cell.timePostedLabel.text = challenges[indexPath.row].posted ?? "0" + " min"
+        cell.votesLabel.text = challenges[indexPath.row].votes ?? "0" + " votes"
         cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
         
         return cell

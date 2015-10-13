@@ -19,6 +19,17 @@
 		D4181CCC1BAC4C28001155B6 /* UserDataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE41BCD9C5200297FCF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE51BCD9C5300297FCF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE71BCD9C6600297FCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; settings = {ASSET_TAGS = (); }; };
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D42F96A61BCC006600544C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
@@ -459,10 +470,12 @@
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
+				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
 				D42F96A61BCC006600544C69 /* AppDelegate.swift in Sources */,
 				D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */,
 				D4181CCC1BAC4C28001155B6 /* UserDataValidatorTests.swift in Sources */,
+				D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4431D121BBED73A00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
@@ -479,13 +492,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4431D0D1BBED72900086759 /* User.swift in Sources */,
+				D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */,
+				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
+				D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */,
+				D4254AE71BCD9C6600297FCF /* AppDelegate.swift in Sources */,
 				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
+				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
+				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
 				D48E3C7F1BCCFB48006C702A /* LoginViewController.swift in Sources */,
 				D4181CC21BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */,
+				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
+				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
+				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
