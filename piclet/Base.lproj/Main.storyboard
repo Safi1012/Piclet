@@ -153,21 +153,69 @@
         <scene sceneID="EUj-KZ-y79">
             <objects>
                 <tableViewController id="f1t-5u-5el" customClass="ChallengeTableViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="213-Bn-qUx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="108" sectionHeaderHeight="18" sectionFooterHeight="18" id="213-Bn-qUx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="VUH-st-hOC">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="VUH-st-hOC" customClass="ChallengeTableViewCell" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="113.5" width="600" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUH-st-hOC" id="yQx-CS-gGg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="107.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6PB-fc-Sh4">
+                                            <rect key="frame" x="8" y="8" width="91.5" height="91.5"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="91.5" id="VMx-VD-Yrr"/>
+                                                <constraint firstAttribute="width" constant="91.5" id="gdq-jB-u1g"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xh-7o-Lf0">
+                                            <rect key="frame" x="115" y="8" width="34" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="64" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsT-ui-Kdh">
+                                            <rect key="frame" x="538" y="43" width="21" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 min ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUk-xE-lOD">
+                                            <rect key="frame" x="115" y="78" width="76" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="topMargin" secondItem="2xh-7o-Lf0" secondAttribute="top" id="2TC-bZ-9u7"/>
+                                        <constraint firstItem="xsT-ui-Kdh" firstAttribute="centerY" secondItem="yQx-CS-gGg" secondAttribute="centerY" id="Ars-zK-mHb"/>
+                                        <constraint firstItem="2xh-7o-Lf0" firstAttribute="leading" secondItem="6PB-fc-Sh4" secondAttribute="trailing" constant="15.5" id="CIT-bB-BvU"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fUk-xE-lOD" secondAttribute="bottom" constant="0.5" id="DDy-Za-J0A"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="6PB-fc-Sh4" secondAttribute="leading" id="Lpy-Ek-E1W"/>
+                                        <constraint firstAttribute="topMargin" secondItem="6PB-fc-Sh4" secondAttribute="top" id="MHZ-4B-Xnu"/>
+                                        <constraint firstItem="fUk-xE-lOD" firstAttribute="leading" secondItem="6PB-fc-Sh4" secondAttribute="trailing" constant="15.5" id="fc7-uA-X2p"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="6PB-fc-Sh4" secondAttribute="bottom" id="gzi-TT-Pdb"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="xsT-ui-Kdh" secondAttribute="trailing" id="xn7-3z-zOv"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="previewImageView" destination="6PB-fc-Sh4" id="vjE-gX-tYq"/>
+                                    <outlet property="timePostedLabel" destination="fUk-xE-lOD" id="fpP-i3-DhH"/>
+                                    <outlet property="titleLabel" destination="2xh-7o-Lf0" id="LJ3-xN-Bbj"/>
+                                    <outlet property="votesLabel" destination="xsT-ui-Kdh" id="97V-Rq-m9s"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

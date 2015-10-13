@@ -15,8 +15,10 @@ class Challenge {
     var description: String?
     var creator: String?
     var posted: String?
-    var totalVotes: String?
-    var creatorPostID: String?
+    var votes: String?
+    var creatorPost: String?
     
-    var posts: [Post]()?
+    // var posts: [Post]?
 }
+
+

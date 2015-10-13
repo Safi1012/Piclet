@@ -13,6 +13,8 @@ import UIKit
 class ObjectMapper: NSObject {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    // var challenges = [Challenge]()
 
     func createUserToken(jsonData: NSData, username: String) {
         do {
@@ -39,95 +41,32 @@ class ObjectMapper: NSObject {
         return ""
     }
     
-    func getChallenges(responseData: NSData) {
+    func getChallenges(responseData: NSData) -> [Challenge] {
         do {
-            
             print("Respone: \(String(data: responseData, encoding: NSUTF8StringEncoding))")
             
-            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSArray // [Dictionary<String, String
+            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
+            var challenges = [Challenge]()
             
-            var challengeIDs = [String]()
-            var titles = [String]()
-            var description = [String]()
-            var creator = [String]()
-            var posted = [String]()
-            var totalVotels = [String]()
-            var creatorID = [String]()
-            
-            var posts = [[]]
-
             for element in jsonDict {
-                challengeIDs.append((element as! NSDictionary).valueForKey("_id") as! String)
-                titles.append((element as! NSDictionary).valueForKey("title") as! String)
-                description.append((element as! NSDictionary).valueForKey("description") as! String)
-                creator.append((element as! NSDictionary).valueForKey("creator") as! String)
-                posted.append((element as! NSDictionary).valueForKey("posted") as! String)
-                totalVotels.append((element as! NSDictionary).valueForKey("votes") as! String)
-                creatorID.append((element as! NSDictionary).valueForKey("creatorPost") as! String)
-                posts.append((element as! NSDictionary).valueForKey("posts") as! NSArray)
+                let challenge = Challenge()
+
+                challenge.id = (element as! NSDictionary).valueForKey("_id") as? String
+                challenge.title = (element as! NSDictionary).valueForKey("title") as? String
+                challenge.description = (element as! NSDictionary).valueForKey("description") as? String
+                challenge.creator = (element as! NSDictionary).valueForKey("creator") as? String
+                challenge.posted = (element as! NSDictionary).valueForKey("posted") as? String
+                challenge.votes = (element as! NSDictionary).valueForKey("votes") as? String
+                challenge.creatorPost = (element as! NSDictionary).valueForKey("creatorPost") as? String
+                
+                challenges.append(challenge)
             }
-            
-            
-            
-            
-            
-            print("\(challengeIDs[0])")
-            print("\(titles[0])")
-            
-
-            
+            return challenges
         } catch {
-            print("ccc")
+            print("could serialize data")
         }
+        return []
     }
-    
-    //            for dict in jsonDict {
-    //
-    //
-    //
-    //            }
-    //
-    //
-    //
-    //            for var element (key, value) in jsonDict {
-    //
-    //            }
-    
-    
-    //            for (key, value) in jsonDict {
-    //                switch (element.key as! String) {
-    //
-    //                case "_id":
-    //                    challengeID.append(value as! String)
-    //                case "title":
-    //                    title.append(value as! String)
-    //                default:
-    //                    break
-    //
-    //                }
-    
-    
-    
-    //                switch (key as! String) {
-    //
-    //                case "_id":
-    //                        challengeID.append(value as! String)
-    //                case "title":
-    //                        title.append(value as! String)
-    //                default:
-    //                    break
-    //                }
-
-
-//            print("Challenges: \(challengeID)")
-//            print("Ttitles: \(title)")
-        
-        
-        
-    
-    
-
-    
-    
+     
     
 }

@@ -57,7 +57,7 @@ class ApiProxy {
     }
     
     
-    func getChallenges(token: String?, offset: String, success: () -> (), failed: (errorCode: String) -> ()) {
+    func getChallenges(token: String?, offset: String, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
         
         let apiPath = "challenges?offset=" + offset
         print("API: \(apiPath)")
@@ -65,10 +65,7 @@ class ApiProxy {
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
             
             // parse Data
-            
-            self.objectMapper.getChallenges(validResponseData!)
-            success()
-            
+            success(challenges: self.objectMapper.getChallenges(validResponseData!))
             
         }, inValidRequest: { (invalidResponseData) -> () in
             
