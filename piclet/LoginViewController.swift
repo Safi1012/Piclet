@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+// import CoreData
 import Foundation
 
 class LoginViewController: UIViewController {
@@ -22,14 +22,12 @@ class LoginViewController: UIViewController {
     let userDataValidator = UserDataValidator()
     let objectMapper = ObjectMapper()
     let apiProxy = ApiProxy()
-    let loadingProgressViewController = LoadingProgressViewController()
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController = self
-
         uiStyling()
     }
     
@@ -63,48 +61,29 @@ class LoginViewController: UIViewController {
         loginButton.layer.masksToBounds = true
     }
     
-    func displayAlert(title: String, message: String) {
-        dispatch_async(dispatch_get_main_queue()) {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            
+    func showLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            loadingSpinner.labelText = "Loading Data"
+        })
+    }
+    
+    func hideLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+        })
+    }
+    
+    func displayAlert(alertController: UIAlertController) {
+        dispatch_async(dispatch_get_main_queue(), {
             self.presentViewController(alertController, animated: true, completion: nil)
-        }
+        })
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
-    func pinSubviewToSuperview() {
-        loadingProgressViewController.view.translatesAutoresizingMaskIntoConstraints = false
 
-        let hConstraint = NSLayoutConstraint.constraintsWithVisualFormat("|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": loadingProgressViewController.view])
-        let vConstraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: ["view": loadingProgressViewController.view])
-
-        loadingProgressContainerView.addConstraints(hConstraint)
-        loadingProgressContainerView.addConstraints(vConstraint)
-    }
-    
-    func showLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            self.addChildViewController(self.loadingProgressViewController)
-            self.loadingProgressContainerView.addSubview(self.loadingProgressViewController.view)
-            self.didMoveToParentViewController(self)
-            self.pinSubviewToSuperview()
-        }
-    }
-    
-    func hideLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue()) {
-        
-            self.willMoveToParentViewController(nil)
-            self.loadingProgressViewController.view.removeFromSuperview()
-            self.loadingProgressViewController.removeFromParentViewController()
-        }
-    }
-    
     
     
     // MARK: - Login
@@ -118,11 +97,11 @@ class LoginViewController: UIViewController {
                 
                 self.hideLoadingSpinner()
                 self.navigateToChallengesViewController()
-                
+
             }) { (errorCode) -> () in
                     
                 self.hideLoadingSpinner()
-                self.displayError(errorCode)
+                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
             }
         }
     }
@@ -140,49 +119,28 @@ class LoginViewController: UIViewController {
             }) { (errorCode) -> () in
                     
                 self.hideLoadingSpinner()
-                self.displayError(errorCode)
+                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
             }
         }
     }
     
     func validateTextFields() -> Bool {
+        
         if (!userDataValidator.isUsernameLongEnough(usernameTextField.text!)) {
-            displayAlert("Username invalid", message: "The Username must be at least 4 characters long.")
+            self.displayAlert(ErrorHandler().createErrorAlert("UsernameTooShort"))
             return false
         }
         if (userDataValidator.containsSpecialCharacters(usernameTextField.text!)) {
-            displayAlert("Username invalid", message: "The Username cannot contain any special characters.")
+            self.displayAlert(ErrorHandler().createErrorAlert("UsernameWrongCharacters"))
             return false
         }
         if (!userDataValidator.isPasswordLongEnough(passwordTextField.text!)) {
-            displayAlert("Password invalid", message: "The password must be at least 8 characters long.")
+            self.displayAlert(ErrorHandler().createErrorAlert("PasswordTooShort"))
             return false
         }
         return true
     }
-    
-    func displayError(errorCode: String) {
-        switch(errorCode) {
-            
-        case "NetworkError":
-            self.displayAlert("No Internet", message: "You are not connected to the internet. Please check your Network settings and try again. Thanks!")
-            
-        case "UsernameTakenError":
-            self.displayAlert("Username is already taken", message: "The username you chose is already taken. Please try a different one.")
-            
-        case "UsernameNotFound":
-            self.displayAlert("Username not found", message: "The username or password you typed does not exists. Please try it again.")
-            
-        case "WrongPassword":
-            self.displayAlert("Wrong Password not found", message: "The username or password you typed does not exists. Please try it again.")
-            
-        case "ErroneousFields":
-            self.displayAlert("Login not found", message: "Could not find the Account. The username or password you typed is wrong. Please try it again.")
-            
-        default:
-            self.displayAlert("Server problem", message: "Our server is currently in maintenance. Plase try it again")
-        }
-    }
+
     
     
     // MARK: - Naviation

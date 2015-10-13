@@ -218,6 +218,7 @@
                                     <outlet property="previewImageView" destination="6PB-fc-Sh4" id="vjE-gX-tYq"/>
                                     <outlet property="timePostedLabel" destination="fUk-xE-lOD" id="fpP-i3-DhH"/>
                                     <outlet property="titleLabel" destination="2xh-7o-Lf0" id="LJ3-xN-Bbj"/>
+                                    <outlet property="votesLabel" destination="RsO-Mx-efw" id="B41-Sj-PrC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
