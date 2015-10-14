@@ -30,7 +30,12 @@ class ChallengeTableViewController: UITableViewController {
         apiProxy.getChallenges(nil, offset: "10", success: { (challenges) -> () in
             self.hideLoadingSpinner()
             self.challenges = challenges
-                
+            
+            
+            // test
+            self.getThumbnailOfChallenge()
+            
+            
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
@@ -39,6 +44,49 @@ class ChallengeTableViewController: UITableViewController {
             self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
         }
     }
+    
+    
+    // MARK: - Challenge
+    
+    func getThumbnailOfChallenge() {
+        
+        
+        for var challenge in challenges {
+            
+            apiProxy.getPostImageInSize(nil, challengeID: challenge.id!, postID: challenge.creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.jpeg, success: { (post) -> () in
+                
+                print("Success")
+                
+                }) { (errorCode) -> () in
+                    
+                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                    
+            }
+            
+            
+            
+//            if let ele = post.posts {
+//                print("POST_ID: \(ele[0].id)")
+//            }
+        }
+        
+        
+//        apiProxy.getPostImageInSize(nil, challengeID: challenges[0].id!, postID: challenges[0].creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.jpeg, success: { (post) -> () in
+//            
+//            print("Success")
+//            
+//        }) { (errorCode) -> () in
+//            
+//            self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+//            
+//        }
+        
+        
+    }
+    
+    
+    
+    
     
     
     

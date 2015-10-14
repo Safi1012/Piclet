@@ -77,6 +77,36 @@ class ApiProxy {
             failed(errorCode: errorCode)
             
         }
+    }
+    
+    func getPostImageInSize(token: String?, challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: (post: Post) -> (), failed: (errorCode: String) -> () ) {
+        
+        
+        // /challenges/<challenge-id>/posts/<post-id>/image-<size>.<format>
+        
+        let apiURL = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
+        
+        
+//        var apiPathURL = "/challenges/" + challengeID + "/posts/"
+//        apiPathURL += postID + "/image-" + imageSize + "." + imageFormat
+    
+        print("URL: /(apiURL)")
+        
+        
+        
+        networkHandler.createRequest([:], apiPath: apiURL, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
+            
+            success(post: self.objectMapper.getPostImage(validResponseData!, postID: postID, imageFormat: imageFormat))
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            
+            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            
+        }) { (errorCode) -> () in
+            
+            failed(errorCode: errorCode)
+            
+        }
         
         
     }
@@ -88,6 +118,17 @@ class ApiProxy {
     
     
     
+}
+
+enum ImageSize: String {
+    case small = "small"
+    case medium = "medium"
+    case big = "big"
+}
+
+enum ImageFormat: String {
+    case jpeg = "jpeg"
+    case webp = "webp"
 }
 
 

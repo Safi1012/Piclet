@@ -10,6 +10,11 @@ import Foundation
 
 class Post {
     
-    
+    var id: String?
+    var description: String?
+    var creator: String?
+    var posted: String?
+    var votes: Int?
+    var voters: [String]?
     
 }

@@ -18,7 +18,7 @@ class Challenge {
     var votes: String?
     var creatorPost: String?
     
-    // var posts: [Post]?
+    var posts: [Post]?
 }
 
 

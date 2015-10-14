@@ -59,6 +59,15 @@ class ObjectMapper: NSObject {
                 challenge.votes = (element as! NSDictionary).valueForKey("votes") as? String
                 challenge.creatorPost = (element as! NSDictionary).valueForKey("creatorPost") as? String
                 
+                
+                
+                // test this!
+                let post = Post()
+                post.id = challenge.creatorPost
+                challenge.posts = [post]
+                
+                
+                
                 challenges.append(challenge)
             }
             return challenges
@@ -66,6 +75,22 @@ class ObjectMapper: NSObject {
             print("could serialize data")
         }
         return []
+    }
+    
+    func getPostImage(responseData: NSData, postID: String, imageFormat: ImageFormat) -> Post {
+        
+        var image: UIImage?
+        
+        if imageFormat.rawValue == "jpeg" {
+            image = UIImage(data: responseData)
+        } else {
+            // webp
+        }
+        
+        print("Size: \(image!.size)")
+        
+        
+        return Post()
     }
      
     
