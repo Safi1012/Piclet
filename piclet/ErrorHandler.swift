@@ -37,6 +37,9 @@ class ErrorHandler {
         case "PasswordTooShort":
             return createAlert("Password invalid", message: "The password must be at least 8 characters long.")
             
+        case "LogoutError":
+            return createAlert("Logout failed", message: "Could not logout from the app. Are you connected to the internet?")
+            
         default:
             return createAlert("Server problem", message: "Our server is currently in maintenance. Plase try it again.")
         }
@@ -50,7 +53,3 @@ class ErrorHandler {
     }
 
 }
-
-
-
-

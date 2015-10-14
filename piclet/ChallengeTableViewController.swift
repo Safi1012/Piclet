@@ -18,10 +18,10 @@ class ChallengeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         // invalidator after 5 min
         

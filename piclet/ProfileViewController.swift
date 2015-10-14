@@ -22,8 +22,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    override func viewWillAppear(animated: Bool) {
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             createLogoutNavbarButton()
@@ -59,8 +60,8 @@ class ProfileViewController: UIViewController {
             self.navigatoToLoginViewController()
             
         }) { (errorCode) -> () in
-
-            self.displayAlert("Logout failed", message: "Couldnt logout from the app. Are you connected to the internet?")
+            
+            self.displayAlert(ErrorHandler().createErrorAlert("LogoutError"))
         }
     }
     
@@ -68,14 +69,12 @@ class ProfileViewController: UIViewController {
         navigatoToLoginViewController()
     }
     
-    func displayAlert(title: String, message: String) {
-        dispatch_async(dispatch_get_main_queue()) {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            
+    func displayAlert(alertController: UIAlertController) {
+        dispatch_async(dispatch_get_main_queue(), {
             self.presentViewController(alertController, animated: true, completion: nil)
-        }
+        })
     }
+
     
     
     // MARK: - Navigation
@@ -83,7 +82,6 @@ class ProfileViewController: UIViewController {
     func navigatoToLoginViewController() {
         
         dispatch_async(dispatch_get_main_queue()) {
-            
             if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
                 self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
             } else {

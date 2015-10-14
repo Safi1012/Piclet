@@ -12,4 +12,3 @@ end
 target 'picletUITests' do
 
 end
-

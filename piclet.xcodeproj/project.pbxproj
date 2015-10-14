@@ -11,8 +11,6 @@
 		D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; settings = {ASSET_TAGS = (); }; };
 		D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CC01BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D4181CC11BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		D4181CC21BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; settings = {ASSET_TAGS = (); }; };
 		D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; settings = {ASSET_TAGS = (); }; };
@@ -58,7 +56,6 @@
 		D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		D48E3C7F1BCCFB48006C702A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */; settings = {ASSET_TAGS = (); }; };
 		D4B609CD1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; settings = {ASSET_TAGS = (); }; };
 		D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -482,7 +479,6 @@
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
-				D4181CC11BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */,
 				D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,8 +497,6 @@
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
-				D48E3C7F1BCCFB48006C702A /* LoginViewController.swift in Sources */,
-				D4181CC21BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,

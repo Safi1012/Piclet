@@ -7,7 +7,6 @@
 //
 
 import UIKit
-// import QuartzCore
 
 class LoadingProgressViewController: UIViewController {
 
@@ -15,8 +14,7 @@ class LoadingProgressViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        creatRoundedBorder()
+        createRoundedBorder()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -27,7 +25,7 @@ class LoadingProgressViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
     
-    func creatRoundedBorder() {
+    func createRoundedBorder() {
         view.layer.cornerRadius = 5;
         view.layer.masksToBounds = true;
     }
