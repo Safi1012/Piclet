@@ -54,6 +54,12 @@
 		D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912351BAC03C40012CE7C /* picletUITests.swift */; };
 		D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */; settings = {ASSET_TAGS = (); }; };
@@ -108,6 +114,8 @@
 		D46912351BAC03C40012CE7C /* picletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picletUITests.swift; sourceTree = "<group>"; };
 		D46912371BAC03C40012CE7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46912461BAC0D970012CE7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C791BCCC901006C702A /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
@@ -206,11 +214,11 @@
 		D46912431BAC0D590012CE7C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
-				D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */,
+				D47E5E251BD293A0003E9351 /* Challenges */,
+				D47E5E261BD293AE003E9351 /* Posts */,
+				D47E5E271BD293BD003E9351 /* Profile */,
 				D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */,
-				D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */,
-				D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */,
+				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -249,6 +257,32 @@
 				D46912211BAC03C30012CE7C /* Info.plist */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		D47E5E251BD293A0003E9351 /* Challenges */ = {
+			isa = PBXGroup;
+			children = (
+				D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */,
+				D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */,
+			);
+			name = Challenges;
+			sourceTree = "<group>";
+		};
+		D47E5E261BD293AE003E9351 /* Posts */ = {
+			isa = PBXGroup;
+			children = (
+				D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */,
+				D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */,
+			);
+			name = Posts;
+			sourceTree = "<group>";
+		};
+		D47E5E271BD293BD003E9351 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		D4B609C71BBE8F8500697AFA /* CoreData */ = {
@@ -452,8 +486,10 @@
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
 				D4B609CD1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */,
+				D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
+				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,
 			);
@@ -476,8 +512,10 @@
 				D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4431D121BBED73A00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
+				D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
+				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 			);
@@ -496,6 +534,8 @@
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
+				D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
+				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
@@ -630,6 +670,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				INFOPLIST_FILE = piclet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -647,6 +691,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework",
+				);
 				INFOPLIST_FILE = piclet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -660,10 +708,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = picletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.picletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "picletTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/piclet.app/piclet";
 			};
 			name = Debug;
@@ -672,10 +723,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = picletTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.picletTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "picletTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/piclet.app/piclet";
 			};
 			name = Release;
@@ -683,10 +736,13 @@
 		D46912411BAC03C40012CE7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = picletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.picletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "picletUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_TARGET_NAME = piclet;
 				USES_XCTRUNNER = YES;
 			};
@@ -695,10 +751,12 @@
 		D46912421BAC03C40012CE7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = picletUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.picletUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "picletUITests-Bridging-Header.h";
 				TEST_TARGET_NAME = piclet;
 				USES_XCTRUNNER = YES;
 			};

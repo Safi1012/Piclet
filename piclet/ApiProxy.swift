@@ -79,24 +79,14 @@ class ApiProxy {
         }
     }
     
-    func getPostImageInSize(token: String?, challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: (post: Post) -> (), failed: (errorCode: String) -> () ) {
-        
-        
-        // /challenges/<challenge-id>/posts/<post-id>/image-<size>.<format>
-        
-        let apiURL = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
-        
-        
-//        var apiPathURL = "/challenges/" + challengeID + "/posts/"
-//        apiPathURL += postID + "/image-" + imageSize + "." + imageFormat
+    func getPostImageInSize(token: String?, challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
     
-        print("URL: /(apiURL)")
-        
-        
+        let apiURL = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
         
         networkHandler.createRequest([:], apiPath: apiURL, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
             
-            success(post: self.objectMapper.getPostImage(validResponseData!, postID: postID, imageFormat: imageFormat))
+            self.objectMapper.getPostImage(validResponseData!, postID: postID, imageFormat: imageFormat)
+            success()
             
         }, inValidRequest: { (invalidResponseData) -> () in
             
@@ -107,17 +97,7 @@ class ApiProxy {
             failed(errorCode: errorCode)
             
         }
-        
-        
     }
-    
-
-    
-    
-    
-    
-    
-    
 }
 
 enum ImageSize: String {

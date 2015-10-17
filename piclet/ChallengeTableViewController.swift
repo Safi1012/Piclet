@@ -11,30 +11,44 @@ import UIKit
 class ChallengeTableViewController: UITableViewController {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
+    
     let apiProxy = ApiProxy()
     var challenges = [Challenge]()
     let loadingProgressViewController = LoadingProgressViewController()
+    var timestamp: NSDate?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshChallenges()
+        timestamp = NSDate()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        // invalidator after 5 min
+        let secondsDifference = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: timestamp!, toDate: NSDate(), options: NSCalendarOptions.init(rawValue: 0)).second
         
+        if secondsDifference > 120 {
+            timestamp = NSDate()
+            refreshChallenges()
+        }
+    }
+    
+    
+    // MARK: - Challenge
+    
+    func refreshChallenges() {
         showLoadingSpinner()
-
+        
         apiProxy.getChallenges(nil, offset: "10", success: { (challenges) -> () in
             self.hideLoadingSpinner()
             self.challenges = challenges
             
-            
-            // test
-            self.getThumbnailOfChallenge()
-            
+            if self.checkIfThumbnailsExists() {
+                self.getThumbnailsOfChallenge()
+            }
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
@@ -45,50 +59,35 @@ class ChallengeTableViewController: UITableViewController {
         }
     }
     
-    
-    // MARK: - Challenge
-    
-    func getThumbnailOfChallenge() {
+    func getThumbnailsOfChallenge() {
         
-        
-        for var challenge in challenges {
+        for challenge in challenges {
             
-            apiProxy.getPostImageInSize(nil, challengeID: challenge.id!, postID: challenge.creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.jpeg, success: { (post) -> () in
+            apiProxy.getPostImageInSize(nil, challengeID: challenge.id!, postID: challenge.creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.webp, success: { () -> () in
+                print("success")
                 
-                print("Success")
-                
-                }) { (errorCode) -> () in
-                    
+            }) { (errorCode) -> () in
                 self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
-                    
             }
-            
-            
-            
-//            if let ele = post.posts {
-//                print("POST_ID: \(ele[0].id)")
-//            }
         }
-        
-        
-//        apiProxy.getPostImageInSize(nil, challengeID: challenges[0].id!, postID: challenges[0].creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.jpeg, success: { (post) -> () in
-//            
-//            print("Success")
-//            
-//        }) { (errorCode) -> () in
-//            
-//            self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
-//            
-//        }
-        
-        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
     
+    func checkIfThumbnailsExists() -> Bool {
+        
+        for challenge in challenges {
+            let imagePath = documentPath.stringByAppendingPathComponent(challenge.creatorPost! + ".webp")
+            
+            if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
+                return false
+            }
+        }
+        return true
+    }
     
-    
-    
-    
-    
+
     
     // MARK: - UI
     
@@ -126,11 +125,39 @@ class ChallengeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
         
+        let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
+        let imagePath = documentPath.stringByAppendingPathComponent(challenges[indexPath.row].creatorPost! + ".webp")
+        
         cell.titleLabel.text = challenges[indexPath.row].title
         cell.timePostedLabel.text = challenges[indexPath.row].posted ?? "0" + " min"
         cell.votesLabel.text = challenges[indexPath.row].votes ?? "0" + " votes"
-        cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
-        
+        cell.previewImageView.image = UIImage(webPData: NSData(contentsOfFile: imagePath)) ?? UIImage(named: "challengePreviewPlaceholder")
+    
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let challenge = challenges[indexPath.row]
+        self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
+    }
+    
+    
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toPostsViewController" {
+            let destinationVC = segue.destinationViewController as! PostsTableViewController
+            destinationVC.challenge = sender as? Challenge
+        }
+    }
 }
+
+
+
+
+
+
+
+

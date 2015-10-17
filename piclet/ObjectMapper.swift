@@ -77,21 +77,17 @@ class ObjectMapper: NSObject {
         return []
     }
     
-    func getPostImage(responseData: NSData, postID: String, imageFormat: ImageFormat) -> Post {
+    func getPostImage(responseData: NSData, postID: String, imageFormat: ImageFormat) {
         
-        var image: UIImage?
+        let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
+        let imagePath = documentPath.stringByAppendingPathComponent(postID + ".webp")
+
+        let fileManager = NSFileManager.defaultManager()
+        fileManager.createFileAtPath(imagePath, contents: responseData, attributes: nil)
         
-        if imageFormat.rawValue == "jpeg" {
-            image = UIImage(data: responseData)
-        } else {
-            // webp
+        if (fileManager.fileExistsAtPath(imagePath)) {
+            print("File available")
         }
-        
-        print("Size: \(image!.size)")
-        
-        
-        return Post()
     }
-     
     
 }

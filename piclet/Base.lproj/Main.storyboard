@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -160,7 +161,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="VUH-st-hOC" customClass="ChallengeTableViewCell" customModule="piclet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="VUH-st-hOC" customClass="ChallengeTableViewCell" customModule="piclet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="82"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUH-st-hOC" id="yQx-CS-gGg">
@@ -171,6 +172,7 @@
                                             <rect key="frame" x="8" y="8" width="64.5" height="64.5"/>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="64.5" id="cAy-sa-qVE"/>
                                                 <constraint firstAttribute="width" constant="64.5" id="qCw-kP-maW"/>
                                             </constraints>
                                         </imageView>
@@ -228,10 +230,110 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Challenges" id="Xjm-hK-7je"/>
+                    <connections>
+                        <segue destination="kCH-63-aGA" kind="show" identifier="toPostsViewController" id="svI-qt-gCX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZBl-3h-SME" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2644" y="-221"/>
+        </scene>
+        <!--Posts Table View Controller-->
+        <scene sceneID="WZ0-5D-utZ">
+            <objects>
+                <tableViewController id="kCH-63-aGA" customClass="PostsTableViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="413" sectionHeaderHeight="28" sectionFooterHeight="28" id="bku-2e-ORV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="413" id="n4A-hT-clp">
+                                <rect key="frame" x="0.0" y="92" width="600" height="413"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n4A-hT-clp" id="Gnj-pS-UxU">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="412.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome Userdecription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-7T-N11" userLabel="descriptionLabel">
+                                            <rect key="frame" x="8" y="8" width="469" height="20.5"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456 Votes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnw-ac-Agj" userLabel="votesLabel">
+                                            <rect key="frame" x="485" y="8" width="107" height="20.5"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="107" id="b1h-Ax-6dR"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
+                                            <rect key="frame" x="-0.5" y="36.5" width="601" height="338.5"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="JHH-or-fbK" secondAttribute="height" multiplier="300:169" id="PIn-Dq-aA8"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-ui-ELz" userLabel="usernameLabel">
+                                            <rect key="frame" x="8" y="383" width="36.5" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="likeUnfilled" translatesAutoresizingMaskIntoConstraints="NO" id="UGa-QN-rWP" userLabel="likeImage">
+                                            <rect key="frame" x="288" y="381" width="25" height="25"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="7cW-PX-eJi"/>
+                                                <constraint firstAttribute="width" constant="25" id="KRe-c1-t3p"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 day ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpT-qH-0NO" userLabel="timepostedLabel">
+                                            <rect key="frame" x="527" y="383" width="65" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="topMargin" secondItem="Jnw-ac-Agj" secondAttribute="top" id="1UW-wn-8sH"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Lf9-ui-ELz" secondAttribute="bottom" constant="0.5" id="4ER-az-MaC"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Jnw-ac-Agj" secondAttribute="trailing" id="Est-T6-mQl"/>
+                                        <constraint firstItem="JHH-or-fbK" firstAttribute="top" secondItem="7Ac-7T-N11" secondAttribute="bottom" constant="8" id="FYP-Hn-4Vd"/>
+                                        <constraint firstItem="UGa-QN-rWP" firstAttribute="centerX" secondItem="Gnj-pS-UxU" secondAttribute="centerX" id="QHe-pw-ejO"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Lf9-ui-ELz" secondAttribute="leading" id="Sa4-1s-ibm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WpT-qH-0NO" secondAttribute="trailing" id="TgX-0N-jSK"/>
+                                        <constraint firstItem="UGa-QN-rWP" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="6" id="UFF-mn-FU0"/>
+                                        <constraint firstItem="WpT-qH-0NO" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="URi-Dd-dM4"/>
+                                        <constraint firstItem="JHH-or-fbK" firstAttribute="centerX" secondItem="Gnj-pS-UxU" secondAttribute="centerX" id="ae2-IW-yrT"/>
+                                        <constraint firstAttribute="topMargin" secondItem="7Ac-7T-N11" secondAttribute="top" id="fFC-Lz-2GX"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="7Ac-7T-N11" secondAttribute="leading" id="iQT-JL-9XU"/>
+                                        <constraint firstItem="Jnw-ac-Agj" firstAttribute="leading" secondItem="7Ac-7T-N11" secondAttribute="trailing" constant="8" id="jKN-UA-mpx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WpT-qH-0NO" secondAttribute="bottom" constant="0.5" id="jww-GD-9H0"/>
+                                        <constraint firstItem="Lf9-ui-ELz" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="lEa-Ae-QA2"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="UGa-QN-rWP" secondAttribute="bottom" constant="-1.5" id="wRj-4p-QPH"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kCH-63-aGA" id="F0l-pj-FUH"/>
+                            <outlet property="delegate" destination="kCH-63-aGA" id="FRX-cC-MWu"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNb-re-YdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3413" y="-221"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8F0-Vp-ns7">
@@ -344,6 +446,7 @@
     <resources>
         <image name="backgroundLogin" width="400" height="660"/>
         <image name="challengePreviewPlaceholder" width="500" height="500"/>
+        <image name="likeUnfilled" width="25" height="25"/>
         <image name="tabBarChallenges" width="25" height="25"/>
         <image name="tabBarCreate" width="25" height="25"/>
         <image name="tabBarProfil" width="25" height="25"/>
