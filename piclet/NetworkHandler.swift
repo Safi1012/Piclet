@@ -12,10 +12,6 @@ class NetworkHandler: NSObject {
     
     func createRequest(apiParameters: Dictionary<String, String>, apiPath: String,
         httpVerb: String, bearerToken: String?, validRequest: (validResponseData: NSData?) -> (), inValidRequest: (invalidResponseData: NSData?) -> (), networkError: (errorCode: String) -> ()) {
-            
-        let url = "https://flash1293.de/" + apiPath
-        print("URL: \(url)")
-            
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://flash1293.de/" + apiPath)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 5.0)
             request.HTTPMethod = httpVerb

@@ -81,7 +81,6 @@ class PostsTableViewController: UITableViewController {
         for post in challenge!.posts! {
             
             ApiProxy().getPostImageInSize(nil, challengeID: challenge!.id!, postID: post.id!, imageSize: ImageSize.big, imageFormat: ImageFormat.webp, success: { () -> () in
-                print("success")
                 
             }) { (errorCode) -> () in
                 self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
@@ -118,8 +117,6 @@ class PostsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
-        
-        print("Filepath: \(challenge!.posts![indexPath.row].id!)")
         
         let imagePath = documentPath.stringByAppendingPathComponent(challenge!.posts![indexPath.row].id! + ".webp")
 

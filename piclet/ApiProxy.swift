@@ -24,7 +24,6 @@ class ApiProxy {
         
         let body = ["username" : (username), "password" :  (password), "os" : "ios"]
         
-        
         networkHandler.createRequest(body, apiPath: apiPath, httpVerb: "POST", bearerToken: nil, validRequest: { (validResponseData) -> () in
 
             self.objectMapper.createUserToken(validResponseData!, username: username)
@@ -60,7 +59,6 @@ class ApiProxy {
     func getChallenges(token: String?, offset: String, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
         
         let apiPath = "challenges?offset=" + offset
-        print("API: \(apiPath)")
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
             

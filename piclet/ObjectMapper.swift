@@ -13,8 +13,6 @@ import UIKit
 class ObjectMapper: NSObject {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
-    // var challenges = [Challenge]()
 
     func createUserToken(jsonData: NSData, username: String) {
         do {
@@ -43,8 +41,6 @@ class ObjectMapper: NSObject {
     
     func getChallenges(responseData: NSData) -> [Challenge] {
         do {
-            print("Respone: \(String(data: responseData, encoding: NSUTF8StringEncoding))")
-            
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
             var challenges = [Challenge]()
             
@@ -75,16 +71,9 @@ class ObjectMapper: NSObject {
 
         let fileManager = NSFileManager.defaultManager()
         fileManager.createFileAtPath(imagePath, contents: responseData, attributes: nil)
-        
-        if (fileManager.fileExistsAtPath(imagePath)) {
-            print("File available")
-        }
     }
     
     func getPosts(responseData: NSData) -> [Post] {
-        
-        print("JSON: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))")
-        
         do {
             let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
             let jsonPosts = jsonDict["posts"] as! NSArray
@@ -109,9 +98,7 @@ class ObjectMapper: NSObject {
         }
         return []
     }
-    
-    
-    
+
 }
 
 

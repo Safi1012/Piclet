@@ -63,7 +63,6 @@ class ChallengeTableViewController: UITableViewController {
         for challenge in challenges {
             
             apiProxy.getPostImageInSize(nil, challengeID: challenge.id!, postID: challenge.creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.webp, success: { () -> () in
-                print("success")
                 
             }) { (errorCode) -> () in
                 self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
