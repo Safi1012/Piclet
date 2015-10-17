@@ -15,7 +15,6 @@ class ChallengeTableViewController: UITableViewController {
     
     let apiProxy = ApiProxy()
     var challenges = [Challenge]()
-    let loadingProgressViewController = LoadingProgressViewController()
     var timestamp: NSDate?
     
     
@@ -125,7 +124,6 @@ class ChallengeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
         
-        let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
         let imagePath = documentPath.stringByAppendingPathComponent(challenges[indexPath.row].creatorPost! + ".webp")
         
         cell.titleLabel.text = challenges[indexPath.row].title

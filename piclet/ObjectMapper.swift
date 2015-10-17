@@ -36,7 +36,7 @@ class ObjectMapper: NSObject {
             
             return code
         } catch {
-            print("could serialize data")
+            print("couldn't serialize data")
         }
         return ""
     }
@@ -58,21 +58,12 @@ class ObjectMapper: NSObject {
                 challenge.posted = (element as! NSDictionary).valueForKey("posted") as? String
                 challenge.votes = (element as! NSDictionary).valueForKey("votes") as? String
                 challenge.creatorPost = (element as! NSDictionary).valueForKey("creatorPost") as? String
-                
-                
-                
-                // test this!
-                let post = Post()
-                post.id = challenge.creatorPost
-                challenge.posts = [post]
-                
-                
-                
+
                 challenges.append(challenge)
             }
             return challenges
         } catch {
-            print("could serialize data")
+            print("couldn't serialize data")
         }
         return []
     }
@@ -90,4 +81,39 @@ class ObjectMapper: NSObject {
         }
     }
     
+    func getPosts(responseData: NSData) -> [Post] {
+        
+        print("JSON: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))")
+        
+        do {
+            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            let jsonPosts = jsonDict["posts"] as! NSArray
+            
+            var posts = [Post]()
+            
+            for element in jsonPosts {
+                
+                let post = Post()
+                post.id = (element as! NSDictionary).valueForKey("_id") as? String
+                post.description = (element as! NSDictionary).valueForKey("description") as? String
+                post.creator = (element as! NSDictionary).valueForKey("creator") as? String
+                post.posted = (element as! NSDictionary).valueForKey("posted") as? String
+                post.votes = (element as! NSDictionary).valueForKey("votes") as? Int
+                post.voters = (element as! NSDictionary).valueForKey("voters") as? [String]
+                
+                posts.append(post)
+            }
+            return posts
+        } catch {
+            print("couldn't serialize data")
+        }
+        return []
+    }
+    
+    
+    
 }
+
+
+
+

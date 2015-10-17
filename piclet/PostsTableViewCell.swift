@@ -10,9 +10,15 @@ import UIKit
 
 class PostsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var postDescriptionLabel: UILabel!
+    @IBOutlet weak var postVotesLabel: UILabel!
+    @IBOutlet weak var postImage: UIImageView!
+    @IBOutlet weak var postUsernameLabel: UILabel!
+    @IBOutlet weak var postLikeImage: UIImageView!
+    @IBOutlet weak var postTimeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

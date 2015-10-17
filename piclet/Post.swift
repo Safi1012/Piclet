@@ -16,5 +16,5 @@ class Post {
     var posted: String?
     var votes: Int?
     var voters: [String]?
-    
+
 }

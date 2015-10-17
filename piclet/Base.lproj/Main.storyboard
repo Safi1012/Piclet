@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -172,7 +171,6 @@
                                             <rect key="frame" x="8" y="8" width="64.5" height="64.5"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="64.5" id="cAy-sa-qVE"/>
                                                 <constraint firstAttribute="width" constant="64.5" id="qCw-kP-maW"/>
                                             </constraints>
                                         </imageView>
@@ -248,7 +246,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="413" id="n4A-hT-clp">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="413" id="n4A-hT-clp" customClass="PostsTableViewCell" customModule="piclet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="413"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n4A-hT-clp" id="Gnj-pS-UxU">
@@ -275,9 +273,6 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
                                             <rect key="frame" x="-0.5" y="36.5" width="601" height="338.5"/>
                                             <animations/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="JHH-or-fbK" secondAttribute="height" multiplier="300:169" id="PIn-Dq-aA8"/>
-                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-ui-ELz" userLabel="usernameLabel">
                                             <rect key="frame" x="8" y="383" width="36.5" height="21"/>
@@ -304,25 +299,35 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="topMargin" secondItem="Jnw-ac-Agj" secondAttribute="top" id="1UW-wn-8sH"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Lf9-ui-ELz" secondAttribute="bottom" constant="0.5" id="4ER-az-MaC"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Jnw-ac-Agj" secondAttribute="trailing" id="Est-T6-mQl"/>
-                                        <constraint firstItem="JHH-or-fbK" firstAttribute="top" secondItem="7Ac-7T-N11" secondAttribute="bottom" constant="8" id="FYP-Hn-4Vd"/>
-                                        <constraint firstItem="UGa-QN-rWP" firstAttribute="centerX" secondItem="Gnj-pS-UxU" secondAttribute="centerX" id="QHe-pw-ejO"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="Lf9-ui-ELz" secondAttribute="leading" id="Sa4-1s-ibm"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="WpT-qH-0NO" secondAttribute="trailing" id="TgX-0N-jSK"/>
-                                        <constraint firstItem="UGa-QN-rWP" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="6" id="UFF-mn-FU0"/>
-                                        <constraint firstItem="WpT-qH-0NO" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="URi-Dd-dM4"/>
-                                        <constraint firstItem="JHH-or-fbK" firstAttribute="centerX" secondItem="Gnj-pS-UxU" secondAttribute="centerX" id="ae2-IW-yrT"/>
-                                        <constraint firstAttribute="topMargin" secondItem="7Ac-7T-N11" secondAttribute="top" id="fFC-Lz-2GX"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="7Ac-7T-N11" secondAttribute="leading" id="iQT-JL-9XU"/>
-                                        <constraint firstItem="Jnw-ac-Agj" firstAttribute="leading" secondItem="7Ac-7T-N11" secondAttribute="trailing" constant="8" id="jKN-UA-mpx"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="WpT-qH-0NO" secondAttribute="bottom" constant="0.5" id="jww-GD-9H0"/>
-                                        <constraint firstItem="Lf9-ui-ELz" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="lEa-Ae-QA2"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="UGa-QN-rWP" secondAttribute="bottom" constant="-1.5" id="wRj-4p-QPH"/>
+                                        <constraint firstItem="JHH-or-fbK" firstAttribute="top" secondItem="Jnw-ac-Agj" secondAttribute="bottom" constant="8" id="029-MN-xhy"/>
+                                        <constraint firstItem="Lf9-ui-ELz" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="0a8-wJ-oX7"/>
+                                        <constraint firstItem="UGa-QN-rWP" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="6" id="4ga-BG-F66"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="Jnw-ac-Agj" secondAttribute="trailing" id="6Pc-4c-3PN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Lf9-ui-ELz" secondAttribute="bottom" constant="0.5" id="6ja-W1-1ak"/>
+                                        <constraint firstItem="JHH-or-fbK" firstAttribute="leading" secondItem="Gnj-pS-UxU" secondAttribute="leadingMargin" constant="-8.5" id="GZs-g1-gLc"/>
+                                        <constraint firstItem="UGa-QN-rWP" firstAttribute="centerX" secondItem="Gnj-pS-UxU" secondAttribute="centerX" id="Rft-z3-YTd"/>
+                                        <constraint firstAttribute="topMargin" secondItem="7Ac-7T-N11" secondAttribute="top" id="SNK-4x-Myg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="UGa-QN-rWP" secondAttribute="bottom" constant="-1.5" id="UrY-cw-tAs"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="7Ac-7T-N11" secondAttribute="leading" id="Uw1-4m-upa"/>
+                                        <constraint firstAttribute="topMargin" secondItem="Jnw-ac-Agj" secondAttribute="top" id="eDJ-MU-vmH"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Lf9-ui-ELz" secondAttribute="leading" id="fNn-mr-js5"/>
+                                        <constraint firstItem="JHH-or-fbK" firstAttribute="top" secondItem="7Ac-7T-N11" secondAttribute="bottom" constant="8" id="gbX-k2-hxS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="JHH-or-fbK" secondAttribute="trailing" constant="-8.5" id="iLh-xF-K4c"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WpT-qH-0NO" secondAttribute="trailing" id="mDk-sU-23f"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WpT-qH-0NO" secondAttribute="bottom" constant="0.5" id="saN-Sg-9ry"/>
+                                        <constraint firstItem="Jnw-ac-Agj" firstAttribute="leading" secondItem="7Ac-7T-N11" secondAttribute="trailing" constant="8" id="tDw-Dr-EYI"/>
+                                        <constraint firstItem="WpT-qH-0NO" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="veq-UH-rtK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="postDescriptionLabel" destination="7Ac-7T-N11" id="1f9-Go-P9i"/>
+                                    <outlet property="postImage" destination="JHH-or-fbK" id="Zi6-aF-HML"/>
+                                    <outlet property="postLikeImage" destination="UGa-QN-rWP" id="yvM-jY-Apz"/>
+                                    <outlet property="postTimeLabel" destination="WpT-qH-0NO" id="x2k-z7-dWh"/>
+                                    <outlet property="postUsernameLabel" destination="Lf9-ui-ELz" id="nKo-VV-4jB"/>
+                                    <outlet property="postVotesLabel" destination="Jnw-ac-Agj" id="ObY-RD-dSM"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

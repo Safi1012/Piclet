@@ -64,18 +64,15 @@ class ApiProxy {
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
             
-            // parse Data
             success(challenges: self.objectMapper.getChallenges(validResponseData!))
             
         }, inValidRequest: { (invalidResponseData) -> () in
             
             invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
             
-            
         }) { (errorCode) -> () in
             
             failed(errorCode: errorCode)
-            
         }
     }
     
@@ -95,7 +92,21 @@ class ApiProxy {
         }) { (errorCode) -> () in
             
             failed(errorCode: errorCode)
+        }
+    }
+    
+    func getChallengesPosts(challengeID: String, success: (posts: [Post]) -> (), failed: (errorCode: String) -> ()) {
+        
+        networkHandler.createRequest([:], apiPath: ("challenges/" + challengeID), httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
             
+            success(posts: self.objectMapper.getPosts(validResponseData!))
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            
+            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+        }) { (errorCode) -> () in
+            
+            failed(errorCode: errorCode)
         }
     }
 }

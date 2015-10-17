@@ -11,90 +11,125 @@ import UIKit
 class PostsTableViewController: UITableViewController {
     
     var challenge: Challenge?
+    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshPosts()
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        refreshPosts()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.challenge!.posts = nil
+    }
+    
+    // MARK: - UI
+    
+    func showLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
+            loadingSpinner.labelText = "Loading Data"
+        })
+    }
+    
+    func hideLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
+        })
+    }
+    
+    func displayAlert(alertController: UIAlertController) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    
+    
+    // MARK: - Challenge
+    
+    func refreshPosts() {
+        showLoadingSpinner()
         
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        ApiProxy().getChallengesPosts(challenge!.id!, success: { (posts) -> () in
+            
+            
+            self.challenge!.posts = posts
+            
+            if !self.checkIfThumbnailsExists() {
+                self.getThumbnailsOfChallenge()
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+            })
+            self.hideLoadingSpinner()
+            
+        }) { (errorCode) -> () in
+            self.hideLoadingSpinner()
+            self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+        }
+    }
+    
+    func getThumbnailsOfChallenge() {
+        
+        for post in challenge!.posts! {
+            
+            ApiProxy().getPostImageInSize(nil, challengeID: challenge!.id!, postID: post.id!, imageSize: ImageSize.big, imageFormat: ImageFormat.webp, success: { () -> () in
+                print("success")
+                
+            }) { (errorCode) -> () in
+                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func checkIfThumbnailsExists() -> Bool {
+        
+        for post in challenge!.posts! {
+            let imagePath = documentPath.stringByAppendingPathComponent(post.id! + ".webp")
+            
+            if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
+                return false
+            }
+        }
+        return true
     }
-
+    
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return challenge?.posts?.count ?? 0
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
+        
+        print("Filepath: \(challenge!.posts![indexPath.row].id!)")
+        
+        let imagePath = documentPath.stringByAppendingPathComponent(challenge!.posts![indexPath.row].id! + ".webp")
 
-        // Configure the cell...
-
+        cell.postDescriptionLabel.text = challenge?.posts![indexPath.row].description
+        cell.postVotesLabel.text = "\((challenge?.posts![indexPath.row].votes!)!) Votes"
+        cell.postImage.image = UIImage(webPData: NSData(contentsOfFile: imagePath)) ?? UIImage(named: "challengePreviewPlaceholder")
+        cell.postUsernameLabel.text = challenge?.posts![indexPath.row].creator
+        cell.postTimeLabel.text = "2 min ago"
+    
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
