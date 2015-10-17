@@ -10,6 +10,10 @@ import UIKit
 
 class PostsTableViewController: UITableViewController {
     
+    var challengeID: String?
+    var posts = [Post]()
+    
+    
     var challenge: Challenge?
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
 
@@ -23,11 +27,9 @@ class PostsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         refreshPosts()
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        self.challenge!.posts = nil
-    }
-    
+
+        
+
     // MARK: - UI
     
     func showLoadingSpinner() {
@@ -56,10 +58,11 @@ class PostsTableViewController: UITableViewController {
     func refreshPosts() {
         showLoadingSpinner()
         
-        ApiProxy().getChallengesPosts(challenge!.id!, success: { (posts) -> () in
+        ApiProxy().getChallengesPosts(challengeID!, success: { (posts) -> () in
             
+            self.hideLoadingSpinner()
             
-            self.challenge!.posts = posts
+            self.posts = posts
             
             if !self.checkIfThumbnailsExists() {
                 self.getThumbnailsOfChallenge()
@@ -68,7 +71,6 @@ class PostsTableViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
-            self.hideLoadingSpinner()
             
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
@@ -78,22 +80,19 @@ class PostsTableViewController: UITableViewController {
     
     func getThumbnailsOfChallenge() {
         
-        for post in challenge!.posts! {
+        for post in posts {
             
-            ApiProxy().getPostImageInSize(nil, challengeID: challenge!.id!, postID: post.id!, imageSize: ImageSize.big, imageFormat: ImageFormat.webp, success: { () -> () in
+            ApiProxy().getPostImageInSize(nil, challengeID: challengeID!, postID: post.id!, imageSize: ImageSize.big, imageFormat: ImageFormat.webp, success: { () -> () in
                 
             }) { (errorCode) -> () in
                 self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
             }
         }
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
     }
 
     func checkIfThumbnailsExists() -> Bool {
         
-        for post in challenge!.posts! {
+        for post in posts {
             let imagePath = documentPath.stringByAppendingPathComponent(post.id! + ".webp")
             
             if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
@@ -112,18 +111,24 @@ class PostsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenge?.posts?.count ?? 0
+        return posts.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
         
-        let imagePath = documentPath.stringByAppendingPathComponent(challenge!.posts![indexPath.row].id! + ".webp")
+        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id! + ".webp")
 
-        cell.postDescriptionLabel.text = challenge?.posts![indexPath.row].description
-        cell.postVotesLabel.text = "\((challenge?.posts![indexPath.row].votes!)!) Votes"
-        cell.postImage.image = UIImage(webPData: NSData(contentsOfFile: imagePath)) ?? UIImage(named: "challengePreviewPlaceholder")
-        cell.postUsernameLabel.text = challenge?.posts![indexPath.row].creator
+        cell.postDescriptionLabel.text = posts[indexPath.row].description
+        cell.postVotesLabel.text = "\(posts[indexPath.row].votes!) Votes"
+        
+        UIImage.imageWithWebP(imagePath, completionBlock: { (image) -> Void in
+            cell.postImage.image = UIImage(webPData: NSData(contentsOfFile: imagePath))
+        }) { (error) -> Void in
+            cell.postImage.image = UIImage(named: "challengePreviewPlaceholder")
+        }
+        
+        cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = "2 min ago"
     
         return cell

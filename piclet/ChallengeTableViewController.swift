@@ -34,7 +34,8 @@ class ChallengeTableViewController: UITableViewController {
             refreshChallenges()
         }
     }
-    
+
+
     
     // MARK: - Challenge
     
@@ -128,8 +129,12 @@ class ChallengeTableViewController: UITableViewController {
         cell.titleLabel.text = challenges[indexPath.row].title
         cell.timePostedLabel.text = challenges[indexPath.row].posted ?? "0" + " min"
         cell.votesLabel.text = challenges[indexPath.row].votes ?? "0" + " votes"
-        cell.previewImageView.image = UIImage(webPData: NSData(contentsOfFile: imagePath)) ?? UIImage(named: "challengePreviewPlaceholder")
-    
+        
+        UIImage.imageWithWebP(imagePath, completionBlock: { (image) -> Void in
+            cell.previewImageView.image = UIImage(webPData: NSData(contentsOfFile: imagePath))
+        }) { (error) -> Void in
+            cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
+        }
         return cell
     }
     
@@ -146,7 +151,7 @@ class ChallengeTableViewController: UITableViewController {
         
         if segue.identifier == "toPostsViewController" {
             let destinationVC = segue.destinationViewController as! PostsTableViewController
-            destinationVC.challenge = sender as? Challenge
+            destinationVC.challengeID = (sender as? Challenge)?.id
         }
     }
 }
