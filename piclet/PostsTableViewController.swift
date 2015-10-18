@@ -53,18 +53,8 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
-    func userPressedLike(sender: UITapGestureRecognizer) {
-        
-        
-        
-        print(sender.view)
-        
-        
-        
-        
-        
-        
-        
+    func userPressedLike(post: Post) {
+        print("userPressedLike")
     }
     
     
@@ -149,15 +139,9 @@ class PostsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
-        cell.postID = posts[indexPath.row].id
+            cell.post = posts[indexPath.row]
         
-        // gesture recognizer
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "userPressedLike:")
-            doubleTapRecognizer.numberOfTapsRequired = 2
-        cell.postImage.userInteractionEnabled = true
-        cell.postImage.addGestureRecognizer(doubleTapRecognizer)
-
-        
+        cell.addDoubleTapGestureRecognizer(self)
         
         let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id! + "_medium" + ".webp")
 
@@ -189,14 +173,6 @@ class PostsTableViewController: UITableViewController {
         // cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted)
     
         return cell
-    }
-
-    
-    // MARK: - tableViewDelegate
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print("TEST")
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class PostsTableViewCell: UITableViewCell {
 
-    var postID: String?
+    var post: Post?
     
     @IBOutlet weak var postDescriptionLabel: UILabel!
     @IBOutlet weak var postVotesLabel: UILabel!
@@ -19,36 +19,30 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var postLikeImage: UIImageView!
     @IBOutlet weak var postTimeLabel: UILabel!
     
-    // weak var postTableViewController: PostsTableViewController!
+    weak var postTableViewController: PostsTableViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
-        
-        // postTableViewController.view.addGestureRecognizer(doubleTapRecognizer)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-//    func addDoubleTapGestureRecognizer(postTableViewController: PostsTableViewController) {
-//        
-//        self.postTableViewController = postTableViewController
-//        
-//        let doubleTapRecognizer = UITapGestureRecognizer(target: postImage, action: "detectedDoubleTap")
-//        doubleTapRecognizer.numberOfTapsRequired = 2
-//        
-//        self.addGestureRecognizer(doubleTapRecognizer)
-//    }
-
+    
+    
+    func addDoubleTapGestureRecognizer(postTableViewController: PostsTableViewController) {
+        self.postTableViewController = postTableViewController
+        
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "detectedDoubleTap")
+        doubleTapRecognizer.numberOfTapsRequired = 2
+        
+        postImage.userInteractionEnabled = true
+        postImage.addGestureRecognizer(doubleTapRecognizer)
+    }
+    
     func detectedDoubleTap() {
-        
-
-        
+        postTableViewController.userPressedLike(post!)
         print("Tapped twice")
     }
     
