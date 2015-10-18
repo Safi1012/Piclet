@@ -290,11 +290,12 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIR-2X-Ziu" userLabel="likeButton">
-                                            <rect key="frame" x="288" y="381" width="25" height="25"/>
+                                            <rect key="frame" x="281" y="374" width="39" height="39"/>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="25" id="yqv-pm-Eqq"/>
+                                                <constraint firstAttribute="height" constant="39" id="yqv-pm-Eqq"/>
                                             </constraints>
+                                            <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                             <state key="normal" image="likeUnfilled"/>
                                             <connections>
                                                 <action selector="userPressedLikeButton" destination="n4A-hT-clp" eventType="touchUpInside" id="H6J-tc-k3g"/>
@@ -309,8 +310,8 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="Lf9-ui-ELz" secondAttribute="bottom" constant="0.5" id="6ja-W1-1ak"/>
                                         <constraint firstItem="fIR-2X-Ziu" firstAttribute="centerX" secondItem="Gnj-pS-UxU" secondAttribute="centerX" id="82h-pv-2VA"/>
                                         <constraint firstItem="JHH-or-fbK" firstAttribute="leading" secondItem="Gnj-pS-UxU" secondAttribute="leadingMargin" constant="-8.5" id="GZs-g1-gLc"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="fIR-2X-Ziu" secondAttribute="bottom" constant="-1.5" id="L07-nN-Vid"/>
-                                        <constraint firstItem="fIR-2X-Ziu" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="6" id="N4u-Xt-PYO"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="fIR-2X-Ziu" secondAttribute="bottom" constant="-8.5" id="L07-nN-Vid"/>
+                                        <constraint firstItem="fIR-2X-Ziu" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="-1" id="N4u-Xt-PYO"/>
                                         <constraint firstAttribute="topMargin" secondItem="7Ac-7T-N11" secondAttribute="top" id="SNK-4x-Myg"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="7Ac-7T-N11" secondAttribute="leading" id="Uw1-4m-upa"/>
                                         <constraint firstAttribute="topMargin" secondItem="Jnw-ac-Agj" secondAttribute="top" id="eDJ-MU-vmH"/>

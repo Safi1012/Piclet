@@ -46,13 +46,6 @@ class PostsTableViewCell: UITableViewCell {
     }
     
     @IBAction func userPressedLikeButton() {
-        if postLikeButton.imageView?.image == UIImage(named: "likeFilled") {
-            
-            postLikeButton.imageView?.image = UIImage(named: "likeUnfilled")
-            postTableViewController.userPressedDislike(post!)
-        } else {
-            postLikeButton.imageView?.image = UIImage(named: "likeFilled")
-            PostsTableViewController.userPressedLike(post!)
-        }
+        postTableViewController.userPressedLikeButton(post!, likeButton: postLikeButton)
     }
 }

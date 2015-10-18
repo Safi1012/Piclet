@@ -53,13 +53,31 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
-    func userPressedLike(post: Post) {
-        print("userPressedLike")
+    func reloadTableView() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
     
-    func userPressedDislike(post: Post) {
+    func userPressedLikeButton(post: Post, likeButton: UIButton) {
         
+        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+            
+            if likeButton.imageView?.image == UIImage(named: "likeFilled") {
+                likeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+                
+                // remove Like
+            } else {
+                likeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+                
+                // post Like
+            }
+            reloadTableView()
+        } else {
+            // let alertViewController
+        }
     }
+
     
     
     // MARK: - Posts
@@ -76,9 +94,7 @@ class PostsTableViewController: UITableViewController {
             if !self.checkIfThumbnailsExists() {
                 self.getThumbnailsOfChallenge()
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-            })
+            self.reloadTableView()
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
             self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
