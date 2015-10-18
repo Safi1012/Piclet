@@ -16,7 +16,7 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var postVotesLabel: UILabel!
     @IBOutlet weak var postImage: UIImageView!
     @IBOutlet weak var postUsernameLabel: UILabel!
-    @IBOutlet weak var postLikeImage: UIImageView!
+    @IBOutlet weak var postLikeButton: UIButton!
     @IBOutlet weak var postTimeLabel: UILabel!
     
     weak var postTableViewController: PostsTableViewController!
@@ -42,8 +42,17 @@ class PostsTableViewCell: UITableViewCell {
     }
     
     func detectedDoubleTap() {
-        postTableViewController.userPressedLike(post!)
-        print("Tapped twice")
+        userPressedLikeButton()
     }
     
+    @IBAction func userPressedLikeButton() {
+        if postLikeButton.imageView?.image == UIImage(named: "likeFilled") {
+            
+            postLikeButton.imageView?.image = UIImage(named: "likeUnfilled")
+            postTableViewController.userPressedDislike(post!)
+        } else {
+            postLikeButton.imageView?.image = UIImage(named: "likeFilled")
+            PostsTableViewController.userPressedLike(post!)
+        }
+    }
 }

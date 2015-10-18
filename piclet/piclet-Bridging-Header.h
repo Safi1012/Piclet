@@ -3,5 +3,10 @@
 //
 
 #import <MBProgressHUD/MBProgressHUD.h>
-#import <iOS-WebP/UIImage+WebP.h>
+
+// #import <webp/decode.h>
+// #import <webp/encode.h>
+
+#import "ImageToWebPDataTransformer.h"
+#import "UIImage+WebP.h"
 

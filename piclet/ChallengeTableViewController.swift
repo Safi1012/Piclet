@@ -26,14 +26,7 @@ class ChallengeTableViewController: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let secondsDifference = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: timestamp!, toDate: NSDate(), options: NSCalendarOptions.init(rawValue: 0)).second
         refreshChallenges()
-        
-//        if secondsDifference > 120 {
-//            timestamp = NSDate()
-//            refreshChallenges()
-//        }
     }
 
 
@@ -41,16 +34,15 @@ class ChallengeTableViewController: UITableViewController {
     // MARK: - Challenge
     
     func refreshChallenges() {
-        showLoadingSpinner()
+        // showLoadingSpinner()
         
-        apiProxy.getChallenges(nil, offset: "10", success: { (challenges) -> () in
-            self.hideLoadingSpinner()
+        apiProxy.getChallenges(nil, offset: "5000", success: { (challenges) -> () in
+            // self.hideLoadingSpinner()
             self.challenges = challenges
             
             if !self.checkIfThumbnailsExists() {
                 self.getThumbnailsOfChallenge()
             }
-            
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
@@ -130,12 +122,8 @@ class ChallengeTableViewController: UITableViewController {
         cell.titleLabel.text = challenges[indexPath.row].title
         cell.timePostedLabel.text = challenges[indexPath.row].posted ?? "0" + " min"
         cell.votesLabel.text = challenges[indexPath.row].votes ?? "0" + " votes"
+        cell.previewImageView.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         
-        UIImage.imageWithWebP(imagePath, completionBlock: { (image) -> Void in
-            cell.previewImageView.image = image
-        }) { (error) -> Void in
-            cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
-        }
         return cell
     }
     

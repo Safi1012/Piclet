@@ -57,26 +57,28 @@ class PostsTableViewController: UITableViewController {
         print("userPressedLike")
     }
     
+    func userPressedDislike(post: Post) {
+        
+    }
+    
     
     // MARK: - Posts
     
     func refreshPosts() {
-        showLoadingSpinner()
+        // showLoadingSpinner()
         
         ApiProxy().getChallengesPosts(challengeID!, success: { (posts) -> () in
             
-            self.hideLoadingSpinner()
+            // self.hideLoadingSpinner()
             
             self.posts = posts
             
             if !self.checkIfThumbnailsExists() {
                 self.getThumbnailsOfChallenge()
             }
-            
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
             })
-            
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
             self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
@@ -108,8 +110,6 @@ class PostsTableViewController: UITableViewController {
     }
     
     func getPostedTimeFormated(datePosted: NSDate) -> String {
-        
-        // let calenderUnit = [NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second]
         let calendar = NSCalendar.currentCalendar().components([NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: datePosted, toDate: NSDate(), options: [])
         
         if calendar.day != 0 {
@@ -137,40 +137,27 @@ class PostsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
-            cell.post = posts[indexPath.row]
-        
-        cell.addDoubleTapGestureRecognizer(self)
         
         let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id! + "_medium" + ".webp")
-
+    
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
+        cell.post = posts[indexPath.row]
+        
+        cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
         cell.postVotesLabel.text = posts[indexPath.row].votes! > 1 ? "\(posts[indexPath.row].votes!) Votes" : "\(posts[indexPath.row].votes!) Vote"
-        
-        
-        UIImage.imageWithWebP(imagePath, completionBlock: { (image) -> Void in
-            cell.postImage.image = image
-        }) { (error) -> Void in
-            cell.postImage.image = UIImage(named: "challengePreviewPlaceholder")
-        }
-        
-        
-        
+        cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
+        cell.postUsernameLabel.text = posts[indexPath.row].creator
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters! {
                 if username == loggedInUser.username {
-                    cell.postLikeImage.image = UIImage(named: "likeFilled")
+                    cell.postLikeButton.imageView?.image = UIImage(named: "likeFilled")
+                    break
                 }
             }
         }
-        
-        // TEST
-        // cell.postTableViewController = self
-        
-        cell.postUsernameLabel.text = posts[indexPath.row].creator
-        // cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted)
+        // cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted) -> test new uploaded image
     
         return cell
     }

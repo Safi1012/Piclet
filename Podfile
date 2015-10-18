@@ -3,7 +3,7 @@
 
 target 'piclet' do
 pod 'MBProgressHUD', '~> 0.9.1'
-pod 'iOS-WebP', '0.4'
+pod 'libwebp', '~> 0.4.3'
 end
 
 target 'picletTests' do

@@ -45,6 +45,8 @@
 		D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
+		D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */; settings = {ASSET_TAGS = (); }; };
+		D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */; settings = {ASSET_TAGS = (); }; };
 		D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; settings = {ASSET_TAGS = (); }; };
 		D462CB741BCBD3EE00701EFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; settings = {ASSET_TAGS = (); }; };
 		D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
@@ -100,6 +102,10 @@
 		D4431D081BBECB4B00086759 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4445B7F1BB84D76005D155F /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
+		D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToWebPDataTransformer.m; sourceTree = "<group>"; };
+		D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
+		D448296E1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageToWebPDataTransformer.h; sourceTree = "<group>"; };
+		D448296F1BD3CDBC003D51E4 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
 		D462CB711BCBD1D000701EFF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D469120F1BAC03C30012CE7C /* piclet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piclet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,9 +160,21 @@
 		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D448296B1BD3CDA7003D51E4 /* WebP */,
 				A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D448296B1BD3CDA7003D51E4 /* WebP */ = {
+			isa = PBXGroup;
+			children = (
+				D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */,
+				D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */,
+				D448296E1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.h */,
+				D448296F1BD3CDBC003D51E4 /* UIImage+WebP.h */,
+			);
+			name = WebP;
 			sourceTree = "<group>";
 		};
 		D46912061BAC03C30012CE7C = {
@@ -477,6 +495,7 @@
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
+				D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
@@ -489,6 +508,7 @@
 				D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
+				D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,

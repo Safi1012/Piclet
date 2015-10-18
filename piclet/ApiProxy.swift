@@ -109,7 +109,6 @@ class ApiProxy {
     }
     
     func likeChallengePost(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
-        // /challenges/<challenge-id>/posts/<post-id>/like
         
         let apiURL = "challenges/\(challengeID)/posts/\(postID)/like"
         
@@ -121,6 +120,13 @@ class ApiProxy {
                 failed(errorCode: errorCode)
         }
     }
+    
+    func postLike(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
+        
+    }
+    
+    
+    
     
     
     
