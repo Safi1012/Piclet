@@ -28,11 +28,12 @@ class ChallengeTableViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         let secondsDifference = NSCalendar.currentCalendar().components(NSCalendarUnit.Second, fromDate: timestamp!, toDate: NSDate(), options: NSCalendarOptions.init(rawValue: 0)).second
+        refreshChallenges()
         
-        if secondsDifference > 120 {
-            timestamp = NSDate()
-            refreshChallenges()
-        }
+//        if secondsDifference > 120 {
+//            timestamp = NSDate()
+//            refreshChallenges()
+//        }
     }
 
 
@@ -46,7 +47,7 @@ class ChallengeTableViewController: UITableViewController {
             self.hideLoadingSpinner()
             self.challenges = challenges
             
-            if self.checkIfThumbnailsExists() {
+            if !self.checkIfThumbnailsExists() {
                 self.getThumbnailsOfChallenge()
             }
             
@@ -77,13 +78,13 @@ class ChallengeTableViewController: UITableViewController {
     func checkIfThumbnailsExists() -> Bool {
         
         for challenge in challenges {
-            let imagePath = documentPath.stringByAppendingPathComponent(challenge.creatorPost! + ".webp")
+            let imagePath = documentPath.stringByAppendingPathComponent(challenge.creatorPost! + "_small" + ".webp")
             
-            if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-                return false
+            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
+                return true
             }
         }
-        return true
+        return false
     }
     
 
@@ -124,14 +125,14 @@ class ChallengeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
         
-        let imagePath = documentPath.stringByAppendingPathComponent(challenges[indexPath.row].creatorPost! + ".webp")
+        let imagePath = documentPath.stringByAppendingPathComponent(challenges[indexPath.row].creatorPost! + "_small" + ".webp")
         
         cell.titleLabel.text = challenges[indexPath.row].title
         cell.timePostedLabel.text = challenges[indexPath.row].posted ?? "0" + " min"
         cell.votesLabel.text = challenges[indexPath.row].votes ?? "0" + " votes"
         
         UIImage.imageWithWebP(imagePath, completionBlock: { (image) -> Void in
-            cell.previewImageView.image = UIImage(webPData: NSData(contentsOfFile: imagePath))
+            cell.previewImageView.image = image
         }) { (error) -> Void in
             cell.previewImageView.image = UIImage(named: "challengePreviewPlaceholder")
         }

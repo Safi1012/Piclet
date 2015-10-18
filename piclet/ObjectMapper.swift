@@ -64,10 +64,12 @@ class ObjectMapper: NSObject {
         return []
     }
     
-    func getPostImage(responseData: NSData, postID: String, imageFormat: ImageFormat) {
+    func getPostImage(responseData: NSData, postID: String, imageSize: ImageSize) {
         
         let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-        let imagePath = documentPath.stringByAppendingPathComponent(postID + ".webp")
+        let imagePath = documentPath.stringByAppendingPathComponent(postID + "_" + imageSize.rawValue + ".webp")
+        
+        print(imagePath)
 
         let fileManager = NSFileManager.defaultManager()
         fileManager.createFileAtPath(imagePath, contents: responseData, attributes: nil)

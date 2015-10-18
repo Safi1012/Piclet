@@ -273,6 +273,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
                                             <rect key="frame" x="-0.5" y="36.5" width="601" height="338.5"/>
                                             <animations/>
+                                            <gestureRecognizers/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-ui-ELz" userLabel="usernameLabel">
                                             <rect key="frame" x="8" y="383" width="36.5" height="21"/>

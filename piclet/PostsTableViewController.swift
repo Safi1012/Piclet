@@ -16,6 +16,7 @@ class PostsTableViewController: UITableViewController {
     
     var challenge: Challenge?
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,8 @@ class PostsTableViewController: UITableViewController {
         refreshPosts()
     }
 
-        
+
+    
 
     // MARK: - UI
     
@@ -51,9 +53,22 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
+    func userPressedLike(sender: UITapGestureRecognizer) {
+        
+        
+        
+        print(sender.view)
+        
+        
+        
+        
+        
+        
+        
+    }
     
     
-    // MARK: - Challenge
+    // MARK: - Posts
     
     func refreshPosts() {
         showLoadingSpinner()
@@ -82,7 +97,7 @@ class PostsTableViewController: UITableViewController {
         
         for post in posts {
             
-            ApiProxy().getPostImageInSize(nil, challengeID: challengeID!, postID: post.id!, imageSize: ImageSize.big, imageFormat: ImageFormat.webp, success: { () -> () in
+            ApiProxy().getPostImageInSize(nil, challengeID: challengeID!, postID: post.id!, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
                 
             }) { (errorCode) -> () in
                 self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
@@ -93,13 +108,30 @@ class PostsTableViewController: UITableViewController {
     func checkIfThumbnailsExists() -> Bool {
         
         for post in posts {
-            let imagePath = documentPath.stringByAppendingPathComponent(post.id! + ".webp")
+            let imagePath = documentPath.stringByAppendingPathComponent(post.id! + "_medium" + ".webp")
             
-            if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-                return false
+            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
+                return true
             }
         }
-        return true
+        return false
+    }
+    
+    func getPostedTimeFormated(datePosted: NSDate) -> String {
+        
+        // let calenderUnit = [NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second]
+        let calendar = NSCalendar.currentCalendar().components([NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: datePosted, toDate: NSDate(), options: [])
+        
+        if calendar.day != 0 {
+            return "\(calendar.day)d"
+        }
+        if calendar.hour > 0 {
+            return "\(calendar.hour)h"
+        }
+        if calendar.minute > 0 {
+            return "\(calendar.minute)h"
+        }
+        return "\(calendar.second)s"
     }
     
     
@@ -115,23 +147,56 @@ class PostsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
+        cell.postID = posts[indexPath.row].id
         
-        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id! + ".webp")
+        // gesture recognizer
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "userPressedLike:")
+            doubleTapRecognizer.numberOfTapsRequired = 2
+        cell.postImage.userInteractionEnabled = true
+        cell.postImage.addGestureRecognizer(doubleTapRecognizer)
+
+        
+        
+        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id! + "_medium" + ".webp")
 
         cell.postDescriptionLabel.text = posts[indexPath.row].description
-        cell.postVotesLabel.text = "\(posts[indexPath.row].votes!) Votes"
+        cell.postVotesLabel.text = posts[indexPath.row].votes! > 1 ? "\(posts[indexPath.row].votes!) Votes" : "\(posts[indexPath.row].votes!) Vote"
+        
         
         UIImage.imageWithWebP(imagePath, completionBlock: { (image) -> Void in
-            cell.postImage.image = UIImage(webPData: NSData(contentsOfFile: imagePath))
+            cell.postImage.image = image
         }) { (error) -> Void in
             cell.postImage.image = UIImage(named: "challengePreviewPlaceholder")
         }
         
+        
+        
+        
+        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+            for username in posts[indexPath.row].voters! {
+                if username == loggedInUser.username {
+                    cell.postLikeImage.image = UIImage(named: "likeFilled")
+                }
+            }
+        }
+        
+        // TEST
+        // cell.postTableViewController = self
+        
         cell.postUsernameLabel.text = posts[indexPath.row].creator
-        cell.postTimeLabel.text = "2 min ago"
+        // cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted)
     
         return cell
     }
 
+    
+    // MARK: - tableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        print("TEST")
+    }
+    
 }

@@ -10,6 +10,8 @@ import UIKit
 
 class PostsTableViewCell: UITableViewCell {
 
+    var postID: String?
+    
     @IBOutlet weak var postDescriptionLabel: UILabel!
     @IBOutlet weak var postVotesLabel: UILabel!
     @IBOutlet weak var postImage: UIImageView!
@@ -17,8 +19,14 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var postLikeImage: UIImageView!
     @IBOutlet weak var postTimeLabel: UILabel!
     
+    // weak var postTableViewController: PostsTableViewController!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+        
+        // postTableViewController.view.addGestureRecognizer(doubleTapRecognizer)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -26,5 +34,22 @@ class PostsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+//    func addDoubleTapGestureRecognizer(postTableViewController: PostsTableViewController) {
+//        
+//        self.postTableViewController = postTableViewController
+//        
+//        let doubleTapRecognizer = UITapGestureRecognizer(target: postImage, action: "detectedDoubleTap")
+//        doubleTapRecognizer.numberOfTapsRequired = 2
+//        
+//        self.addGestureRecognizer(doubleTapRecognizer)
+//    }
 
+    func detectedDoubleTap() {
+        
+
+        
+        print("Tapped twice")
+    }
+    
 }
