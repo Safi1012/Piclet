@@ -14,8 +14,8 @@ class Challenge {
     var title: String?
     var description: String?
     var creator: String?
-    var posted: String?
-    var votes: String?
+    var posted: NSDate?
+    var votes: Int?
     var creatorPost: String?
     
     var posts: [Post]?

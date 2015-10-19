@@ -79,6 +79,20 @@ class ChallengeTableViewController: UITableViewController {
         return false
     }
     
+    func getPostedTimeFormated(datePosted: NSDate) -> String {
+        let calendar = NSCalendar.currentCalendar().components([NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: datePosted, toDate: NSDate(), options: [])
+        
+        if calendar.day != 0 {
+            return "\(calendar.day)d"
+        }
+        if calendar.hour > 0 {
+            return "\(calendar.hour)h"
+        }
+        if calendar.minute > 0 {
+            return "\(calendar.minute)h"
+        }
+        return "\(calendar.second)s"
+    }
 
     
     // MARK: - UI
@@ -120,8 +134,8 @@ class ChallengeTableViewController: UITableViewController {
         let imagePath = documentPath.stringByAppendingPathComponent(challenges[indexPath.row].creatorPost! + "_small" + ".webp")
         
         cell.titleLabel.text = challenges[indexPath.row].title
-        cell.timePostedLabel.text = challenges[indexPath.row].posted ?? "0" + " min"
-        cell.votesLabel.text = challenges[indexPath.row].votes ?? "0" + " votes"
+        cell.timePostedLabel.text = getPostedTimeFormated(challenges[indexPath.row].posted!)
+        cell.votesLabel.text = challenges[indexPath.row].votes > 0 ? "\(challenges[indexPath.row].votes!) votes" : "\(challenges[indexPath.row].votes!) vote"
         cell.previewImageView.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         
         return cell

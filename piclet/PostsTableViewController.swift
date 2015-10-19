@@ -190,6 +190,7 @@ class PostsTableViewController: UITableViewController {
         cell.postVotesLabel.text = posts[indexPath.row].votes! > 1 ? "\(posts[indexPath.row].votes!) Votes" : "\(posts[indexPath.row].votes!) Vote"
         cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         cell.postUsernameLabel.text = posts[indexPath.row].creator
+        cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted!)
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters! {
@@ -199,8 +200,6 @@ class PostsTableViewController: UITableViewController {
                 }
             }
         }
-        // cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted) -> test new uploaded image
-    
         return cell
     }
     
