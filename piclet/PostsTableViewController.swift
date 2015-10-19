@@ -63,21 +63,53 @@ class PostsTableViewController: UITableViewController {
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             
-            if likeButton.imageView?.image == UIImage(named: "likeFilled") {
+            if likeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
                 likeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
                 
-                // remove Like
+                ApiProxy().revertLikeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
+                    self.refreshPosts()
+                }, failed: { (errorCode) -> () in
+                    self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                })
             } else {
                 likeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
                 
-                // post Like
+                ApiProxy().likeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
+                    self.refreshPosts()
+                }, failed: { (errorCode) -> () in
+                    self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                })
             }
-            reloadTableView()
         } else {
-            // let alertViewController
+            
+//            let alertController = UIAlertController(title: "Not Logged in", message: "Only users that have an account, can Vote.", preferredStyle: UIAlertControllerStyle.Alert)
+//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//            
+//                alertController.addAction(UIAlertAction(title: "Login / Create Account", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+//                    
+//                    dispatch_async(dispatch_get_main_queue()) {
+//                        if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
+//                            self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
+//                        } else {
+//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                            let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+//                            self.presentViewController(loginVC, animated: true, completion: nil)
+//                        }
+//                    }
+//                }))
+//            self.presentViewController(alertController, animated: true, completion: nil)
+
+            
+            self.displayAlert(ErrorHandler().createErrorAlert("NotLoggedIn"))
+            
         }
     }
 
+    
+    func goToSegue() {
+        print("TEST")
+    }
+    
     
     
     // MARK: - Posts
@@ -168,7 +200,7 @@ class PostsTableViewController: UITableViewController {
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters! {
                 if username == loggedInUser.username {
-                    cell.postLikeButton.imageView?.image = UIImage(named: "likeFilled")
+                    cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
                     break
                 }
             }

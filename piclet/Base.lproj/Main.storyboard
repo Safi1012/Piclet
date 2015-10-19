@@ -254,24 +254,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome Userdecription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-7T-N11" userLabel="descriptionLabel">
-                                            <rect key="frame" x="8" y="8" width="469" height="20.5"/>
+                                            <rect key="frame" x="8" y="8" width="469" height="18"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456 Votes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnw-ac-Agj" userLabel="votesLabel">
-                                            <rect key="frame" x="485" y="8" width="107" height="20.5"/>
+                                            <rect key="frame" x="485" y="8" width="107" height="18"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="107" id="b1h-Ax-6dR"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
-                                            <rect key="frame" x="-0.5" y="36.5" width="601" height="338.5"/>
+                                            <rect key="frame" x="-1" y="34" width="601" height="341"/>
                                             <animations/>
                                             <gestureRecognizers/>
                                         </imageView>
@@ -340,8 +340,12 @@
                             <outlet property="delegate" destination="kCH-63-aGA" id="FRX-cC-MWu"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="eRt-RR-bW3" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="59D-Bl-4Rg"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNb-re-YdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eRt-RR-bW3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3413" y="-221"/>
         </scene>

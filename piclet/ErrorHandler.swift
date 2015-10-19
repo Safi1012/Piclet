@@ -41,6 +41,12 @@ class ErrorHandler {
         case "LogoutError":
             return createAlert("Logout failed", message: "Could not logout from the app. Are you connected to the internet?")
             
+        case "AlreadyVoted":
+            return createAlert("Already Voted", message: "You alredy voted for this challenge.")
+            
+        case "NotLoggedIn":
+            return createNotLoggedInAlert()
+            
         default:
             return createAlert("Server problem", message: "Our server is currently in maintenance. Plase try it again.")
         }
@@ -53,4 +59,40 @@ class ErrorHandler {
         return alertController
     }
 
+    private func createNotLoggedInAlert() -> UIAlertController {
+        let alertController = UIAlertController(title: "Not Logged in", message: "Only users that have an account, can Vote.", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            // alertController.addAction(UIAlertAction(title: "Login / Create Account", style: UIAlertActionStyle.Default, handler: goToSegue()))
+                
+//                { (action) -> Void in
+//            
+//            dispatch_async(dispatch_get_main_queue()) {
+//                if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
+//                    self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
+//                } else {
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+//                    self.presentViewController(loginVC, animated: true, completion: nil)
+//                }
+//            }
+//        }))
+        return alertController
+    }
 }
+
+
+
+//let alertController = UIAlertController(title: "Not Logged in", message: "Only users that have an account, can Vote.", preferredStyle: UIAlertControllerStyle.Alert)
+//alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+//alertController.addAction(UIAlertAction(title: "Login / Create Account", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+//    
+//    dispatch_async(dispatch_get_main_queue()) {
+//        if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
+//            self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
+//        } else {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+//            self.presentViewController(loginVC, animated: true, completion: nil)
+//        }
+//    }
+//}))
