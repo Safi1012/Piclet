@@ -114,31 +114,23 @@ class ApiProxy {
         
         networkHandler.createRequest([:], apiPath: apiURL, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
             success()
-            }, inValidRequest: { (invalidResponseData) -> () in
-                invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
-            }) { (errorCode) -> () in
-                failed(errorCode: errorCode)
+        }, inValidRequest: { (invalidResponseData) -> () in
+            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
         }
     }
     
     func revertLikeChallengePost(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
         
-        // DELETE /challenges/<challenge-id>/posts/<post-id>/like
-        
         let apiURL = "challenges/\(challengeID)/posts/\(postID)/like"
         
         networkHandler.createRequest(["challenge-id" : (challengeID), "post-id" : (postID)], apiPath: apiURL, httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
-            
-            self.objectMapper.deletePostData(validResponseData!)
             success()
-            
         }, inValidRequest: { (invalidResponseData) -> () in
-            
             invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
-            
         }) { (errorCode) -> () in
             failed(errorCode: errorCode)
-            
         }
     }
 }

@@ -100,13 +100,6 @@ class ObjectMapper: NSObject {
         }
         return []
     }
-    
-    func deletePostData(responseData: NSData) {
-        
-        print("JSON: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))")
-        
-    }
-
 }
 
 

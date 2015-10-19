@@ -53,6 +53,23 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
+    func createNotLoggedInAlert() -> UIAlertController {
+        let alertContoller = ErrorHandler().createErrorAlert("NotLoggedIn")
+        alertContoller.addAction(UIAlertAction(title: "Login / Create Account", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
+                    self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
+                } else {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+                    self.presentViewController(loginVC, animated: true, completion: nil)
+                }
+            }
+        }))
+        return alertContoller
+    }
+    
     func reloadTableView() {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
@@ -81,34 +98,11 @@ class PostsTableViewController: UITableViewController {
                 })
             }
         } else {
-            
-//            let alertController = UIAlertController(title: "Not Logged in", message: "Only users that have an account, can Vote.", preferredStyle: UIAlertControllerStyle.Alert)
-//                alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-//            
-//                alertController.addAction(UIAlertAction(title: "Login / Create Account", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-//                    
-//                    dispatch_async(dispatch_get_main_queue()) {
-//                        if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
-//                            self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
-//                        } else {
-//                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                            let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-//                            self.presentViewController(loginVC, animated: true, completion: nil)
-//                        }
-//                    }
-//                }))
-//            self.presentViewController(alertController, animated: true, completion: nil)
-
-            
-            self.displayAlert(ErrorHandler().createErrorAlert("NotLoggedIn"))
-            
+            displayAlert(createNotLoggedInAlert())
         }
     }
 
-    
-    func goToSegue() {
-        print("TEST")
-    }
+
     
     
     
