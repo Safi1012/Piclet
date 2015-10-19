@@ -43,6 +43,9 @@
 		D4431D111BBED73500086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; settings = {ASSET_TAGS = (); }; };
 		D4431D121BBED73A00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; settings = {ASSET_TAGS = (); }; };
 		D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DB71BD521DA000CB909 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DB91BD521DA000CB909 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */; settings = {ASSET_TAGS = (); }; };
@@ -101,6 +104,7 @@
 		D4431D061BBECAE000086759 /* piclet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piclet.xcdatamodel; sourceTree = "<group>"; };
 		D4431D081BBECB4B00086759 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D4438DB61BD521DA000CB909 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		D4445B7F1BB84D76005D155F /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToWebPDataTransformer.m; sourceTree = "<group>"; };
 		D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
@@ -164,6 +168,14 @@
 				A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4438DB51BD521B2000CB909 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				D4438DB61BD521DA000CB909 /* CreateViewController.swift */,
+			);
+			name = Create;
 			sourceTree = "<group>";
 		};
 		D448296B1BD3CDA7003D51E4 /* WebP */ = {
@@ -234,6 +246,7 @@
 			children = (
 				D47E5E251BD293A0003E9351 /* Challenges */,
 				D47E5E261BD293AE003E9351 /* Posts */,
+				D4438DB51BD521B2000CB909 /* Create */,
 				D47E5E271BD293BD003E9351 /* Profile */,
 				D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */,
 				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
@@ -491,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4438DB71BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
@@ -519,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */,
@@ -547,6 +562,7 @@
 			files = (
 				D4431D0D1BBED72900086759 /* User.swift in Sources */,
 				D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */,
+				D4438DB91BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
 				D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */,
 				D4254AE71BCD9C6600297FCF /* AppDelegate.swift in Sources */,
