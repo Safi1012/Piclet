@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  piclet
+
+  Created by Filipe Santos Correa on 20/10/15.
+  Copyright © 2015 Filipe Santos Correa. All rights reserved.
+*/
+
+// UIAlerts
+
+NO_INTERNET_ALERT = "You are not connected to the Internet. Please check your Network settings.";

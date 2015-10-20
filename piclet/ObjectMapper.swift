@@ -51,7 +51,7 @@ class ObjectMapper: NSObject {
                 challenge.title = (element as! NSDictionary).valueForKey("title") as? String
                 challenge.description = (element as! NSDictionary).valueForKey("description") as? String
                 challenge.creator = (element as! NSDictionary).valueForKey("creator") as? String
-                challenge.posted = convertTimestampToNSDate((element as! NSDictionary).valueForKey("posted") as! Int)
+                challenge.posted = TimeHandler().convertTimestampToNSDate((element as! NSDictionary).valueForKey("posted") as! Int)
                 challenge.votes = (element as! NSDictionary).valueForKey("votes") as? Int
                 challenge.creatorPost = (element as! NSDictionary).valueForKey("creatorPost") as? String
                 
@@ -88,7 +88,7 @@ class ObjectMapper: NSObject {
                 post.id = (element as! NSDictionary).valueForKey("_id") as? String
                 post.description = (element as! NSDictionary).valueForKey("description") as? String
                 post.creator = (element as! NSDictionary).valueForKey("creator") as? String
-                post.posted = convertTimestampToNSDate((element as! NSDictionary).valueForKey("posted") as! Int)
+                post.posted = TimeHandler().convertTimestampToNSDate((element as! NSDictionary).valueForKey("posted") as! Int)
                 post.votes = (element as! NSDictionary).valueForKey("votes") as? Int
                 post.voters = (element as! NSDictionary).valueForKey("voters") as? [String]
                 
@@ -99,12 +99,7 @@ class ObjectMapper: NSObject {
             print("couldn't serialize data")
         }
         return []
-    }
-
-    func convertTimestampToNSDate(millisecons: Int) -> NSDate {
-        return NSDate(timeIntervalSince1970: NSTimeInterval(Double(millisecons / 1000)))
-    }
-    
+    }    
 }
 
 

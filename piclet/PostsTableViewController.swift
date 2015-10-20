@@ -151,21 +151,6 @@ class PostsTableViewController: UITableViewController {
         return false
     }
     
-    func getPostedTimeFormated(datePosted: NSDate) -> String {
-        let calendar = NSCalendar.currentCalendar().components([NSCalendarUnit.Day, NSCalendarUnit.Hour, NSCalendarUnit.Minute, NSCalendarUnit.Second], fromDate: datePosted, toDate: NSDate(), options: [])
-        
-        if calendar.day != 0 {
-            return "\(calendar.day)d"
-        }
-        if calendar.hour > 0 {
-            return "\(calendar.hour)h"
-        }
-        if calendar.minute > 0 {
-            return "\(calendar.minute)h"
-        }
-        return "\(calendar.second)s"
-    }
-    
     
     
     // MARK: - Table view data source
@@ -190,7 +175,7 @@ class PostsTableViewController: UITableViewController {
         cell.postVotesLabel.text = posts[indexPath.row].votes! > 1 ? "\(posts[indexPath.row].votes!) Votes" : "\(posts[indexPath.row].votes!) Vote"
         cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         cell.postUsernameLabel.text = posts[indexPath.row].creator
-        cell.postTimeLabel.text = getPostedTimeFormated(posts[indexPath.row].posted!)
+        cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted!)
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters! {

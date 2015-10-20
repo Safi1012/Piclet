@@ -1,0 +1,81 @@
+
+/* Class = "UITextField"; placeholder = "write here..."; ObjectID = "0eU-Gi-i69"; */
+"0eU-Gi-i69.placeholder" = "write here...";
+
+/* Class = "UINavigationItem"; title = "Create"; ObjectID = "1PS-Cc-mGT"; */
+"1PS-Cc-mGT.title" = "Create";
+
+/* Class = "UILabel"; text = "Crazy old man goes crazy! "; ObjectID = "2xh-7o-Lf0"; */
+"2xh-7o-Lf0.text" = "Crazy old man goes crazy! ";
+
+/* Class = "UILabel"; text = "Awesome Userdecription"; ObjectID = "7Ac-7T-N11"; */
+"7Ac-7T-N11.text" = "Awesome Userdecription";
+
+/* Class = "UITabBarItem"; title = "Create"; ObjectID = "ALj-Gc-m3N"; */
+"ALj-Gc-m3N.title" = "Create";
+
+/* Class = "UISegmentedControl"; FMX-Wu-7yW.segmentTitles[0] = "First"; ObjectID = "FMX-Wu-7yW"; */
+"FMX-Wu-7yW.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; FMX-Wu-7yW.segmentTitles[1] = "Second"; ObjectID = "FMX-Wu-7yW"; */
+"FMX-Wu-7yW.segmentTitles[1]" = "Second";
+
+/* Class = "UILabel"; text = "Choose a description"; ObjectID = "IO1-0z-Jre"; */
+"IO1-0z-Jre.text" = "Choose a description";
+
+/* Class = "UILabel"; text = "123456 Votes"; ObjectID = "Jnw-ac-Agj"; */
+"Jnw-ac-Agj.text" = "123456 Votes";
+
+/* Class = "UILabel"; text = "Filipe"; ObjectID = "Lf9-ui-ELz"; */
+"Lf9-ui-ELz.text" = "Filipe";
+
+/* Class = "UILabel"; text = "64 votes"; ObjectID = "RsO-Mx-efw"; */
+"RsO-Mx-efw.text" = "64 votes";
+
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "Td6-CG-uMc"; */
+"Td6-CG-uMc.normalTitle" = "Create";
+
+/* Class = "UINavigationItem"; title = "Profile"; ObjectID = "VyC-Vg-IVf"; */
+"VyC-Vg-IVf.title" = "Profile";
+
+/* Class = "UILabel"; text = "1 day ago"; ObjectID = "WpT-qH-0NO"; */
+"WpT-qH-0NO.text" = "1 day ago";
+
+/* Class = "UINavigationItem"; title = "Challenges"; ObjectID = "Xjm-hK-7je"; */
+"Xjm-hK-7je.title" = "Challenges";
+
+/* Class = "UILabel"; text = "Piclet"; ObjectID = "Y5C-1y-GNa"; */
+"Y5C-1y-GNa.text" = "Piclet";
+
+/* Class = "UILabel"; text = "Upload a picture"; ObjectID = "Ysp-uR-JMK"; */
+"Ysp-uR-JMK.text" = "Upload a picture";
+
+/* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "d9i-el-9ug"; */
+"d9i-el-9ug.normalTitle" = "Skip";
+
+/* Class = "UILabel"; text = "2 min"; ObjectID = "fUk-xE-lOD"; */
+"fUk-xE-lOD.text" = "2 min";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "j9V-rs-alb"; */
+"j9V-rs-alb.title" = "Profile";
+
+/* Class = "UIButton"; normalTitle = "Create account"; ObjectID = "j9f-Ys-Tpd"; */
+"j9f-Ys-Tpd.normalTitle" = "Create account";
+
+/* Class = "UITextField"; placeholder = "write here..."; ObjectID = "k51-aJ-yFq"; */
+"k51-aJ-yFq.placeholder" = "write here...";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "kKF-d1-8nW"; */
+"kKF-d1-8nW.normalTitle" = "Login";
+
+/* Class = "UITabBarItem"; title = "Challenges"; ObjectID = "qfq-tm-Aes"; */
+"qfq-tm-Aes.title" = "Challenges";
+
+/* Class = "UILabel"; text = "Choose a name"; ObjectID = "sTZ-Qa-lld"; */
+"sTZ-Qa-lld.text" = "Choose a name";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "vcS-3B-oZd"; */
+"vcS-3B-oZd.placeholder" = "Username";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "xVG-lj-Tz6"; */
+"xVG-lj-Tz6.placeholder" = "Password";

@@ -49,6 +49,12 @@
 		D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBA1BD57883000CB909 /* CreateTextField.swift */; settings = {ASSET_TAGS = (); }; };
 		D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBA1BD57883000CB909 /* CreateTextField.swift */; settings = {ASSET_TAGS = (); }; };
 		D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBA1BD57883000CB909 /* CreateTextField.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DBF1BD60685000CB909 /* TimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBE1BD60685000CB909 /* TimeHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBE1BD60685000CB909 /* TimeHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBE1BD60685000CB909 /* TimeHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4438DCA1BD60ABD000CB909 /* Localizable.strings */; };
+		D4438DC71BD60ABD000CB909 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4438DCA1BD60ABD000CB909 /* Localizable.strings */; };
+		D4438DC81BD60ABD000CB909 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4438DCA1BD60ABD000CB909 /* Localizable.strings */; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */; settings = {ASSET_TAGS = (); }; };
@@ -109,6 +115,11 @@
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4438DB61BD521DA000CB909 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		D4438DBA1BD57883000CB909 /* CreateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTextField.swift; sourceTree = "<group>"; };
+		D4438DBE1BD60685000CB909 /* TimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHandler.swift; sourceTree = "<group>"; };
+		D4438DC91BD60ABD000CB909 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D4438DCB1BD60B87000CB909 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		D4438DCC1BD60B87000CB909 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D4438DCD1BD60B87000CB909 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D4445B7F1BB84D76005D155F /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToWebPDataTransformer.m; sourceTree = "<group>"; };
 		D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
@@ -270,6 +281,7 @@
 				D462CB711BCBD1D000701EFF /* Challenge.swift */,
 				D462CB731BCBD3EE00701EFF /* Post.swift */,
 				D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */,
+				D4438DBE1BD60685000CB909 /* TimeHandler.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -291,6 +303,7 @@
 				D46912121BAC03C30012CE7C /* AppDelegate.swift */,
 				D469121C1BAC03C30012CE7C /* Assets.xcassets */,
 				D46912211BAC03C30012CE7C /* Info.plist */,
+				D4438DCA1BD60ABD000CB909 /* Localizable.strings */,
 			);
 			name = Others;
 			sourceTree = "<group>";
@@ -430,6 +443,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = D46912061BAC03C30012CE7C;
 			productRefGroup = D46912101BAC03C30012CE7C /* Products */;
@@ -448,6 +462,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D4BDF85A1BC3AD3700028566 /* LoadingProgressViewController.xib in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
@@ -459,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4438DC71BD60ABD000CB909 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +482,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4438DC81BD60ABD000CB909 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +535,7 @@
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
+				D4438DBF1BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4181CC01BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */,
 				D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */,
@@ -542,6 +560,7 @@
 				D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
+				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
@@ -584,6 +603,7 @@
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
+				D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
 			);
@@ -605,10 +625,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D4438DCA1BD60ABD000CB909 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4438DC91BD60ABD000CB909 /* en */,
+				D4438DCD1BD60B87000CB909 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D46912161BAC03C30012CE7C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D46912171BAC03C30012CE7C /* Base */,
+				D4438DCB1BD60B87000CB909 /* de */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -617,6 +647,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D469121F1BAC03C30012CE7C /* Base */,
+				D4438DCC1BD60B87000CB909 /* de */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

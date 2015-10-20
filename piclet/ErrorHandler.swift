@@ -15,7 +15,7 @@ class ErrorHandler {
         switch(errorCode) {
             
         case "NetworkError":
-            return createAlert("No Internet", message: "You are not connected to the internet. Please check your Network settings and try again. Thanks!")
+            return createAlert("No Internet", message: NSLocalizedString("NO_INTERNET_ALERT", comment: ""))
             
         case "UsernameTakenError":
             return createAlert("Username is already taken", message: "The username you chose is already taken. Please try a different one. Thanks!")
