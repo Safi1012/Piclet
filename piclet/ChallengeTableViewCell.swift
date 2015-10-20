@@ -17,10 +17,16 @@ class ChallengeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        stylePreviewImage()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 
+    func stylePreviewImage() {
+        previewImageView.layer.cornerRadius = 5.0
+        previewImageView.layer.masksToBounds = true
+    }
+    
 }

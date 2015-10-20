@@ -30,6 +30,28 @@ class ChallengeTableViewController: UITableViewController {
     }
 
 
+    // MARK: - UI
+    
+    func showLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
+            loadingSpinner.labelText = "Loading Data"
+        })
+    }
+    
+    func hideLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
+        })
+    }
+    
+    func displayAlert(alertController: UIAlertController) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    
     
     // MARK: - Challenge
     
@@ -80,29 +102,6 @@ class ChallengeTableViewController: UITableViewController {
     }
 
     
-    
-    // MARK: - UI
-    
-    func showLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
-            loadingSpinner.labelText = "Loading Data"
-        })
-    }
-    
-    func hideLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
-        })
-    }
-    
-    func displayAlert(alertController: UIAlertController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(alertController, animated: true, completion: nil)
-        })
-    }
-    
-
 
     // MARK: - Table view data source
 
