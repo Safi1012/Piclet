@@ -12,12 +12,14 @@ class PostsTableViewController: UITableViewController {
     
     var challengeID: String?
     var posts = [Post]()
-    
-    
     var challenge: Challenge?
+    var isRequesting = false
+    
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +30,6 @@ class PostsTableViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         refreshPosts()
     }
-
 
     
 
@@ -53,23 +54,6 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
-    func createNotLoggedInAlert() -> UIAlertController {
-        let alertContoller = ErrorHandler().createErrorAlert("NotLoggedIn")
-        alertContoller.addAction(UIAlertAction(title: "Login / Create Account", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
-                    self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
-                } else {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
-                    self.presentViewController(loginVC, animated: true, completion: nil)
-                }
-            }
-        }))
-        return alertContoller
-    }
-    
     func reloadTableView() {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
@@ -80,29 +64,52 @@ class PostsTableViewController: UITableViewController {
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             
-            if likeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
-                likeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+            if !isRequesting {
+                isRequesting = true
                 
-                ApiProxy().revertLikeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
-                    self.refreshPosts()
-                }, failed: { (errorCode) -> () in
-                    self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
-                })
-            } else {
-                likeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-                
-                ApiProxy().likeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
-                    self.refreshPosts()
-                }, failed: { (errorCode) -> () in
-                    self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
-                })
+                if likeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
+                    
+                    ApiProxy().revertLikeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
+                        self.refreshPosts()
+                        self.isRequesting = false
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            likeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+                        })
+                        
+                    }, failed: { (errorCode) -> () in
+                        self.displayLikeFailedError(errorCode, loggedInUser: loggedInUser)
+                        self.isRequesting = false
+                    })
+                } else {
+                    
+                    ApiProxy().likeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
+                        self.refreshPosts()
+                        self.isRequesting = false
+                        
+                        dispatch_async(dispatch_get_main_queue(), {
+                            likeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+                        })
+                        
+                    }, failed: { (errorCode) -> () in
+                        self.displayLikeFailedError(errorCode, loggedInUser: loggedInUser)
+                        self.isRequesting = false
+                    })
+                }
             }
         } else {
-            displayAlert(createNotLoggedInAlert())
+            self.displayAlert(UIAlertController.createAlertWithLoginSegue("NotLoggedIn", viewController: self))
         }
     }
 
-
+    func displayLikeFailedError(errorCode: String, loggedInUser: User) {
+        if errorCode == "UnauthorizedError" {
+            self.displayAlert(UIAlertController.createAlertWithLoginSegue(errorCode, viewController: self))
+            User.updateUserToken(self.managedObjectContext, user: loggedInUser, newToken: nil) // only when user changed password -> session is invalid, Untested !!
+        } else {
+            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
+        }
+    }
     
     
     
@@ -123,7 +130,7 @@ class PostsTableViewController: UITableViewController {
             self.reloadTableView()
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
-            self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
         }
     }
     
@@ -134,7 +141,7 @@ class PostsTableViewController: UITableViewController {
             ApiProxy().getPostImageInSize(nil, challengeID: challengeID!, postID: post.id!, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
                 
             }) { (errorCode) -> () in
-                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
             }
         }
     }

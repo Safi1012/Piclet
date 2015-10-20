@@ -48,7 +48,7 @@ class ChallengeTableViewController: UITableViewController {
             })
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
-            self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
         }
     }
     
@@ -59,7 +59,7 @@ class ChallengeTableViewController: UITableViewController {
             apiProxy.getPostImageInSize(nil, challengeID: challenge.id!, postID: challenge.creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.webp, success: { () -> () in
                 
             }) { (errorCode) -> () in
-                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
             }
         }
         dispatch_async(dispatch_get_main_queue(), {

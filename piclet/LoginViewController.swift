@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
             }) { (errorCode) -> () in
                     
                 self.hideLoadingSpinner()
-                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
             }
         }
     }
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController {
             }) { (errorCode) -> () in
                     
                 self.hideLoadingSpinner()
-                self.displayAlert(ErrorHandler().createErrorAlert(errorCode))
+                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
             }
         }
     }
@@ -126,15 +126,15 @@ class LoginViewController: UIViewController {
     func validateTextFields() -> Bool {
         
         if (!userDataValidator.isUsernameLongEnough(usernameTextField.text!)) {
-            self.displayAlert(ErrorHandler().createErrorAlert("UsernameTooShort"))
+            self.displayAlert(UIAlertController.createErrorAlert("UsernameTooShort"))
             return false
         }
         if (userDataValidator.containsSpecialCharacters(usernameTextField.text!)) {
-            self.displayAlert(ErrorHandler().createErrorAlert("UsernameWrongCharacters"))
+            self.displayAlert(UIAlertController.createErrorAlert("UsernameWrongCharacters"))
             return false
         }
         if (!userDataValidator.isPasswordLongEnough(passwordTextField.text!)) {
-            self.displayAlert(ErrorHandler().createErrorAlert("PasswordTooShort"))
+            self.displayAlert(UIAlertController.createErrorAlert("PasswordTooShort"))
             return false
         }
         return true

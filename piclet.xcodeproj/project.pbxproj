@@ -55,6 +55,9 @@
 		D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4438DCA1BD60ABD000CB909 /* Localizable.strings */; };
 		D4438DC71BD60ABD000CB909 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4438DCA1BD60ABD000CB909 /* Localizable.strings */; };
 		D4438DC81BD60ABD000CB909 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4438DCA1BD60ABD000CB909 /* Localizable.strings */; };
+		D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; settings = {ASSET_TAGS = (); }; };
 		D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */; settings = {ASSET_TAGS = (); }; };
@@ -120,6 +123,7 @@
 		D4438DCB1BD60B87000CB909 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D4438DCC1BD60B87000CB909 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D4438DCD1BD60B87000CB909 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerExtension.swift; sourceTree = "<group>"; };
 		D4445B7F1BB84D76005D155F /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageToWebPDataTransformer.m; sourceTree = "<group>"; };
 		D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
@@ -194,6 +198,14 @@
 			name = Create;
 			sourceTree = "<group>";
 		};
+		D4438DD21BD6159C000CB909 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		D448296B1BD3CDA7003D51E4 /* WebP */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +242,7 @@
 		D46912111BAC03C30012CE7C /* piclet */ = {
 			isa = PBXGroup;
 			children = (
+				D4438DD21BD6159C000CB909 /* Extension */,
 				D46912441BAC0D600012CE7C /* Model */,
 				D46912451BAC0D650012CE7C /* View */,
 				D46912431BAC0D590012CE7C /* ViewController */,
@@ -532,6 +545,7 @@
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */,
+				D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
@@ -574,6 +588,7 @@
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
 				D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
+				D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
@@ -595,6 +610,7 @@
 				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
+				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
 				D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,

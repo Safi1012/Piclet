@@ -38,6 +38,12 @@ class ProfileViewController: UIViewController {
     
     // MARK: - UI
     
+    func displayAlert(alertController: UIAlertController) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
+    }
+    
     func createLogoutNavbarButton() {
         let logoutNavbarItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "pressedLogoutNavbarButton:")
             logoutNavbarItem.tintColor = UIColor.whiteColor()
@@ -61,7 +67,7 @@ class ProfileViewController: UIViewController {
             
         }) { (errorCode) -> () in
             
-            self.displayAlert(ErrorHandler().createErrorAlert("LogoutError"))
+            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
         }
     }
     
@@ -69,13 +75,7 @@ class ProfileViewController: UIViewController {
         navigatoToLoginViewController()
     }
     
-    func displayAlert(alertController: UIAlertController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(alertController, animated: true, completion: nil)
-        })
-    }
 
-    
     
     // MARK: - Navigation
     
