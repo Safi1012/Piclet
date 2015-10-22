@@ -20,10 +20,10 @@ class TimeHandler {
             return "\(calendar.month)mth"
         }
         if calendar.weekday > 0 {
-            return "\(calendar.weekday)w"
+            return "\(calendar.weekday)weeks"
         }
         if calendar.day > 0 {
-            return "\(calendar.day)d"
+            return "\(calendar.day)days"
         }
         if calendar.hour > 0 {
             return "\(calendar.hour)h"

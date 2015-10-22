@@ -58,15 +58,13 @@ class ChallengeTableViewController: UITableViewController {
     func refreshChallenges() {
         // showLoadingSpinner()
         
-        apiProxy.getChallenges(nil, offset: "5000", success: { (challenges) -> () in
-            // self.hideLoadingSpinner()
+        apiProxy.getChallenges(nil, offset: "20", success: { (challenges) -> () in
+            
             self.challenges = challenges
             
-            if !self.checkIfThumbnailsExists() {
-                self.getThumbnailsOfChallenge()
-            }
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
+                self.hideLoadingSpinner()
             })
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
@@ -74,39 +72,12 @@ class ChallengeTableViewController: UITableViewController {
         }
     }
     
-    func getThumbnailsOfChallenge() {
-        
-        for challenge in challenges {
-            
-            apiProxy.getPostImageInSize(nil, challengeID: challenge.id!, postID: challenge.creatorPost!, imageSize: ImageSize.small, imageFormat: ImageFormat.webp, success: { () -> () in
-                
-            }) { (errorCode) -> () in
-                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
-            }
-        }
-        dispatch_async(dispatch_get_main_queue(), {
-            self.tableView.reloadData()
-        })
-    }
-    
-    func checkIfThumbnailsExists() -> Bool {
-        
-        for challenge in challenges {
-            let imagePath = documentPath.stringByAppendingPathComponent(challenge.creatorPost! + "_small" + ".webp")
-            
-            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-                return true
-            }
-        }
-        return false
-    }
 
     
-
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return challenges.count == 0 ? 0 : 1
+        return challenges.count > 0 ? 1 : 0
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,12 +87,9 @@ class ChallengeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
         
-        let imagePath = documentPath.stringByAppendingPathComponent(challenges[indexPath.row].creatorPost! + "_small" + ".webp")
-        
         cell.titleLabel.text = challenges[indexPath.row].title
         cell.timePostedLabel.text = TimeHandler().getPostedTimestampFormated(challenges[indexPath.row].posted!)
         cell.votesLabel.text = challenges[indexPath.row].votes > 0 ? "\(challenges[indexPath.row].votes!) votes" : "\(challenges[indexPath.row].votes!) vote"
-        cell.previewImageView.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         
         return cell
     }
