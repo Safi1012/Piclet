@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -286,6 +286,71 @@
             </objects>
             <point key="canvasLocation" x="2644" y="439"/>
         </scene>
+        <!--Chanllenges-->
+        <scene sceneID="Xg5-td-h1U">
+            <objects>
+                <viewController id="eHZ-hb-ZXc" customClass="ChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lcW-6Z-kzT"/>
+                        <viewControllerLayoutGuide type="bottom" id="l7w-dO-ttg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kam-rN-6PB">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYa-wf-Hjw">
+                                <rect key="frame" x="0.0" y="44" width="600" height="492"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MOX-On-hUT" userLabel="navigationView" customClass="ChallengesView" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6gd-fn-GhR">
+                                        <rect key="frame" x="189" y="8" width="222" height="29"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="222" id="uU2-Qt-eva"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Hot"/>
+                                            <segment title="New"/>
+                                        </segments>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="6gd-fn-GhR" secondAttribute="bottom" constant="8" id="CPs-rR-9ob"/>
+                                    <constraint firstAttribute="height" constant="44" id="Ig9-uE-FQW"/>
+                                    <constraint firstItem="6gd-fn-GhR" firstAttribute="top" secondItem="MOX-On-hUT" secondAttribute="top" constant="8" id="XVG-aV-JID"/>
+                                    <constraint firstItem="6gd-fn-GhR" firstAttribute="centerX" secondItem="MOX-On-hUT" secondAttribute="centerX" id="xnj-dt-GSI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="MOX-On-hUT" secondAttribute="trailing" constant="-20" id="Faa-dF-ek8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mYa-wf-Hjw" secondAttribute="trailing" constant="-20" id="LBY-vn-Umi"/>
+                            <constraint firstItem="mYa-wf-Hjw" firstAttribute="leading" secondItem="Kam-rN-6PB" secondAttribute="leadingMargin" constant="-20" id="WUO-QR-oUF"/>
+                            <constraint firstItem="MOX-On-hUT" firstAttribute="leading" secondItem="Kam-rN-6PB" secondAttribute="leadingMargin" constant="-20" id="fDE-n8-g9l"/>
+                            <constraint firstItem="MOX-On-hUT" firstAttribute="top" secondItem="lcW-6Z-kzT" secondAttribute="bottom" id="oSB-Jr-adi"/>
+                            <constraint firstItem="mYa-wf-Hjw" firstAttribute="top" secondItem="MOX-On-hUT" secondAttribute="bottom" id="vZr-c1-DUn"/>
+                            <constraint firstItem="l7w-dO-ttg" firstAttribute="top" secondItem="mYa-wf-Hjw" secondAttribute="bottom" constant="-49" id="w19-fo-Qay"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Chanllenges" id="0T2-mm-B6R"/>
+                    <connections>
+                        <outlet property="navigationView" destination="MOX-On-hUT" id="yg2-q0-qWD"/>
+                        <outlet property="segmentedControl" destination="6gd-fn-GhR" id="Ram-kF-1hU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fgU-0c-1Ep" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2645" y="-965"/>
+        </scene>
         <!--Challenges-->
         <scene sceneID="EUj-KZ-y79">
             <objects>
@@ -298,7 +363,7 @@
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="68" id="VUH-st-hOC" customClass="ChallengeTableViewCell" customModule="piclet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="68"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VUH-st-hOC" id="yQx-CS-gGg">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="67.5"/>
@@ -419,7 +484,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="413" id="n4A-hT-clp" customClass="PostsTableViewCell" customModule="piclet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="413"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="413"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n4A-hT-clp" id="Gnj-pS-UxU">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="412.5"/>
@@ -547,15 +612,20 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="njj-8c-Fov" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Challenges" image="tabBarChallenges" id="qfq-tm-Aes"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YsD-4Q-dOy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="YsD-4Q-dOy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                         <color key="barTintColor" red="0.14509803921568626" green="0.41568627450980389" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="EwE-fR-xbU">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
                     <connections>
-                        <segue destination="f1t-5u-5el" kind="relationship" relationship="rootViewController" id="cue-K2-EX4"/>
+                        <segue destination="eHZ-hb-ZXc" kind="relationship" relationship="rootViewController" id="Ke7-2q-L2M"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MDr-Qd-Rd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
