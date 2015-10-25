@@ -30,18 +30,22 @@ class ChallengeViewController: UIViewController {
         
         styleNavigationBar()
         tableView.dataSource = self
-        
-        
-        print("\(segmentedControl.titleForSegmentAtIndex(0))")
-        print("\(segmentedControl.titleForSegmentAtIndex(1))")
+        tableView.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+
+        tableView.flashScrollIndicators()
         refreshChallenges()
     }
-    
+
     
     
     // MARK: - UI
@@ -170,11 +174,6 @@ extension ChallengeViewController: UITableViewDataSource {
     
         return cell
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let challenge = challenges[indexPath.row]
-        self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
-    }
 }
 
 
@@ -183,5 +182,11 @@ extension ChallengeViewController: UITableViewDataSource {
 
 extension ChallengeViewController: UITableViewDelegate {
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
+        let challenge = challenges[indexPath.row]
+        self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
+    }
+
 }
 

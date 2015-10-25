@@ -141,144 +141,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="first" translatesAutoresizingMaskIntoConstraints="NO" id="nNH-qk-g15">
-                                <rect key="frame" x="594" y="635" width="30" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your own" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jts-d3-yQ1">
+                                <rect key="frame" x="127" y="153" width="143.5" height="24"/>
                                 <animations/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="write here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k51-aJ-yFq" userLabel="nameTextfield" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
-                                <rect key="frame" x="96" y="130" width="230" height="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="funny" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLZ-tU-VHs">
+                                <rect key="frame" x="273" y="153" width="54" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSt-J2-zeb">
+                                <rect key="frame" x="331" y="153" width="94" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTZ-Qa-lld">
+                                <rect key="frame" x="185" y="227" width="230" height="18"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="PTC-ai-7oU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="write here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k51-aJ-yFq" userLabel="nameTextfield" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="185" y="253" width="230" height="20"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="cJB-N4-cuq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTZ-Qa-lld">
-                                <rect key="frame" x="96" y="104" width="209" height="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poc-XM-Gsq">
+                                <rect key="frame" x="185" y="342" width="230" height="30"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="second" translatesAutoresizingMaskIntoConstraints="NO" id="fZl-7M-7GA">
-                                <rect key="frame" x="349" y="433" width="30" height="30"/>
-                                <animations/>
-                            </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IO1-0z-Jre">
-                                <rect key="frame" x="260" y="471" width="209" height="18"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="write here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eU-Gi-i69" userLabel="nameTextfield" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
-                                <rect key="frame" x="323" y="494" width="477" height="20"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="third" translatesAutoresizingMaskIntoConstraints="NO" id="0Qk-zR-lm7">
-                                <rect key="frame" x="349" y="548" width="30" height="30"/>
-                                <animations/>
-                            </imageView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload a picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysp-uR-JMK">
-                                <rect key="frame" x="260" y="586" width="209" height="18"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabBarProfil" translatesAutoresizingMaskIntoConstraints="NO" id="WiK-3W-DvQ">
-                                <rect key="frame" x="331" y="612" width="25" height="25"/>
-                                <animations/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabBarChallenges" translatesAutoresizingMaskIntoConstraints="NO" id="9hD-zK-8MX">
-                                <rect key="frame" x="374" y="612" width="25" height="25"/>
-                                <animations/>
-                            </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fourth" translatesAutoresizingMaskIntoConstraints="NO" id="UuE-ex-2Or">
-                                <rect key="frame" x="349" y="681" width="30" height="30"/>
-                                <animations/>
-                            </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-CG-uMc">
-                                <rect key="frame" x="339" y="719" width="51" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="230" id="fV2-BD-HDC"/>
+                                </constraints>
                                 <state key="normal" title="Create">
-                                    <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="pressedCreateButton:" destination="Arb-K3-Eun" eventType="touchUpInside" id="Qkx-5f-HGC"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yB-7H-9fe">
-                                <rect key="frame" x="56" y="72" width="42" height="24"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="write here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H7h-x7-fA1" userLabel="nameTextfield" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
-                                <rect key="frame" x="96" y="216" width="230" height="20"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SaC-OV-d5B">
-                                <rect key="frame" x="96" y="190" width="209" height="18"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5B-Gb-dB8">
-                                <rect key="frame" x="56" y="158" width="42" height="24"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload a picture" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-bW-8IF">
-                                <rect key="frame" x="96" y="293" width="209" height="18"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcq-os-r2q">
-                                <rect key="frame" x="56" y="261" width="42" height="24"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSx-jz-kiU">
-                                <rect key="frame" x="96" y="319" width="79" height="25"/>
-                                <animations/>
-                                <state key="normal" title="Button" image="challengeClock"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waW-8O-Av3">
-                                <rect key="frame" x="172" y="319" width="79" height="25"/>
-                                <animations/>
-                                <state key="normal" title="Button" image="challengeClock"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Soe-R8-jUI">
-                                <rect key="frame" x="93" y="392" width="52" height="18"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="grdtfyjguk" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Uk-Ct-1Ps">
-                                <rect key="frame" x="295" y="281" width="97" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k51-aJ-yFq" firstAttribute="centerX" secondItem="hID-qB-8SS" secondAttribute="centerX" id="08F-1s-pro"/>
+                            <constraint firstItem="sTZ-Qa-lld" firstAttribute="centerX" secondItem="hID-qB-8SS" secondAttribute="centerX" id="3kp-xn-fN2"/>
+                            <constraint firstItem="sTZ-Qa-lld" firstAttribute="top" secondItem="QLZ-tU-VHs" secondAttribute="bottom" constant="50" id="A4k-U6-az9"/>
+                            <constraint firstItem="QLZ-tU-VHs" firstAttribute="centerX" secondItem="hID-qB-8SS" secondAttribute="centerX" id="DTU-Th-hwc"/>
+                            <constraint firstItem="QSt-J2-zeb" firstAttribute="leading" secondItem="QLZ-tU-VHs" secondAttribute="trailing" constant="4" id="Lbu-HN-fay"/>
+                            <constraint firstItem="k51-aJ-yFq" firstAttribute="top" secondItem="sTZ-Qa-lld" secondAttribute="bottom" constant="8" id="QLi-dT-LkX"/>
+                            <constraint firstItem="poc-XM-Gsq" firstAttribute="top" secondItem="k51-aJ-yFq" secondAttribute="bottom" constant="69" id="RwN-oI-yHo"/>
+                            <constraint firstItem="poc-XM-Gsq" firstAttribute="centerX" secondItem="hID-qB-8SS" secondAttribute="centerX" id="b8g-R8-Eth"/>
+                            <constraint firstItem="jts-d3-yQ1" firstAttribute="top" secondItem="DbL-Qb-fQI" secondAttribute="bottom" constant="89" id="f0F-i3-oap"/>
+                            <constraint firstItem="QLZ-tU-VHs" firstAttribute="top" secondItem="DbL-Qb-fQI" secondAttribute="bottom" constant="89" id="kG9-zr-COQ"/>
+                            <constraint firstItem="QLZ-tU-VHs" firstAttribute="leading" secondItem="jts-d3-yQ1" secondAttribute="trailing" constant="2" id="teA-Rd-mjh"/>
+                            <constraint firstItem="QSt-J2-zeb" firstAttribute="top" secondItem="DbL-Qb-fQI" secondAttribute="bottom" constant="89" id="zcc-EY-mOs"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create" id="1PS-Cc-mGT"/>
                     <connections>
+                        <outlet property="createButton" destination="poc-XM-Gsq" id="wb2-Ni-nQH"/>
                         <outlet property="nameTextField" destination="k51-aJ-yFq" id="HsJ-iU-Ori"/>
                     </connections>
                 </viewController>
@@ -726,13 +663,9 @@
         <image name="challengeLike" width="20" height="20"/>
         <image name="challengePosts" width="20" height="20"/>
         <image name="challengePreviewPlaceholder" width="500" height="500"/>
-        <image name="first" width="100" height="100"/>
-        <image name="fourth" width="100" height="100"/>
         <image name="likeUnfilled" width="25" height="25"/>
-        <image name="second" width="100" height="100"/>
         <image name="tabBarChallenges" width="25" height="25"/>
         <image name="tabBarCreate" width="25" height="25"/>
         <image name="tabBarProfil" width="25" height="25"/>
-        <image name="third" width="100" height="100"/>
     </resources>
 </document>
