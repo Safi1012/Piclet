@@ -10,10 +10,11 @@ import UIKit
 
 class ChallengeTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var timePostedLabel: UILabel!
-    @IBOutlet weak var votesLabel: UILabel!
-    
+    @IBOutlet weak var challengeTitleLabel: UILabel!
+    @IBOutlet weak var timepostedLabel: UILabel!
+    @IBOutlet weak var numberPostsLabel: UILabel!
+    @IBOutlet weak var numberLikesLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

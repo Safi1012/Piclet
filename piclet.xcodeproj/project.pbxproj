@@ -10,7 +10,6 @@
 		3583529F2DF1C017B513ABEA /* libPods-piclet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */; };
 		D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; };
 		D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; };
-		D4181CC01BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */; };
 		D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; };
 		D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; };
 		D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; };
@@ -82,14 +81,7 @@
 		D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */; };
 		D4B609CD1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; };
 		D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
-		D4BDF85A1BC3AD3700028566 /* LoadingProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF8581BC3AD3700028566 /* LoadingProgressViewController.xib */; };
 		D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */; };
-		D4FA80B21BDAA338004682CB /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B11BDAA338004682CB /* ChallengesView.swift */; };
-		D4FA80B31BDAA338004682CB /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B11BDAA338004682CB /* ChallengesView.swift */; };
-		D4FA80B41BDAA338004682CB /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B11BDAA338004682CB /* ChallengesView.swift */; };
-		D4FA80B61BDAA63E004682CB /* ChallengesNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B51BDAA63E004682CB /* ChallengesNavigationItem.swift */; };
-		D4FA80B71BDAA63E004682CB /* ChallengesNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B51BDAA63E004682CB /* ChallengesNavigationItem.swift */; };
-		D4FA80B81BDAA63E004682CB /* ChallengesNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B51BDAA63E004682CB /* ChallengesNavigationItem.swift */; };
 		D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FA80BB1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
@@ -120,7 +112,6 @@
 		A94E4F64F20443B08DCF0BF5 /* Pods-piclet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piclet.release.xcconfig"; path = "Pods/Target Support Files/Pods-piclet/Pods-piclet.release.xcconfig"; sourceTree = "<group>"; };
 		C675D24041E73B5EAB477F92 /* Pods-piclet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piclet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-piclet/Pods-piclet.debug.xcconfig"; sourceTree = "<group>"; };
 		D4105BEE1BBE65AC006D742D /* ApiProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiProxy.swift; sourceTree = "<group>"; };
-		D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
 		D4181CC71BAC4456001155B6 /* UserDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidator.swift; sourceTree = "<group>"; };
 		D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidatorTests.swift; sourceTree = "<group>"; };
 		D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
@@ -162,10 +153,7 @@
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
 		D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMangedObject+MCPAdditions.swift"; sourceTree = "<group>"; };
 		D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProgressViewController.swift; sourceTree = "<group>"; };
-		D4BDF8581BC3AD3700028566 /* LoadingProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingProgressViewController.xib; sourceTree = "<group>"; };
 		D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		D4FA80B11BDAA338004682CB /* ChallengesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
-		D4FA80B51BDAA63E004682CB /* ChallengesNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesNavigationItem.swift; sourceTree = "<group>"; };
 		D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		D4FA80BD1BDAAE1F004682CB /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,7 +249,6 @@
 				D4438DD21BD6159C000CB909 /* Extension */,
 				D46912441BAC0D600012CE7C /* Model */,
 				D46912451BAC0D650012CE7C /* Storyboard */,
-				D4FA80B01BDAA2E4004682CB /* View */,
 				D46912431BAC0D590012CE7C /* ViewController */,
 				D469124A1BAC0DB60012CE7C /* Others */,
 			);
@@ -290,7 +277,6 @@
 		D46912431BAC0D590012CE7C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */,
 				D47E5E251BD293A0003E9351 /* Challenges */,
 				D47E5E261BD293AE003E9351 /* Posts */,
 				D4438DB51BD521B2000CB909 /* Create */,
@@ -323,7 +309,6 @@
 			children = (
 				D46912161BAC03C30012CE7C /* Main.storyboard */,
 				D469121E1BAC03C30012CE7C /* LaunchScreen.storyboard */,
-				D4BDF8581BC3AD3700028566 /* LoadingProgressViewController.xib */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -343,7 +328,7 @@
 		D47E5E251BD293A0003E9351 /* Challenges */ = {
 			isa = PBXGroup;
 			children = (
-				D4181CBF1BAC35EA001155B6 /* ChallengeTableViewController.swift */,
+				D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */,
 				D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */,
 			);
 			name = Challenges;
@@ -375,15 +360,6 @@
 				D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */,
 			);
 			name = CoreData;
-			sourceTree = "<group>";
-		};
-		D4FA80B01BDAA2E4004682CB /* View */ = {
-			isa = PBXGroup;
-			children = (
-				D4FA80B11BDAA338004682CB /* ChallengesView.swift */,
-				D4FA80B51BDAA63E004682CB /* ChallengesNavigationItem.swift */,
-			);
-			name = View;
 			sourceTree = "<group>";
 		};
 		DB8690D07496EA79BEFF9105 /* Pods */ = {
@@ -504,7 +480,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
-				D4BDF85A1BC3AD3700028566 /* LoadingProgressViewController.xib in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
@@ -579,9 +554,6 @@
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D4438DBF1BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
-				D4FA80B21BDAA338004682CB /* ChallengesView.swift in Sources */,
-				D4181CC01BAC35EA001155B6 /* ChallengeTableViewController.swift in Sources */,
-				D4FA80B61BDAA63E004682CB /* ChallengesNavigationItem.swift in Sources */,
 				D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */,
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
 				D4FA80BE1BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
@@ -603,12 +575,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4FA80B31BDAA338004682CB /* ChallengesView.swift in Sources */,
 				D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
-				D4FA80B71BDAA63E004682CB /* ChallengesNavigationItem.swift in Sources */,
 				D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
@@ -642,7 +612,6 @@
 				D4438DB91BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D4FA80C01BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
-				D4FA80B41BDAA338004682CB /* ChallengesView.swift in Sources */,
 				D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */,
 				D4254AE71BCD9C6600297FCF /* AppDelegate.swift in Sources */,
 				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
@@ -656,7 +625,6 @@
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
-				D4FA80B81BDAA63E004682CB /* ChallengesNavigationItem.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */,

@@ -14,28 +14,33 @@ class TimeHandler {
         let calendar = NSCalendar.currentCalendar().components([.Year, .Month, .Weekday, .Day, .Hour, .Minute, .Second], fromDate: datePosted, toDate: NSDate(), options: [])
         
         if calendar.year > 0 {
-            return "\(calendar.year)y"
+            return calendar.year > 1 ? "\(calendar.year) years" : "\(calendar.year) year"
         }
         if calendar.month > 0 {
-            return "\(calendar.month)mth"
+            return calendar.month > 1 ? "\(calendar.month) months" : "\(calendar.month) month"
         }
         if calendar.weekday > 0 {
-            return "\(calendar.weekday)weeks"
+            return calendar.weekday > 1 ? "\(calendar.weekday) weeks" : "\(calendar.weekday) week"
         }
         if calendar.day > 0 {
-            return "\(calendar.day)days"
+            return calendar.day > 1 ? "\(calendar.day) days" : "\(calendar.day) day"
         }
         if calendar.hour > 0 {
-            return "\(calendar.hour)h"
+            return calendar.hour > 1 ? "\(calendar.hour) hours" : "\(calendar.hour) hour"
         }
         if calendar.minute > 0 {
-            return "\(calendar.minute)m"
+            return calendar.minute > 1 ? "\(calendar.minute) minutes" : "\(calendar.minute) minute"
         }
-        return "\(calendar.second)s"
+        return calendar.second > 1 ? "\(calendar.second) seconds" : "\(calendar.second) second"
     }
     
     func convertTimestampToNSDate(millisecons: Int) -> NSDate {
         return NSDate(timeIntervalSince1970: NSTimeInterval(Double(millisecons / 1000)))
+    }
+    
+    func secondsPassedSinceDate(timestamp: NSDate) -> Int {
+        let calendar = NSCalendar.currentCalendar().components([.Second], fromDate: timestamp, toDate: NSDate(), options: [])
+        return calendar.second
     }
     
 }

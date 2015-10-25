@@ -11,59 +11,177 @@ import UIKit
 class ChallengeViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var navigationView: ChallengesView!
+    @IBOutlet weak var tableView: UITableView!
     
-
+    
+    let apiProxy = ApiProxy()
+    var challenges = [Challenge]()
+    
+    var hotTimestamp: NSDate?
+    var newTimestamp: NSDate?
+    
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let topBorder = CALayer()
-//        topBorder.frame = CGRectMake(0.0, navigationView.bounds.height, navigationView.bounds.width, 3.0);
-//        topBorder.backgroundColor = UIColor(red: 37.0/255.0, green: 106.0/255.0, blue: 185.0/255.0, alpha: 1.0).CGColor
-//        
-//        self.navigationItem
-//        
-//        self.navigationController?.navigationBar.subviews
-//        
-//        
-//        self.layer.addSublayer(topBorder)
         
-        self.navigationController?.navigationBar.shadowImage = UIImage(named: "transparentPixel")
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "transparentPixel"), forBarMetrics: UIBarMetrics.Default)
+        styleNavigationBar()
+        tableView.dataSource = self
         
         
-        
-        
-//        [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"TransparentPixel"]];
-//        // "Pixel" is a solid white 1x1 image.
-//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"Pixel"] forBarMetrics:UIBarMetricsDefault];
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        
-//        var vieww = self.navigationController?.navigationBar.subviews[0].hidden = true
-        
-        // self.navigationController?.navigationBar.layoutMargins
+        print("\(segmentedControl.titleForSegmentAtIndex(0))")
+        print("\(segmentedControl.titleForSegmentAtIndex(1))")
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        refreshChallenges()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    
+    // MARK: - UI
+    
+    func styleNavigationBar() {
+        self.navigationController?.navigationBar.shadowImage = UIImage(named: "transparentPixel")
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "transparentPixel"), forBarMetrics: UIBarMetrics.Default)
     }
-    */
+    
+    func showLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
+            loadingSpinner.labelText = "Loading Data"
+        })
+    }
+    
+    func hideLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
+        })
+    }
+    
+    func displayAlert(alertController: UIAlertController) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
+    }
+    
+    
+    
+    // MARK: - Challenge
+    
+    func refreshChallenges() {
+        // showLoadingSpinner()
+        
+        apiProxy.getChallenges(nil, offset: "20", success: { (challenges) -> () in
+            
+            self.challenges = challenges
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                // self.hideLoadingSpinner()
+            })
+            
+        }) { (errorCode) -> () in
+            
+            // self.hideLoadingSpinner()
+            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
+            
+        }
+    }
+    
+//    func refreshHotChallenges() {
+//        // toDo
+//        // time fetch only after 5 minutes new..
+//        if shouldRefreshChallenge(<#T##timestamp: NSDate?##NSDate?#>)
+//    
+//    }
+//    
+//    func refreshNewChallenges() {
+//        // toDo
+//    }
+    
+    
+    
+    
+    func shouldRefreshChallenge(var timestamp: NSDate?) -> Bool {   
+        if var timestamp = timestamp {
+            if TimeHandler().secondsPassedSinceDate(timestamp) > 300 {
+                timestamp = NSDate()
+                return true
+            } else {
+                return false
+            }
+        }
+        timestamp = NSDate()
+        return true
+    }
+    
+    func formatVoteText(numberVotes: Int?) -> String {
+        guard
+            let numberVotes = numberVotes
+        else {
+            return "0 votes"
+        }
+        
+        if numberVotes > 0 || numberVotes == 0 {
+            return "\(numberVotes) votes"
+        }
+        return "\(numberVotes) vote"
+    }
+    
+    
 
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toPostsViewController" {
+            let destinationVC = segue.destinationViewController as! PostsTableViewController
+            destinationVC.challengeID = (sender as? Challenge)?.id
+        }
+    }
 }
+
+
+
+// MARK: - UITableViewDataSource
+
+extension ChallengeViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return challenges.count > 0 ? 1 : 0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return challenges.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
+        
+        cell.challengeTitleLabel.text = challenges[indexPath.row].title
+        cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challenges[indexPath.row].posted!)
+        // cell.numberPostsLabel.text =
+        cell.numberLikesLabel.text = formatVoteText(challenges[indexPath.row].votes)
+    
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let challenge = challenges[indexPath.row]
+        self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
+    }
+}
+
+
+
+// MARK: - UITableViewDelegate
+
+extension ChallengeViewController: UITableViewDelegate {
+    
+}
+
