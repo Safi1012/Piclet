@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
 extension UIAlertController {
     
@@ -34,6 +37,9 @@ extension UIAlertController {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
                     viewController.presentViewController(loginVC, animated: true, completion: nil)
+                }
+                if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+                    User.updateUserToken(managedObjectContext, user: loggedInUser, newToken: nil) // only when user changed password -> session is invalid, Untested !!
                 }
             }
         }))

@@ -99,7 +99,19 @@ class ObjectMapper: NSObject {
             print("couldn't serialize data")
         }
         return []
-    }    
+    }
+    
+    func getChallenge(responseData: NSData) -> Challenge {
+        let challenge = Challenge()
+        
+        do {
+            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+            challenge.title = jsonDict["title"] as? String
+        } catch {
+            print("couldn't serialize data")
+        }
+        return challenge
+    }
 }
 
 

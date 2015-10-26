@@ -217,9 +217,11 @@
                     <connections>
                         <outlet property="createButton" destination="poc-XM-Gsq" id="wb2-Ni-nQH"/>
                         <outlet property="nameTextField" destination="k51-aJ-yFq" id="HsJ-iU-Ori"/>
+                        <segue destination="SJ7-iP-YjO" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="GNQ-vc-XaB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHq-3Y-z5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SJ7-iP-YjO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2644" y="439"/>
         </scene>

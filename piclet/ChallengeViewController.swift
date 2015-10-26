@@ -20,7 +20,6 @@ class ChallengeViewController: UIViewController {
     var hotTimestamp: NSDate?
     var newTimestamp: NSDate?
     
-    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     
@@ -43,7 +42,9 @@ class ChallengeViewController: UIViewController {
         super.viewDidAppear(animated)
 
         tableView.flashScrollIndicators()
-        refreshChallenges()
+        self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refreshChallenges")
+        
+        //refreshChallenges()
     }
 
     
@@ -73,7 +74,7 @@ class ChallengeViewController: UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         })
     }
-    
+
     
     
     // MARK: - Challenge
@@ -86,12 +87,14 @@ class ChallengeViewController: UIViewController {
             self.challenges = challenges
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
+                self.makePullToRefreshEndRefreshing()
                 // self.hideLoadingSpinner()
             })
             
         }) { (errorCode) -> () in
             
             // self.hideLoadingSpinner()
+            self.makePullToRefreshEndRefreshing()
             self.displayAlert(UIAlertController.createErrorAlert(errorCode))
             
         }

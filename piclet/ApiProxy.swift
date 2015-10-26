@@ -133,12 +133,30 @@ class ApiProxy {
             failed(errorCode: errorCode)
         }
     }
+    
+    func postNewChallenge(token: String?, challengeName: String, success: (challenge: Challenge) -> (), failed: (errorCode: String) -> () ){
+        
+        networkHandler.createRequest(["title" : (challengeName)], apiPath: "challenges", httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
+            
+            success(challenge: self.objectMapper.getChallenge(validResponseData!))
+        }, inValidRequest: { (invalidResponseData) -> () in
+            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
 
 enum ImageSize: String {
     case small = "small"
     case medium = "medium"
-    case big = "big"
+    case large = "large"
 }
 
 enum ImageFormat: String {
