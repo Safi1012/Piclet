@@ -10,11 +10,11 @@ import Foundation
 
 class Post {
     
-    var id: String?
+    var id: String!
     var description: String?
-    var creator: String?
-    var posted: NSDate?
-    var votes: Int?
-    var voters: [String]?
-
+    var creator: String!
+    var posted: NSDate!
+    var votes: Int!
+    var voters: [String]!
+    
 }

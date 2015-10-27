@@ -44,7 +44,7 @@ class ChallengeViewController: UIViewController {
         tableView.flashScrollIndicators()
         self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refreshChallenges")
         
-        //refreshChallenges()
+        refreshChallenges()
     }
 
     
@@ -148,7 +148,7 @@ class ChallengeViewController: UIViewController {
         
         if segue.identifier == "toPostsViewController" {
             let destinationVC = segue.destinationViewController as! PostsTableViewController
-            destinationVC.challengeID = (sender as? Challenge)?.id
+            destinationVC.challenge = (sender as? Challenge)
         }
     }
 }
@@ -171,7 +171,7 @@ extension ChallengeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
         
         cell.challengeTitleLabel.text = challenges[indexPath.row].title
-        cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challenges[indexPath.row].posted!)
+        cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challenges[indexPath.row].posted)
         // cell.numberPostsLabel.text =
         cell.numberLikesLabel.text = formatVoteText(challenges[indexPath.row].votes)
     
@@ -186,6 +186,7 @@ extension ChallengeViewController: UITableViewDataSource {
 extension ChallengeViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
         let challenge = challenges[indexPath.row]
         self.performSegueWithIdentifier("toPostsViewController", sender: challenge)

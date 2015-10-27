@@ -225,7 +225,7 @@
             </objects>
             <point key="canvasLocation" x="2644" y="439"/>
         </scene>
-        <!--Chanllenges-->
+        <!--Challenges-->
         <scene sceneID="Xg5-td-h1U">
             <objects>
                 <viewController id="eHZ-hb-ZXc" customClass="ChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
@@ -263,7 +263,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYa-wf-Hjw">
-                                <rect key="frame" x="0.0" y="44" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="443"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -419,10 +419,10 @@
                             <constraint firstItem="MOX-On-hUT" firstAttribute="leading" secondItem="Kam-rN-6PB" secondAttribute="leadingMargin" constant="-20" id="fDE-n8-g9l"/>
                             <constraint firstItem="MOX-On-hUT" firstAttribute="top" secondItem="lcW-6Z-kzT" secondAttribute="bottom" id="oSB-Jr-adi"/>
                             <constraint firstItem="mYa-wf-Hjw" firstAttribute="top" secondItem="MOX-On-hUT" secondAttribute="bottom" id="vZr-c1-DUn"/>
-                            <constraint firstItem="l7w-dO-ttg" firstAttribute="top" secondItem="mYa-wf-Hjw" secondAttribute="bottom" constant="-49" id="w19-fo-Qay"/>
+                            <constraint firstItem="l7w-dO-ttg" firstAttribute="top" secondItem="mYa-wf-Hjw" secondAttribute="bottom" id="w19-fo-Qay"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Chanllenges" id="0T2-mm-B6R"/>
+                    <navigationItem key="navigationItem" title="Challenges" id="0T2-mm-B6R"/>
                     <connections>
                         <outlet property="segmentedControl" destination="6gd-fn-GhR" id="XRE-jL-cqG"/>
                         <outlet property="tableView" destination="mYa-wf-Hjw" id="mkI-VS-iEf"/>
@@ -433,7 +433,7 @@
             </objects>
             <point key="canvasLocation" x="2644" y="-221"/>
         </scene>
-        <!--Posts Table View Controller-->
+        <!--Posts-->
         <scene sceneID="WZ0-5D-utZ">
             <objects>
                 <tableViewController id="kCH-63-aGA" customClass="PostsTableViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
@@ -537,6 +537,13 @@
                             <outlet property="delegate" destination="kCH-63-aGA" id="FRX-cC-MWu"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Posts" id="eei-7S-FMw" userLabel="navigationBar">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z0u-8a-hW1">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="eRt-RR-bW3" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="59D-Bl-4Rg"/>
                     </connections>

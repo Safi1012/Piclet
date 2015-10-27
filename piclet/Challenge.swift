@@ -10,14 +10,14 @@ import Foundation
 
 class Challenge {
     
-    var id: String?
-    var title: String?
-    var description: String?
-    var creator: String?
-    var posted: NSDate?
-    var votes: Int?
-    var creatorPost: String?
+    var id: String!
+    var title: String!
+    var creator: String!
+    var posted: NSDate!
+    var votes: Int!
     
+    var creatorPost: String?
+    var description: String?
     var posts: [Post]?
 }
 

@@ -10,9 +10,11 @@ import UIKit
 
 class PostsTableViewController: UITableViewController {
     
-    var challengeID: String?
+    var challenge: Challenge!
+
+    
     var posts = [Post]()
-    var challenge: Challenge?
+    
     var isRequesting = false
     
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
@@ -27,10 +29,14 @@ class PostsTableViewController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationItem.title = challenge!.title
+    }
+    
     override func viewDidAppear(animated: Bool) {
         refreshPosts()
     }
-
+    
     
 
     // MARK: - UI
@@ -69,7 +75,7 @@ class PostsTableViewController: UITableViewController {
                 
                 if likeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
                     
-                    ApiProxy().revertLikeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
+                    ApiProxy().revertLikeChallengePost(loggedInUser.token, challengeID: challenge!.id!, postID: post.id!, success: { () -> () in
                         self.refreshPosts()
                         self.isRequesting = false
                         
@@ -83,7 +89,7 @@ class PostsTableViewController: UITableViewController {
                     })
                 } else {
                     
-                    ApiProxy().likeChallengePost(loggedInUser.token, challengeID: challengeID!, postID: post.id!, success: { () -> () in
+                    ApiProxy().likeChallengePost(loggedInUser.token, challengeID: challenge!.id!, postID: post.id!, success: { () -> () in
                         self.refreshPosts()
                         self.isRequesting = false
                         
@@ -118,7 +124,7 @@ class PostsTableViewController: UITableViewController {
     func refreshPosts() {
         // showLoadingSpinner()
         
-        ApiProxy().getChallengesPosts(challengeID!, success: { (posts) -> () in
+        ApiProxy().getChallengesPosts(challenge!.id, success: { (posts) -> () in
             
             // self.hideLoadingSpinner()
             
@@ -138,7 +144,7 @@ class PostsTableViewController: UITableViewController {
         
         for post in posts {
             
-            ApiProxy().getPostImageInSize(nil, challengeID: challengeID!, postID: post.id!, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
+            ApiProxy().getPostImageInSize(nil, challengeID: challenge!.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
                 
             }) { (errorCode) -> () in
                 self.displayAlert(UIAlertController.createErrorAlert(errorCode))
@@ -149,7 +155,7 @@ class PostsTableViewController: UITableViewController {
     func checkIfThumbnailsExists() -> Bool {
         
         for post in posts {
-            let imagePath = documentPath.stringByAppendingPathComponent(post.id! + "_medium" + ".webp")
+            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
             
             if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
                 return true
@@ -172,20 +178,20 @@ class PostsTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id! + "_medium" + ".webp")
+        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id + "_medium" + ".webp")
     
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
         cell.post = posts[indexPath.row]
         
         cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
-        cell.postVotesLabel.text = posts[indexPath.row].votes! > 1 ? "\(posts[indexPath.row].votes!) Votes" : "\(posts[indexPath.row].votes!) Vote"
+        cell.postVotesLabel.text = posts[indexPath.row].votes > 1 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
         cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         cell.postUsernameLabel.text = posts[indexPath.row].creator
-        cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted!)
+        cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
-            for username in posts[indexPath.row].voters! {
+            for username in posts[indexPath.row].voters {
                 if username == loggedInUser.username {
                     cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
                     break

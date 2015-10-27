@@ -14,102 +14,142 @@ class ObjectMapper: NSObject {
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
+    
     func createUserToken(jsonData: NSData, username: String) {
-        do {
-            let jsonDict = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-            User.updateUserDatabase(managedObjectContext, username: username, token: jsonDict["token"] as! String)
-        } catch {
+
+        guard
+            let jsonDict = try? NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers),
+            let dict = jsonDict as? NSDictionary,
+            let token = dict["token"] as? String
+        else {
             print("createUserToken: could serialize data")
+            return
         }
+        
+        User.updateUserDatabase(managedObjectContext, username: username, token: token)
     }
+    
     
     func parseError(responseData: NSData) -> String {
-        do {
-            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-            
-            let code = jsonDict["code"] as! String
-            let message = jsonDict["message"] as! String
-
-            print("\(code): \(message)")
-            
-            return code
-        } catch {
-            print("couldn't serialize data")
+        
+        guard
+            let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
+            let objects = json as? NSDictionary,
+            let code = objects["code"] as? String,
+            let message = objects["message"] as? String
+        else {
+            return "erroneousJSON"
         }
-        return ""
+        
+        print("\(code): \(message)")
+        return code
     }
     
+    
     func getChallenges(responseData: NSData) -> [Challenge] {
-        do {
-            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSArray
-            var challenges = [Challenge]()
-            
-            for element in jsonDict {
-                let challenge = Challenge()
+        
+        guard
+            let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
+            let objects = json as? NSArray
+        else {
+            print("couldn't serialize data")
+            return []
+        }
+    
+        var challenges = [Challenge]()
 
-                challenge.id = (element as! NSDictionary).valueForKey("_id") as? String
-                challenge.title = (element as! NSDictionary).valueForKey("title") as? String
-                challenge.description = (element as! NSDictionary).valueForKey("description") as? String
-                challenge.creator = (element as! NSDictionary).valueForKey("creator") as? String
-                challenge.posted = TimeHandler().convertTimestampToNSDate((element as! NSDictionary).valueForKey("posted") as! Int)
-                challenge.votes = (element as! NSDictionary).valueForKey("votes") as? Int
-                challenge.creatorPost = (element as! NSDictionary).valueForKey("creatorPost") as? String
+        for element in objects {
+        
+            if let item = element as? NSDictionary {
+                let challenge = Challenge()
+                
+                guard
+                    let id = item.valueForKey("_id") as? String,
+                    let title = item.valueForKey("title") as? String,
+                    let creator = item.valueForKey("creator") as? String,
+                    let posted = item.valueForKey("posted") as? Int,
+                    let votes = item.valueForKey("votes") as? Int
+                else {
+                    break
+                }
+                
+                challenge.id = id
+                challenge.title = title
+                challenge.creator = creator
+                challenge.posted = TimeHandler().convertTimestampToNSDate(posted)
+                challenge.votes = votes
+                challenge.creatorPost = item.valueForKey("creatorPost") as? String
+                challenge.description = item.valueForKey("description") as? String
                 
                 challenges.append(challenge)
             }
-            return challenges
-        } catch {
-            print("couldn't serialize data")
         }
-        return []
+        return challenges
     }
     
+    
     func getPostImage(responseData: NSData, postID: String, imageSize: ImageSize) {
-        
         let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
         let imagePath = documentPath.stringByAppendingPathComponent(postID + "_" + imageSize.rawValue + ".webp")
-        
-        print(imagePath)
-
         let fileManager = NSFileManager.defaultManager()
         fileManager.createFileAtPath(imagePath, contents: responseData, attributes: nil)
     }
     
+    
     func getPosts(responseData: NSData) -> [Post] {
-        do {
-            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-            let jsonPosts = jsonDict["posts"] as! NSArray
+        
+        guard
+            let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
+            let objects = json as? NSArray
+        else {
+            print("couldn't serialize data")
+            return []
+        }
+        
+        
+        var posts = [Post]()
+        
+        for element in objects {
             
-            var posts = [Post]()
-            
-            for element in jsonPosts {
-                
+            if let item = element as? NSDictionary {
                 let post = Post()
-                post.id = (element as! NSDictionary).valueForKey("_id") as? String
-                post.description = (element as! NSDictionary).valueForKey("description") as? String
-                post.creator = (element as! NSDictionary).valueForKey("creator") as? String
-                post.posted = TimeHandler().convertTimestampToNSDate((element as! NSDictionary).valueForKey("posted") as! Int)
-                post.votes = (element as! NSDictionary).valueForKey("votes") as? Int
-                post.voters = (element as! NSDictionary).valueForKey("voters") as? [String]
+                
+                guard
+                    let id = item.valueForKey("_id") as? String,
+                    let creator = item.valueForKey("creator") as? String,
+                    let posted = item.valueForKey("posted") as? Int,
+                    let votes = item.valueForKey("votes") as? Int,
+                    let voters = item.valueForKey("voters") as? [String]
+                else {
+                    break
+                }
+                
+                post.id = id
+                post.creator = creator
+                post.posted = TimeHandler().convertTimestampToNSDate(posted)
+                post.votes = votes
+                post.voters = voters
+                post.description = item.valueForKey("description") as? String
                 
                 posts.append(post)
             }
-            return posts
-        } catch {
-            print("couldn't serialize data")
         }
-        return []
+        return posts
     }
     
+    
     func getChallenge(responseData: NSData) -> Challenge {
+        
         let challenge = Challenge()
         
-        do {
-            let jsonDict = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-            challenge.title = jsonDict["title"] as? String
-        } catch {
-            print("couldn't serialize data")
+        guard
+            let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
+            let objects = json as? NSDictionary,
+            let title = objects["title"] as? String
+        else {
+            return challenge
         }
+        challenge.title = title
         return challenge
     }
 }
