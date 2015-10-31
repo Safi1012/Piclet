@@ -31,6 +31,12 @@
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D42F96A61BCC006600544C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
+		D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
+		D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
+		D44248ED1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
+		D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
+		D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
+		D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
 		D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4431D051BBECAE000086759 /* piclet.xcdatamodeld */; };
 		D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
 		D4431D0B1BBECB4B00086759 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D091BBECB4B00086759 /* User.swift */; };
@@ -119,6 +125,8 @@
 		D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidatorTests.swift; sourceTree = "<group>"; };
 		D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
 		D4431D061BBECAE000086759 /* piclet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piclet.xcdatamodel; sourceTree = "<group>"; };
 		D4431D081BBECB4B00086759 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -209,6 +217,7 @@
 		D4438DD21BD6159C000CB909 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */,
 				D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */,
 				D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */,
 			);
@@ -289,6 +298,7 @@
 				D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */,
 				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
 				D4FA80BD1BDAAE1F004682CB /* NavigationViewController.swift */,
+				D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -551,6 +561,7 @@
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
+				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */,
 				D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
@@ -558,6 +569,7 @@
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D4438DBF1BD60685000CB909 /* TimeHandler.swift in Sources */,
+				D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */,
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
@@ -585,6 +597,7 @@
 				D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
+				D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
@@ -604,6 +617,7 @@
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4FA80BB1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
@@ -627,10 +641,12 @@
 				D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
+				D44248ED1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
+				D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
