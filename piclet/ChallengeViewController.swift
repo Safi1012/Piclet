@@ -68,12 +68,7 @@ class ChallengeViewController: UIViewController {
             MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
         })
     }
-    
-    func displayAlert(alertController: UIAlertController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(alertController, animated: true, completion: nil)
-        })
-    }
+
 
     
     
@@ -82,7 +77,7 @@ class ChallengeViewController: UIViewController {
     func refreshChallenges() {
         // showLoadingSpinner()
         
-        apiProxy.getChallenges(nil, offset: "20", success: { (challenges) -> () in
+        apiProxy.getChallenges(nil, offset: "0", success: { (challenges) -> () in
             
             self.challenges = challenges
             dispatch_async(dispatch_get_main_queue(), {
@@ -95,8 +90,7 @@ class ChallengeViewController: UIViewController {
             
             // self.hideLoadingSpinner()
             self.makePullToRefreshEndRefreshing()
-            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
-            
+            self.displayAlert(errorCode)
         }
     }
     
@@ -127,17 +121,18 @@ class ChallengeViewController: UIViewController {
         return true
     }
     
-    func formatVoteText(numberVotes: Int?) -> String {
-        guard
-            let numberVotes = numberVotes
-        else {
-            return "0 votes"
+    func formatVoteText(numberVotes: Int) -> String {
+        if numberVotes == 1 {
+            return "\(numberVotes) vote"
         }
-        
-        if numberVotes > 0 || numberVotes == 0 {
-            return "\(numberVotes) votes"
+        return "\(numberVotes) votes"
+    }
+    
+    func formatNumberPosts(numberPosts: Int) -> String {
+        if numberPosts == 1 {
+            return "\(numberPosts) post"
         }
-        return "\(numberVotes) vote"
+        return "\(numberPosts) posts"
     }
     
     
@@ -172,7 +167,7 @@ extension ChallengeViewController: UITableViewDataSource {
         
         cell.challengeTitleLabel.text = challenges[indexPath.row].title
         cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challenges[indexPath.row].posted)
-        // cell.numberPostsLabel.text =
+        cell.numberPostsLabel.text = formatNumberPosts(challenges[indexPath.row].amountPosts)
         cell.numberLikesLabel.text = formatVoteText(challenges[indexPath.row].votes)
     
         return cell
@@ -191,6 +186,5 @@ extension ChallengeViewController: UITableViewDelegate {
         let challenge = challenges[indexPath.row]
         self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
     }
-
 }
 

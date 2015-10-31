@@ -28,23 +28,7 @@ class CreateViewController: UIViewController {
         createButton.layer.cornerRadius = 5.0
         createButton.layer.masksToBounds = true
     }
-    
-    func displayAlert(alertController: UIAlertController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(alertController, animated: true, completion: nil)
-        })
-    }
-    
-    func displayError(errorCode: String) {
-        if errorCode == "UnauthorizedError" {
-            self.displayAlert(UIAlertController.createAlertWithLoginSegue(errorCode, viewController: self))
-        } else {
-            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
-        }
-    }
-    
-    
-    
+
     @IBAction func pressedCreateButton(sender: UIButton) {
         
         if let challengeName = nameTextField.text {
@@ -53,7 +37,7 @@ class CreateViewController: UIViewController {
             ApiProxy().postNewChallenge(User.getLoggedInUser(managedObjectContext)?.token, challengeName: challengeName, success: { (challenge) -> () in
                 print("\(challenge)")
             }) { (errorCode) -> () in
-                self.displayError(errorCode)
+                self.displayAlert(errorCode)
             }
         }
     }

@@ -42,5 +42,4 @@ class TimeHandler {
         let calendar = NSCalendar.currentCalendar().components([.Second], fromDate: timestamp, toDate: NSDate(), options: [])
         return calendar.second
     }
-    
 }

@@ -24,5 +24,25 @@ extension UIViewController {
     func makePullToRefreshEndRefreshing() {
         refreshControl.endRefreshing()
     }
+    
+    func displayAlert(errorCode: String) {
+        var alertController: UIAlertController
+        
+        switch (errorCode) {
+            
+        case "UnauthorizedError":
+            alertController = UIAlertController.createAlertWithLoginSegue(errorCode, viewController: self)
+            
+        case "NotLoggedIn":
+            alertController = UIAlertController.createAlertWithLoginSegue(errorCode, viewController: self)
+            
+        default:
+            alertController = UIAlertController.createErrorAlert(errorCode)
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
+    }
 }
 

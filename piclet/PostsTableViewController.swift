@@ -54,11 +54,11 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
-    func displayAlert(alertController: UIAlertController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(alertController, animated: true, completion: nil)
-        })
-    }
+//    func displayAlert(alertController: UIAlertController) {
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.presentViewController(alertController, animated: true, completion: nil)
+//        })
+//    }
     
     func reloadTableView() {
         dispatch_async(dispatch_get_main_queue(), {
@@ -84,7 +84,8 @@ class PostsTableViewController: UITableViewController {
                         })
                         
                     }, failed: { (errorCode) -> () in
-                        self.displayLikeFailedError(errorCode, loggedInUser: loggedInUser)
+                        
+                        self.displayAlert(errorCode)
                         self.isRequesting = false
                     })
                 } else {
@@ -98,24 +99,17 @@ class PostsTableViewController: UITableViewController {
                         })
                         
                     }, failed: { (errorCode) -> () in
-                        self.displayLikeFailedError(errorCode, loggedInUser: loggedInUser)
+                        self.displayAlert(errorCode)
                         self.isRequesting = false
                     })
                 }
             }
         } else {
-            self.displayAlert(UIAlertController.createAlertWithLoginSegue("NotLoggedIn", viewController: self))
+            self.displayAlert("NotLoggedIn")
         }
     }
 
-    func displayLikeFailedError(errorCode: String, loggedInUser: User) {
-        if errorCode == "UnauthorizedError" {
-            self.displayAlert(UIAlertController.createAlertWithLoginSegue(errorCode, viewController: self))
-            User.updateUserToken(self.managedObjectContext, user: loggedInUser, newToken: nil) // only when user changed password -> session is invalid, Untested !!
-        } else {
-            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
-        }
-    }
+
     
     
     
@@ -136,7 +130,7 @@ class PostsTableViewController: UITableViewController {
             self.reloadTableView()
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
-            self.displayAlert(UIAlertController.createErrorAlert(errorCode))
+            self.displayAlert(errorCode)
         }
     }
     
@@ -147,7 +141,7 @@ class PostsTableViewController: UITableViewController {
             ApiProxy().getPostImageInSize(nil, challengeID: challenge!.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
                 
             }) { (errorCode) -> () in
-                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
+                self.displayAlert(errorCode)
             }
         }
     }

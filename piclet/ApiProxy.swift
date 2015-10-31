@@ -13,144 +13,135 @@ class ApiProxy {
     var networkHandler: NetworkHandler!
     var objectMapper: ObjectMapper!
     
-    
     init() {
         networkHandler = NetworkHandler()
         objectMapper = ObjectMapper()
     }
 
-    
     func handleUser(username: String, password: String, apiPath: String, success: () -> (), failed: (errorCode: String) -> ()) {
         
         let body = ["username" : (username), "password" :  (password), "os" : "ios"]
         
         networkHandler.createRequest(body, apiPath: apiPath, httpVerb: "POST", bearerToken: nil, validRequest: { (validResponseData) -> () in
-
-            self.objectMapper.createUserToken(validResponseData!, username: username)
+            self.objectMapper.createUserToken(validResponseData, username: username)
             success()
             
         }, inValidRequest: { (invalidResponseData) -> () in
-
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
             
         }) { (errorCode) -> () in
-            
             failed(errorCode: errorCode)
+            
         }
     }
     
     func deleteToken(token: String, success: () -> (), failed: (errorCode: String) -> ()) {
         
         networkHandler.createRequest([:], apiPath: "tokens", httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
-            
             success()
             
         }, inValidRequest: { (invalidResponseData) -> () in
-            
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
             
         }) { (errorCode) -> () in
-            
             failed(errorCode: errorCode)
+            
         }
     }
-    
     
     func getChallenges(token: String?, offset: String, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
         
         let apiPath = "challenges?offset=" + offset
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
-            
-            success(challenges: self.objectMapper.getChallenges(validResponseData!))
+            success(challenges: self.objectMapper.getChallenges(validResponseData))
             
         }, inValidRequest: { (invalidResponseData) -> () in
-            
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
             
         }) { (errorCode) -> () in
-            
             failed(errorCode: errorCode)
+            
         }
     }
     
     func getPostImageInSize(token: String?, challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
     
-        let apiURL = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
+        let apiPath = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
         
-        networkHandler.createRequest([:], apiPath: apiURL, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
-            
-            self.objectMapper.getPostImage(validResponseData!, postID: postID, imageSize: imageSize)
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
+            self.objectMapper.getPostImage(validResponseData, postID: postID, imageSize: imageSize)
             success()
             
         }, inValidRequest: { (invalidResponseData) -> () in
-            
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
             
         }) { (errorCode) -> () in
-            
             failed(errorCode: errorCode)
+            
         }
     }
     
     func getChallengesPosts(challengeID: String, success: (posts: [Post]) -> (), failed: (errorCode: String) -> ()) {
         
         networkHandler.createRequest([:], apiPath: ("challenges/" + challengeID), httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            
-            success(posts: self.objectMapper.getPosts(validResponseData!))
+            success(posts: self.objectMapper.getPosts(validResponseData))
             
         }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
             
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
         }) { (errorCode) -> () in
-            
             failed(errorCode: errorCode)
+            
         }
     }
     
     func likeChallengePost(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
         
-        let apiURL = "challenges/\(challengeID)/posts/\(postID)/like"
+        let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
         
-        networkHandler.createRequest([:], apiPath: apiURL, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
             success()
+            
         }, inValidRequest: { (invalidResponseData) -> () in
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
         }) { (errorCode) -> () in
             failed(errorCode: errorCode)
+            
         }
     }
     
     func revertLikeChallengePost(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
         
-        let apiURL = "challenges/\(challengeID)/posts/\(postID)/like"
+        let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
+        let body = ["challenge-id" : (challengeID), "post-id" : (postID)]
         
-        networkHandler.createRequest(["challenge-id" : (challengeID), "post-id" : (postID)], apiPath: apiURL, httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.createRequest(body, apiPath: apiPath, httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
             success()
+            
         }, inValidRequest: { (invalidResponseData) -> () in
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
         }) { (errorCode) -> () in
             failed(errorCode: errorCode)
+            
         }
     }
     
     func postNewChallenge(token: String?, challengeName: String, success: (challenge: Challenge) -> (), failed: (errorCode: String) -> () ){
         
         networkHandler.createRequest(["title" : (challengeName)], apiPath: "challenges", httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
+            success(challenge: self.objectMapper.getChallenge(validResponseData))
             
-            success(challenge: self.objectMapper.getChallenge(validResponseData!))
         }, inValidRequest: { (invalidResponseData) -> () in
-            invalidResponseData != nil ? failed(errorCode: self.objectMapper.parseError(invalidResponseData!)) : failed(errorCode: "")
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
         }) { (errorCode) -> () in
             failed(errorCode: errorCode)
+            
         }
     }
-    
-    
-    
-    
-    
-    
 }
 
 enum ImageSize: String {

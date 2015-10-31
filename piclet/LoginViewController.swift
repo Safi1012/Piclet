@@ -73,11 +73,11 @@ class LoginViewController: UIViewController {
         })
     }
     
-    func displayAlert(alertController: UIAlertController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.presentViewController(alertController, animated: true, completion: nil)
-        })
-    }
+//    func displayAlert(alertController: UIAlertController) {
+//        dispatch_async(dispatch_get_main_queue(), {
+//            self.presentViewController(alertController, animated: true, completion: nil)
+//        })
+//    }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -100,7 +100,7 @@ class LoginViewController: UIViewController {
             }) { (errorCode) -> () in
                     
                 self.hideLoadingSpinner()
-                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
+                self.displayAlert(errorCode)
             }
         }
     }
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController {
             }) { (errorCode) -> () in
                     
                 self.hideLoadingSpinner()
-                self.displayAlert(UIAlertController.createErrorAlert(errorCode))
+                self.displayAlert(errorCode)
             }
         }
     }
@@ -126,15 +126,15 @@ class LoginViewController: UIViewController {
     func validateTextFields() -> Bool {
         
         if (!userDataValidator.isUsernameLongEnough(usernameTextField.text!)) {
-            self.displayAlert(UIAlertController.createErrorAlert("UsernameTooShort"))
+            self.displayAlert("UsernameTooShort")
             return false
         }
         if (userDataValidator.containsSpecialCharacters(usernameTextField.text!)) {
-            self.displayAlert(UIAlertController.createErrorAlert("UsernameWrongCharacters"))
+            self.displayAlert("UsernameWrongCharacters")
             return false
         }
         if (!userDataValidator.isPasswordLongEnough(passwordTextField.text!)) {
-            self.displayAlert(UIAlertController.createErrorAlert("PasswordTooShort"))
+            self.displayAlert("PasswordTooShort")
             return false
         }
         return true

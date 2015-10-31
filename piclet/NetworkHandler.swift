@@ -11,7 +11,7 @@ import Foundation
 class NetworkHandler: NSObject {
     
     func createRequest(apiParameters: Dictionary<String, String>, apiPath: String,
-        httpVerb: String, bearerToken: String?, validRequest: (validResponseData: NSData?) -> (), inValidRequest: (invalidResponseData: NSData?) -> (), networkError: (errorCode: String) -> ()) {
+        httpVerb: String, bearerToken: String?, validRequest: (validResponseData: NSData) -> (), inValidRequest: (invalidResponseData: NSData) -> (), networkError: (errorCode: String) -> ()) {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://flash1293.de/" + apiPath)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 5.0)
             request.HTTPMethod = httpVerb
@@ -34,18 +34,21 @@ class NetworkHandler: NSObject {
             if error != nil {
                 print("NetworkError: \(error)")
                 networkError(errorCode: "NetworkError")
-                
             } else {
                 if let httpResponse = response as? NSHTTPURLResponse {
                     
-                    switch (httpResponse.statusCode) {
-                        
-                    case 200...299:
-                        validRequest(validResponseData: responseData)
-                    case 400...599:
-                        inValidRequest(invalidResponseData: responseData)
-                    default:
-                        break
+                    if let responseData = responseData {
+                        switch (httpResponse.statusCode) {
+                            
+                        case 200...299:
+                            validRequest(validResponseData: responseData)
+                        case 400...599:
+                            inValidRequest(invalidResponseData: responseData)
+                        default:
+                            break
+                        }
+                    } else {
+                        networkError(errorCode: "")
                     }
                 }
             }
