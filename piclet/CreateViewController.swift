@@ -18,26 +18,26 @@ class CreateViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        styleCreateButton()
+        // styleCreateButton()
         nameTextField.delegate = self
     }
     
     func styleCreateButton() {
         createButton.layer.borderWidth = 1.0
-        createButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+        createButton.layer.borderColor = UIColor.whiteColor().CGColor
         createButton.layer.cornerRadius = 5.0
         createButton.layer.masksToBounds = true
     }
 
-    @IBAction func pressedCreateButton(sender: UIButton) {
-        
+    @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
         if let challengeName = nameTextField.text {
             
-            // token must be non optional -> otherwise no correct errorhandling possible
             ApiProxy().postNewChallenge(User.getLoggedInUser(managedObjectContext)?.token, challengeName: challengeName, success: { (challenge) -> () in
-                print("\(challenge)")
-            }) { (errorCode) -> () in
-                self.displayAlert(errorCode)
+                self.performSegueWithIdentifier("unwindToChallengeViewController", sender: self)
+                
+                }) { (errorCode) -> () in
+                    self.displayAlert(errorCode)
+                    
             }
         }
     }

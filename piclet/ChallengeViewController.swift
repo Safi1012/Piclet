@@ -29,7 +29,8 @@ class ChallengeViewController: UIViewController {
         styleNavigationBar()
         tableView.dataSource = self
         tableView.delegate = self
-        // self.makePullToRefreshToTableView(tableView, triggerToMethodName: "test") // todo: call method which refreshes -> check how offset should work
+        
+        self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refresh") // todo: call method which refreshes -> check how offset should work
         
         if segmentedControl.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
             challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
@@ -83,18 +84,20 @@ class ChallengeViewController: UIViewController {
         refreshSelectedSection(0) // todo: check whether hot | new -> pick the right offset (tableView)
     }
 
+
+    
     
     // MARK: - Challenge
     
     func refreshSelectedSection(offset: Int) {
         if shouldRefreshChallenge(challengeCollection.timestamp) {
-            refreshChallenges(offset, order: challengeCollection.section)
+            refreshChallenges(offset)
         }
     }
     
-    func refreshChallenges(offset: Int, order: SegmentedControlState) {
+    func refreshChallenges(offset: Int) {
         
-        apiProxy.getChallenges(nil, offset: offset, orderby: order, success: { (challenges) -> () in
+        apiProxy.getChallenges(nil, offset: offset, orderby: challengeCollection.section, success: { (challenges) -> () in
             self.challengeCollection.challenge = challenges
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -122,8 +125,8 @@ class ChallengeViewController: UIViewController {
         return true
     }
     
-    func refreshChallenges() {
-        
+    func refresh() {
+        refreshChallenges(0)
     }
     
     func formatVoteText(numberVotes: Int) -> String {
@@ -150,6 +153,10 @@ class ChallengeViewController: UIViewController {
             let destinationVC = segue.destinationViewController as! PostsTableViewController
             destinationVC.challenge = (sender as? Challenge)
         }
+    }
+    
+    @IBAction func unwindToChallengeViewController(segue: UIStoryboardSegue) {
+        print("BACK again")
     }
 }
 

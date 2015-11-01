@@ -13,14 +13,14 @@ class CreateTextField: UITextField {
     override func drawRect(rect: CGRect) {
         addBottomBorder()
         
-        // colorizePlaceholder()
+        colorizePlaceholder()
         colorizeTextinput()
     }
     
     func addBottomBorder() {
         let bottomBorder = CALayer()
             bottomBorder.frame = CGRectMake(0.0, self.frame.size.height - 1, self.frame.size.width, 1.0);
-            bottomBorder.backgroundColor = UIColor.lightGrayColor().CGColor
+            bottomBorder.backgroundColor = UIColor.whiteColor().CGColor
         
         self.layer.addSublayer(bottomBorder)
     }
@@ -30,6 +30,6 @@ class CreateTextField: UITextField {
     }
     
     func colorizeTextinput() {
-        self.textColor = UIColor.darkTextColor()
+        self.textColor = UIColor.whiteColor()
     }
 }

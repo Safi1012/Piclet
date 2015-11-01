@@ -329,7 +329,16 @@
                             <constraint firstItem="l7w-dO-ttg" firstAttribute="top" secondItem="mYa-wf-Hjw" secondAttribute="bottom" id="w19-fo-Qay"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Challenges" id="0T2-mm-B6R"/>
+                    <navigationItem key="navigationItem" title="Challenges" id="0T2-mm-B6R">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="88w-cB-k2t">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="rSA-2F-2xF" kind="popoverPresentation" popoverAnchorBarButtonItem="88w-cB-k2t" id="bwF-nh-oEs">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="6gd-fn-GhR" id="XRE-jL-cqG"/>
                         <outlet property="tableView" destination="mYa-wf-Hjw" id="mkI-VS-iEf"/>
@@ -465,67 +474,70 @@
             </objects>
             <point key="canvasLocation" x="3293" y="-103"/>
         </scene>
-        <!--Add a Post-->
+        <!--Create Challenge-->
         <scene sceneID="1Kj-5u-uMN">
             <objects>
-                <viewController id="nj5-3i-b6o" sceneMemberID="viewController">
+                <viewController id="nj5-3i-b6o" customClass="CreateViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zm4-mz-eLz"/>
                         <viewControllerLayoutGuide type="bottom" id="Lzg-gE-XPD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="C7k-rE-Yvv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b6b-qZ-koQ">
-                                <rect key="frame" x="157" y="283" width="240" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foC-iY-hci">
+                                <rect key="frame" x="228" y="188" width="145" height="24"/>
                                 <animations/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTF-Br-OTB">
-                                <rect key="frame" x="392" y="253" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpK-2N-Mw0">
-                                <rect key="frame" x="261" y="442" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foC-iY-hci">
-                                <rect key="frame" x="45" y="129" width="119" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="AVc-8N-lNC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a description (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRK-o6-hcR">
-                                <rect key="frame" x="45" y="225" width="240" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dYY-i1-uQo" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="215" y="234" width="171" height="17"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dYY-i1-uQo">
-                                <rect key="frame" x="45" y="158" width="97" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="59V-hR-IL0">
-                                <rect key="frame" x="45" y="254" width="97" height="30"/>
-                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="171" id="hYc-Nm-UvW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.1450980392" green="0.18360114521034485" blue="0.28378760993793101" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dYY-i1-uQo" firstAttribute="centerX" secondItem="C7k-rE-Yvv" secondAttribute="centerX" id="X6u-7b-V3F"/>
+                            <constraint firstItem="foC-iY-hci" firstAttribute="top" secondItem="zm4-mz-eLz" secondAttribute="bottom" constant="188" id="cDh-AJ-IMm"/>
+                            <constraint firstItem="foC-iY-hci" firstAttribute="centerX" secondItem="C7k-rE-Yvv" secondAttribute="centerX" id="e3R-d6-azU"/>
+                            <constraint firstItem="dYY-i1-uQo" firstAttribute="top" secondItem="foC-iY-hci" secondAttribute="bottom" constant="22" id="yvx-Za-8zZ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add a Post" id="m22-YC-Z18"/>
+                    <navigationItem key="navigationItem" title="Create Challenge" id="m22-YC-Z18">
+                        <barButtonItem key="leftBarButtonItem" image="navBarCancel" id="A2F-fg-1me">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="AII-P9-GCF" kind="unwind" identifier="unwindToChallengeViewController" unwindAction="unwindToChallengeViewController:" id="u1h-Rb-2WA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="ejA-ZH-7f2">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="pressedCreateTabBar:" destination="nj5-3i-b6o" id="Ehs-04-5Oh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="dYY-i1-uQo" id="VKG-L9-RnQ"/>
+                        <segue destination="AII-P9-GCF" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="Ev1-Br-SbF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3xf-SR-a21" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="AII-P9-GCF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4146" y="-971"/>
+            <point key="canvasLocation" x="4038" y="-859"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="8F0-Vp-ns7">
@@ -698,6 +710,26 @@
             </objects>
             <point key="canvasLocation" x="4038" y="-103"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bst-Yo-u8e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rSA-2F-2xF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="sYi-iA-jZD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="barTintColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nj5-3i-b6o" kind="relationship" relationship="rootViewController" id="FO3-lb-OFo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ld4-GY-8hH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3293" y="-859"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backgroundLogin" width="400" height="660"/>
@@ -706,6 +738,7 @@
         <image name="challengePosts" width="20" height="20"/>
         <image name="challengePreviewPlaceholder" width="500" height="500"/>
         <image name="likeUnfilled" width="25" height="25"/>
+        <image name="navBarCancel" width="22" height="22"/>
         <image name="tabBarChallenges" width="25" height="25"/>
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>

@@ -152,7 +152,7 @@ class PostsTableViewController: UITableViewController {
             let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
             
             if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-                return true
+                // return true
             }
         }
         return false
