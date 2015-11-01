@@ -37,6 +37,9 @@
 		D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
 		D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
 		D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
+		D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
+		D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
+		D44248F91BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
 		D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4431D051BBECAE000086759 /* piclet.xcdatamodeld */; };
 		D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
 		D4431D0B1BBECB4B00086759 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D091BBECB4B00086759 /* User.swift */; };
@@ -127,6 +130,7 @@
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
+		D44248F61BE583E100C88B50 /* ChallengeCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCollection.swift; sourceTree = "<group>"; };
 		D4431D061BBECAE000086759 /* piclet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piclet.xcdatamodel; sourceTree = "<group>"; };
 		D4431D081BBECB4B00086759 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				D4105BEE1BBE65AC006D742D /* ApiProxy.swift */,
 				D4445B7F1BB84D76005D155F /* ObjectMapper.swift */,
 				D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */,
+				D44248F61BE583E100C88B50 /* ChallengeCollection.swift */,
 				D462CB711BCBD1D000701EFF /* Challenge.swift */,
 				D462CB731BCBD3EE00701EFF /* Post.swift */,
 				D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */,
@@ -560,6 +565,7 @@
 				D4438DB71BD521DA000CB909 /* CreateViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
+				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
@@ -613,6 +619,7 @@
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
 				D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
+				D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
@@ -649,6 +656,7 @@
 				D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
+				D44248F91BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D4CDEAB11BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */,

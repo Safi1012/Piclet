@@ -155,6 +155,9 @@
                                             <segment title="New"/>
                                         </segments>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="pressedSegmentedControl:" destination="eHZ-hb-ZXc" eventType="valueChanged" id="8lt-OR-mhC"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <animations/>

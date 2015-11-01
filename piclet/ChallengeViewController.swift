@@ -15,10 +15,9 @@ class ChallengeViewController: UIViewController {
     
     
     let apiProxy = ApiProxy()
-    var challenges = [Challenge]()
     
-    var hotTimestamp: NSDate?
-    var newTimestamp: NSDate?
+    var challengeCollection: ChallengeCollection!
+
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
@@ -30,6 +29,13 @@ class ChallengeViewController: UIViewController {
         styleNavigationBar()
         tableView.dataSource = self
         tableView.delegate = self
+        // self.makePullToRefreshToTableView(tableView, triggerToMethodName: "test") // todo: call method which refreshes -> check how offset should work
+        
+        if segmentedControl.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
+            challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
+        } else  {
+            challengeCollection = ChallengeCollection(section: SegmentedControlState.new)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,9 +48,7 @@ class ChallengeViewController: UIViewController {
         super.viewDidAppear(animated)
 
         tableView.flashScrollIndicators()
-        self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refreshChallenges")
-        
-        refreshChallenges()
+        refreshSelectedSection(0) // todo: check whether hot | new -> pick the right offset (tableView)
     }
 
     
@@ -69,44 +73,41 @@ class ChallengeViewController: UIViewController {
         })
     }
 
+    @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
+            challengeCollection.section = SegmentedControlState.hot
+        } else {
+            challengeCollection.section = SegmentedControlState.new
+        }
+        refreshSelectedSection(0) // todo: check whether hot | new -> pick the right offset (tableView)
+    }
 
-    
     
     // MARK: - Challenge
     
-    func refreshChallenges() {
-        // showLoadingSpinner()
-        
-        apiProxy.getChallenges(nil, offset: "0", success: { (challenges) -> () in
-            
-            self.challenges = challenges
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-                self.makePullToRefreshEndRefreshing()
-                // self.hideLoadingSpinner()
-            })
-            
-        }) { (errorCode) -> () in
-            
-            // self.hideLoadingSpinner()
-            self.makePullToRefreshEndRefreshing()
-            self.displayAlert(errorCode)
+    func refreshSelectedSection(offset: Int) {
+        if shouldRefreshChallenge(challengeCollection.timestamp) {
+            refreshChallenges(offset, order: challengeCollection.section)
         }
     }
     
-//    func refreshHotChallenges() {
-//        // toDo
-//        // time fetch only after 5 minutes new..
-//        if shouldRefreshChallenge(<#T##timestamp: NSDate?##NSDate?#>)
-//    
-//    }
-//    
-//    func refreshNewChallenges() {
-//        // toDo
-//    }
-    
-    
-    
+    func refreshChallenges(offset: Int, order: SegmentedControlState) {
+        
+        apiProxy.getChallenges(nil, offset: offset, orderby: order, success: { (challenges) -> () in
+            self.challengeCollection.challenge = challenges
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
+                self.makePullToRefreshEndRefreshing()
+            })
+            
+        }) { (errorCode) -> () in
+            self.makePullToRefreshEndRefreshing()
+            self.displayAlert(errorCode)
+            
+        }
+    }
     
     func shouldRefreshChallenge(var timestamp: NSDate?) -> Bool {   
         if var timestamp = timestamp {
@@ -119,6 +120,10 @@ class ChallengeViewController: UIViewController {
         }
         timestamp = NSDate()
         return true
+    }
+    
+    func refreshChallenges() {
+        
     }
     
     func formatVoteText(numberVotes: Int) -> String {
@@ -155,20 +160,20 @@ class ChallengeViewController: UIViewController {
 extension ChallengeViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return challenges.count > 0 ? 1 : 0
+        return challengeCollection.challenge.count > 0 ? 1 : 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return challenges.count
+        return challengeCollection.challenge.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ChallengeTableViewCell
         
-        cell.challengeTitleLabel.text = challenges[indexPath.row].title
-        cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challenges[indexPath.row].posted)
-        cell.numberPostsLabel.text = formatNumberPosts(challenges[indexPath.row].amountPosts)
-        cell.numberLikesLabel.text = formatVoteText(challenges[indexPath.row].votes)
+        cell.challengeTitleLabel.text = challengeCollection.challenge[indexPath.row].title
+        cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challengeCollection.challenge[indexPath.row].posted)
+        cell.numberPostsLabel.text = formatNumberPosts(challengeCollection.challenge[indexPath.row].amountPosts)
+        cell.numberLikesLabel.text = formatVoteText(challengeCollection.challenge[indexPath.row].votes)
     
         return cell
     }
@@ -183,8 +188,16 @@ extension ChallengeViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
-        let challenge = challenges[indexPath.row]
+        let challenge = challengeCollection.challenge[indexPath.row]
         self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
     }
+}
+
+
+// MARK: - SegmentedControlState Enum
+
+enum SegmentedControlState: Int {
+    case hot = 0
+    case new = 1
 }
 

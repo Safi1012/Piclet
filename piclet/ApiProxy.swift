@@ -49,9 +49,10 @@ class ApiProxy {
         }
     }
     
-    func getChallenges(token: String?, offset: String, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
+    func getChallenges(token: String?, offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
         
-        let apiPath = "challenges?offset=" + offset
+        let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
+        let apiPath = "challenges?offset=\(offset)" + "&orderby=\(orderbyString)"
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
             success(challenges: self.objectMapper.getChallenges(validResponseData))
@@ -155,4 +156,7 @@ enum ImageFormat: String {
     case webp = "webp"
 }
 
-
+enum ChallengeOrder: String {
+    case hot = "hot"
+    case new = "new"
+}
