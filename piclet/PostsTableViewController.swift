@@ -138,6 +138,13 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toImagePickerViewController" {
+            let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! ImagePickerViewController
+            destinationVC.token = User.getLoggedInUser(managedObjectContext)!.token!
+        }
+    }
+    
     @IBAction func unwindToPostTableViewController(segue: UIStoryboardSegue) {
         print("BACK again")
     }

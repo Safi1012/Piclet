@@ -12,32 +12,15 @@ class CreateChallengeViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var createButton: UIButton!
-    
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var token: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // styleCreateButton()
+        
         nameTextField.delegate = self
-    }
-    
-    func styleCreateButton() {
-        createButton.layer.borderWidth = 1.0
-        createButton.layer.borderColor = UIColor.whiteColor().CGColor
-        createButton.layer.cornerRadius = 5.0
-        createButton.layer.masksToBounds = true
     }
 
     @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
-        
-        guard
-            let loggedInUser = User.getLoggedInUser(managedObjectContext),
-            let token = loggedInUser.token
-        else {
-            self.displayAlert("NotLoggedIn")
-            return
-        }
         
         if validateTextField() {
             ApiProxy().postNewChallenge(token, challengeName: nameTextField.text!, success: { (challenge) -> () in

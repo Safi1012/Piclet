@@ -12,6 +12,7 @@ class ImagePickerViewController: UIViewController {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buttonView: UIView!
+    var token: String!
     
     
     override func viewDidLoad() {

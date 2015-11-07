@@ -148,6 +148,10 @@ class ChallengeViewController: UIViewController {
             let destinationVC = segue.destinationViewController as! PostsTableViewController
             destinationVC.challenge = (sender as? Challenge)
         }
+        if segue.identifier == "toCreateChallengeViewController" {
+            let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! CreateChallengeViewController
+            destinationVC.token = User.getLoggedInUser(managedObjectContext)!.token!
+        }
     }
     
     @IBAction func unwindToChallengeViewController(segue: UIStoryboardSegue) {
