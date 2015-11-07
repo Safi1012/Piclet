@@ -457,15 +457,14 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Z0u-8a-hW1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="gMB-SO-Dbd" kind="popoverPresentation" popoverAnchorBarButtonItem="Z0u-8a-hW1" id="VxN-LN-DI5">
-                                    <popoverArrowDirection key="popoverArrowDirection" down="YES"/>
-                                </segue>
+                                <action selector="pressedCreatePost:" destination="kCH-63-aGA" id="Jg5-HO-MxN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="eRt-RR-bW3" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="59D-Bl-4Rg"/>
+                        <segue destination="gMB-SO-Dbd" kind="presentation" identifier="toImagePickerViewController" id="rva-Qb-0rm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNb-re-YdF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,62 +631,94 @@
         <!--Add a Post-->
         <scene sceneID="p9L-CO-9aV">
             <objects>
-                <viewController id="Stj-pU-3ey" sceneMemberID="viewController">
+                <viewController id="Stj-pU-3ey" customClass="ImagePickerViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v8d-xm-TB9"/>
                         <viewControllerLayoutGuide type="bottom" id="SCT-RH-UZE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="c1R-Qs-U15">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlL-Ro-MKg">
-                                <rect key="frame" x="157" y="283" width="240" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDD-u9-Ctt" userLabel="descriptionLabel">
+                                <rect key="frame" x="215" y="220" width="170.5" height="24"/>
                                 <animations/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Djq-dn-iHh">
-                                <rect key="frame" x="392" y="253" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEu-bo-a8Y">
-                                <rect key="frame" x="261" y="442" width="46" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRH-iP-awI">
-                                <rect key="frame" x="45" y="129" width="119" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a description (optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O5A-Ec-aqI">
-                                <rect key="frame" x="45" y="225" width="240" height="21"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="el3-1f-3iD" userLabel="buttonView">
+                                <rect key="frame" x="224" y="252" width="150" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTL-CA-CaA" userLabel="cameraRollButton">
+                                        <rect key="frame" x="86" y="0.0" width="64" height="64"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="36G-GJ-MKr"/>
+                                            <constraint firstAttribute="width" constant="64" id="8xr-xj-bwE"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="cameraRollMovie"/>
+                                        <connections>
+                                            <action selector="pressedCameraRoll:" destination="Stj-pU-3ey" eventType="touchUpInside" id="edi-lq-aGv"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eR-PL-Nx8" userLabel="cameraButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="64" id="4D7-AG-tqJ"/>
+                                            <constraint firstAttribute="height" constant="64" id="rPG-GM-yH1"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="cameraUnfilled"/>
+                                        <connections>
+                                            <action selector="pressedCamera:" destination="Stj-pU-3ey" eventType="touchUpInside" id="UC6-T6-wQs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2L-IC-Loh">
-                                <rect key="frame" x="45" y="158" width="97" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DHR-oH-16E">
-                                <rect key="frame" x="45" y="254" width="97" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="6tX-DH-JFr"/>
+                                    <constraint firstAttribute="bottom" secondItem="0eR-PL-Nx8" secondAttribute="bottom" id="FKV-Bg-xne"/>
+                                    <constraint firstItem="0eR-PL-Nx8" firstAttribute="top" secondItem="el3-1f-3iD" secondAttribute="top" id="HNE-uc-R1U"/>
+                                    <constraint firstAttribute="bottom" secondItem="JTL-CA-CaA" secondAttribute="bottom" id="Hm6-Nb-PT5"/>
+                                    <constraint firstAttribute="height" constant="64" id="NIu-aS-TD1"/>
+                                    <constraint firstItem="JTL-CA-CaA" firstAttribute="leading" secondItem="0eR-PL-Nx8" secondAttribute="trailing" constant="22" id="TDr-kA-h4S"/>
+                                    <constraint firstItem="JTL-CA-CaA" firstAttribute="top" secondItem="el3-1f-3iD" secondAttribute="top" id="bhE-nb-JaK"/>
+                                    <constraint firstAttribute="trailing" secondItem="JTL-CA-CaA" secondAttribute="trailing" id="kks-2a-9kf"/>
+                                    <constraint firstItem="0eR-PL-Nx8" firstAttribute="leading" secondItem="el3-1f-3iD" secondAttribute="leading" id="rQW-et-c29"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WDD-u9-Ctt" firstAttribute="top" secondItem="v8d-xm-TB9" secondAttribute="bottom" constant="220" id="3Hc-9a-xqU"/>
+                            <constraint firstItem="el3-1f-3iD" firstAttribute="top" secondItem="WDD-u9-Ctt" secondAttribute="bottom" constant="8" id="f3U-N4-yK9"/>
+                            <constraint firstItem="el3-1f-3iD" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" constant="-1" id="mXd-xr-FcZ"/>
+                            <constraint firstItem="WDD-u9-Ctt" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" id="ux6-OE-bAT"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Add a Post" id="hBb-eC-jYc"/>
+                    <navigationItem key="navigationItem" title="Add a Post" id="hBb-eC-jYc">
+                        <barButtonItem key="leftBarButtonItem" image="navBarCancel" id="lhW-Fb-tH7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="ORL-r6-Oph" kind="unwind" unwindAction="unwindToPostTableViewController:" id="jC5-PZ-kx3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="navBarNext" id="Jka-MI-dES">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonView" destination="el3-1f-3iD" id="TVz-Te-rBp"/>
+                        <outlet property="descriptionLabel" destination="WDD-u9-Ctt" id="fjA-xr-gDK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaU-k6-jcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ORL-r6-Oph" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4850" y="-103"/>
         </scene>
@@ -696,10 +727,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gMB-SO-Dbd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mmr-Bb-JGO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mmr-Bb-JGO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
+                        <color key="barTintColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -733,12 +765,15 @@
     </scenes>
     <resources>
         <image name="backgroundLogin" width="400" height="660"/>
+        <image name="cameraRollMovie" width="32" height="32"/>
+        <image name="cameraUnfilled" width="32" height="32"/>
         <image name="challengeClock" width="20" height="20"/>
         <image name="challengeLike" width="20" height="20"/>
         <image name="challengePosts" width="20" height="20"/>
         <image name="challengePreviewPlaceholder" width="500" height="500"/>
         <image name="likeUnfilled" width="25" height="25"/>
         <image name="navBarCancel" width="22" height="22"/>
+        <image name="navBarNext" width="22" height="22"/>
         <image name="tabBarChallenges" width="25" height="25"/>
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>

@@ -82,6 +82,9 @@
 		D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912351BAC03C40012CE7C /* picletUITests.swift */; };
 		D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; };
 		D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; };
+		D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
+		D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
+		D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; };
 		D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; };
 		D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; };
@@ -165,6 +168,7 @@
 		D46912351BAC03C40012CE7C /* picletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picletUITests.swift; sourceTree = "<group>"; };
 		D46912371BAC03C40012CE7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46912461BAC0D970012CE7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C791BCCC901006C702A /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -213,13 +217,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D4438DB51BD521B2000CB909 /* Create */ = {
+		D4438DB51BD521B2000CB909 /* CreateChallenge */ = {
 			isa = PBXGroup;
 			children = (
 				D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */,
 				D4438DBA1BD57883000CB909 /* CreateTextField.swift */,
 			);
-			name = Create;
+			name = CreateChallenge;
 			sourceTree = "<group>";
 		};
 		D4438DD21BD6159C000CB909 /* Extension */ = {
@@ -301,7 +305,8 @@
 			children = (
 				D47E5E251BD293A0003E9351 /* Challenges */,
 				D47E5E261BD293AE003E9351 /* Posts */,
-				D4438DB51BD521B2000CB909 /* Create */,
+				D4783E6A1BEDE07D007FAF9E /* CreatePost */,
+				D4438DB51BD521B2000CB909 /* CreateChallenge */,
 				D47E5E271BD293BD003E9351 /* Profile */,
 				D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */,
 				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
@@ -347,6 +352,14 @@
 				D4438DCA1BD60ABD000CB909 /* Localizable.strings */,
 			);
 			name = Others;
+			sourceTree = "<group>";
+		};
+		D4783E6A1BEDE07D007FAF9E /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */,
+			);
+			name = CreatePost;
 			sourceTree = "<group>";
 		};
 		D47E5E251BD293A0003E9351 /* Challenges */ = {
@@ -593,6 +606,7 @@
 				D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */,
 				D4CDEAAF1BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
+				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
@@ -630,6 +644,7 @@
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4FA80BB1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
@@ -652,6 +667,7 @@
 				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
+				D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,

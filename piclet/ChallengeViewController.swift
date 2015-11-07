@@ -72,15 +72,13 @@ class ChallengeViewController: UIViewController {
     }
 
     @IBAction func pressedCreateChallenge(sender: UIBarButtonItem) {
-        
-        guard
-            let loggedInUser = User.getLoggedInUser(managedObjectContext),
-            let token = loggedInUser.token
-        else {
-            self.displayAlert("NotLoggedIn")
-            return
+        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+            if loggedInUser.token != nil {
+                performSegueWithIdentifier("toCreateChallengeViewController", sender: self)
+                return
+            }
         }
-        performSegueWithIdentifier("toCreateChallengeViewController", sender: self)
+        self.displayAlert("NotLoggedIn")
     }
 
     

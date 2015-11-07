@@ -47,7 +47,17 @@ class PostsTableViewController: UITableViewController {
         })
     }
 
-
+    @IBAction func pressedCreatePost(sender: UIBarButtonItem) {
+        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+            if loggedInUser.token != nil {
+                performSegueWithIdentifier("toImagePickerViewController", sender: self)
+                return
+            }
+        }
+        self.displayAlert("NotLoggedIn")
+    }
+    
+    
     
     // MARK: - Posts
     
@@ -122,6 +132,14 @@ class PostsTableViewController: UITableViewController {
                 self.isRequesting = false
                 
         }
+    }
+    
+    
+    
+    // MARK: - Navigation
+    
+    @IBAction func unwindToPostTableViewController(segue: UIStoryboardSegue) {
+        print("BACK again")
     }
     
     
