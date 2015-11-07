@@ -45,16 +45,27 @@ extension UIViewController {
         })
     }
     
-    func showLoadingSpinner() {
+    func showLoadingSpinner(viewController: UIViewController) {
         dispatch_async(dispatch_get_main_queue(), {
-            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
-            loadingSpinner.labelText = "Loading Data"
+            if viewController.isKindOfClass(UITableViewController) {
+                let tableView = (viewController as! UITableViewController).view
+                let loadingSpinner = MBProgressHUD.showHUDAddedTo(tableView.superview, animated: true)
+                loadingSpinner.labelText = "Loading Data"
+            } else {
+                let loadingSpinner = MBProgressHUD.showHUDAddedTo(viewController.view, animated: true)
+                loadingSpinner.labelText = "Loading Data"
+            }
         })
     }
     
-    func hideLoadingSpinner() {
+    func hideLoadingSpinner(viewController: UIViewController) {
         dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
+            if viewController.isKindOfClass(UITableViewController) {
+                let tableView = (viewController as! UITableViewController).view
+                MBProgressHUD.hideHUDForView(tableView.superview, animated: true)
+            } else {
+                MBProgressHUD.hideHUDForView(viewController.view, animated: true)
+            }
         })
     }
 }
