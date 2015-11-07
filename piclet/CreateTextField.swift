@@ -20,16 +20,16 @@ class CreateTextField: UITextField {
     func addBottomBorder() {
         let bottomBorder = CALayer()
             bottomBorder.frame = CGRectMake(0.0, self.frame.size.height - 1, self.frame.size.width, 1.0);
-            bottomBorder.backgroundColor = UIColor.whiteColor().CGColor
+            bottomBorder.backgroundColor = UIColor.darkTextColor().CGColor
         
         self.layer.addSublayer(bottomBorder)
     }
     
     func colorizePlaceholder() {
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.lightTextColor()])
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.darkTextColor()])
     }
     
     func colorizeTextinput() {
-        self.textColor = UIColor.whiteColor()
+        self.textColor = UIColor.darkTextColor()
     }
 }

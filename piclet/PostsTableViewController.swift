@@ -11,17 +11,11 @@ import UIKit
 class PostsTableViewController: UITableViewController {
     
     var challenge: Challenge!
-
-    
     var posts = [Post]()
-    
     var isRequesting = false
-    
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,31 +28,12 @@ class PostsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        refreshPosts()
+        // refreshPosts()
     }
     
     
 
     // MARK: - UI
-    
-    func showLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
-            loadingSpinner.labelText = "Loading Data"
-        })
-    }
-    
-    func hideLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
-        })
-    }
-    
-//    func displayAlert(alertController: UIAlertController) {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            self.presentViewController(alertController, animated: true, completion: nil)
-//        })
-//    }
     
     func reloadTableView() {
         dispatch_async(dispatch_get_main_queue(), {
@@ -66,61 +41,19 @@ class PostsTableViewController: UITableViewController {
         })
     }
     
-    func userPressedLikeButton(post: Post, likeButton: UIButton) {
-        
-        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
-            
-            if !isRequesting {
-                isRequesting = true
-                
-                if likeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
-                    
-                    ApiProxy().revertLikeChallengePost(loggedInUser.token, challengeID: challenge!.id!, postID: post.id!, success: { () -> () in
-                        self.refreshPosts()
-                        self.isRequesting = false
-                        
-                        dispatch_async(dispatch_get_main_queue(), {
-                            likeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-                        })
-                        
-                    }, failed: { (errorCode) -> () in
-                        
-                        self.displayAlert(errorCode)
-                        self.isRequesting = false
-                    })
-                } else {
-                    
-                    ApiProxy().likeChallengePost(loggedInUser.token, challengeID: challenge!.id!, postID: post.id!, success: { () -> () in
-                        self.refreshPosts()
-                        self.isRequesting = false
-                        
-                        dispatch_async(dispatch_get_main_queue(), {
-                            likeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-                        })
-                        
-                    }, failed: { (errorCode) -> () in
-                        self.displayAlert(errorCode)
-                        self.isRequesting = false
-                    })
-                }
-            }
-        } else {
-            self.displayAlert("NotLoggedIn")
-        }
+    func setButtonImage(button: UIButton, imageName: String) {
+        dispatch_async(dispatch_get_main_queue(), {
+            button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+        })
     }
 
 
     
-    
-    
     // MARK: - Posts
     
     func refreshPosts() {
-        // showLoadingSpinner()
         
-        ApiProxy().getChallengesPosts(challenge!.id, success: { (posts) -> () in
-            
-            // self.hideLoadingSpinner()
+        ApiProxy().getChallengesPosts(challenge.id, success: { (posts) -> () in
             
             self.posts = posts
             
@@ -128,9 +61,11 @@ class PostsTableViewController: UITableViewController {
                 self.getThumbnailsOfChallenge()
             }
             self.reloadTableView()
+            self.isRequesting = false
         }) { (errorCode) -> () in
             self.hideLoadingSpinner()
             self.displayAlert(errorCode)
+            self.isRequesting = false
         }
     }
     
@@ -138,11 +73,11 @@ class PostsTableViewController: UITableViewController {
         
         for post in posts {
             
-            ApiProxy().getPostImageInSize(nil, challengeID: challenge!.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
+            ApiProxy().getPostImageInSize(challenge.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
                 
-            }) { (errorCode) -> () in
+            }, failed: { (errorCode) -> () in
                 self.displayAlert(errorCode)
-            }
+            })
         }
     }
 
@@ -156,6 +91,38 @@ class PostsTableViewController: UITableViewController {
             }
         }
         return false
+    }
+    
+    func likeChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
+        
+        ApiProxy().likeChallengePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
+            self.isRequesting = false
+            
+            }, failed: { (errorCode) -> () in
+                post.votes!--
+                cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+                cell.postVotesLabel.text = "\(post.votes) Votes"
+                
+                self.displayAlert(errorCode)
+                self.isRequesting = false
+                
+        })
+    }
+    
+    func revertChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
+        
+        ApiProxy().revertLikeChallengePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
+            self.isRequesting = false
+            
+            }) { (errorCode) -> () in
+                post.votes!++
+                cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+                cell.postVotesLabel.text = "\(post.votes) Votes"
+                
+                self.displayAlert(errorCode)
+                self.isRequesting = false
+                
+        }
     }
     
     
@@ -177,6 +144,7 @@ class PostsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
         cell.post = posts[indexPath.row]
         
+        cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
         cell.postVotesLabel.text = posts[indexPath.row].votes > 1 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
@@ -194,5 +162,40 @@ class PostsTableViewController: UITableViewController {
         }
         return cell
     }
+}
+
+
+
+// MARK: - PostsTableViewDelegate
+
+extension PostsTableViewController: PostsTableViewDelegate {
     
+    func likeButtonInCellWasPressed(cell: PostsTableViewCell, post: Post) {
+        
+        guard
+            let loggedInUser = User.getLoggedInUser(managedObjectContext),
+            let token = loggedInUser.token
+        else {
+            self.displayAlert("NotLoggedIn")
+            return
+        }
+        if isRequesting {
+            return
+        }
+        isRequesting = true
+        
+        if cell.postLikeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
+            cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+            post.votes!--
+            cell.postVotesLabel.text = "\(post.votes) Votes"
+
+            revertChallengePost(post, cell: cell, token: token)
+        } else {
+            cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+            post.votes!++
+            cell.postVotesLabel.text = "\(post.votes) Votes"
+            
+            likeChallengePost(post, cell: cell, token: token)
+        }
+    }
 }

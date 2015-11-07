@@ -60,19 +60,6 @@ class ChallengeViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "transparentPixel")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "transparentPixel"), forBarMetrics: UIBarMetrics.Default)
     }
-    
-    func showLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
-            loadingSpinner.labelText = "Loading Data"
-        })
-    }
-    
-    func hideLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
-        })
-    }
 
     @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
         
@@ -84,6 +71,17 @@ class ChallengeViewController: UIViewController {
         refreshSelectedSection(0) // todo: check whether hot | new -> pick the right offset (tableView)
     }
 
+    @IBAction func pressedCreateChallenge(sender: UIBarButtonItem) {
+        
+        guard
+            let loggedInUser = User.getLoggedInUser(managedObjectContext),
+            let token = loggedInUser.token
+        else {
+            self.displayAlert("NotLoggedIn")
+            return
+        }
+        performSegueWithIdentifier("toCreateChallengeViewController", sender: self)
+    }
 
     
     
@@ -97,7 +95,7 @@ class ChallengeViewController: UIViewController {
     
     func refreshChallenges(offset: Int) {
         
-        apiProxy.getChallenges(nil, offset: offset, orderby: challengeCollection.section, success: { (challenges) -> () in
+        ApiProxy().getChallenges(offset, orderby: challengeCollection.section, success: { (challenges) -> () in
             self.challengeCollection.challenge = challenges
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -108,7 +106,6 @@ class ChallengeViewController: UIViewController {
         }) { (errorCode) -> () in
             self.makePullToRefreshEndRefreshing()
             self.displayAlert(errorCode)
-            
         }
     }
     

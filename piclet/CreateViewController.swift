@@ -30,19 +30,46 @@ class CreateViewController: UIViewController {
     }
 
     @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
-        if let challengeName = nameTextField.text {
-            
-            ApiProxy().postNewChallenge(User.getLoggedInUser(managedObjectContext)?.token, challengeName: challengeName, success: { (challenge) -> () in
+        
+        guard
+            let loggedInUser = User.getLoggedInUser(managedObjectContext),
+            let token = loggedInUser.token
+        else {
+            self.displayAlert("NotLoggedIn")
+            return
+        }
+        
+        if validateTextField() {
+            ApiProxy().postNewChallenge(token, challengeName: nameTextField.text!, success: { (challenge) -> () in
                 self.performSegueWithIdentifier("unwindToChallengeViewController", sender: self)
                 
-                }) { (errorCode) -> () in
-                    self.displayAlert(errorCode)
+            }, failed: { (errorCode) -> () in
+                self.displayAlert(errorCode)
                     
-            }
+            })
         }
     }
     
-    // validate Text Field before sending to server
+    func validateTextField() -> Bool {
+        
+        guard
+            let challengeName = nameTextField.text
+        else {
+            self.displayAlert("ChallengeNameEmpty")
+            return false
+        }
+        
+        if challengeName.characters.count == 0 {
+            self.displayAlert("ChallengeNameEmpty")
+            return false
+        }
+        if UserDataValidator().challengeNameContainsOnlyBlankCharacters(challengeName) {
+            self.displayAlert("ChallengeNameOnlyBlankCharacters")
+            return false
+        }
+        return true
+    }
+
 }
 
 

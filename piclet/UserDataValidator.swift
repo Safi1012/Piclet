@@ -33,4 +33,13 @@ class UserDataValidator {
         return false
     }
     
+    func challengeNameContainsOnlyBlankCharacters(challengeName: String) -> Bool {
+        let stringWithoutBlanks = challengeName.stringByReplacingOccurrencesOfString(" ", withString: "", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        if stringWithoutBlanks.characters.count > 0 {
+            return false
+        }
+        return true
+    }
+
 }

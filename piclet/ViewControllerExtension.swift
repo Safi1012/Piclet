@@ -44,5 +44,18 @@ extension UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         })
     }
+    
+    func showLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.tableView.superview, animated: true)
+            loadingSpinner.labelText = "Loading Data"
+        })
+    }
+    
+    func hideLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue(), {
+            MBProgressHUD.hideHUDForView(self.tableView.superview, animated: true)
+        })
+    }
 }
 

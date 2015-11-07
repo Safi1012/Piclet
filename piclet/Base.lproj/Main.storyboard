@@ -333,9 +333,8 @@
                         <barButtonItem key="rightBarButtonItem" title="Create" id="88w-cB-k2t">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="rSA-2F-2xF" kind="popoverPresentation" popoverAnchorBarButtonItem="88w-cB-k2t" id="bwF-nh-oEs">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <action selector="pressedCreateChallenge:" destination="eHZ-hb-ZXc" id="btn-LB-k0C"/>
+                                <segue destination="rSA-2F-2xF" kind="presentation" identifier="toCreateChallengeViewController" modalTransitionStyle="coverVertical" id="bwF-nh-oEs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -487,19 +486,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foC-iY-hci">
-                                <rect key="frame" x="228" y="188" width="145" height="24"/>
+                                <rect key="frame" x="228" y="209" width="145" height="24"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="145" id="AVc-8N-lNC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dYY-i1-uQo" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
-                                <rect key="frame" x="215" y="234" width="171" height="17"/>
+                                <rect key="frame" x="215" y="250" width="171" height="25"/>
                                 <animations/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="VoB-eO-hF9"/>
                                     <constraint firstAttribute="width" constant="171" id="hYc-Nm-UvW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -507,12 +507,12 @@
                             </textField>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" red="0.1450980392" green="0.18360114521034485" blue="0.28378760993793101" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dYY-i1-uQo" firstAttribute="centerX" secondItem="C7k-rE-Yvv" secondAttribute="centerX" id="X6u-7b-V3F"/>
-                            <constraint firstItem="foC-iY-hci" firstAttribute="top" secondItem="zm4-mz-eLz" secondAttribute="bottom" constant="188" id="cDh-AJ-IMm"/>
+                            <constraint firstItem="foC-iY-hci" firstAttribute="top" secondItem="zm4-mz-eLz" secondAttribute="bottom" constant="209" id="cDh-AJ-IMm"/>
                             <constraint firstItem="foC-iY-hci" firstAttribute="centerX" secondItem="C7k-rE-Yvv" secondAttribute="centerX" id="e3R-d6-azU"/>
-                            <constraint firstItem="dYY-i1-uQo" firstAttribute="top" secondItem="foC-iY-hci" secondAttribute="bottom" constant="22" id="yvx-Za-8zZ"/>
+                            <constraint firstItem="dYY-i1-uQo" firstAttribute="top" secondItem="foC-iY-hci" secondAttribute="bottom" constant="17" id="yvx-Za-8zZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Challenge" id="m22-YC-Z18">
@@ -719,7 +719,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="barTintColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

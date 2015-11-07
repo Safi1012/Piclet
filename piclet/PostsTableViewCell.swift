@@ -10,7 +10,8 @@ import UIKit
 
 class PostsTableViewCell: UITableViewCell {
 
-    var post: Post?
+    var post: Post!
+    var delegate: PostsTableViewDelegate?
     
     @IBOutlet weak var postDescriptionLabel: UILabel!
     @IBOutlet weak var postVotesLabel: UILabel!
@@ -29,13 +30,11 @@ class PostsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
-    
     func addDoubleTapGestureRecognizer(postTableViewController: PostsTableViewController) {
         self.postTableViewController = postTableViewController
         
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "detectedDoubleTap")
-        doubleTapRecognizer.numberOfTapsRequired = 2
+            doubleTapRecognizer.numberOfTapsRequired = 2
         
         postImage.userInteractionEnabled = true
         postImage.addGestureRecognizer(doubleTapRecognizer)
@@ -46,6 +45,6 @@ class PostsTableViewCell: UITableViewCell {
     }
     
     @IBAction func userPressedLikeButton() {
-        postTableViewController.userPressedLikeButton(post!, likeButton: postLikeButton)
+        delegate?.likeButtonInCellWasPressed(self, post: post)
     }
 }

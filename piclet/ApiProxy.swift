@@ -49,12 +49,12 @@ class ApiProxy {
         }
     }
     
-    func getChallenges(token: String?, offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
+    func getChallenges(offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
         
         let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
         let apiPath = "challenges?offset=\(offset)" + "&orderby=\(orderbyString)"
         
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
             success(challenges: self.objectMapper.getChallenges(validResponseData))
             
         }, inValidRequest: { (invalidResponseData) -> () in
@@ -66,11 +66,11 @@ class ApiProxy {
         }
     }
     
-    func getPostImageInSize(token: String?, challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
+    func getPostImageInSize(challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
     
         let apiPath = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
         
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
             self.objectMapper.getPostImage(validResponseData, postID: postID, imageSize: imageSize)
             success()
             
@@ -97,7 +97,7 @@ class ApiProxy {
         }
     }
     
-    func likeChallengePost(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
+    func likeChallengePost(token: String, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
         
         let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
         
@@ -113,7 +113,7 @@ class ApiProxy {
         }
     }
     
-    func revertLikeChallengePost(token: String?, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
+    func revertLikeChallengePost(token: String, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
         
         let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
         let body = ["challenge-id" : (challengeID), "post-id" : (postID)]
@@ -130,7 +130,7 @@ class ApiProxy {
         }
     }
     
-    func postNewChallenge(token: String?, challengeName: String, success: (challenge: Challenge) -> (), failed: (errorCode: String) -> () ){
+    func postNewChallenge(token: String, challengeName: String, success: (challenge: Challenge) -> (), failed: (errorCode: String) -> () ){
         
         networkHandler.createRequest(["title" : (challengeName)], apiPath: "challenges", httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
             success(challenge: self.objectMapper.getChallenge(validResponseData))
