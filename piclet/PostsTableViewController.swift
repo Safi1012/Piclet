@@ -63,7 +63,6 @@ class PostsTableViewController: UITableViewController {
             self.reloadTableView()
             self.isRequesting = false
         }) { (errorCode) -> () in
-            self.hideLoadingSpinner()
             self.displayAlert(errorCode)
             self.isRequesting = false
         }

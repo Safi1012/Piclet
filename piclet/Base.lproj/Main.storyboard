@@ -476,7 +476,7 @@
         <!--Create Challenge-->
         <scene sceneID="1Kj-5u-uMN">
             <objects>
-                <viewController id="nj5-3i-b6o" customClass="CreateViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nj5-3i-b6o" customClass="CreateChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zm4-mz-eLz"/>
                         <viewControllerLayoutGuide type="bottom" id="Lzg-gE-XPD"/>

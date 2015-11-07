@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateViewController: UIViewController {
+class CreateChallengeViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var createButton: UIButton!
@@ -76,7 +76,7 @@ class CreateViewController: UIViewController {
 
 // MARK: - UITextFieldDelegate
 
-extension CreateViewController: UITextFieldDelegate {
+extension CreateChallengeViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()

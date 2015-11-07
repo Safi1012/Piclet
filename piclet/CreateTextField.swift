@@ -26,7 +26,7 @@ class CreateTextField: UITextField {
     }
     
     func colorizePlaceholder() {
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.darkTextColor()])
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.lightGrayColor()])
     }
     
     func colorizeTextinput() {

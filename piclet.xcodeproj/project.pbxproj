@@ -54,9 +54,9 @@
 		D4431D111BBED73500086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
 		D4431D121BBED73A00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; };
 		D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; };
-		D4438DB71BD521DA000CB909 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateViewController.swift */; };
-		D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateViewController.swift */; };
-		D4438DB91BD521DA000CB909 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateViewController.swift */; };
+		D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
+		D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
+		D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
 		D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBA1BD57883000CB909 /* CreateTextField.swift */; };
 		D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBA1BD57883000CB909 /* CreateTextField.swift */; };
 		D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DBA1BD57883000CB909 /* CreateTextField.swift */; };
@@ -138,7 +138,7 @@
 		D4431D061BBECAE000086759 /* piclet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piclet.xcdatamodel; sourceTree = "<group>"; };
 		D4431D081BBECB4B00086759 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		D4438DB61BD521DA000CB909 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
 		D4438DBA1BD57883000CB909 /* CreateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTextField.swift; sourceTree = "<group>"; };
 		D4438DBE1BD60685000CB909 /* TimeHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHandler.swift; sourceTree = "<group>"; };
 		D4438DC91BD60ABD000CB909 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -216,7 +216,7 @@
 		D4438DB51BD521B2000CB909 /* Create */ = {
 			isa = PBXGroup;
 			children = (
-				D4438DB61BD521DA000CB909 /* CreateViewController.swift */,
+				D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */,
 				D4438DBA1BD57883000CB909 /* CreateTextField.swift */,
 			);
 			name = Create;
@@ -567,7 +567,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4438DB71BD521DA000CB909 /* CreateViewController.swift in Sources */,
+				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
@@ -606,7 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4CDEAB01BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
-				D4438DB81BD521DA000CB909 /* CreateViewController.swift in Sources */,
+				D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
@@ -644,7 +644,7 @@
 			files = (
 				D4431D0D1BBED72900086759 /* User.swift in Sources */,
 				D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */,
-				D4438DB91BD521DA000CB909 /* CreateViewController.swift in Sources */,
+				D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4FA80C01BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
 				D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */,
