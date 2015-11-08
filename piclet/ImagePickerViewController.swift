@@ -14,26 +14,32 @@ class ImagePickerViewController: UIViewController {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var closeImageButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
+    
+    var imagePickerController = UIImagePickerController()
     var token: String!
-    var imagePickerController: UIImagePickerController?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if self.isCameraAvailable() && self.doesCameraSupportTakingPhotos() {
-            imagePickerController = UIImagePickerController()
-            imagePickerController!.delegate = self
-            imagePickerController!.sourceType = .Camera
-            imagePickerController!.mediaTypes = [kUTTypeImage as String]
-            imagePickerController!.allowsEditing = false
-            imagePickerController!.showsCameraControls = true
+        imagePickerController.delegate = self
+        styleImagePreview()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if !self.isCameraAvailable() || !self.doesCameraSupportTakingPhotos() {
+            cameraButton.hidden = true
+        } else {
+            cameraButton.hidden = false
         }
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
+
+
 
     // MARK: - UI
     
@@ -42,11 +48,40 @@ class ImagePickerViewController: UIViewController {
     }
     
     @IBAction func pressedCameraRoll(sender: UIButton) {
-        
+        displayImageGallery()
+    }
+    
+    @IBAction func pressedClosePreviewImage(sender: UIButton) {
+        previewImageView.image = nil
+        previewImageView.hidden = true
+        closeImageButton.hidden = true
+    }
+    
+    func styleImagePreview() {
+        previewImageView.layer.cornerRadius = CGFloat(7.0)
+        previewImageView.layer.borderWidth = CGFloat(1.0)
+        previewImageView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        previewImageView.clipsToBounds = true
     }
     
     
+    
     // MARK: - UIImagePickerController
+    
+    func displayCamera() {
+        imagePickerController.sourceType = .Camera
+        imagePickerController.mediaTypes = [kUTTypeImage as String]
+        imagePickerController.allowsEditing = false
+        imagePickerController.showsCameraControls = true
+        
+        presentViewController(imagePickerController, animated: true, completion: nil)
+    }
+    
+    func displayImageGallery() {
+        imagePickerController.sourceType = .PhotoLibrary
+        
+        presentViewController(imagePickerController, animated: true, completion: nil)
+    }
     
     func isCameraAvailable() -> Bool{
         return UIImagePickerController.isSourceTypeAvailable(.Camera)
@@ -68,30 +103,21 @@ class ImagePickerViewController: UIViewController {
         }
         return false
     }
-
-    func displayCamera() {
-        if let imagePickerController = imagePickerController {
-            presentViewController(imagePickerController, animated: true, completion: nil)
-        }
-    }
-    
-    func getImageFilePath() -> String {
-        let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-        return documentPath.stringByAppendingPathComponent("shotPicture.webp")
-    }
-    
 }
 
 
 extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            image.writeWebPToDocumentsWithFileName("shotPicture", quality: 0.7)
-            let imageViewWebP = UIImageView(image: UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(getImageFilePath())))
+            previewImageView.image = image
+            previewImageView.hidden = false
+            closeImageButton.hidden = false
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
+
+
+
+
