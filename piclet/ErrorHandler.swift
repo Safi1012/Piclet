@@ -50,6 +50,12 @@ class ErrorHandler {
         case "UnauthorizedError":
             return ("Invalid Session", "You Session has timed out. Please login again.")
             
+        case "NoPictureError":
+            return ("No Picture", "You must choose a picture to create a post. You can choose from your image gallery or take a new shoot.")
+            
+        case "NoTitle":
+            return ("No Title", "To upload a Post, you must add a title. Just type a title that describes your post.")
+            
         default:
             return ("Unexpected Error", "Please try again.")
         }

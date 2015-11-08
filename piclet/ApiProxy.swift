@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ApiProxy {
     
@@ -35,9 +36,9 @@ class ApiProxy {
         }
     }
     
-    func deleteToken(token: String, success: () -> (), failed: (errorCode: String) -> ()) {
+    func deleteThisToken(token: String, success: () -> (), failed: (errorCode: String) -> ()) {
         
-        networkHandler.createRequest([:], apiPath: "tokens", httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.createRequest([:], apiPath: "tokens/this", httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
             success()
             
         }, inValidRequest: { (invalidResponseData) -> () in
@@ -71,7 +72,7 @@ class ApiProxy {
         let apiPath = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            self.objectMapper.getPostImage(validResponseData, postID: postID, imageSize: imageSize)
+            self.objectMapper.saveImagePost(validResponseData, postID: postID, imageSize: imageSize)
             success()
             
         }, inValidRequest: { (invalidResponseData) -> () in
@@ -143,6 +144,169 @@ class ApiProxy {
             
         }
     }
+    
+    
+    // test this! -- Multipart - request
+    func addPostToChallenge(token: String, challengeID: String, success: () -> (), failed: (errorCode: String) -> ()) {
+        
+        // POST /challenges/<id>/posts
+        let apiPath = "challenges/" + "\(challengeID)" + "/posts"
+        
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
+            success()
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+    
+    
+    // TEST -> use for change password
+    
+    func deleteAllUserAccessTokens(token: String, success: () -> (), failed: (errorCode: String) -> ()) {
+        
+        networkHandler.createRequest([:], apiPath: "tokens", httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
+            success() // dont forget to log the user out!
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+        }
+    }
+    
+    
+    
+    // TEST -> use for userProfil, ask Johannes -> This call should require a jwt token!
+    
+    func getUserAccountInformation(username: String, success: (userAccount: UserAccount) -> (), failed: (errorCode: String) -> () ) {
+        
+        // GET /users/<nick>
+        let apiPath = "users/" + username
+        
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
+            success(userAccount: self.objectMapper.getUserAccountInformation(validResponseData))
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+    
+    
+    // TEST -> use for userProfil
+    
+    func getUserCreatedChallenges(username: String, success: (userChallenges: [Challenge]) -> (), failed: (errorCode: String) -> () ) {
+        
+        // GET /users/<nick>/challenges
+        let apiPath = "users/" + username + "/challenges'"
+        
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
+            success(userChallenges: self.objectMapper.getChallenges(validResponseData))
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+    
+    
+    // TEST -> use for userProfil
+    
+    func getUserCreatedPosts(username: String, success: (userPosts: [Post]) -> (), failed: (errorCode: String) -> () ) {
+        
+        // GET /users/<nick>/posts
+        let apiPath = "users/" + username + "/posts"
+        
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
+            success(userPosts: self.objectMapper.getPosts(validResponseData))
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+    
+    
+    // TEST - Avatar user Image
+    
+    func getUserAvatar(username: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
+        //GET /users/<nick>/avatar-<size>.<format>
+        let apiPath = "users/" + username + "/avatar-" + imageSize.rawValue + "." + imageFormat.rawValue
+        
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
+            self.objectMapper.saveImageAvatar(validResponseData, username: username, imageSize: imageSize)
+            success()
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+    
+    
+    // TEST!
+    
+    func changeUserPassword(username: String, oldPassword: String, newPassword: String, token: String, success: () -> (), failed: (errorCode: String) -> () ) {
+        // PUT /users/<nick>
+        
+        let apiPath = "users/" + username
+        let requestBody = ["oldPassword" : (oldPassword), "newPassword" : (newPassword), "os" : "ios"]
+        
+        networkHandler.createRequest(requestBody, apiPath: apiPath, httpVerb: "PUT", bearerToken: token, validRequest: { (validResponseData) -> () in
+            success()
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+
+    
+    // TEST - changes avatar image,  The request-body is the binary data of the image as jpeg-image
+    
+    func changeUserAvatar(token: String, username: String, newAvatarImage: UIImage, success: () -> (), failed: (errorCode: String) -> () ) {
+        // PUT /users/<nick>/avatar
+        let apiPath = "users/" + username + "/avatar"
+        let avatarData = UIImageJPEGRepresentation(newAvatarImage, CGFloat(0.7))!
+        let requestBody = ["avatar" : (avatarData)]
+        
+        
+        // check documentation for request body:   ""avatar" : (request)
+        
+        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "PUT", bearerToken: token, validRequest: { (validResponseData) -> () in
+            // parse 
+            // success
+            
+        }, inValidRequest: { (invalidResponseData) -> () in
+            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            
+        }) { (errorCode) -> () in
+            failed(errorCode: errorCode)
+            
+        }
+    }
+
 }
 
 enum ImageSize: String {

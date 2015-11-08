@@ -19,6 +19,7 @@ class ImagePickerViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     
     var imagePickerController = UIImagePickerController()
+    var pickedImage: UIImage? = nil
     var token: String!
     
     
@@ -65,8 +66,11 @@ class ImagePickerViewController: UIViewController {
     }
     
     @IBAction func pressedNextNavBarItem(sender: UIBarButtonItem) {
-        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        performSegueWithIdentifier("toImageUploadViewController", sender: self)
+        if let pickedImage = pickedImage {
+            performSegueWithIdentifier("toImageUploadViewController", sender: pickedImage)
+        } else {
+            displayAlert("NoPictureError")
+        }
     }
     
     
@@ -87,20 +91,20 @@ class ImagePickerViewController: UIViewController {
         presentViewController(imagePickerController, animated: true, completion: nil)
     }
     
-    func isCameraAvailable() -> Bool{
+    func isCameraAvailable() -> Bool {
         return UIImagePickerController.isSourceTypeAvailable(.Camera)
     }
     
-    func doesCameraSupportTakingPhotos() -> Bool{
+    func doesCameraSupportTakingPhotos() -> Bool {
         return cameraSupportsMedia(kUTTypeImage as String, sourceType: .Camera)
     }
     
-    func cameraSupportsMedia(mediaType: String, sourceType: UIImagePickerControllerSourceType) -> Bool{
+    func cameraSupportsMedia(mediaType: String, sourceType: UIImagePickerControllerSourceType) -> Bool {
         let availableMediaTypes = UIImagePickerController.availableMediaTypesForSourceType(sourceType)
         
-        if let types = availableMediaTypes{
-            for type in types{
-                if type == mediaType{
+        if let types = availableMediaTypes {
+            for type in types {
+                if type == mediaType {
                     return true
                 }
             }
@@ -112,7 +116,14 @@ class ImagePickerViewController: UIViewController {
     
     // MARK: - Navigation
     
-    // segue name:   toImageUploadViewController
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "toImageUploadViewController" {
+            self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+            let imageUploadVC = segue.destinationViewController as! ImageUploadViewController
+            imageUploadVC.pickedImage = (sender as! UIImage)
+        }
+    }
 }
 
 
@@ -123,6 +134,7 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            pickedImage = image
             previewImageView.image = image
             previewImageView.hidden = false
             closeImageButton.hidden = false

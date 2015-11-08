@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController {
     
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
         
-        ApiProxy().deleteToken(loggedInUser!.token!, success: { () -> () in
+        ApiProxy().deleteThisToken(loggedInUser!.token!, success: { () -> () in
             
             User.updateUserToken(self.managedObjectContext, user: self.loggedInUser!, newToken: nil)
             self.navigatoToLoginViewController()

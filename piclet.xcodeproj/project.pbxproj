@@ -78,6 +78,9 @@
 		D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
 		D46494821BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
 		D46494831BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
+		D46494851BEF900C00AA48C4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494841BEF900C00AA48C4 /* UserAccount.swift */; };
+		D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494841BEF900C00AA48C4 /* UserAccount.swift */; };
+		D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494841BEF900C00AA48C4 /* UserAccount.swift */; };
 		D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D46912181BAC03C30012CE7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46912161BAC03C30012CE7C /* Main.storyboard */; };
 		D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D469121C1BAC03C30012CE7C /* Assets.xcassets */; };
@@ -160,6 +163,7 @@
 		D462CB711BCBD1D000701EFF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
+		D46494841BEF900C00AA48C4 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		D469120F1BAC03C30012CE7C /* piclet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piclet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46912121BAC03C30012CE7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D46912171BAC03C30012CE7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				D462CB731BCBD3EE00701EFF /* Post.swift */,
 				D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */,
 				D4438DBE1BD60685000CB909 /* TimeHandler.swift */,
+				D46494841BEF900C00AA48C4 /* UserAccount.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
+				D46494851BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */,
 				D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
@@ -651,6 +657,7 @@
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
@@ -679,6 +686,7 @@
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
 				D44248ED1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
+				D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,

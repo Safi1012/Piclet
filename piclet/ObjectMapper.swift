@@ -83,10 +83,17 @@ class ObjectMapper: NSObject {
         return challenges
     }
     
+    func saveImagePost(responseData: NSData, postID: String, imageSize: ImageSize) {
+        saveImage(responseData, imageName: postID, imageSize: imageSize)
+    }
     
-    func getPostImage(responseData: NSData, postID: String, imageSize: ImageSize) {
+    func saveImageAvatar(responseData: NSData, username: String, imageSize: ImageSize) {
+        saveImage(responseData, imageName: username, imageSize: imageSize)
+    }
+    
+    private func saveImage(responseData: NSData, imageName: String, imageSize: ImageSize) {
         let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-        let imagePath = documentPath.stringByAppendingPathComponent(postID + "_" + imageSize.rawValue + ".webp")
+        let imagePath = documentPath.stringByAppendingPathComponent(imageName + "_" + imageSize.rawValue + ".webp")
         let fileManager = NSFileManager.defaultManager()
         fileManager.createFileAtPath(imagePath, contents: responseData, attributes: nil)
     }
@@ -146,6 +153,34 @@ class ObjectMapper: NSObject {
         challenge.title = title
         return challenge
     }
+    
+    // test this!
+    
+    func getUserAccountInformation(responseData: NSData) -> UserAccount {
+        guard
+            let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
+            let dict = json as? NSDictionary,
+            
+            let username = dict["username"] as? String,
+            let created = dict["created"] as? Int,
+            let totalVotes = dict["totalVotes"] as? Int,
+            let totalPosts = dict["totalPosts"] as? Int,
+            let rank = dict["rank"] as? Int
+        else {
+            print("getPosts: couldn't serialize data")
+            return UserAccount()
+        }
+        
+        let userAccount = UserAccount()
+        userAccount.username = username
+        userAccount.created = TimeHandler().convertTimestampToNSDate(created)
+        userAccount.totalVotes = totalVotes
+        userAccount.totalPosts = totalPosts
+        userAccount.rank = rank
+        
+        return userAccount
+    }
+    
 }
 
 
