@@ -334,7 +334,6 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="pressedCreateChallenge:" destination="eHZ-hb-ZXc" id="btn-LB-k0C"/>
-                                <segue destination="rSA-2F-2xF" kind="presentation" identifier="toCreateChallengeViewController" modalTransitionStyle="coverVertical" id="bwF-nh-oEs"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -342,9 +341,12 @@
                         <outlet property="segmentedControl" destination="6gd-fn-GhR" id="XRE-jL-cqG"/>
                         <outlet property="tableView" destination="mYa-wf-Hjw" id="mkI-VS-iEf"/>
                         <segue destination="kCH-63-aGA" kind="show" identifier="toPostsViewController" id="ttR-67-Tyu"/>
+                        <segue destination="rSA-2F-2xF" kind="presentation" identifier="toCreateChallengeViewController" id="oRI-PF-lvN"/>
+                        <segue destination="qW2-XJ-DYI" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="dxd-fY-RkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgU-0c-1Ep" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qW2-XJ-DYI" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2516" y="-103"/>
         </scene>
@@ -804,9 +806,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="titleTextField" destination="CR4-ee-Hu0" id="hu8-pL-XOW"/>
+                        <segue destination="dex-ZL-lfd" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="17K-PS-8hF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eu5-u0-lqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dex-ZL-lfd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5597" y="-103"/>
         </scene>
