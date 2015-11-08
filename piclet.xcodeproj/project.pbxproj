@@ -75,6 +75,9 @@
 		D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */; };
 		D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D462CB741BCBD3EE00701EFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
+		D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
+		D46494821BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
+		D46494831BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
 		D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D46912181BAC03C30012CE7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46912161BAC03C30012CE7C /* Main.storyboard */; };
 		D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D469121C1BAC03C30012CE7C /* Assets.xcassets */; };
@@ -156,6 +159,7 @@
 		D448296F1BD3CDBC003D51E4 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
 		D462CB711BCBD1D000701EFF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
 		D469120F1BAC03C30012CE7C /* piclet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piclet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46912121BAC03C30012CE7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D46912171BAC03C30012CE7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */,
+				D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */,
 			);
 			name = CreatePost;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
@@ -620,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4CDEAB01BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
+				D46494821BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
@@ -684,6 +691,7 @@
 				D4CDEAB11BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
+				D46494831BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D408DA341BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
 				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
 			);

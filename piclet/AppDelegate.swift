@@ -32,7 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let greyColor = UIColor(red: 180.0/255.0, green: 180.0/255.0, blue: 180.0/255.0, alpha: 1.0)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : greyColor], forState: UIControlState.Normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName : UIColor.whiteColor()], forState: UIControlState.Selected)
-
+        
+        // navBar backButton styling
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "navBarBack")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "navBarBack")
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+    
         return true
     }
 

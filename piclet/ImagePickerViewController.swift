@@ -64,6 +64,10 @@ class ImagePickerViewController: UIViewController {
         previewImageView.clipsToBounds = true
     }
     
+    @IBAction func pressedNextNavBarItem(sender: UIBarButtonItem) {
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        performSegueWithIdentifier("toImageUploadViewController", sender: self)
+    }
     
     
     // MARK: - UIImagePickerController
@@ -103,8 +107,17 @@ class ImagePickerViewController: UIViewController {
         }
         return false
     }
+    
+    
+    
+    // MARK: - Navigation
+    
+    // segue name:   toImageUploadViewController
 }
 
+
+
+// MARK: - UIImagePickerControllerDelegate
 
 extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
