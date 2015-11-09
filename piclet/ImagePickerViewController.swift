@@ -19,9 +19,9 @@ class ImagePickerViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIButton!
     
     var imagePickerController = UIImagePickerController()
-    var pickedImage: UIImage? = nil
     var token: String!
-    
+    var challengeID: String!
+    var pickedImage: UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +53,7 @@ class ImagePickerViewController: UIViewController {
     }
     
     @IBAction func pressedClosePreviewImage(sender: UIButton) {
+        pickedImage = nil
         previewImageView.image = nil
         previewImageView.hidden = true
         closeImageButton.hidden = true
@@ -113,7 +114,6 @@ class ImagePickerViewController: UIViewController {
     }
     
     
-    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -122,10 +122,11 @@ class ImagePickerViewController: UIViewController {
             self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
             let imageUploadVC = segue.destinationViewController as! ImageUploadViewController
             imageUploadVC.pickedImage = (sender as! UIImage)
+            imageUploadVC.token = token
+            imageUploadVC.challengeID = challengeID
         }
     }
 }
-
 
 
 // MARK: - UIImagePickerControllerDelegate

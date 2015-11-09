@@ -34,14 +34,12 @@ class CreateChallengeViewController: UIViewController {
     }
     
     func validateTextField() -> Bool {
-        
         guard
             let challengeName = nameTextField.text
         else {
             self.displayAlert("ChallengeNameEmpty")
             return false
         }
-        
         if challengeName.characters.count == 0 {
             self.displayAlert("ChallengeNameEmpty")
             return false

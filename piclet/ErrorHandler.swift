@@ -56,6 +56,12 @@ class ErrorHandler {
         case "NoTitle":
             return ("No Title", "To upload a Post, you must add a title. Just type a title that describes your post.")
             
+        case "ChallengeNameEmpty":
+            return ("Challenge name is empty", "To create a Challenge, you need to type a challenge name.")
+            
+        case "ChallengeNameOnlyBlankCharacters":
+            return ("Invalid Title", "The title you typed is empty.. ")
+            
         default:
             return ("Unexpected Error", "Please try again.")
         }

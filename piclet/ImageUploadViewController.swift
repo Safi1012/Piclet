@@ -12,7 +12,8 @@ class ImageUploadViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: CreateTextField!
     var pickedImage: UIImage!
-
+    var token: String!
+    var challengeID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,28 @@ class ImageUploadViewController: UIViewController {
     // MARK: - UI
     
     @IBAction func pressedUploadNavBarItem(sender: UIBarButtonItem) {
-        if let title = titleTextField.text {
+        
+        if validateTextField() {
             uploadPost(title)
-        } else {
-            displayAlert("NoTitle")
         }
+    }
+    
+    func validateTextField() -> Bool {
+        guard
+            let challengeName = titleTextField.text
+        else {
+            self.displayAlert("ChallengeNameEmpty")
+            return false
+        }
+        if challengeName.characters.count == 0 {
+            self.displayAlert("ChallengeNameEmpty")
+            return false
+        }
+        if UserDataValidator().challengeNameContainsOnlyBlankCharacters(challengeName) {
+            self.displayAlert("ChallengeNameOnlyBlankCharacters")
+            return false
+        }
+        return true
     }
     
     
@@ -34,8 +52,13 @@ class ImageUploadViewController: UIViewController {
     
     func uploadPost(title: String) {
         
-        print("works")
-        
+        ApiProxy().addPostToChallenge(token, challengeID: challengeID, success: { () -> () in
+        <#code#>
+        }) { (errorCode) -> () in
+            <#code#>
+        }
     }
-
+    
 }
+
+

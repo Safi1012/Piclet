@@ -142,6 +142,7 @@ class PostsTableViewController: UITableViewController {
         if segue.identifier == "toImagePickerViewController" {
             let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! ImagePickerViewController
             destinationVC.token = User.getLoggedInUser(managedObjectContext)!.token!
+            destinationVC.challengeID = challenge.id
         }
     }
     
