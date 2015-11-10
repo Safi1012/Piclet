@@ -25,7 +25,12 @@ class ImageUploadViewController: UIViewController {
     @IBAction func pressedUploadNavBarItem(sender: UIBarButtonItem) {
         
         if validateTextField() {
-            uploadPost(title)
+
+            if let newImage = ImageHandler().covertImageForUpload(pickedImage) {
+                print("KB: \(newImage.length / 1024)")
+                uploadPost("pickedImage", image: newImage)
+                
+            }
         }
     }
     
@@ -50,15 +55,18 @@ class ImageUploadViewController: UIViewController {
     
     // MARK: - Upload
     
-    func uploadPost(title: String) {
+    func uploadPost(title: String, image: NSData) {
         
-        ApiProxy().addPostToChallenge(token, challengeID: challengeID, success: { () -> () in
-        <#code#>
+        ApiProxy().addPostToChallenge(token, challengeID: challengeID, images: [image], success: { () -> () in
+
+            print("success")
+            
         }) { (errorCode) -> () in
-            <#code#>
+            
+            self.displayAlert(errorCode)
+            
         }
     }
-    
 }
 
 

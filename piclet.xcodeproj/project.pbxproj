@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3583529F2DF1C017B513ABEA /* libPods-piclet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */; };
+		D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4085C511BF0FAD700051436 /* ImageHandler.swift */; };
+		D4085C531BF0FADC00051436 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4085C511BF0FAD700051436 /* ImageHandler.swift */; };
+		D4085C541BF0FADE00051436 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4085C511BF0FAD700051436 /* ImageHandler.swift */; };
 		D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */; };
 		D408DA331BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */; };
 		D408DA341BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */; };
@@ -135,6 +138,7 @@
 		A5719EB28BB0F7F15D65B3C9 /* libPods-piclet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-piclet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A94E4F64F20443B08DCF0BF5 /* Pods-piclet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piclet.release.xcconfig"; path = "Pods/Target Support Files/Pods-piclet/Pods-piclet.release.xcconfig"; sourceTree = "<group>"; };
 		C675D24041E73B5EAB477F92 /* Pods-piclet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-piclet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-piclet/Pods-piclet.debug.xcconfig"; sourceTree = "<group>"; };
+		D4085C511BF0FAD700051436 /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewDelegate.swift; sourceTree = "<group>"; };
 		D4105BEE1BBE65AC006D742D /* ApiProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiProxy.swift; sourceTree = "<group>"; };
 		D4181CC71BAC4456001155B6 /* UserDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidator.swift; sourceTree = "<group>"; };
@@ -338,6 +342,7 @@
 				D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */,
 				D4438DBE1BD60685000CB909 /* TimeHandler.swift */,
 				D46494841BEF900C00AA48C4 /* UserAccount.swift */,
+				D4085C511BF0FAD700051436 /* ImageHandler.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 				D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
 				D46494851BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
+				D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */,
 				D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */,
 				D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
@@ -655,6 +661,7 @@
 				D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
+				D4085C541BF0FADE00051436 /* ImageHandler.swift in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */,
@@ -685,6 +692,7 @@
 				D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
+				D4085C531BF0FADC00051436 /* ImageHandler.swift in Sources */,
 				D44248ED1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
