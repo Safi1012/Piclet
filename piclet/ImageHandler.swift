@@ -16,17 +16,13 @@ class ImageHandler {
     }
     
     private func compressImage(image: UIImage) -> NSData? {
-        
-        print("widht: \(image.size.width)")
-        print("height: \(image.size.height)")
-        
         let newWidth = ImageServerWidth.large.rawValue
         let newHeight = CGFloat((image.size.height / image.size.width)) * newWidth // keeps the same aspect ratio
         
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.drawInRect(CGRectMake(0.0, 0.0, newWidth, newHeight))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
-        let imageData = UIImageJPEGRepresentation(resizedImage, 0.35);
+        let imageData = UIImageJPEGRepresentation(resizedImage, 0.7);
         UIGraphicsEndImageContext()
     
         return imageData

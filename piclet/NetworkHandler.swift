@@ -68,7 +68,8 @@ class NetworkHandler: NSObject {
         let boundary = generateBoundaryString()
         
         let urlRequest = createMultipartHeader(apiPath, httpVerb: httpVerb, boundary: boundary, bearerToken: bearerToken)
-            urlRequest.HTTPBody = createMultipartBody(boundary, parameters: parameters, images: images, filePathKey: "file")
+            urlRequest.HTTPBody = createMultipartBody(boundary, parameters: parameters, images: images, filePathKey: "userfile")
+        
         
         
         
@@ -104,8 +105,7 @@ class NetworkHandler: NSObject {
         
         let request = NSMutableURLRequest(URL: NSURL(string: "https://flash1293.de/" + apiPath)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 5.0)
             request.HTTPMethod = httpVerb
-            request.addValue("application/json", forHTTPHeaderField: "multipart/form-data; boundary=\(boundary)")
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
         if bearerToken != nil {
             request.addValue("Bearer \(bearerToken!)", forHTTPHeaderField: "Authorization")
@@ -114,32 +114,34 @@ class NetworkHandler: NSObject {
     }
     
 
-    private func createMultipartBody(boundary: String, parameters: Dictionary<String, String>?, images: [NSData]?, filePathKey: String?) -> NSData {
+    private func createMultipartBody(boundary: String, parameters: [String: String]?, images: [NSData]?, filePathKey: String?) -> NSData {
         
         let body = NSMutableData()
+        
 
-        if parameters != nil {
-            for (key, value) in parameters! {
-                
-                body.appendString("--\(boundary)\r\n")
-                body.appendString("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-                body.appendString("\(value)\r\n")
-            }
+        
+        // paramaters
+        do {
+            let data = try NSJSONSerialization.dataWithJSONObject(parameters!, options: NSJSONWritingOptions.PrettyPrinted)
+            
+            body.appendString("--\(boundary)\r\n")
+            body.appendString("Content-Disposition: form-data; name=\"something\"")
+            body.appendString("\r\n\r\n")
+            body.appendData(data);
+        } catch {
+            print("Couldn't convert JSON to Objects: \(error) \n")
         }
         
-        if images != nil && filePathKey != nil {
-            for image in images! {
-
-                let mimetype = mimeTypeForImageData(image)
-                
-                body.appendString("--\(boundary)\r\n")
-                body.appendString("Content-Disposition: form-data; name=\"\(filePathKey!)\"; filename=\"image.jpeg\"\r\n")
-                body.appendString("Content-Type: \(mimetype)\r\n\r\n")
-                body.appendData(image)
-                body.appendString("\r\n")
-            }
-        }
-        body.appendString("--\(boundary)--\r\n")
+        
+        let data = try! NSJSONSerialization.dataWithJSONObject(parameters!, options: NSJSONWritingOptions.PrettyPrinted)
+        
+        let mimetype = mimeTypeForImageData(images![0])
+        
+        body.appendString("\r\n--\(boundary)\r\n")
+        body.appendString("Content-Disposition: form-data; name=\"abc\"; filename=\"image.jpeg\"\r\n")
+        body.appendString("Content-Type: \(mimetype)\r\n\r\n")
+        body.appendData(images![0])
+        body.appendString("\r\n--\(boundary)--")
         return body
     }
     
