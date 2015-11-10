@@ -28,7 +28,7 @@ class PostsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        // refreshPosts()
+        refreshPosts()
     }
     
     
@@ -64,43 +64,41 @@ class PostsTableViewController: UITableViewController {
     func refreshPosts() {
         
         ApiProxy().getChallengesPosts(challenge.id, success: { (posts) -> () in
-            
             self.posts = posts
             
-            if !self.checkIfThumbnailsExists() {
-                self.getThumbnailsOfChallenge()
-            }
-            self.reloadTableView()
-            self.isRequesting = false
+            ImageHandler().loadImagePosts(self.posts, challengeID: self.challenge.id, imagesize: ImageSize.medium, imageFormat: ImageFormat.webp, complete: { () -> () in
+                self.reloadTableView()
+            })
+            
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
-            self.isRequesting = false
+            
         }
     }
     
-    func getThumbnailsOfChallenge() {
-        
-        for post in posts {
-            
-            ApiProxy().getPostImageInSize(challenge.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
-                
-            }, failed: { (errorCode) -> () in
-                self.displayAlert(errorCode)
-            })
-        }
-    }
-
-    func checkIfThumbnailsExists() -> Bool {
-        
-        for post in posts {
-            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
-            
-            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-                // return true
-            }
-        }
-        return false
-    }
+//    func getThumbnailsOfChallenge() {
+//        
+//        for post in posts {
+//            
+//            ApiProxy().getPostImageInSize(challenge.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
+//                
+//            }, failed: { (errorCode) -> () in
+//                self.displayAlert(errorCode)
+//            })
+//        }
+//    }
+//
+//    func checkIfThumbnailsExists() -> Bool {
+//        
+//        for post in posts {
+//            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
+//            
+//            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
+//                // return true
+//            }
+//        }
+//        return false
+//    }
     
     func likeChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
         
@@ -161,21 +159,41 @@ class PostsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id + "_medium" + ".webp")
+        
     
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
-        cell.post = posts[indexPath.row]
         
+        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id + "_medium" + ".webp")
+        
+        
+        cell.post = posts[indexPath.row]
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
         cell.postVotesLabel.text = posts[indexPath.row].votes > 1 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
-        cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
+        cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
+            
+
+        
+        
+        
+        
+        
+//        ImageHandler().getPostImage(challenge.id, postID: posts[indexPath.row].id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { (image) -> () in
+//            
+//            dispatch_async(dispatch_get_main_queue(), {
+//                cell.imageView?.image = image
+//            })
+//            
+//        }, failed: { () -> () in
+//            // maybe try again
+//            
+//        })
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters {
@@ -187,6 +205,13 @@ class PostsTableViewController: UITableViewController {
         }
         return cell
     }
+    
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return CGFloat(413.0)
+    }
+
+    
 }
 
 
@@ -223,4 +248,5 @@ extension PostsTableViewController: PostsTableViewDelegate {
             likeChallengePost(post, cell: cell, token: token)
         }
     }
+    
 }

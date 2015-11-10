@@ -147,11 +147,11 @@ class ApiProxy {
     
     
     // test this! -- Multipart - request
-    func addPostToChallenge(token: String, challengeID: String, images: [NSData], success: () -> (), failed: (errorCode: String) -> ()) {
+    func addPostToChallenge(token: String, challengeID: String, images: [NSData], description: String, success: () -> (), failed: (errorCode: String) -> ()) {
         
         let apiPath = "challenges/" + "\(challengeID)" + "/posts"
         
-        networkHandler.createMultipartRequest(["description": "Architecture"], images: images, apiPath: apiPath, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.createMultipartRequest(["description": (description)], images: images, apiPath: apiPath, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
             success()
             
         }, inValidRequest: { (invalidResponseData) -> () in

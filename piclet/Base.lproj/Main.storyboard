@@ -368,14 +368,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome Userdecription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-7T-N11" userLabel="descriptionLabel">
-                                            <rect key="frame" x="8" y="8" width="469" height="18"/>
+                                            <rect key="frame" x="8" y="8" width="469" height="20.5"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456 Votes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnw-ac-Agj" userLabel="votesLabel">
-                                            <rect key="frame" x="485" y="8" width="107" height="18"/>
+                                            <rect key="frame" x="485" y="8" width="107" height="20.5"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="107" id="b1h-Ax-6dR"/>
@@ -384,20 +384,8 @@
                                             <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
-                                            <rect key="frame" x="-1" y="34" width="601" height="341"/>
-                                            <animations/>
-                                            <gestureRecognizers/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filipe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lf9-ui-ELz" userLabel="usernameLabel">
                                             <rect key="frame" x="8" y="383" width="36.5" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 day ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpT-qH-0NO" userLabel="timepostedLabel">
-                                            <rect key="frame" x="527" y="383" width="65" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -415,10 +403,23 @@
                                                 <action selector="userPressedLikeButton" destination="n4A-hT-clp" eventType="touchUpInside" id="H6J-tc-k3g"/>
                                             </connections>
                                         </button>
+                                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
+                                            <rect key="frame" x="-1" y="36" width="601" height="338.5"/>
+                                            <animations/>
+                                            <gestureRecognizers/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 day ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WpT-qH-0NO" userLabel="timepostedLabel">
+                                            <rect key="frame" x="527" y="384" width="65" height="19"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="JHH-or-fbK" firstAttribute="top" secondItem="Jnw-ac-Agj" secondAttribute="bottom" constant="8" id="029-MN-xhy"/>
+                                        <constraint firstItem="WpT-qH-0NO" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="10" id="0WB-YD-HXz"/>
                                         <constraint firstItem="Lf9-ui-ELz" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="0a8-wJ-oX7"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Jnw-ac-Agj" secondAttribute="trailing" id="6Pc-4c-3PN"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Lf9-ui-ELz" secondAttribute="bottom" constant="0.5" id="6ja-W1-1ak"/>
@@ -433,9 +434,8 @@
                                         <constraint firstItem="JHH-or-fbK" firstAttribute="top" secondItem="7Ac-7T-N11" secondAttribute="bottom" constant="8" id="gbX-k2-hxS"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JHH-or-fbK" secondAttribute="trailing" constant="-8.5" id="iLh-xF-K4c"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="WpT-qH-0NO" secondAttribute="trailing" id="mDk-sU-23f"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="WpT-qH-0NO" secondAttribute="bottom" constant="0.5" id="saN-Sg-9ry"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WpT-qH-0NO" secondAttribute="bottom" constant="1.5" id="saN-Sg-9ry"/>
                                         <constraint firstItem="Jnw-ac-Agj" firstAttribute="leading" secondItem="7Ac-7T-N11" secondAttribute="trailing" constant="8" id="tDw-Dr-EYI"/>
-                                        <constraint firstItem="WpT-qH-0NO" firstAttribute="top" secondItem="JHH-or-fbK" secondAttribute="bottom" constant="8" id="veq-UH-rtK"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -807,6 +807,7 @@
                     <connections>
                         <outlet property="titleTextField" destination="CR4-ee-Hu0" id="hu8-pL-XOW"/>
                         <segue destination="dex-ZL-lfd" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="17K-PS-8hF"/>
+                        <segue destination="dex-ZL-lfd" kind="unwind" identifier="unwindToPostTableViewController" unwindAction="unwindToPostTableViewController:" id="Pl7-6h-k6d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eu5-u0-lqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -862,7 +863,6 @@
         <image name="challengeClock" width="20" height="20"/>
         <image name="challengeLike" width="20" height="20"/>
         <image name="challengePosts" width="20" height="20"/>
-        <image name="challengePreviewPlaceholder" width="500" height="500"/>
         <image name="closeImageUnfilledRed" width="25" height="25"/>
         <image name="likeUnfilled" width="25" height="25"/>
         <image name="navBarCancel" width="22" height="22"/>

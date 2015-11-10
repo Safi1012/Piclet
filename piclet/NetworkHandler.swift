@@ -103,7 +103,7 @@ class NetworkHandler: NSObject {
     
     private func createMultipartHeader(apiPath: String, httpVerb: String, boundary: String, bearerToken: String?) -> NSMutableURLRequest {
         
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://flash1293.de/" + apiPath)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 5.0)
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://flash1293.de/" + apiPath)!, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringCacheData, timeoutInterval: 10.0)
             request.HTTPMethod = httpVerb
             request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         

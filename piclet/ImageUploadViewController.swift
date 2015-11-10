@@ -28,7 +28,7 @@ class ImageUploadViewController: UIViewController {
 
             if let newImage = ImageHandler().covertImageForUpload(pickedImage) {
                 print("KB: \(newImage.length / 1024)")
-                uploadPost("pickedImage", image: newImage)
+                uploadPost(titleTextField.text!, image: newImage)
                 
             }
         }
@@ -57,12 +57,14 @@ class ImageUploadViewController: UIViewController {
     
     func uploadPost(title: String, image: NSData) {
         
-        ApiProxy().addPostToChallenge(token, challengeID: challengeID, images: [image], success: { () -> () in
-
-            print("success")
+        showLoadingSpinner(self)
+        
+        ApiProxy().addPostToChallenge(token, challengeID: challengeID, images: [image], description: title, success: { () -> () in
+            self.hideLoadingSpinner(self)
+            self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)
             
         }) { (errorCode) -> () in
-            
+            self.hideLoadingSpinner(self)
             self.displayAlert(errorCode)
             
         }
