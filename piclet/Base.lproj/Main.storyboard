@@ -368,14 +368,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome Userdecription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ac-7T-N11" userLabel="descriptionLabel">
-                                            <rect key="frame" x="8" y="8" width="469" height="20.5"/>
+                                            <rect key="frame" x="8" y="8" width="469" height="18"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456 Votes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnw-ac-Agj" userLabel="votesLabel">
-                                            <rect key="frame" x="485" y="8" width="107" height="20.5"/>
+                                            <rect key="frame" x="485" y="8" width="107" height="18"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="107" id="b1h-Ax-6dR"/>
@@ -403,8 +403,8 @@
                                                 <action selector="userPressedLikeButton" destination="n4A-hT-clp" eventType="touchUpInside" id="H6J-tc-k3g"/>
                                             </connections>
                                         </button>
-                                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
-                                            <rect key="frame" x="-1" y="36" width="601" height="338.5"/>
+                                        <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JHH-or-fbK" userLabel="postImage">
+                                            <rect key="frame" x="-1" y="33.5" width="601" height="341"/>
                                             <animations/>
                                             <gestureRecognizers/>
                                         </imageView>
@@ -863,6 +863,7 @@
         <image name="challengeClock" width="20" height="20"/>
         <image name="challengeLike" width="20" height="20"/>
         <image name="challengePosts" width="20" height="20"/>
+        <image name="challengePreviewPlaceholder" width="500" height="500"/>
         <image name="closeImageUnfilledRed" width="25" height="25"/>
         <image name="likeUnfilled" width="25" height="25"/>
         <image name="navBarCancel" width="22" height="22"/>

@@ -67,7 +67,9 @@ class PostsTableViewController: UITableViewController {
             self.posts = posts
             
             ImageHandler().loadImagePosts(self.posts, challengeID: self.challenge.id, imagesize: ImageSize.medium, imageFormat: ImageFormat.webp, complete: { () -> () in
-                self.reloadTableView()
+                // self.reloadTableView()
+                
+                self.tableView.performSelectorOnMainThread(Selector("reloadData"), withObject: nil, waitUntilDone: true)
             })
             
         }) { (errorCode) -> () in
@@ -169,6 +171,21 @@ class PostsTableViewController: UITableViewController {
         let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id + "_medium" + ".webp")
         
         
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+            var nImage = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
+
+            dispatch_async(dispatch_get_main_queue(),{
+                cell.postImage.image = nImage
+                cell.setNeedsLayout()
+            })
+        })
+        
+        
+        
+        
+        
+        
+
         cell.post = posts[indexPath.row]
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
@@ -176,7 +193,17 @@ class PostsTableViewController: UITableViewController {
         cell.postVotesLabel.text = posts[indexPath.row].votes > 1 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
-        cell.postImage.image = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
+        
+        
+        
+
+        
+        
+        
+        
+
+        
+        
             
 
         
