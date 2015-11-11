@@ -21,20 +21,17 @@
 		D4181CCC1BAC4C28001155B6 /* UserDataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */; };
 		D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; };
 		D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; };
-		D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
 		D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; };
 		D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; };
 		D4254AE41BCD9C5200297FCF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
 		D4254AE51BCD9C5300297FCF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
 		D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; };
-		D4254AE71BCD9C6600297FCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
 		D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
-		D42F96A61BCC006600544C69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
 		D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
 		D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
@@ -54,8 +51,6 @@
 		D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4431D051BBECAE000086759 /* piclet.xcdatamodeld */; };
 		D4431D101BBED73400086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
 		D4431D111BBED73500086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
-		D4431D121BBED73A00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; };
-		D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; };
 		D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
 		D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
 		D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
@@ -72,9 +67,6 @@
 		D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */; };
 		D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
-		D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
-		D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296C1BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m */; };
-		D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = D448296D1BD3CDBC003D51E4 /* UIImage+WebP.m */; };
 		D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D462CB741BCBD3EE00701EFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
 		D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
@@ -102,12 +94,18 @@
 		D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; };
 		D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; };
 		D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */; };
-		D4B609CD1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */; };
 		D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
 		D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */; };
 		D4CDEAAF1BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */; };
 		D4CDEAB01BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */; };
 		D4CDEAB11BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */; };
+		D4F10BA21BF3B9280097E0CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */; };
+		D4F10BA31BF3B9290097E0CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */; };
+		D4F10BA41BF3BA190097E0CE /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
+		D4F10BA51BF3BA1A0097E0CE /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
+		D4F10BA61BF3BA720097E0CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; };
+		D4F10BA71BF3BA780097E0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
+		D4F10BA81BF3BA7A0097E0CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FA80BB1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
@@ -179,10 +177,8 @@
 		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
-		D48E3C791BCCC901006C702A /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
-		D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMangedObject+MCPAdditions.swift"; sourceTree = "<group>"; };
 		D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProgressViewController.swift; sourceTree = "<group>"; };
 		D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -352,7 +348,6 @@
 		D469124A1BAC0DB60012CE7C /* Others */ = {
 			isa = PBXGroup;
 			children = (
-				D48E3C791BCCC901006C702A /* piclet-Bridging-Header.h */,
 				D46912121BAC03C30012CE7C /* AppDelegate.swift */,
 				D469121C1BAC03C30012CE7C /* Assets.xcassets */,
 				D46912211BAC03C30012CE7C /* Info.plist */,
@@ -403,7 +398,6 @@
 				D4431D091BBECB4B00086759 /* User.swift */,
 				D4431D081BBECB4B00086759 /* User+CoreData.swift */,
 				D4431D051BBECAE000086759 /* piclet.xcdatamodeld */,
-				D4B609CC1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -555,7 +549,6 @@
 				D46494851BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */,
-				D44829711BD3CDBC003D51E4 /* UIImage+WebP.m in Sources */,
 				D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
@@ -566,7 +559,6 @@
 				D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */,
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
 				D4FA80BE1BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
-				D4B609CD1BBEABF700697AFA /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */,
 				D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
@@ -574,7 +566,6 @@
 				D4CDEAAF1BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
-				D44829701BD3CDBC003D51E4 /* ImageToWebPDataTransformer.m in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
@@ -593,19 +584,17 @@
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
-				D4445B811BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
-				D42F96A61BCC006600544C69 /* AppDelegate.swift in Sources */,
 				D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */,
 				D4FA80BF1BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4181CCC1BAC4C28001155B6 /* UserDataValidatorTests.swift in Sources */,
 				D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */,
-				D4431D121BBED73A00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
 				D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
+				D4F10BA81BF3BA7A0097E0CE /* AppDelegate.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
 				D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
@@ -617,8 +606,10 @@
 				D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
+				D4F10BA51BF3BA1A0097E0CE /* ObjectMapper.swift in Sources */,
 				D4FA80BB1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D408DA331BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
+				D4F10BA21BF3B9280097E0CE /* ProfileViewController.swift in Sources */,
 				D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,9 +623,9 @@
 				D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4FA80C01BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
-				D4254AE01BCD9C2D00297FCF /* ObjectMapper.swift in Sources */,
-				D4254AE71BCD9C6600297FCF /* AppDelegate.swift in Sources */,
+				D4F10BA31BF3B9290097E0CE /* ProfileViewController.swift in Sources */,
 				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
+				D4F10BA41BF3BA190097E0CE /* ObjectMapper.swift in Sources */,
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
 				D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
@@ -648,6 +639,7 @@
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
+				D4F10BA61BF3BA720097E0CE /* LoginViewController.swift in Sources */,
 				D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
@@ -655,9 +647,9 @@
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D4CDEAB11BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */,
-				D4431D131BBED73B00086759 /* NSMangedObject+MCPAdditions.swift in Sources */,
 				D46494831BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D408DA341BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
+				D4F10BA71BF3BA780097E0CE /* AppDelegate.swift in Sources */,
 				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -806,7 +798,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "piclet/piclet-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -826,7 +820,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "piclet/piclet-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Release;
 		};

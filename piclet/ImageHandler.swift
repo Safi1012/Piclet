@@ -88,18 +88,18 @@ class ImageHandler {
     func getPostImage(challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: (image: UIImage) -> (), failed: () -> () ) {
         let imagePath = documentPath.stringByAppendingPathComponent(postID + "_\(imageSize.rawValue)" + ".\(imageFormat.rawValue)")
         
-        if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-            
-            ApiProxy().getPostImageInSize(challengeID, postID: postID, imageSize: imageSize, imageFormat: imageFormat, success: { () -> () in
-                success(image: UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath)))
-                
-            }, failed: { (errorCode) -> () in
-                failed()
-                
-            })
-        } else {
-            success(image: UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath)))
-        }
+//        if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
+//            
+//            ApiProxy().getPostImageInSize(challengeID, postID: postID, imageSize: imageSize, imageFormat: imageFormat, success: { () -> () in
+//                success(image: UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath)))
+//                
+//            }, failed: { (errorCode) -> () in
+//                failed()
+//                
+//            })
+//        } else {
+//            success(image: UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath)))
+//        }
         
     }
     

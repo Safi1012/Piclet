@@ -60,18 +60,18 @@ class LoginViewController: UIViewController {
         loginButton.layer.masksToBounds = true
     }
     
-    func showLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-            loadingSpinner.labelText = "Loading Data"
-        })
-    }
-    
-    func hideLoadingSpinner() {
-        dispatch_async(dispatch_get_main_queue(), {
-            MBProgressHUD.hideHUDForView(self.view, animated: true)
-        })
-    }
+//    func showLoadingSpinner() {
+//        dispatch_async(dispatch_get_main_queue(), {
+//            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//            loadingSpinner.labelText = "Loading Data"
+//        })
+//    }
+//    
+//    func hideLoadingSpinner() {
+//        dispatch_async(dispatch_get_main_queue(), {
+//            MBProgressHUD.hideHUDForView(self.view, animated: true)
+//        })
+//    }
     
 //    func displayAlert(alertController: UIAlertController) {
 //        dispatch_async(dispatch_get_main_queue(), {
@@ -90,16 +90,16 @@ class LoginViewController: UIViewController {
     @IBAction func createAccountButtonPressed(sender: UIButton) {
 
         if validateTextFields() {
-            showLoadingSpinner()
+            // showLoadingSpinner()
             
             apiProxy.handleUser(usernameTextField.text!, password: passwordTextField.text!, apiPath: "users", success: { () -> () in
                 
-                self.hideLoadingSpinner()
+                // self.hideLoadingSpinner()
                 self.navigateToChallengesViewController()
 
             }) { (errorCode) -> () in
                     
-                self.hideLoadingSpinner()
+                // self.hideLoadingSpinner()
                 self.displayAlert(errorCode)
             }
         }
@@ -108,16 +108,16 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: UIButton) {
         
         if validateTextFields() {
-            showLoadingSpinner()
+            // showLoadingSpinner()
             
             apiProxy.handleUser(usernameTextField.text!, password: passwordTextField.text!, apiPath: "tokens", success: { () -> () in
                 
-                self.hideLoadingSpinner()
+                // self.hideLoadingSpinner()
                 self.navigateToChallengesViewController()
                 
             }) { (errorCode) -> () in
                     
-                self.hideLoadingSpinner()
+                // self.hideLoadingSpinner()
                 self.displayAlert(errorCode)
             }
         }

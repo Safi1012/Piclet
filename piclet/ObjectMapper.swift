@@ -8,9 +8,9 @@
 
 import Foundation
 
-class ObjectMapper: NSObject {
+class ObjectMapper {
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    let managedObjectContext = AppDelegate().managedObjectContext
 
     func createUserToken(jsonData: NSData, username: String) {
         guard
@@ -21,6 +21,7 @@ class ObjectMapper: NSObject {
             print("createUserToken: couldn't serialize data")
             return
         }
+        
         User.updateUserDatabase(managedObjectContext, username: username, token: token)
     }
     

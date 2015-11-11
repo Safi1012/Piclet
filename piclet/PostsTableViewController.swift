@@ -171,14 +171,14 @@ class PostsTableViewController: UITableViewController {
         let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id + "_medium" + ".webp")
         
         
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-            var nImage = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
-
-            dispatch_async(dispatch_get_main_queue(),{
-                cell.postImage.image = nImage
-                cell.setNeedsLayout()
-            })
-        })
+//        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
+//            var nImage = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
+//
+//            dispatch_async(dispatch_get_main_queue(),{
+//                cell.postImage.image = nImage
+//                cell.setNeedsLayout()
+//            })
+//        })
         
         
         

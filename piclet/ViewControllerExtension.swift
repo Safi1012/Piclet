@@ -49,11 +49,11 @@ extension UIViewController {
         dispatch_async(dispatch_get_main_queue(), {
             if viewController.isKindOfClass(UITableViewController) {
                 let tableView = (viewController as! UITableViewController).view
-                let loadingSpinner = MBProgressHUD.showHUDAddedTo(tableView.superview, animated: true)
-                loadingSpinner.labelText = "Loading Data"
+                // let loadingSpinner = MBProgressHUD.showHUDAddedTo(tableView.superview, animated: true)
+                // loadingSpinner.labelText = "Loading Data"
             } else {
-                let loadingSpinner = MBProgressHUD.showHUDAddedTo(viewController.view, animated: true)
-                loadingSpinner.labelText = "Loading Data"
+                // let loadingSpinner = MBProgressHUD.showHUDAddedTo(viewController.view, animated: true)
+                // loadingSpinner.labelText = "Loading Data"
             }
         })
     }
@@ -62,9 +62,9 @@ extension UIViewController {
         dispatch_async(dispatch_get_main_queue(), {
             if viewController.isKindOfClass(UITableViewController) {
                 let tableView = (viewController as! UITableViewController).view
-                MBProgressHUD.hideHUDForView(tableView.superview, animated: true)
+                // MBProgressHUD.hideHUDForView(tableView.superview, animated: true)
             } else {
-                MBProgressHUD.hideHUDForView(viewController.view, animated: true)
+                // MBProgressHUD.hideHUDForView(viewController.view, animated: true)
             }
         })
     }
