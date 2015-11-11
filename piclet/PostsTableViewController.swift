@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import WebImage
+
 
 class PostsTableViewController: UITableViewController {
     
@@ -58,7 +60,6 @@ class PostsTableViewController: UITableViewController {
     }
     
     
-    
     // MARK: - Posts
     
     func refreshPosts() {
@@ -77,30 +78,6 @@ class PostsTableViewController: UITableViewController {
             
         }
     }
-    
-//    func getThumbnailsOfChallenge() {
-//        
-//        for post in posts {
-//            
-//            ApiProxy().getPostImageInSize(challenge.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
-//                
-//            }, failed: { (errorCode) -> () in
-//                self.displayAlert(errorCode)
-//            })
-//        }
-//    }
-//
-//    func checkIfThumbnailsExists() -> Bool {
-//        
-//        for post in posts {
-//            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
-//            
-//            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-//                // return true
-//            }
-//        }
-//        return false
-//    }
     
     func likeChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
         
@@ -135,7 +112,6 @@ class PostsTableViewController: UITableViewController {
     }
     
     
-    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -151,7 +127,6 @@ class PostsTableViewController: UITableViewController {
     }
     
     
-    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -163,29 +138,8 @@ class PostsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
-    
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
         
-        let imagePath = documentPath.stringByAppendingPathComponent(posts[indexPath.row].id + "_medium" + ".webp")
-        
-        
-//        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0), {
-//            var nImage = UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath))
-//
-//            dispatch_async(dispatch_get_main_queue(),{
-//                cell.postImage.image = nImage
-//                cell.setNeedsLayout()
-//            })
-//        })
-        
-        
-        
-        
-        
-        
-
         cell.post = posts[indexPath.row]
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
@@ -194,33 +148,8 @@ class PostsTableViewController: UITableViewController {
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
-        
-        
-
-        
-        
-        
-        
-
-        
-        
-            
-
-        
-        
-        
-        
-        
-//        ImageHandler().getPostImage(challenge.id, postID: posts[indexPath.row].id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { (image) -> () in
-//            
-//            dispatch_async(dispatch_get_main_queue(), {
-//                cell.imageView?.image = image
-//            })
-//            
-//        }, failed: { () -> () in
-//            // maybe try again
-//            
-//        })
+        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters {
@@ -232,15 +161,7 @@ class PostsTableViewController: UITableViewController {
         }
         return cell
     }
-    
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return CGFloat(413.0)
-    }
-
-    
 }
-
 
 
 // MARK: - PostsTableViewDelegate
@@ -275,5 +196,4 @@ extension PostsTableViewController: PostsTableViewDelegate {
             likeChallengePost(post, cell: cell, token: token)
         }
     }
-    
 }
