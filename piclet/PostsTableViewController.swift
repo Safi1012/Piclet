@@ -148,8 +148,38 @@ class PostsTableViewController: UITableViewController {
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
-        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.webp)"
         cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+    
+        
+        
+//        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: .HighPriority, progress: nil, completed: {[weak self] (image, data, error, finished) in
+//            if let wSelf = self {
+//                // do what you want with the image/self
+//                print("downlaoded")
+//                
+//                
+//                
+//            }
+//        })
+        
+        
+        
+//        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: SDWebImageDownloaderOptions.HighPriority, progress: nil) { (image, data, error, finished) -> Void in
+//            
+//
+//            
+//            
+//        }
+        
+        
+//            SDWebImageDownloader.sharedDownloader().downloadImageWithURL(imageUrl, options: nil, progress: nil, completed: {[weak self] (image, data, error, finished) in
+//                if let wSelf = self {
+//                    // do what you want with the image/self
+//                }
+//                })
+        
+        
         
         if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
             for username in posts[indexPath.row].voters {
