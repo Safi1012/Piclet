@@ -17,6 +17,8 @@ class ImageHandler {
         return compressImage(image)
     }
     
+    
+    // fix this !
     private func compressImage(image: UIImage) -> NSData? {
         let newWidth = ImageServerWidth.large.rawValue
         let newHeight = CGFloat((image.size.height / newWidth)) * newWidth // keeps the same aspect ratio
@@ -81,9 +83,7 @@ class ImageHandler {
     
     
     
-    
-    
-    
+    // remove this after new framewrok SDImage
     
     func getPostImage(challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: (image: UIImage) -> (), failed: () -> () ) {
         let imagePath = documentPath.stringByAppendingPathComponent(postID + "_\(imageSize.rawValue)" + ".\(imageFormat.rawValue)")
@@ -102,81 +102,7 @@ class ImageHandler {
 //        }
         
     }
-    
-    
-    
 
-    
-//    func loadImage(postID: String, success: (image: UIImage) -> (), failed: () -> () ) {
-//        
-//        ApiProxy().getPostImageInSize(challenge.id, postID: postID, imageSize: ImageSize.medium, imageFormat: ImageFormat.jpeg, success: { () -> () in
-//            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
-//            success(image: UIImage(webPData: NSFileManager.defaultManager().contentsAtPath(imagePath)))
-//            
-//        }, failed: { (errorCode) -> () in
-//            failed()
-//            
-//        })
-//    }
-//    
-//    func loadImagePosts(posts: [Post], challengeID: String, imagesize: ImageSize, imageFormat: ImageFormat) {
-//        
-//        let postImages = getMissingImagePosts(posts, imageSize: imagesize, imageFormat: imageFormat)
-//        let numberCallback = postImages.count
-//        
-//        for postImage in postImages {
-//            
-//            ApiProxy().getPostImageInSize(challengeID, postID: postImage.postID, imageSize: imagesize, imageFormat: imageFormat, success: { () -> () in
-//                
-//            }, failed: { (errorCode) -> () in
-//                
-//            })
-//        }
-//    }
-//    
-//    func getMissingImagePosts(posts: [Post], imageSize: ImageSize, imageFormat: ImageFormat) -> [PostImage] {
-//        var postImages = [PostImage]()
-//        
-//        for post in posts {
-//            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_\(imageSize.rawValue)" + ".\(imageFormat.rawValue)")
-//            
-//            if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-//                postImages.append(PostImage(imagePath: imagePath, postID: post.id))
-//            }
-//        }
-//        return postImages
-//    }
-    
-    
-    
-    
-    
-    
-    
-    
-    //    func getThumbnailsOfChallenge() {
-    //
-    //        for post in posts {
-    //
-    //            ApiProxy().getPostImageInSize(challenge.id, postID: post.id, imageSize: ImageSize.medium, imageFormat: ImageFormat.webp, success: { () -> () in
-    //
-    //            }, failed: { (errorCode) -> () in
-    //                self.displayAlert(errorCode)
-    //            })
-    //        }
-    //    }
-    //
-    //    func checkIfThumbnailsExists() -> Bool {
-    //
-    //        for post in posts {
-    //            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_medium" + ".webp")
-    //
-    //            if NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-    //                // return true
-    //            }
-    //        }
-    //        return false
-    //    }
 }
 
 struct PostImage {

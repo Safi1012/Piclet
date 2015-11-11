@@ -57,14 +57,10 @@ class ImageUploadViewController: UIViewController {
     
     func uploadPost(title: String, image: NSData) {
         
-        showLoadingSpinner(self)
-        
         ApiProxy().addPostToChallenge(token, challengeID: challengeID, images: [image], description: title, success: { () -> () in
-            self.hideLoadingSpinner(self)
             self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)
             
         }) { (errorCode) -> () in
-            self.hideLoadingSpinner(self)
             self.displayAlert(errorCode)
             
         }

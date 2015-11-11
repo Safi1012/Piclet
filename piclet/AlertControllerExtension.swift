@@ -39,7 +39,7 @@ extension UIAlertController {
                     viewController.presentViewController(loginVC, animated: true, completion: nil)
                 }
                 if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
-                    User.updateUserToken(managedObjectContext, user: loggedInUser, newToken: nil) // only when user changed password -> session is invalid, Untested !!
+                    User.updateUserToken(managedObjectContext, user: loggedInUser, newToken: nil)
                 }
             }
         }))

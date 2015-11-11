@@ -18,8 +18,6 @@ class ChallengeViewController: UIViewController {
     
     var challengeCollection: ChallengeCollection!
 
-    
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     
     
@@ -72,7 +70,7 @@ class ChallengeViewController: UIViewController {
     }
 
     @IBAction func pressedCreateChallenge(sender: UIBarButtonItem) {
-        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
             if loggedInUser.token != nil {
                 performSegueWithIdentifier("toCreateChallengeViewController", sender: self)
                 return
@@ -124,6 +122,8 @@ class ChallengeViewController: UIViewController {
         refreshChallenges(0)
     }
     
+    // create new class that formats code!
+    
     func formatVoteText(numberVotes: Int) -> String {
         if numberVotes == 1 {
             return "\(numberVotes) vote"
@@ -137,8 +137,7 @@ class ChallengeViewController: UIViewController {
         }
         return "\(numberPosts) posts"
     }
-    
-    
+
 
     // MARK: - Navigation
     
@@ -150,7 +149,7 @@ class ChallengeViewController: UIViewController {
         }
         if segue.identifier == "toCreateChallengeViewController" {
             let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! CreateChallengeViewController
-            destinationVC.token = User.getLoggedInUser(managedObjectContext)!.token!
+            destinationVC.token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
         }
     }
     
@@ -158,7 +157,6 @@ class ChallengeViewController: UIViewController {
         print("BACK again")
     }
 }
-
 
 
 // MARK: - UITableViewDataSource
@@ -184,7 +182,6 @@ extension ChallengeViewController: UITableViewDataSource {
         return cell
     }
 }
-
 
 
 // MARK: - UITableViewDelegate

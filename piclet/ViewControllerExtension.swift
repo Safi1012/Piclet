@@ -44,29 +44,5 @@ extension UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         })
     }
-    
-    func showLoadingSpinner(viewController: UIViewController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            if viewController.isKindOfClass(UITableViewController) {
-                let tableView = (viewController as! UITableViewController).view
-                // let loadingSpinner = MBProgressHUD.showHUDAddedTo(tableView.superview, animated: true)
-                // loadingSpinner.labelText = "Loading Data"
-            } else {
-                // let loadingSpinner = MBProgressHUD.showHUDAddedTo(viewController.view, animated: true)
-                // loadingSpinner.labelText = "Loading Data"
-            }
-        })
-    }
-    
-    func hideLoadingSpinner(viewController: UIViewController) {
-        dispatch_async(dispatch_get_main_queue(), {
-            if viewController.isKindOfClass(UITableViewController) {
-                let tableView = (viewController as! UITableViewController).view
-                // MBProgressHUD.hideHUDForView(tableView.superview, animated: true)
-            } else {
-                // MBProgressHUD.hideHUDForView(viewController.view, animated: true)
-            }
-        })
-    }
 }
 

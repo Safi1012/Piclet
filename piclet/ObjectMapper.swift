@@ -21,13 +21,10 @@ class ObjectMapper {
             print("createUserToken: couldn't serialize data")
             return
         }
-        
         User.updateUserDatabase(managedObjectContext, username: username, token: token)
     }
     
-    
     func parseError(responseData: NSData) -> String {
-        
         guard
             let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
             let objects = json as? NSDictionary,
@@ -43,7 +40,6 @@ class ObjectMapper {
     
     
     func getChallenges(responseData: NSData) -> [Challenge] {
-        
         guard
             let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
             let objects = json as? NSArray
@@ -98,7 +94,6 @@ class ObjectMapper {
         let fileManager = NSFileManager.defaultManager()
         fileManager.createFileAtPath(imagePath, contents: responseData, attributes: nil)
     }
-    
     
     func getPosts(responseData: NSData) -> [Post] {
         guard
