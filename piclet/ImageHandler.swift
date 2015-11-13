@@ -17,11 +17,26 @@ class ImageHandler {
         return compressImage(image)
     }
     
-    
-    // fix this !
     private func compressImage(image: UIImage) -> NSData? {
-        let newWidth = ImageServerWidth.large.rawValue
-        let newHeight = CGFloat((image.size.height / newWidth)) * newWidth // keeps the same aspect ratio
+        let newWidth: CGFloat
+        let newHeight: CGFloat
+        
+        print(image.size.width)
+        print(image.size.height)
+        
+        if image.size.width > image.size.height {
+            newHeight = (image.size.width / image.size.height) * 1440.0
+            newWidth = 1440.0
+            
+        } else if image.size.width < image.size.height {
+            newHeight = (image.size.height / image.size.width) * 1440.0
+            newWidth = 1440.0
+            
+        } else {
+            newHeight = 1440.0
+            newWidth = 1440.0
+            
+        }
         
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.drawInRect(CGRectMake(0.0, 0.0, newWidth, newHeight))

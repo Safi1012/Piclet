@@ -112,7 +112,7 @@ class ImagePickerViewController: UIViewController {
         }
         return false
     }
-    
+
     
     // MARK: - Navigation
     
@@ -134,7 +134,12 @@ class ImagePickerViewController: UIViewController {
 extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        
+            if picker.sourceType == UIImagePickerControllerSourceType.Camera {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            }
             pickedImage = image
             previewImageView.image = image
             previewImageView.hidden = false
@@ -143,7 +148,5 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }
-
-
 
 

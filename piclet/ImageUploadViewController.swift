@@ -25,11 +25,9 @@ class ImageUploadViewController: UIViewController {
     @IBAction func pressedUploadNavBarItem(sender: UIBarButtonItem) {
         
         if validateTextField() {
-
             if let newImage = ImageHandler().covertImageForUpload(pickedImage) {
                 print("KB: \(newImage.length / 1024)")
                 uploadPost(titleTextField.text!, image: newImage)
-                
             }
         }
     }
