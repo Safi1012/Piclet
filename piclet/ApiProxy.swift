@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class ApiProxy {
     
@@ -18,42 +19,84 @@ class ApiProxy {
         networkHandler = NetworkHandler()
         objectMapper = ObjectMapper()
     }
+    
 
-    func handleUser(username: String, password: String, apiPath: String, success: () -> (), failed: (errorCode: String) -> ()) {
-        
-        let body = ["username" : (username), "password" :  (password), "os" : "ios"]
-        
-        networkHandler.createRequest(body, apiPath: apiPath, httpVerb: "POST", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            self.objectMapper.createUserToken(validResponseData, username: username)
+    // UserAccount
+    
+    func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
+        let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
+    
+        networkHandler.requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
+            UserAccount().createUserToken(json, username: username)
             success()
             
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
         }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
+            failure(errorCode: errorCode)
             
         }
     }
     
-    func deleteThisToken(token: String, success: () -> (), failed: (errorCode: String) -> ()) {
+    func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
+        let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         
-        networkHandler.createRequest([:], apiPath: "tokens/this", httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
+        networkHandler.requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
+            UserAccount().createUserToken(json, username: username)
             success()
             
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
         }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
+            failure(errorCode: errorCode)
             
         }
     }
     
-    func getChallenges(offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
+    func deleteThisUserToken(token: String, success: () -> (), failure: (errorCode: String) -> ()) {
+     
+        networkHandler.requestJSON([:], apiPath: "tokens/this", httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
+            success()
+        
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+        }
+    }
+    
+    
+    // Challenges
+    
+    func getChallengesSorted(offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
         
         let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
         let apiPath = "challenges?offset=\(offset)" + "&orderby=\(orderbyString)"
+        
+        networkHandler.requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            //
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // update to new network calls
+    
+
+    
+    func getChallenges(offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
+        
+
+        
+        let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
+        let apiPath = "challenges?offset=\(offset)" + "&orderby=\(orderbyString)"
+        
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
             success(challenges: self.objectMapper.getChallenges(validResponseData))
@@ -66,6 +109,10 @@ class ApiProxy {
             
         }
     }
+    
+    
+    
+    
     
     func getPostImageInSize(challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
     

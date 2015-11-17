@@ -7,8 +7,45 @@
 //
 
 import Foundation
+import Alamofire
 
 class NetworkHandler: NSObject {
+    
+    func requestJSON(apiParameters: [String: String], apiPath: String, httpVerb: HTTPVerb, token: String?, success: (json: AnyObject) -> (), failure: (errorCode: String) -> () ) {
+        
+        var headers = ["": ""]
+        
+        if let token = token {
+            headers = ["Authorization": "Bearer \(token)"]
+        }
+        let httpVerb = Alamofire.Method(rawValue: httpVerb.rawValue)!
+        
+        Alamofire.request(httpVerb, "https://flash1293.de/\(apiPath)", parameters: apiParameters, encoding: .JSON, headers: headers)
+            .responseJSON { response in
+                
+                switch response.result {
+
+                case .Success:
+                    switch (response.response?.statusCode)! {
+                        
+                    case 200...299:
+                        success(json: response.result.value!)
+                        
+                    default:
+                        failure(errorCode: ErrorHandler().getErrorCode(response.result.value!))
+                    }
+                    
+                case .Failure: // Network error
+                    failure(errorCode: "NetworkError")
+                }
+            }
+    }
+    
+    
+    
+    
+    
+    
     
     func createRequest(apiParameters: Dictionary<String, String>, apiPath: String,
         httpVerb: String, bearerToken: String?, validRequest: (validResponseData: NSData) -> (), inValidRequest: (invalidResponseData: NSData) -> (), networkError: (errorCode: String) -> ()) {
@@ -182,6 +219,14 @@ extension NSMutableData {
         appendData(data!)
     }
 }
+
+
+enum HTTPVerb: String {
+    case get = "GET"
+    case post = "POST"
+    case delete = "DELETE"
+}
+
 
 
 

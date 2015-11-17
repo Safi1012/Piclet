@@ -21,6 +21,21 @@ class UserAccount {
     
     // allPosts created by the user
     // var myPosts: [Posts]?
+    
+    
+    func createUserToken(json: AnyObject, username: String) {
+        guard
+            let dict = json as? NSDictionary,
+            let token = dict["token"] as? String
+        else {
+            print("createUserToken: couldn't serialize data")
+            return
+        }
+        User.updateUserDatabase(managedObjectContext, username: username, token: token)
+    }
+    
+    
+    
 }
 
 

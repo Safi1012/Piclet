@@ -88,38 +88,28 @@ class LoginViewController: UIViewController {
     // MARK: - Login
     
     @IBAction func createAccountButtonPressed(sender: UIButton) {
-
         if validateTextFields() {
-            // showLoadingSpinner()
-            
-            apiProxy.handleUser(usernameTextField.text!, password: passwordTextField.text!, apiPath: "users", success: { () -> () in
-                
-                // self.hideLoadingSpinner()
-                self.navigateToChallengesViewController()
 
-            }) { (errorCode) -> () in
-                    
-                // self.hideLoadingSpinner()
+            apiProxy.createUserAccount(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+                self.navigateToChallengesViewController()
+                
+            }, failure: { (errorCode) -> () in
                 self.displayAlert(errorCode)
-            }
+                
+            })
         }
     }
     
     @IBAction func loginButtonPressed(sender: UIButton) {
-        
         if validateTextFields() {
-            // showLoadingSpinner()
             
-            apiProxy.handleUser(usernameTextField.text!, password: passwordTextField.text!, apiPath: "tokens", success: { () -> () in
-                
-                // self.hideLoadingSpinner()
+            apiProxy.signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
                 self.navigateToChallengesViewController()
                 
-            }) { (errorCode) -> () in
-                    
-                // self.hideLoadingSpinner()
+            }, failure: { (errorCode) -> () in
                 self.displayAlert(errorCode)
-            }
+                
+            })
         }
     }
     

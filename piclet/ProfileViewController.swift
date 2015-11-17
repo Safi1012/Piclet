@@ -54,13 +54,15 @@ class ProfileViewController: UIViewController {
     
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
         
-        ApiProxy().deleteThisToken(loggedInUser!.token!, success: { () -> () in
-            
+        print("\(loggedInUser!.token!)")
+        
+        ApiProxy().deleteThisUserToken(loggedInUser!.token!, success: { () -> () in
             User.updateUserToken(self.managedObjectContext, user: self.loggedInUser!, newToken: nil)
             self.navigatoToLoginViewController()
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
+            
         }
     }
     

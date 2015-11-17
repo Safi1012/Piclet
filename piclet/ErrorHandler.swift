@@ -10,6 +10,19 @@ import Foundation
 
 class ErrorHandler {
     
+    func getErrorCode(json: AnyObject) -> String {
+        guard
+            let jsonDict = json as? NSDictionary,
+            let errorCode = jsonDict["code"] as? String,
+            let errorMessage = jsonDict["message"] as? String
+        else {
+            print("InvalidJSON")
+            return "InvalidJSON"
+        }
+        print("ErorCode: \(errorCode), Message: \(errorMessage)")
+        return errorCode
+    }
+    
     func getTitleAndMessageError(errorCode: String) -> (title: String, message: String) {
         
         switch(errorCode) {
@@ -66,4 +79,6 @@ class ErrorHandler {
             return ("Unexpected Error", "Please try again.")
         }
     }
+    
+    
 }
