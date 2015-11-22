@@ -17,38 +17,6 @@
             endingLineNumber = "26"
             landmarkName = "pressedCreateTabBar(_:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "piclet.CreateChallengeViewController.pressedCreateTabBar (piclet.CreateChallengeViewController)(__ObjC.UIBarButtonItem) -&gt; ()"
-                  moduleName = "piclet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/filipe/Documents/01_Developer/01_Projects/01_Mobile/01_iOS/Piclet/piclet/CreateChallengeViewController.swift"
-                  timestampString = "469918025.002389"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26"
-                  offsetFromSymbolStart = "69">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "piclet.CreateChallengeViewController.(pressedCreateTabBar (piclet.CreateChallengeViewController) -&gt; (__ObjC.UIBarButtonItem) -&gt; ()).(closure #1)"
-                  moduleName = "piclet"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/filipe/Documents/01_Developer/01_Projects/01_Mobile/01_iOS/Piclet/piclet/CreateChallengeViewController.swift"
-                  timestampString = "469918025.002636"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
