@@ -12,14 +12,7 @@ class ChallengeViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    
-    
-    let apiProxy = ApiProxy()
-    
     var challengeCollection: ChallengeCollection!
-
-    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +84,7 @@ class ChallengeViewController: UIViewController {
     
     func refreshChallenges(offset: Int) {
         
-        ApiProxy().getChallenges(offset, orderby: challengeCollection.section, success: { (challenges) -> () in
+        ApiProxy().fetchChallenges(offset, orderby: challengeCollection.section, archived: false, success: { (challenges) -> () in
             self.challengeCollection.challenge = challenges
             
             dispatch_async(dispatch_get_main_queue(), {
@@ -121,6 +114,8 @@ class ChallengeViewController: UIViewController {
     func refresh() {
         refreshChallenges(0)
     }
+    
+    
     
     // create new class that formats code!
     

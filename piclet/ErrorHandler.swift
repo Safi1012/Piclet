@@ -19,7 +19,7 @@ class ErrorHandler {
             print("InvalidJSON")
             return "InvalidJSON"
         }
-        print("ErorCode: \(errorCode), Message: \(errorMessage)")
+        print("ErrorCode: \(errorCode), Message: \(errorMessage)")
         return errorCode
     }
     
@@ -33,7 +33,7 @@ class ErrorHandler {
         case "UsernameTakenError":
             return ("Username is already taken", "The username you chose is already taken. Please try a different one. Thanks!")
             
-        case "UsernameNotFound":
+        case "UsernameNotFoundError":
             return ("Username not found", "The username or password you typed does not exists. Please try it again.")
             
         case "WrongPassword":
@@ -79,6 +79,4 @@ class ErrorHandler {
             return ("Unexpected Error", "Please try again.")
         }
     }
-    
-    
 }

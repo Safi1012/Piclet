@@ -9,24 +9,16 @@
 import Foundation
 import UIKit
 import Alamofire
+import ObjectMapper
 
 class ApiProxy {
     
-    var networkHandler: NetworkHandler!
-    var objectMapper: ObjectMapper!
-    
-    init() {
-        networkHandler = NetworkHandler()
-        objectMapper = ObjectMapper()
-    }
-    
-
-    // UserAccount
+    // MARK: - User Account
     
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
-    
-        networkHandler.requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
+        
+        NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
             success()
             
@@ -39,7 +31,7 @@ class ApiProxy {
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         
-        networkHandler.requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
+        NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
             success()
             
@@ -50,8 +42,8 @@ class ApiProxy {
     }
     
     func deleteThisUserToken(token: String, success: () -> (), failure: (errorCode: String) -> ()) {
-     
-        networkHandler.requestJSON([:], apiPath: "tokens/this", httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
+        
+        NetworkHandler().requestJSON([:], apiPath: "tokens/this", httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
             success()
         
         }) { (errorCode) -> () in
@@ -60,162 +52,98 @@ class ApiProxy {
     }
     
     
-    // Challenges
+    // MARK: - Challenges
     
-    func getChallengesSorted(offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
+    func fetchChallenges(offset: Int, orderby: SegmentedControlState, archived: Bool, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
         
         let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
-        let apiPath = "challenges?offset=\(offset)" + "&orderby=\(orderbyString)"
+        let apiPath = "challenges?offset=\(offset)&orderby=\(orderbyString)&archived=\(archived)"
         
-        networkHandler.requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
-            //
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            success(challenges: ObjectMapper().parseChallenges(json))
             
         }) { (errorCode) -> () in
             failure(errorCode: errorCode)
             
         }
-        
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // update to new network calls
-    
-
-    
-    func getChallenges(offset: Int, orderby: SegmentedControlState, success: (challenges: [Challenge]) -> (), failed: (errorCode: String) -> ()) {
+    func createNewChallenge(token: String, challengeName: String, success: () -> (), failure: (errorCode: String) -> () ){
         
-
-        
-        let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
-        let apiPath = "challenges?offset=\(offset)" + "&orderby=\(orderbyString)"
-        
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            success(challenges: self.objectMapper.getChallenges(validResponseData))
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-    
-    
-    
-    
-    
-    func getPostImageInSize(challengeID: String, postID: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
-    
-        let apiPath = "challenges/\(challengeID)/posts/\(postID)/image-\(imageSize).\(imageFormat)"
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            self.objectMapper.saveImagePost(validResponseData, postID: postID, imageSize: imageSize)
+        NetworkHandler().requestJSON(["title" : (challengeName)], apiPath: "challenges", httpVerb: HTTPVerb.post, token: token, success: { (json) -> () in
             success()
             
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
         }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-    
-    func getChallengesPosts(challengeID: String, success: (posts: [Post]) -> (), failed: (errorCode: String) -> ()) {
-        
-        networkHandler.createRequest([:], apiPath: ("challenges/" + challengeID), httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            success(posts: self.objectMapper.getPosts(validResponseData))
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-    
-    func likeChallengePost(token: String, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
-        
-        let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
-            success()
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-    
-    func revertLikeChallengePost(token: String, challengeID: String, postID: String, success: () -> (), failed: (errorCode: String) -> () ) {
-        
-        let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
-        let body = ["challenge-id" : (challengeID), "post-id" : (postID)]
-        
-        networkHandler.createRequest(body, apiPath: apiPath, httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
-            success()
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-    
-    func postNewChallenge(token: String, challengeName: String, success: (challenge: Challenge) -> (), failed: (errorCode: String) -> () ){
-        
-        networkHandler.createRequest(["title" : (challengeName)], apiPath: "challenges", httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
-            success(challenge: self.objectMapper.getChallenge(validResponseData))
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
+            failure(errorCode: errorCode)
             
         }
     }
     
     
-    // test this! -- Multipart - request
-    func addPostToChallenge(token: String, challengeID: String, images: [NSData], description: String, success: () -> (), failed: (errorCode: String) -> ()) {
+    // MARK: - Posts
+    
+    func fetchChallengePosts(challengeID: String, success: (posts: [Post]) -> (), failure: (errorCode: String) -> ()) {
+        
+        NetworkHandler().requestJSON([:], apiPath: "challenges/\(challengeID)", httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            success(posts: ObjectMapper().parsePosts(json))
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+                
+        }
+    }
+    
+    func addPostToChallenge(token: String, challengeID: String, image: NSData, description: String, success: () -> (), failure: (errorCode: String) -> ()) {
         
         let apiPath = "challenges/" + "\(challengeID)" + "/posts"
         
-        networkHandler.createMultipartRequest(["description": (description)], images: images, apiPath: apiPath, httpVerb: "POST", bearerToken: token, validRequest: { (validResponseData) -> () in
+        NetworkHandler().uploadImage(["description": (description)], apiPath: apiPath, httpVerb: HTTPVerb.post, token: token, image: image, success: { (json) -> () in
             success()
             
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
+            }) { (errorCode) -> () in
+                failure(errorCode: errorCode)
+                
+        }
+    }
+    
+    func likePost(token: String, challengeID: String, postID: String, success: () -> (), failure: (errorCode: String) -> () ) {
+        
+        let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.post, token: token, success: { (json) -> () in
+            success()
             
         }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
+            failure(errorCode: errorCode)
             
         }
     }
     
+    func revertLikePost(token: String, challengeID: String, postID: String, success: () -> (), failure: (errorCode: String) -> () ) {
+     
+        let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
+        let body = ["challenge-id" : (challengeID), "post-id" : (postID)]
+        
+        NetworkHandler().requestJSON(body, apiPath: apiPath, httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
+            success()
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
+
     
     
     
     
     
+
     
+    
+    
+/*
     
     
     // TEST -> use for change password
@@ -263,7 +191,7 @@ class ApiProxy {
         let apiPath = "users/" + username + "/challenges'"
         
         networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            success(userChallenges: self.objectMapper.getChallenges(validResponseData))
+            // success(userChallenges: self.objectMapper.getChallenges(validResponseData))
             
         }, inValidRequest: { (invalidResponseData) -> () in
             failed(errorCode: self.objectMapper.parseError(invalidResponseData))
@@ -359,6 +287,8 @@ class ApiProxy {
             
         }
     }
+
+*/
 
 }
 

@@ -55,7 +55,7 @@ class ImageUploadViewController: UIViewController {
     
     func uploadPost(title: String, image: NSData) {
         
-        ApiProxy().addPostToChallenge(token, challengeID: challengeID, images: [image], description: title, success: { () -> () in
+        ApiProxy().addPostToChallenge(token, challengeID: challengeID, image: image, description: title, success: { () -> () in
             self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)
             
         }) { (errorCode) -> () in

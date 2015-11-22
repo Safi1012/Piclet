@@ -23,12 +23,12 @@ class CreateChallengeViewController: UIViewController {
     @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
         
         if validateTextField() {
-            ApiProxy().postNewChallenge(token, challengeName: nameTextField.text!, success: { (challenge) -> () in
+            ApiProxy().createNewChallenge(token, challengeName: nameTextField.text!, success: { () -> () in
                 self.performSegueWithIdentifier("unwindToChallengeViewController", sender: self)
                 
-            }, failed: { (errorCode) -> () in
+            }, failure: { (errorCode) -> () in
                 self.displayAlert(errorCode)
-                    
+                
             })
         }
     }
@@ -52,7 +52,6 @@ class CreateChallengeViewController: UIViewController {
     }
 
 }
-
 
 
 // MARK: - UITextFieldDelegate

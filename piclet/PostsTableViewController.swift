@@ -14,8 +14,7 @@ class PostsTableViewController: UITableViewController {
     var challenge: Challenge!
     var posts = [Post]()
     var isRequesting = false
-    let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,6 @@ class PostsTableViewController: UITableViewController {
     }
     
     
-
     // MARK: - UI
     
     func reloadTableView() {
@@ -49,7 +47,7 @@ class PostsTableViewController: UITableViewController {
     }
 
     @IBAction func pressedCreatePost(sender: UIBarButtonItem) {
-        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
             if loggedInUser.token != nil {
                 performSegueWithIdentifier("toImagePickerViewController", sender: self)
                 return
@@ -63,14 +61,9 @@ class PostsTableViewController: UITableViewController {
     
     func refreshPosts() {
         
-        ApiProxy().getChallengesPosts(challenge.id, success: { (posts) -> () in
+        ApiProxy().fetchChallengePosts(challenge.id, success: { (posts) -> () in
             self.posts = posts
-            
-            ImageHandler().loadImagePosts(self.posts, challengeID: self.challenge.id, imagesize: ImageSize.medium, imageFormat: ImageFormat.webp, complete: { () -> () in
-                // self.reloadTableView()
-                
-                self.tableView.performSelectorOnMainThread(Selector("reloadData"), withObject: nil, waitUntilDone: true)
-            })
+            self.tableView.performSelectorOnMainThread(Selector("reloadData"), withObject: nil, waitUntilDone: true)
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
@@ -80,33 +73,33 @@ class PostsTableViewController: UITableViewController {
     
     func likeChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
         
-        ApiProxy().likeChallengePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
+        ApiProxy().likePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
             self.isRequesting = false
             
-            }, failed: { (errorCode) -> () in
-                post.votes!--
-                cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-                cell.postVotesLabel.text = "\(post.votes) Votes"
-                
-                self.displayAlert(errorCode)
-                self.isRequesting = false
-                
-        })
+        }) { (errorCode) -> () in
+            post.votes!--
+            cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+            cell.postVotesLabel.text = "\(post.votes) Votes"
+            
+            self.displayAlert(errorCode)
+            self.isRequesting = false
+            
+        }
     }
     
     func revertChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
         
-        ApiProxy().revertLikeChallengePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
+        ApiProxy().revertLikePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
             self.isRequesting = false
             
-            }) { (errorCode) -> () in
-                post.votes!++
-                cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-                cell.postVotesLabel.text = "\(post.votes) Votes"
-                
-                self.displayAlert(errorCode)
-                self.isRequesting = false
-                
+        }) { (errorCode) -> () in
+            post.votes!++
+            cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+            cell.postVotesLabel.text = "\(post.votes) Votes"
+            
+            self.displayAlert(errorCode)
+            self.isRequesting = false
+            
         }
     }
     
@@ -116,7 +109,7 @@ class PostsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toImagePickerViewController" {
             let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! ImagePickerViewController
-            destinationVC.token = User.getLoggedInUser(managedObjectContext)!.token!
+            destinationVC.token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
             destinationVC.challengeID = challenge.id
         }
     }
@@ -150,7 +143,7 @@ class PostsTableViewController: UITableViewController {
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
         cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
         
-        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
+        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
             for username in posts[indexPath.row].voters {
                 if username == loggedInUser.username {
                     cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
@@ -170,7 +163,7 @@ extension PostsTableViewController: PostsTableViewDelegate {
     func likeButtonInCellWasPressed(cell: PostsTableViewCell, post: Post) {
         
         guard
-            let loggedInUser = User.getLoggedInUser(managedObjectContext),
+            let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext),
             let token = loggedInUser.token
         else {
             self.displayAlert("NotLoggedIn")
