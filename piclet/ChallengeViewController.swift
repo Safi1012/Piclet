@@ -139,7 +139,7 @@ class ChallengeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toPostsViewController" {
-            let destinationVC = segue.destinationViewController as! PostsTableViewController
+            let destinationVC = segue.destinationViewController as! PostsViewController
             destinationVC.challenge = (sender as? Challenge)
         }
         if segue.identifier == "toCreateChallengeViewController" {

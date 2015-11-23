@@ -1,36 +1,45 @@
 //
-//  PostsTableViewController.swift
+//  PostsViewController.swift
 //  piclet
 //
-//  Created by Filipe Santos Correa on 17/10/15.
+//  Created by Filipe Santos Correa on 23/11/15.
 //  Copyright © 2015 Filipe Santos Correa. All rights reserved.
 //
 
 import UIKit
 import WebImage
 
-class PostsTableViewController: UITableViewController {
+class PostsViewController: UIViewController {
+    
+    @IBOutlet weak var mascotContainerView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
     var challenge: Challenge!
     var posts = [Post]()
     var isRequesting = false
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        tableView.dataSource = self
         refreshPosts()
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        // self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = challenge!.title
+        // self.navigationItem.title = challenge!.title
     }
     
     override func viewDidAppear(animated: Bool) {
-        refreshPosts()
+        
+        view.addSubview(mascotContainerView)
+        tableView.hidden=true
+        
+        mascotContainerView.hidden = false
+        
+        // refreshPosts()
     }
-    
+
     
     // MARK: - UI
     
@@ -45,7 +54,7 @@ class PostsTableViewController: UITableViewController {
             button.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
         })
     }
-
+    
     @IBAction func pressedCreatePost(sender: UIBarButtonItem) {
         if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
             if loggedInUser.token != nil {
@@ -65,9 +74,9 @@ class PostsTableViewController: UITableViewController {
             self.posts = posts
             self.tableView.performSelectorOnMainThread(Selector("reloadData"), withObject: nil, waitUntilDone: true)
             
-        }) { (errorCode) -> () in
-            self.displayAlert(errorCode)
-            
+            }) { (errorCode) -> () in
+                self.displayAlert(errorCode)
+                
         }
     }
     
@@ -76,14 +85,14 @@ class PostsTableViewController: UITableViewController {
         ApiProxy().likePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
             self.isRequesting = false
             
-        }) { (errorCode) -> () in
-            post.votes!--
-            cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = "\(post.votes) Votes"
-            
-            self.displayAlert(errorCode)
-            self.isRequesting = false
-            
+            }) { (errorCode) -> () in
+                post.votes!--
+                cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+                cell.postVotesLabel.text = "\(post.votes) Votes"
+                
+                self.displayAlert(errorCode)
+                self.isRequesting = false
+                
         }
     }
     
@@ -92,14 +101,14 @@ class PostsTableViewController: UITableViewController {
         ApiProxy().revertLikePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
             self.isRequesting = false
             
-        }) { (errorCode) -> () in
-            post.votes!++
-            cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = "\(post.votes) Votes"
-            
-            self.displayAlert(errorCode)
-            self.isRequesting = false
-            
+            }) { (errorCode) -> () in
+                post.votes!++
+                cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+                cell.postVotesLabel.text = "\(post.votes) Votes"
+                
+                self.displayAlert(errorCode)
+                self.isRequesting = false
+                
         }
     }
     
@@ -118,18 +127,20 @@ class PostsTableViewController: UITableViewController {
         print("BACK again")
     }
     
-    
-    // MARK: - Table view data source
+}
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+
+extension PostsViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
         
         cell.post = posts[indexPath.row]
@@ -158,16 +169,16 @@ class PostsTableViewController: UITableViewController {
 
 // MARK: - PostsTableViewDelegate
 
-extension PostsTableViewController: PostsTableViewDelegate {
+extension PostsViewController: PostsTableViewDelegate {
     
     func likeButtonInCellWasPressed(cell: PostsTableViewCell, post: Post) {
         
         guard
             let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext),
             let token = loggedInUser.token
-        else {
-            self.displayAlert("NotLoggedIn")
-            return
+            else {
+                self.displayAlert("NotLoggedIn")
+                return
         }
         if isRequesting {
             return
@@ -178,7 +189,7 @@ extension PostsTableViewController: PostsTableViewDelegate {
             cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
             post.votes!--
             cell.postVotesLabel.text = "\(post.votes) Votes"
-
+            
             revertChallengePost(post, cell: cell, token: token)
         } else {
             cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)

@@ -20,7 +20,7 @@ class PostsTableViewCell: UITableViewCell {
     @IBOutlet weak var postLikeButton: UIButton!
     @IBOutlet weak var postTimeLabel: UILabel!
     
-    weak var postTableViewController: PostsTableViewController!
+    weak var postViewController: PostsViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,8 +30,8 @@ class PostsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func addDoubleTapGestureRecognizer(postTableViewController: PostsTableViewController) {
-        self.postTableViewController = postTableViewController
+    func addDoubleTapGestureRecognizer(postViewController: PostsViewController) {
+        self.postViewController = postViewController
         
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "detectedDoubleTap")
             doubleTapRecognizer.numberOfTapsRequired = 2

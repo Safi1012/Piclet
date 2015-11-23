@@ -85,12 +85,12 @@
 		D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912351BAC03C40012CE7C /* picletUITests.swift */; };
 		D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; };
 		D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912461BAC0D970012CE7C /* LoginViewController.swift */; };
+		D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
+		D46D1AFA1C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
+		D46D1AFB1C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
 		D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
-		D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; };
-		D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; };
-		D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */; };
 		D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
 		D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
 		D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
@@ -192,8 +192,8 @@
 		D46912351BAC03C40012CE7C /* picletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = picletUITests.swift; sourceTree = "<group>"; };
 		D46912371BAC03C40012CE7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46912461BAC0D970012CE7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
-		D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
@@ -391,7 +391,7 @@
 		D47E5E261BD293AE003E9351 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
-				D47E5E1D1BD290BB003E9351 /* PostsTableViewController.swift */,
+				D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */,
 				D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */,
 				D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */,
 			);
@@ -595,10 +595,10 @@
 				D4FA80BE1BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */,
-				D47E5E1E1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */,
 				D4CDEAAF1BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
+				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
@@ -625,9 +625,9 @@
 				D4FA80BF1BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4181CCC1BAC4C28001155B6 /* UserDataValidatorTests.swift in Sources */,
 				D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */,
+				D46D1AFA1C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
-				D47E5E1F1BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4F10BA81BF3BA7A0097E0CE /* AppDelegate.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
 				D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
@@ -654,6 +654,7 @@
 			files = (
 				D4431D0D1BBED72900086759 /* User.swift in Sources */,
 				D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */,
+				D46D1AFB1C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4FA80C01BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
 				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
@@ -669,7 +670,6 @@
 				D4085C531BF0FADC00051436 /* ImageHandler.swift in Sources */,
 				D44248ED1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */,
-				D47E5E201BD290BB003E9351 /* PostsTableViewController.swift in Sources */,
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
