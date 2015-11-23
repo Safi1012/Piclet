@@ -27,9 +27,6 @@ class ErrorHandler {
         
         switch(errorCode) {
             
-        case "NetworkError":
-            return ("No internet", NSLocalizedString("NO_INTERNET_ALERT", comment: ""))
-            
         case "UsernameTakenError":
             return ("Username is already taken", "The username you chose is already taken. Please try a different one. Thanks!")
             
@@ -61,7 +58,7 @@ class ErrorHandler {
             return ("Not logged in", "Only users that have an account, can Vote.")
             
         case "UnauthorizedError":
-            return ("Invalid Session", "You Session has timed out. Please login again.")
+            return ("Invalid Session", NSLocalizedString("NO_INTERNET_ALERT", comment: ""))
             
         case "NoPictureError":
             return ("No Picture", "You must choose a picture to create a post. You can choose from your image gallery or take a new shoot.")
