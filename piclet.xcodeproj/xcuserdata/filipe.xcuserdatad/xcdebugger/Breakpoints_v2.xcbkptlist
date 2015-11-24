@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "piclet/ProfileViewController.swift"
-            timestampString = "470066736.95977"
+            timestampString = "470070659.118135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "uploadNewUserImage(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "piclet/ProfileViewController.swift"
-            timestampString = "470066736.95977"
+            timestampString = "470070659.118135"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "refreshUserProfileImage(_:)"
             landmarkType = "5">
          </BreakpointContent>
