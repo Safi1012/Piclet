@@ -91,22 +91,18 @@ class ObjectMapper {
         return posts
     }
     
-    
-    
-    // test this!
-    
-    func getUserAccountInformation(responseData: NSData) -> UserAccount {
+    func parseUserAccountInformations(json: AnyObject) -> UserAccount {
         guard
-            let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.MutableContainers),
             let dict = json as? NSDictionary,
-            
             let username = dict["username"] as? String,
             let created = dict["created"] as? Int,
             let totalVotes = dict["totalVotes"] as? Int,
             let totalPosts = dict["totalPosts"] as? Int,
-            let rank = dict["rank"] as? Int
+            let rank = dict["rank"] as? Int,
+            let token = User.getLoggedInUserToken(AppDelegate().managedObjectContext)
+        
         else {
-            print("getPosts: couldn't serialize data")
+            print("parseUserAccountInformationsError")
             return UserAccount()
         }
         
@@ -116,10 +112,10 @@ class ObjectMapper {
         userAccount.totalVotes = totalVotes
         userAccount.totalPosts = totalPosts
         userAccount.rank = rank
+        userAccount.token = token
         
         return userAccount
     }
-    
 }
 
 

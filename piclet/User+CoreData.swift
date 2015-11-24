@@ -94,6 +94,27 @@ extension User {
         return nil
     }
     
+    class func getLoggedInUserToken(moc: NSManagedObjectContext) -> String? {
+        
+        let fetchRequest = NSFetchRequest(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "token != nil")
+        
+        do {
+            let fetchResult = try moc.executeFetchRequest(fetchRequest) as! [User]
+            
+            if fetchResult.count > 0 {
+                if let token = fetchResult[0].token {
+                    return token
+                }
+                return nil
+            }
+        } catch {
+            print("CoreData: \(error)")
+        }
+        return nil
+    }
+    
+    // could be deleted
     
     class func removeUserToken(moc: NSManagedObjectContext) -> Bool {
         

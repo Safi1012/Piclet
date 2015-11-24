@@ -16,6 +16,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    var userAccount: UserAccount?
+    
     var token: String?
     var userName: String?
     var imagePickerController = UIImagePickerController()
@@ -26,34 +28,63 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imagePickerController.delegate = self
-        
-        fetchLoggedInUser()
-        updateUserUI()
-        styleProfileButton()
-    }
-    
-    func fetchLoggedInUser() {
-        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
-            if let userToken = loggedInUser.token, let userName = loggedInUser.username {
-                self.token = userToken
-                self.userName = userName
-            }
-        }
-    }
-    
-    func updateUserUI() {
-        if let userName = self.userName {
-            refreshUserProfileImage(userName)
-            createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
-        } else {
-            createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
-        }
+        fetchUserInformation()
     }
     
 
     
-    // MARK: - UI
+    // MARK: - User Information
+    
+    func fetchUserInformation() {
+        
+        ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
+            self.userAccount = userAccount
+            
+            self.displayUserLabel(userAccount.username)
+            self.displayUserProfileImage(userAccount.username)
+            self.displayUserTableView()
+            
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
+            self.displaySignupInformation()
+            
+        }
+    }
+    
+    func displaySignupInformation() {
+        createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
+    }
+    
+    func displayUserLabel(username: String) {
+        userNameLabel.hidden = false
+        userNameLabel.text = username
+        createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
+    }
+    
+    func displayUserProfileImage(username: String) {
+        styleProfileButton()
+        refreshUserProfileImage(username)
+    }
+    
+    func displayUserTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.hidden = false
+        
+        tableView.reloadData()
+    }
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+    // MARK: - Navbar
     
     func createNavbarButton(buttonTitle: String, action: String) {
         let logoutNavbarItem = UIBarButtonItem(title: buttonTitle, style: UIBarButtonItemStyle.Plain, target: self, action: Selector(action))
@@ -64,7 +95,7 @@ class ProfileViewController: UIViewController {
     
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
         
-        ApiProxy().deleteThisUserToken(token!, success: { () -> () in
+        ApiProxy().deleteThisUserToken(userAccount!.token, success: { () -> () in
             User.removeUserToken(AppDelegate().managedObjectContext)
             self.navigatoToLoginViewController()
             
@@ -78,20 +109,21 @@ class ProfileViewController: UIViewController {
         navigatoToLoginViewController()
     }
     
-    func styleProfileButton() {
-        userProfileButton.layer.backgroundColor = UIColor.clearColor().CGColor
-        userProfileButton.layer.cornerRadius = userProfileButton.frame.width / 2.0
-        userProfileButton.layer.masksToBounds = true
-    }
     
+    // MARK: - UI
     
-    // needs to be tested
     func refreshUserProfileImage(username: String) {
         let imageView = UIImageView()
         let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
         imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
         
         userProfileButton.setImage(imageView.image!, forState: UIControlState.Normal)
+    }
+    
+    func styleProfileButton() {
+        userProfileButton.layer.backgroundColor = UIColor.clearColor().CGColor
+        userProfileButton.layer.cornerRadius = userProfileButton.frame.width / 2.0
+        userProfileButton.layer.masksToBounds = true
     }
     
     @IBAction func userPressedProfileImage(sender: UIButton) {
@@ -121,6 +153,10 @@ class ProfileViewController: UIViewController {
     func displayNewUserImage(pickedImage: UIImage) {
         userProfileButton.setImage(pickedImage, forState: UIControlState.Normal)
     }
+    
+    
+    
+    
     
     
     // MARK: - Upload
@@ -162,6 +198,33 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
+}
+
+
+// MARK: - UITableViewDataSource
+
+extension ProfileViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+    
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension ProfileViewController: UITableViewDelegate {
+    
+    
 }
 
 

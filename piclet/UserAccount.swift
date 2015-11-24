@@ -15,13 +15,13 @@ class UserAccount {
     var totalVotes: Int!
     var totalPosts: Int!
     var rank: Int!
+    var token: String!
 
     // allChallenges created by the user
     // var myChallenges: [Challenge]?
     
     // allPosts created by the user
     // var myPosts: [Posts]?
-    
     
     func createUserToken(json: AnyObject, username: String) {
         guard
@@ -33,14 +33,4 @@ class UserAccount {
         }
         User.updateUserDatabase(managedObjectContext, username: username, token: token)
     }
-    
-    
-    
 }
-
-
-//username	string	The nickname of the user
-//created	number	The unix-timestamp in milliseconds when the user got created
-//totalVotes	number	Upvotes of all images of the user combined
-//totalPosts	number	Amount of posted images
-//rank	number	Global rank of the user

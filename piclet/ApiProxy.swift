@@ -149,6 +149,25 @@ class ApiProxy {
         }
     }
     
+    func fetchUserAccountInformation(success: (userAccount: UserAccount) -> (), failure: (errorCode: String) -> () ) {
+        guard
+            let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext),
+            let userName = loggedInUser.username
+        else {
+            failure(errorCode: "NotLoggedIn")
+            return
+        }
+        
+        let apiPath = "users/" + userName
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            success(userAccount: ObjectMapper().parseUserAccountInformations(json))
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
     
     
     
@@ -178,22 +197,7 @@ class ApiProxy {
     
     // TEST -> use for userProfil, ask Johannes -> This call should require a jwt token!
     
-    func getUserAccountInformation(username: String, success: (userAccount: UserAccount) -> (), failed: (errorCode: String) -> () ) {
-        
-        // GET /users/<nick>
-        let apiPath = "users/" + username
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            success(userAccount: self.objectMapper.getUserAccountInformation(validResponseData))
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
+
     
     
     // TEST -> use for userProfil
