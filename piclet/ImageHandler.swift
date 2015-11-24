@@ -13,25 +13,35 @@ class ImageHandler {
     
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     
-    func covertImageForUpload(image: UIImage) -> NSData? {
-        return compressImage(image)
+    func convertAvatarImageForUpload(image: UIImage, imageSize: ImageAvatarServerWidth) -> NSData? {
+        return compressImage(image, imageSize: imageSize.rawValue)
     }
     
-    private func compressImage(image: UIImage) -> NSData? {
+    func convertPostsImageForUpload(image: UIImage, imageSize: ImagePostsServerWidth) -> NSData? {
+        return compressImage(image, imageSize: imageSize.rawValue)
+    }
+    
+    
+    
+//    func covertImageForUpload(image: UIImage) -> NSData? {
+//        return compressImage(image)
+//    }
+    
+    private func compressImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat
         let newHeight: CGFloat
         
         if image.size.width > image.size.height {
-            newHeight = (image.size.width / image.size.height) * 1440.0
-            newWidth = 1440.0
+            newHeight = (image.size.width / image.size.height) * imageSize
+            newWidth = imageSize
             
         } else if image.size.width < image.size.height {
-            newHeight = (image.size.height / image.size.width) * 1440.0
-            newWidth = 1440.0
+            newHeight = (image.size.height / image.size.width) * imageSize
+            newWidth = imageSize
             
         } else {
-            newHeight = 1440.0
-            newWidth = 1440.0
+            newHeight = imageSize
+            newWidth = imageSize
             
         }
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
@@ -62,8 +72,17 @@ struct PostImage {
     var postID: String!
 }
 
-enum ImageServerWidth: CGFloat {
+enum ImagePostsServerWidth: CGFloat {
     case small = 360.0
     case medium = 720.0
     case large = 1440.0
 }
+
+enum ImageAvatarServerWidth: CGFloat {
+    case small = 20.0
+    case medium = 100.0
+    case large = 400.0
+}
+
+
+

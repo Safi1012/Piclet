@@ -43,9 +43,10 @@ class NetworkHandler: NSObject {
         
         let headers = generateHeaders(token)
         let json = try! NSJSONSerialization.dataWithJSONObject(apiParameters, options: NSJSONWritingOptions.PrettyPrinted)
+        let verb = Alamofire.Method(rawValue: httpVerb.rawValue)!
         
         Alamofire.upload (
-            .POST,
+            verb,
             "https://flash1293.de/\(apiPath)",
             headers: headers,
             multipartFormData: { multipartFormData in
@@ -92,6 +93,7 @@ enum HTTPVerb: String {
     case get = "GET"
     case post = "POST"
     case delete = "DELETE"
+    case put = "PUT"
 }
 
 

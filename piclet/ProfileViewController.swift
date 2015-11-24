@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     
     var token: String?
     var userName: String?
+    var imagePickerController = UIImagePickerController()
 
     
     // MARK: - Lifecycle
@@ -24,14 +25,11 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        styleProfileButton()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        imagePickerController.delegate = self
         
         fetchLoggedInUser()
         updateUserUI()
+        styleProfileButton()
     }
     
     func fetchLoggedInUser() {
@@ -44,7 +42,7 @@ class ProfileViewController: UIViewController {
     }
     
     func updateUserUI() {
-        if let userName = self.userName, let token = self.token {
+        if let userName = self.userName {
             refreshUserProfileImage(userName)
             createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
         } else {
@@ -88,19 +86,70 @@ class ProfileViewController: UIViewController {
     
     // needs to be tested
     func refreshUserProfileImage(username: String) {
-        let url = NSURL(string: "https://piclet.de/users/\(username)/avatar-medium.jpeg")
-        userProfileButton.imageView!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
+        let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
+        
+        
+        // use block instead
+        let imageView = UIImageView()
+        imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
+        
+        userProfileButton.setImage(imageView.image!, forState: UIControlState.Normal)
     }
     
     @IBAction func userPressedProfileImage(sender: UIButton) {
-        
-        
-        
-        
+        createActionSheet()
     }
 
+    func createActionSheet() {
+        let alertController = UIAlertController(title: "Choose your Picture", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        
+        let cameraAction = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+            self.displayCamera(self.imagePickerController)
+        }
+        let imageGalleryAction = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
+            self.displayImageGallery(self.imagePickerController)
+        }
+        let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Destructive, handler: nil)
+        
+        if imagePickerController.isCameraAvailable() && imagePickerController.doesCameraSupportTakingPhotos() {
+            alertController.addAction(cameraAction)
+        }
+        alertController.addAction(imageGalleryAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func displayNewUserImage(pickedImage: UIImage) {
+        userProfileButton.setImage(pickedImage, forState: UIControlState.Normal)
+    }
     
     
+    // MARK: - Upload
+    
+    func uploadNewUserImage(pickedImage:UIImage) {
+        guard
+            let token = token,
+            let userName = userName
+        else {
+            displayAlert("NotLoggedIn")
+            return
+        }
+        let avatarImage = ImageHandler().convertAvatarImageForUpload(pickedImage, imageSize: ImageAvatarServerWidth.large)!
+        
+        
+        ApiProxy().uploadUserProfileImage(token, username: userName, image: avatarImage, success: { () -> () in
+            print("Succesfully")
+            // invalidate image cache!
+            
+            
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
+            
+            // displayOldImage...
+            
+        }
+    }
     
     
     
@@ -118,5 +167,26 @@ class ProfileViewController: UIViewController {
                 self.presentViewController(loginVC, animated: true, completion: nil)
             }
         }
+    }
+    
+    @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
+}
+
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            if picker.sourceType == UIImagePickerControllerSourceType.Camera {
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            }
+            displayNewUserImage(image)
+            uploadNewUserImage(image)
+        }
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }

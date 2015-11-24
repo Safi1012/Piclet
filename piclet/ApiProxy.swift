@@ -134,7 +134,20 @@ class ApiProxy {
     }
     
 
+    // MARK: - User profile
     
+    func uploadUserProfileImage(token: String, username: String, image: NSData, success: () -> (), failure: (errorCode: String) -> ()) {
+    
+        let apiPath = "users/\(username)/avatar"
+        
+        NetworkHandler().uploadImage(["nick": (username)], apiPath: apiPath, httpVerb: HTTPVerb.put, token: token, image: image, success: { (json) -> () in
+            success()
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+                
+        }
+    }
     
     
     
