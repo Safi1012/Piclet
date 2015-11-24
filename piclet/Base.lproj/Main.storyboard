@@ -862,7 +862,7 @@
                                                         <action selector="userPressedLikeButton" destination="LQr-Oh-DPt" eventType="touchUpInside" id="w7I-re-Zfy"/>
                                                     </connections>
                                                 </button>
-                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="20D-cH-yZL" userLabel="postImage">
+                                                <imageView autoresizesSubviews="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="challengePreviewPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="20D-cH-yZL" userLabel="postImage">
                                                     <rect key="frame" x="-1" y="34" width="601" height="341"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

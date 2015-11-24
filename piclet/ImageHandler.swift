@@ -21,12 +21,6 @@ class ImageHandler {
         return compressImage(image, imageSize: imageSize.rawValue)
     }
     
-    
-    
-//    func covertImageForUpload(image: UIImage) -> NSData? {
-//        return compressImage(image)
-//    }
-    
     private func compressImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat
         let newHeight: CGFloat

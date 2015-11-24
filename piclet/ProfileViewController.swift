@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 class ProfileViewController: UIViewController {
     
@@ -86,11 +87,8 @@ class ProfileViewController: UIViewController {
     
     // needs to be tested
     func refreshUserProfileImage(username: String) {
-        let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
-        
-        
-        // use block instead
         let imageView = UIImageView()
+        let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
         imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
         
         userProfileButton.setImage(imageView.image!, forState: UIControlState.Normal)
@@ -135,23 +133,17 @@ class ProfileViewController: UIViewController {
             displayAlert("NotLoggedIn")
             return
         }
+        
         let avatarImage = ImageHandler().convertAvatarImageForUpload(pickedImage, imageSize: ImageAvatarServerWidth.large)!
         
-        
         ApiProxy().uploadUserProfileImage(token, username: userName, image: avatarImage, success: { () -> () in
-            print("Succesfully")
-            // invalidate image cache!
-            
+            SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "https://flash1293.de/users/\(userName)/avatar-large.jpeg", toDisk: true)
             
         }) { (errorCode) -> () in
+            self.refreshUserProfileImage(userName)
             self.displayAlert(errorCode)
-            
-            // displayOldImage...
-            
         }
     }
-    
-    
     
     
     // MARK: - Navigation
