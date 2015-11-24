@@ -94,6 +94,23 @@ extension User {
         return nil
     }
     
+    
+    class func removeUserToken(moc: NSManagedObjectContext) -> Bool {
+        
+        if let loggedInUser = getLoggedInUser(moc) {
+            loggedInUser.token = nil
+            
+            do {
+                try moc.save()
+            } catch {
+                print("CoreData could not save data: \(error)")
+                return false
+            }
+            return true
+        }
+        return false
+    }
+    
 }
 
 

@@ -11,26 +11,44 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var logutNavbarButton: UIBarButtonItem!
+    @IBOutlet weak var userProfileButton: UIButton!
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
-    var loggedInUser: User?
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
-    
+    var token: String?
+    var userName: String?
+
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        styleProfileButton()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
-            createLogoutNavbarButton()
-            self.loggedInUser = loggedInUser
+        fetchLoggedInUser()
+        updateUserUI()
+    }
+    
+    func fetchLoggedInUser() {
+        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
+            if let userToken = loggedInUser.token, let userName = loggedInUser.username {
+                self.token = userToken
+                self.userName = userName
+            }
+        }
+    }
+    
+    func updateUserUI() {
+        if let userName = self.userName, let token = self.token {
+            refreshUserProfileImage(userName)
+            createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
         } else {
-            createLoginNavbarButon()
+            createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
         }
     }
     
@@ -38,15 +56,8 @@ class ProfileViewController: UIViewController {
     
     // MARK: - UI
     
-    func createLogoutNavbarButton() {
-        let logoutNavbarItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItemStyle.Plain, target: self, action: "pressedLogoutNavbarButton:")
-            logoutNavbarItem.tintColor = UIColor.whiteColor()
-        
-        self.navigationItem.rightBarButtonItem = logoutNavbarItem
-    }
-    
-    func createLoginNavbarButon() {
-        let logoutNavbarItem = UIBarButtonItem(title: "Login/Signup", style: UIBarButtonItemStyle.Plain, target: self, action: "pressedLoginNavbarButton:")
+    func createNavbarButton(buttonTitle: String, action: String) {
+        let logoutNavbarItem = UIBarButtonItem(title: buttonTitle, style: UIBarButtonItemStyle.Plain, target: self, action: Selector(action))
         logoutNavbarItem.tintColor = UIColor.whiteColor()
         
         self.navigationItem.rightBarButtonItem = logoutNavbarItem
@@ -54,10 +65,8 @@ class ProfileViewController: UIViewController {
     
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
         
-        print("\(loggedInUser!.token!)")
-        
-        ApiProxy().deleteThisUserToken(loggedInUser!.token!, success: { () -> () in
-            User.updateUserToken(self.managedObjectContext, user: self.loggedInUser!, newToken: nil)
+        ApiProxy().deleteThisUserToken(token!, success: { () -> () in
+            User.removeUserToken(AppDelegate().managedObjectContext)
             self.navigatoToLoginViewController()
             
         }) { (errorCode) -> () in
@@ -70,7 +79,31 @@ class ProfileViewController: UIViewController {
         navigatoToLoginViewController()
     }
     
+    func styleProfileButton() {
+        userProfileButton.layer.backgroundColor = UIColor.clearColor().CGColor
+        userProfileButton.layer.cornerRadius = userProfileButton.frame.width / 2.0
+        userProfileButton.layer.masksToBounds = true
+    }
+    
+    
+    // needs to be tested
+    func refreshUserProfileImage(username: String) {
+        let url = NSURL(string: "https://piclet.de/users/\(username)/avatar-medium.jpeg")
+        userProfileButton.imageView!.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
+    }
+    
+    @IBAction func userPressedProfileImage(sender: UIButton) {
+        
+        
+        
+        
+    }
 
+    
+    
+    
+    
+    
     
     // MARK: - Navigation
     

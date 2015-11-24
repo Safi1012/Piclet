@@ -88,9 +88,6 @@
 		D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
 		D46D1AFA1C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
 		D46D1AFB1C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
-		D46D1AFD1C0360B600C712C7 /* PostsMascotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AFC1C0360B600C712C7 /* PostsMascotViewController.swift */; };
-		D46D1AFE1C0360B600C712C7 /* PostsMascotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AFC1C0360B600C712C7 /* PostsMascotViewController.swift */; };
-		D46D1AFF1C0360B700C712C7 /* PostsMascotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AFC1C0360B600C712C7 /* PostsMascotViewController.swift */; };
 		D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
@@ -196,7 +193,6 @@
 		D46912371BAC03C40012CE7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46912461BAC0D970012CE7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
-		D46D1AFC1C0360B600C712C7 /* PostsMascotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsMascotViewController.swift; sourceTree = "<group>"; };
 		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
@@ -398,7 +394,6 @@
 				D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */,
 				D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */,
 				D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */,
-				D46D1AFC1C0360B600C712C7 /* PostsMascotViewController.swift */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -609,7 +604,6 @@
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,
-				D46D1AFD1C0360B600C712C7 /* PostsMascotViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +641,6 @@
 				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4F10BA51BF3BA1A0097E0CE /* ObjectMapper.swift in Sources */,
-				D46D1AFE1C0360B600C712C7 /* PostsMascotViewController.swift in Sources */,
 				D4FA80BB1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D408DA331BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
 				D4F10BA21BF3B9280097E0CE /* ProfileViewController.swift in Sources */,
@@ -674,7 +667,6 @@
 				D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
-				D46D1AFF1C0360B700C712C7 /* PostsMascotViewController.swift in Sources */,
 				D4085C531BF0FADC00051436 /* ImageHandler.swift in Sources */,
 				D44248ED1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */,
