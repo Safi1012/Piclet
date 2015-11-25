@@ -63,6 +63,7 @@ class ProfileViewController: UIViewController {
     
     func displayUserProfileImage(username: String) {
         styleProfileButton()
+        userProfileButton.hidden = false
         refreshUserProfileImage(username)
     }
     
@@ -206,15 +207,41 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if userAccount != nil {
+            return 1
+        }
         return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if userAccount != nil {
+            return 3
+        }
         return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        switch (indexPath.row) {
+        case 0:
+            cell.textLabel?.text = "Rank"
+            cell.detailTextLabel?.text = "\(userAccount!.rank)"
+            
+        case 1:
+            cell.textLabel?.text = "Total Likes"
+            cell.detailTextLabel?.text = "\(userAccount!.totalVotes)"
+
+        case 2:
+            cell.textLabel?.text = "Total Posts"
+            cell.detailTextLabel?.text = "\(userAccount!.totalPosts)"
+            
+        default:
+            print("ErrorTableProfileTab")
+        }
+        
+        return cell
     }
     
 }
@@ -224,6 +251,9 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Your stats"
+    }
     
 }
 
