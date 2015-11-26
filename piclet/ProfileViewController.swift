@@ -21,6 +21,8 @@ class ProfileViewController: UIViewController {
     var token: String?
     var userName: String?
     var imagePickerController = UIImagePickerController()
+    
+    var selectedProfileStat: SelectedProfileStat?
 
     
     // MARK: - Lifecycle
@@ -156,7 +158,18 @@ class ProfileViewController: UIViewController {
     }
     
     
+    // MARK: - Userstats
     
+//    func fetchUserCreatedPosts() {
+//        ApiProxy().fetchUserCreatedPosts(userAccount!.username, success: { (userPosts) -> () in
+//            
+//            // call function in profileCollectionViewController
+//            
+//        }) { (errorCode) -> () in
+//            self.displayAlert(errorCode)
+//            
+//        }
+//    }
     
     
     
@@ -198,6 +211,14 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let selectedProfileStat = selectedProfileStat {
+            let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
+            destinationVC.selectedProfileStat = selectedProfileStat
+        }
+    }
+    
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
 }
 
@@ -215,7 +236,7 @@ extension ProfileViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if userAccount != nil {
-            return 3
+            return 4
         }
         return 0
     }
@@ -228,14 +249,23 @@ extension ProfileViewController: UITableViewDataSource {
         case 0:
             cell.textLabel?.text = "Rank"
             cell.detailTextLabel?.text = "\(userAccount!.rank)"
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.accessoryType = UITableViewCellAccessoryType.None
             
         case 1:
-            cell.textLabel?.text = "Total Likes"
+            cell.textLabel?.text = "Likes"
             cell.detailTextLabel?.text = "\(userAccount!.totalVotes)"
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.accessoryType = UITableViewCellAccessoryType.None
 
         case 2:
-            cell.textLabel?.text = "Total Posts"
+            cell.textLabel?.text = "Posts"
             cell.detailTextLabel?.text = "\(userAccount!.totalPosts)"
+            
+        case 3:
+            cell.textLabel?.text = "Challenges"
+            cell.detailTextLabel?.text = "0"
+            
             
         default:
             print("ErrorTableProfileTab")
@@ -253,6 +283,26 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Your stats"
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        switch (indexPath.row) {
+        case 0:
+            print("rank")
+            
+        case 1:
+            print("totalLikes")
+            selectedProfileStat = SelectedProfileStat.Likes
+            
+        case 2:
+            print("totalPosts")
+            selectedProfileStat = SelectedProfileStat.Posts
+            
+        default:
+            print("ErrorTableProfileTab didSelectRowAtIndexPath")
+        }
+        performSegueWithIdentifier("toProfileCollectionView", sender: self)
     }
     
 }

@@ -169,9 +169,25 @@ class ApiProxy {
         }
     }
     
+    func fetchUserCreatedPosts(username: String, success: (userPosts: [Post]) -> (), failure: (errorCode: String) -> () ) {
+        
+        let apiPath = "users/\(username)/posts"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            success(userPosts: ObjectMapper().parsePosts(json))
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
+    
+    
     
     
 
+    
     
     
     
@@ -220,24 +236,7 @@ class ApiProxy {
     }
     
     
-    // TEST -> use for userProfil
-    
-    func getUserCreatedPosts(username: String, success: (userPosts: [Post]) -> (), failed: (errorCode: String) -> () ) {
-        
-        // GET /users/<nick>/posts
-        let apiPath = "users/" + username + "/posts"
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            success(userPosts: self.objectMapper.getPosts(validResponseData))
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
+
     
     
     // TEST - Avatar user Image
@@ -281,29 +280,7 @@ class ApiProxy {
     }
 
     
-    // TEST - changes avatar image,  The request-body is the binary data of the image as jpeg-image
-    
-    func changeUserAvatar(token: String, username: String, newAvatarImage: UIImage, success: () -> (), failed: (errorCode: String) -> () ) {
-        // PUT /users/<nick>/avatar
-        let apiPath = "users/" + username + "/avatar"
-        let avatarData = UIImageJPEGRepresentation(newAvatarImage, CGFloat(0.7))!
-        let requestBody = ["avatar" : (avatarData)]
-        
-        
-        // check documentation for request body:   ""avatar" : (request)
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "PUT", bearerToken: token, validRequest: { (validResponseData) -> () in
-            // parse 
-            // success
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
+
 
 */
 

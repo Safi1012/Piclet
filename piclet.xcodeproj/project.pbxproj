@@ -70,6 +70,9 @@
 		D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
 		D445264F1BF3BF65007FE8D8 /* WebImage.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D445264E1BF3BF65007FE8D8 /* WebImage.framework.dSYM */; };
+		D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
+		D45650421C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
+		D45650431C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
 		D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D462CB741BCBD3EE00701EFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
 		D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
@@ -179,6 +182,7 @@
 		D4445B7F1BB84D76005D155F /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		D445264E1BF3BF65007FE8D8 /* WebImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = WebImage.framework.dSYM; path = Carthage/Build/iOS/WebImage.framework.dSYM; sourceTree = "<group>"; };
 		D44526501BF3C28A007FE8D8 /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
+		D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		D462CB711BCBD1D000701EFF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */,
+				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -577,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
@@ -645,6 +651,7 @@
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
+				D45650421C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
 				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BF01BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4F10BA51BF3BA1A0097E0CE /* ObjectMapper.swift in Sources */,
@@ -664,6 +671,7 @@
 				D46D1AFB1C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4FA80C01BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
+				D45650431C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
 				D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */,
 				D4F10BA31BF3B9290097E0CE /* ProfileViewController.swift in Sources */,
 				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
