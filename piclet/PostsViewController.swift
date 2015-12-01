@@ -154,7 +154,7 @@ extension PostsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
-        
+
         cell.post = posts[indexPath.row]
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)

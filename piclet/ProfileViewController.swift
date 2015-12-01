@@ -18,8 +18,8 @@ class ProfileViewController: UIViewController {
     
     var userAccount: UserAccount?
     
-    var token: String?
-    var userName: String?
+//    var token: String?
+//    var userName: String?
     var imagePickerController = UIImagePickerController()
     
     var selectedProfileStat: SelectedProfileStat?
@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePickerController.delegate = self
         fetchUserInformation()
     }
     
@@ -116,11 +117,8 @@ class ProfileViewController: UIViewController {
     // MARK: - UI
     
     func refreshUserProfileImage(username: String) {
-        let imageView = UIImageView()
         let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
-        imageView.sd_setImageWithURL(url, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
-        
-        userProfileButton.setImage(imageView.image!, forState: UIControlState.Normal)
+        userProfileButton.sd_setImageWithURL(url, forState: UIControlState.Normal, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
     }
     
     func styleProfileButton() {
@@ -177,8 +175,8 @@ class ProfileViewController: UIViewController {
     
     func uploadNewUserImage(pickedImage:UIImage) {
         guard
-            let token = token,
-            let userName = userName
+            let token = userAccount?.token,
+            let userName = userAccount?.username
         else {
             displayAlert("NotLoggedIn")
             return
@@ -325,3 +323,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
 }
+
+
+// enum
