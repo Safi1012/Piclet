@@ -16,6 +16,11 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    @IBOutlet weak var userProfileHeightContraint: NSLayoutConstraint!
+    @IBOutlet weak var userProfileWidthConstraint: NSLayoutConstraint!
+    
+    
     var userAccount: UserAccount?
     var imagePickerController = UIImagePickerController()
     var selectedProfileStat: SelectedProfileStat?
@@ -25,12 +30,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.bounds.size.width, height: 18.01))
-        
-        
-        
-        
         
         imagePickerController.delegate = self
         fetchUserInformation()
@@ -123,6 +122,23 @@ class ProfileViewController: UIViewController {
     }
     
     func styleProfileButton() {
+        let imageSize: CGFloat!
+        
+        switch (UIScreen().getDisplayInchSize()) {
+
+        case DeviceInchSize.inch_3_5:
+            imageSize = 74.0
+
+        case DeviceInchSize.inch_4_0:
+            imageSize = 150.0
+
+        case DeviceInchSize.inch_4_7, DeviceInchSize.inch_5_5:
+            imageSize = 200.0
+        }
+        userProfileHeightContraint.constant = imageSize
+        userProfileWidthConstraint.constant = imageSize
+        userProfileButton.layer.bounds.size = CGSize(width: imageSize, height: imageSize)
+        
         userProfileButton.layer.backgroundColor = UIColor.clearColor().CGColor
         userProfileButton.layer.cornerRadius = userProfileButton.frame.width / 2.0
         userProfileButton.layer.masksToBounds = true
@@ -298,7 +314,7 @@ extension ProfileViewController: UITableViewDelegate {
             return "Uploads"
             
         default:
-            return "Error"
+            return ""
         }
     }
     
@@ -321,34 +337,27 @@ extension ProfileViewController: UITableViewDelegate {
         }
         performSegueWithIdentifier("toProfileCollectionView", sender: self)
     }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        
-        let device = UIDevice.currentDevice().modelName
-        
-        switch (UIDevice.currentDevice().modelName) {
-            
-            case "iPhone 4s", "iPod Touch 5":
-                return 30.0
-            
-            case "iPhone 5", "iPhone 5c", "iphone 5s":
-                return 38.0
-            
-            // case "iPhone"
-        }
-        
-        
-        // iphone 5
-        
-        return 30.0
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 18.0
-    }
-    
 
-    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        let sectionHeight: TableSectionHeight!
+        
+        switch (UIScreen().getDisplayInchSize()) {
+            
+        case DeviceInchSize.inch_3_5:
+            sectionHeight = TableSectionHeight.small
+            
+        case DeviceInchSize.inch_4_0:
+            sectionHeight = TableSectionHeight.medium
+            
+        case DeviceInchSize.inch_4_7, DeviceInchSize.inch_5_5:
+            sectionHeight = TableSectionHeight.large
+        }
+        if section == 0 {
+            return TableSectionHeight.first.rawValue
+        }
+        return sectionHeight.rawValue
+    }
 }
 
 
@@ -371,13 +380,12 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 }
 
 
-// enum
+// MARK: - TableSectionHeight
 
-enum TableViewCellHeight: CGFloat {
-    case small  = 30.0
-    case medium = 35.0
-    case large  = 44.0
+enum TableSectionHeight: CGFloat {
+    case first = 0.01
+    case small = 18.0
+    case medium = 30.0
+    case large = 35.0
 }
-
-
 

@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "navBarBack")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "navBarBack")
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-    
+
         return true
     }
 
