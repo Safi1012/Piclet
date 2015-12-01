@@ -148,9 +148,7 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToChallengeViewController(segue: UIStoryboardSegue) {
-        print("BACK again")
-    }
+    @IBAction func unwindToChallengeViewController(segue: UIStoryboardSegue) {}
 }
 
 

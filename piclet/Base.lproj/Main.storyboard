@@ -993,7 +993,7 @@
                         <outlet property="mascotView" destination="l4R-dn-bxx" id="c1n-rd-urq"/>
                         <outlet property="tableView" destination="QpH-Jm-hWC" id="80x-Jn-EVs"/>
                         <segue destination="gMB-SO-Dbd" kind="presentation" identifier="toImagePickerViewController" id="Yp6-Yo-upQ"/>
-                        <segue destination="muo-T4-Hss" kind="unwind" identifier="unwindToLoginViewController:" unwindAction="unwindToLoginViewController:" id="sCM-Cm-rfO"/>
+                        <segue destination="muo-T4-Hss" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="sCM-Cm-rfO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QVE-gU-SqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
