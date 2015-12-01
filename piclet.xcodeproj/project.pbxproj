@@ -32,6 +32,9 @@
 		D4254AEA1BCD9F0D00297FCF /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
 		D42A2E891BF6935E00B96063 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42A2E881BF6935E00B96063 /* Alamofire.framework */; };
 		D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */; };
+		D42F46701C0DA80800B25D04 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F466F1C0DA80800B25D04 /* UIDeviceExtension.swift */; };
+		D42F46711C0DA80800B25D04 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F466F1C0DA80800B25D04 /* UIDeviceExtension.swift */; };
+		D42F46721C0DA80800B25D04 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F466F1C0DA80800B25D04 /* UIDeviceExtension.swift */; };
 		D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */; };
@@ -164,6 +167,7 @@
 		D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		D42A2E881BF6935E00B96063 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		D42F466F1C0DA80800B25D04 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 				D4438DD31BD61767000CB909 /* AlertControllerExtension.swift */,
 				D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */,
 				D46B6C9E1C046365003E5CCF /* UIImagePickerExtension.swift */,
+				D42F466F1C0DA80800B25D04 /* UIDeviceExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -607,6 +612,7 @@
 				D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */,
 				D4BDF85C1BC44EBB00028566 /* ProfileViewController.swift in Sources */,
+				D42F46701C0DA80800B25D04 /* UIDeviceExtension.swift in Sources */,
 				D46B6C9F1C046365003E5CCF /* UIImagePickerExtension.swift in Sources */,
 				D4CDEAAF1BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
@@ -633,6 +639,7 @@
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
+				D42F46711C0DA80800B25D04 /* UIDeviceExtension.swift in Sources */,
 				D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */,
 				D4FA80BF1BDAAE1F004682CB /* NavigationViewController.swift in Sources */,
@@ -687,6 +694,7 @@
 				D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D42F46721C0DA80800B25D04 /* UIDeviceExtension.swift in Sources */,
 				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
 				D4F10BA61BF3BA720097E0CE /* LoginViewController.swift in Sources */,
 				D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,

@@ -17,11 +17,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var userAccount: UserAccount?
-    
-//    var token: String?
-//    var userName: String?
     var imagePickerController = UIImagePickerController()
-    
     var selectedProfileStat: SelectedProfileStat?
 
     
@@ -30,11 +26,16 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.bounds.size.width, height: 18.01))
+        
+        
+        
+        
+        
         imagePickerController.delegate = self
         fetchUserInformation()
     }
     
-
     
     // MARK: - User Information
     
@@ -227,14 +228,14 @@ extension ProfileViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         if userAccount != nil {
-            return 1
+            return 2
         }
         return 0
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if userAccount != nil {
-            return 4
+            return 2
         }
         return 0
     }
@@ -243,32 +244,40 @@ extension ProfileViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
-        switch (indexPath.row) {
-        case 0:
-            cell.textLabel?.text = "Rank"
-            cell.detailTextLabel?.text = "\(userAccount!.rank)"
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.accessoryType = UITableViewCellAccessoryType.None
+        if indexPath.section == 0 {
             
-        case 1:
-            cell.textLabel?.text = "Likes"
-            cell.detailTextLabel?.text = "\(userAccount!.totalVotes)"
-            cell.selectionStyle = UITableViewCellSelectionStyle.None
-            cell.accessoryType = UITableViewCellAccessoryType.None
-
-        case 2:
-            cell.textLabel?.text = "Posts"
-            cell.detailTextLabel?.text = "\(userAccount!.totalPosts)"
-            
-        case 3:
-            cell.textLabel?.text = "Challenges"
-            cell.detailTextLabel?.text = "0"
-            
-            
-        default:
-            print("ErrorTableProfileTab")
+            switch (indexPath.row) {
+            case 0:
+                cell.textLabel?.text = "Rank"
+                cell.detailTextLabel?.text = "\(userAccount!.rank)"
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                
+            case 1:
+                cell.textLabel?.text = "Likes"
+                cell.detailTextLabel?.text = "\(userAccount!.totalVotes)"
+                cell.selectionStyle = UITableViewCellSelectionStyle.None
+                cell.accessoryType = UITableViewCellAccessoryType.None
+                
+            default:
+                print("ErrorTableProfileTab")
+            }
         }
-        
+        if indexPath.section == 1 {
+            
+            switch (indexPath.row) {
+            case 0:
+                cell.textLabel?.text = "Posts"
+                cell.detailTextLabel?.text = "\(userAccount!.totalPosts)"
+                
+            case 1:
+                cell.textLabel?.text = "Challenges"
+                cell.detailTextLabel?.text = "Tutum.."
+                
+            default:
+                print("ErrorTableProfileTab")
+            }
+        }
         return cell
     }
     
@@ -280,7 +289,17 @@ extension ProfileViewController: UITableViewDataSource {
 extension ProfileViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Your stats"
+        
+        switch section {
+        case 0:
+            return "Stats"
+            
+        case 1:
+            return "Uploads"
+            
+        default:
+            return "Error"
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -302,6 +321,33 @@ extension ProfileViewController: UITableViewDelegate {
         }
         performSegueWithIdentifier("toProfileCollectionView", sender: self)
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        let device = UIDevice.currentDevice().modelName
+        
+        switch (UIDevice.currentDevice().modelName) {
+            
+            case "iPhone 4s", "iPod Touch 5":
+                return 30.0
+            
+            case "iPhone 5", "iPhone 5c", "iphone 5s":
+                return 38.0
+            
+            // case "iPhone"
+        }
+        
+        
+        // iphone 5
+        
+        return 30.0
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 18.0
+    }
+    
+
     
 }
 
@@ -326,3 +372,12 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
 
 
 // enum
+
+enum TableViewCellHeight: CGFloat {
+    case small  = 30.0
+    case medium = 35.0
+    case large  = 44.0
+}
+
+
+
