@@ -14,7 +14,14 @@ class ImageHandler {
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     
     func convertAvatarImageForUpload(image: UIImage, imageSize: ImageAvatarServerWidth) -> NSData? {
-        return compressImage(image, imageSize: imageSize.rawValue)
+        
+        // 1. resize to smaller size
+        // 2. crop
+        
+        
+        
+        return nil
+        //return compressImage(image, imageSize: imageSize.rawValue)
     }
     
     func convertPostsImageForUpload(image: UIImage, imageSize: ImagePostsServerWidth) -> NSData? {
@@ -25,19 +32,9 @@ class ImageHandler {
         let newWidth: CGFloat
         let newHeight: CGFloat
         
-        if image.size.width > image.size.height {
-            newHeight = (image.size.width / image.size.height) * imageSize
-            newWidth = imageSize
-            
-        } else if image.size.width < image.size.height {
-            newHeight = (image.size.height / image.size.width) * imageSize
-            newWidth = imageSize
-            
-        } else {
-            newHeight = imageSize
-            newWidth = imageSize
-            
-        }
+        newHeight = (image.size.height / image.size.width) * imageSize
+        newWidth = imageSize
+        
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.drawInRect(CGRectMake(0.0, 0.0, newWidth, newHeight))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()

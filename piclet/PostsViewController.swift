@@ -90,8 +90,7 @@ class PostsViewController: UIViewController {
         }) { (errorCode) -> () in
             post.votes!--
             cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = "\(post.votes) Votes"
-            
+            cell.postVotesLabel.text = (post.votes > 1 || post.votes == 0) ? "\(post.votes) Votes" : "\(post.votes) Vote"
             self.displayAlert(errorCode)
             self.isRequesting = false
                 
@@ -106,8 +105,7 @@ class PostsViewController: UIViewController {
         }) { (errorCode) -> () in
             post.votes!++
             cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = "\(post.votes) Votes"
-            
+            cell.postVotesLabel.text = (post.votes > 1 || post.votes == 0) ? "\(post.votes) Votes" : "\(post.votes) Vote"
             self.displayAlert(errorCode)
             self.isRequesting = false
                 
@@ -159,7 +157,9 @@ extension PostsViewController: UITableViewDataSource {
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
-        cell.postVotesLabel.text = posts[indexPath.row].votes > 1 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
+        cell.postVotesLabel.text = posts[indexPath.row].votes > 1 || posts[indexPath.row].votes == 0 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
+        
+        
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
