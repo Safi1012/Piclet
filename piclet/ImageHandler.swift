@@ -15,8 +15,7 @@ class ImageHandler {
     
     func convertAvatarImageForUpload(image: UIImage, imageSize: ImageAvatarServerWidth) -> NSData? {
         
-        // 1. resize to smaller size
-        // 2. crop
+        
         
         
         
@@ -27,6 +26,31 @@ class ImageHandler {
     func convertPostsImageForUpload(image: UIImage, imageSize: ImagePostsServerWidth) -> NSData? {
         return compressImage(image, imageSize: imageSize.rawValue)
     }
+    
+    
+    
+    private func cropImage(image: UIImage, imageSize: CGFloat) -> NSData? {
+        
+        let newWidth: CGFloat
+        let newHeight: CGFloat
+        
+        if image.size.width < image.size.height {
+            newHeight = (image.size.height / image.size.width) * imageSize
+            newWidth = imageSize
+        } else {
+            newWidth = (image.size.width / image.size.height) * imageSize
+            newHeight = imageSize
+        }
+        
+        // 1. resize to smaller size
+        // 2. crop
+        
+        
+        return nil
+    }
+    
+    
+    
     
     private func compressImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat
