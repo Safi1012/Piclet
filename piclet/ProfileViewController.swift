@@ -23,7 +23,6 @@ class ProfileViewController: UIViewController {
     
     var userAccount: UserAccount?
     var imagePickerController = UIImagePickerController()
-    var selectedProfileStat: SelectedProfileStat?
 
     
     // MARK: - Lifecycle
@@ -172,22 +171,7 @@ class ProfileViewController: UIViewController {
         userProfileButton.setImage(pickedImage, forState: UIControlState.Normal)
     }
     
-    
-    // MARK: - Userstats
-    
-//    func fetchUserCreatedPosts() {
-//        ApiProxy().fetchUserCreatedPosts(userAccount!.username, success: { (userPosts) -> () in
-//            
-//            // call function in profileCollectionViewController
-//            
-//        }) { (errorCode) -> () in
-//            self.displayAlert(errorCode)
-//            
-//        }
-//    }
-    
-    
-    
+
     // MARK: - Upload
     
     func uploadNewUserImage(pickedImage:UIImage) {
@@ -227,10 +211,9 @@ class ProfileViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if let selectedProfileStat = selectedProfileStat {
+        if segue.identifier == "toProfileCollectionView" {
             let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
-            destinationVC.selectedProfileStat = selectedProfileStat
+            destinationVC.userAccount = userAccount! // put guard here
         }
     }
     
@@ -263,17 +246,15 @@ extension ProfileViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             
             switch (indexPath.row) {
-            case 0:
+            case TableRowInFirstSection.rank.rawValue:
                 cell.textLabel?.text = "Rank"
                 cell.detailTextLabel?.text = "\(userAccount!.rank)"
-                cell.selectionStyle = UITableViewCellSelectionStyle.None
-                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.userInteractionEnabled = false
                 
-            case 1:
+            case TableRowInFirstSection.likes.rawValue:
                 cell.textLabel?.text = "Likes"
                 cell.detailTextLabel?.text = "\(userAccount!.totalVotes)"
-                cell.selectionStyle = UITableViewCellSelectionStyle.None
-                cell.accessoryType = UITableViewCellAccessoryType.None
+                cell.userInteractionEnabled = false
                 
             default:
                 print("ErrorTableProfileTab")
@@ -282,11 +263,11 @@ extension ProfileViewController: UITableViewDataSource {
         if indexPath.section == 1 {
             
             switch (indexPath.row) {
-            case 0:
+            case TableRowInSecondSection.posts.rawValue:
                 cell.textLabel?.text = "Posts"
                 cell.detailTextLabel?.text = "\(userAccount!.totalPosts)"
                 
-            case 1:
+            case TableRowInSecondSection.challenges.rawValue:
                 cell.textLabel?.text = "Challenges"
                 cell.detailTextLabel?.text = "Tutum.."
                 
@@ -321,21 +302,17 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         switch (indexPath.row) {
-        case 0:
-            print("rank")
             
-        case 1:
-            print("totalLikes")
-            selectedProfileStat = SelectedProfileStat.Likes
+        case TableRowInSecondSection.posts.rawValue:
+            performSegueWithIdentifier("toProfileCollectionView", sender: self)
             
-        case 2:
-            print("totalPosts")
-            selectedProfileStat = SelectedProfileStat.Posts
+        case TableRowInSecondSection.challenges.rawValue:
+            print("To Do")
             
         default:
-            print("ErrorTableProfileTab didSelectRowAtIndexPath")
+            print("Error, the other cell shouldnt be selectable")
+            
         }
-        performSegueWithIdentifier("toProfileCollectionView", sender: self)
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -377,6 +354,19 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
+}
+
+
+// MARK: - CellRow
+
+enum TableRowInFirstSection: Int {
+    case rank       = 0
+    case likes      = 1
+}
+
+enum TableRowInSecondSection: Int {
+    case posts      = 0
+    case challenges = 1
 }
 
 

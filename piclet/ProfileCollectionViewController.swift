@@ -7,47 +7,51 @@
 //
 
 import UIKit
+import WebImage
 
 private let reuseIdentifier = "Cell"
 
 class ProfileCollectionViewController: UICollectionViewController {
-
-    var selectedProfileStat: SelectedProfileStat!
+    
+    @IBOutlet weak var tileImageView: UIImageView!
+    var userAccount: UserAccount!
+    var userPosts: [Post] = []
+    var tileSize: CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        calculateTileSize()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-        downloadProfileStat()
+        fetchUserCreatedPosts()
     }
     
-    func downloadProfileStat() {
-        
-        switch (selectedProfileStat.rawValue) {
-        
-        case SelectedProfileStat.Likes.rawValue:
-            print("dasda")
+    func fetchUserCreatedPosts() {
+        ApiProxy().fetchUserCreatedPosts(userAccount.username, success: { (userPosts) -> () in
+            self.userPosts = userPosts
+            self.collectionView?.reloadData()
             
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
             
-        
-        default:
-            print("dd")
         }
-        
     }
 
+    func calculateTileSize() {
+        let width = (UIScreen.mainScreen().bounds.width / 2.0) - 20.0
+        tileSize = CGSize(width: width, height: width)
+    }
     
-    
-    
-    
-    
+
     
 
     
@@ -57,15 +61,24 @@ class ProfileCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 0
+        return 1 // userPosts.count > 0 ? 1 : 0
     }
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 10 //userPosts.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath)
+        
+        
+        cell.backgroundColor = UIColor.greenColor()
+        
+        
+        // let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        // cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        
+        
         return cell
     }
 
@@ -103,8 +116,14 @@ class ProfileCollectionViewController: UICollectionViewController {
 }
 
 
-enum SelectedProfileStat: Int {
-    case Likes = 0
-    case Posts = 1
-    case Challenges = 2
+extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return tileSize
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 50.0
+    }
+    
 }

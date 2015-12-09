@@ -14,6 +14,7 @@ class Post {
     var description: String?
     var creator: String!
     var posted: NSDate!
+    var challengeId: String!
     var votes: Int!
     var voters: [String]!
     

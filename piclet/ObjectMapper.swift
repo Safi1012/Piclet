@@ -74,6 +74,7 @@ class ObjectMapper {
                 let id = element.valueForKey("_id") as? String,
                 let creator = element.valueForKey("creator") as? String,
                 let posted = element.valueForKey("posted") as? Int,
+                let challengeId = element.valueForKey("challenge") as? String,
                 let votes = element.valueForKey("votes") as? Int,
                 let voters = element.valueForKey("voters") as? [String]
             else {
@@ -82,6 +83,7 @@ class ObjectMapper {
             post.id = id
             post.creator = creator
             post.posted = TimeHandler().convertTimestampToNSDate(posted)
+            post.challengeId = challengeId
             post.votes = votes
             post.voters = voters
             post.description = element.valueForKey("description") as? String
