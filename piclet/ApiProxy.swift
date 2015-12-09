@@ -168,12 +168,14 @@ class ApiProxy {
         }
     }
     
-    func fetchUserCreatedPosts(username: String, success: (userPosts: [Post]) -> (), failure: (errorCode: String) -> () ) {
+    
+    
+    func fetchUserCreatedPosts(username: String, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
         
         let apiPath = "users/\(username)/posts"
         
         NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
-            success(userPosts: ObjectMapper().parsePosts(json))
+            success(userPosts: ObjectMapper().parsePostIds(json))
             
         }) { (errorCode) -> () in
             failure(errorCode: errorCode)

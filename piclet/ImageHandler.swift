@@ -31,8 +31,8 @@ class ImageHandler {
     
     private func cropImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         
-        let newWidth: CGFloat
-        let newHeight: CGFloat
+        let newWidth: CGFloat!
+        let newHeight: CGFloat!
         
         if image.size.width < image.size.height {
             newHeight = (image.size.height / image.size.width) * imageSize

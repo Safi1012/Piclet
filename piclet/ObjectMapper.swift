@@ -93,6 +93,34 @@ class ObjectMapper {
         return posts
     }
     
+    
+    
+    func parsePostIds(json: AnyObject) -> [PostInformation] {
+        
+        var postIds = [PostInformation]()
+        
+        guard
+            let objects = json as? [NSDictionary]
+        else {
+            return postIds
+        }
+        
+        for element in objects {
+            guard
+                let postId = element.valueForKey("_id") as? String,
+                let challengeId = element.valueForKey("challenge") as? String
+            else {
+                break
+            }
+            postIds.append(PostInformation(postId: postId, challengeId: challengeId))
+        }
+        return postIds
+    }
+    
+    
+    
+    
+    
     func parseUserAccountInformations(json: AnyObject) -> UserAccount {
         guard
             let dict = json as? NSDictionary,
@@ -120,6 +148,13 @@ class ObjectMapper {
     }
 }
 
+
+// MARK: - LikedPost
+
+struct PostInformation {
+    var postId: String
+    var challengeId: String
+}
 
 
 

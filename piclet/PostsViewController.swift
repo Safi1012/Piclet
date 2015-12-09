@@ -159,7 +159,6 @@ extension PostsViewController: UITableViewDataSource {
         cell.postDescriptionLabel.text = posts[indexPath.row].description
         cell.postVotesLabel.text = posts[indexPath.row].votes > 1 || posts[indexPath.row].votes == 0 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
         
-        
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         

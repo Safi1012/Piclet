@@ -34,6 +34,11 @@ class ProfileViewController: UIViewController {
         fetchUserInformation()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
+    }
     
     // MARK: - User Information
     
@@ -233,8 +238,11 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if userAccount != nil {
+        if section == 0 {
             return 2
+        }
+        if section == 1 {
+            return 3
         }
         return 0
     }
@@ -250,11 +258,13 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.textLabel?.text = "Rank"
                 cell.detailTextLabel?.text = "\(userAccount!.rank)"
                 cell.userInteractionEnabled = false
+                cell.accessoryType = UITableViewCellAccessoryType.None
                 
             case TableRowInFirstSection.likes.rawValue:
                 cell.textLabel?.text = "Likes"
                 cell.detailTextLabel?.text = "\(userAccount!.totalVotes)"
                 cell.userInteractionEnabled = false
+                cell.accessoryType = UITableViewCellAccessoryType.None
                 
             default:
                 print("ErrorTableProfileTab")
@@ -264,8 +274,12 @@ extension ProfileViewController: UITableViewDataSource {
             
             switch (indexPath.row) {
             case TableRowInSecondSection.posts.rawValue:
-                cell.textLabel?.text = "Posts"
+                cell.textLabel?.text = "Your Posts"
                 cell.detailTextLabel?.text = "\(userAccount!.totalPosts)"
+                
+            case TableRowInSecondSection.likedPosts.rawValue:
+                cell.textLabel?.text = "Liked Posts"
+                cell.detailTextLabel?.text = "Is missing"
                 
             case TableRowInSecondSection.challenges.rawValue:
                 cell.textLabel?.text = "Challenges"
@@ -292,7 +306,7 @@ extension ProfileViewController: UITableViewDelegate {
             return "Stats"
             
         case 1:
-            return "Uploads"
+            return "History"
             
         default:
             return ""
@@ -305,6 +319,9 @@ extension ProfileViewController: UITableViewDelegate {
             
         case TableRowInSecondSection.posts.rawValue:
             performSegueWithIdentifier("toProfileCollectionView", sender: self)
+            
+        case TableRowInSecondSection.likedPosts.rawValue:
+            print("Hello")
             
         case TableRowInSecondSection.challenges.rawValue:
             print("To Do")
@@ -366,16 +383,17 @@ enum TableRowInFirstSection: Int {
 
 enum TableRowInSecondSection: Int {
     case posts      = 0
-    case challenges = 1
+    case likedPosts = 1
+    case challenges = 2
 }
 
 
 // MARK: - TableSectionHeight
 
 enum TableSectionHeight: CGFloat {
-    case first = 0.01
-    case small = 18.0
+    case first  = 0.01
+    case small  = 18.0
     case medium = 30.0
-    case large = 35.0
+    case large  = 35.0
 }
 

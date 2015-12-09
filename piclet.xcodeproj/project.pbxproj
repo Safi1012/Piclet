@@ -81,6 +81,9 @@
 		D46494851BEF900C00AA48C4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494841BEF900C00AA48C4 /* UserAccount.swift */; };
 		D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494841BEF900C00AA48C4 /* UserAccount.swift */; };
 		D46494871BEF900C00AA48C4 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494841BEF900C00AA48C4 /* UserAccount.swift */; };
+		D46799411C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */; };
+		D46799421C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */; };
+		D46799431C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */; };
 		D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D46912181BAC03C30012CE7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46912161BAC03C30012CE7C /* Main.storyboard */; };
 		D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D469121C1BAC03C30012CE7C /* Assets.xcassets */; };
@@ -190,6 +193,7 @@
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
 		D46494841BEF900C00AA48C4 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D469120F1BAC03C30012CE7C /* piclet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piclet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46912121BAC03C30012CE7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D46912171BAC03C30012CE7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 			children = (
 				D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */,
 				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
+				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -597,6 +602,7 @@
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
+				D46799411C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */,
 				D46494851BEF900C00AA48C4 /* UserAccount.swift in Sources */,
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */,
@@ -665,6 +671,7 @@
 				D408DA331BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
 				D4F10BA21BF3B9280097E0CE /* ProfileViewController.swift in Sources */,
 				D4181CCF1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
+				D46799421C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */,
 				D49C3F671C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +695,7 @@
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
 				D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
+				D46799431C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */,
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4254AE21BCD9C4500297FCF /* Challenge.swift in Sources */,
 				D4085C531BF0FADC00051436 /* ImageHandler.swift in Sources */,
