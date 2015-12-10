@@ -9,28 +9,16 @@
 import UIKit
 import WebImage
 
-private let reuseIdentifier = "Cell"
-
 class ProfileCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var tileImageView: UIImageView!
     var userAccount: UserAccount!
     var userPostIds: [PostInformation] = []
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // calculateTileSize()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.registerClass(ProfileCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
-//         self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        
+        self.collectionView?.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -68,37 +56,10 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! ProfileCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! ProfileCollectionViewCell
         
-        print("\(userPostIds[indexPath.row].challengeId)")
-        print("\(userPostIds[indexPath.row].postId)")
-        
-        cell.backgroundColor = UIColor.greenColor()
-        
-        
-//        cell.newImage = UIImageView()
-//        
-//        print("\(cell.newImage)")
-//        cell.newImage = UIImageView(image: UIImage(named: "challengePreviewPlaceholder"))
-//        print("\(cell.newImage)")
-        
-        
-        // cell.newImage.image = UIImage(named: "challengePreviewPlaceholder")
-        
-        
-        // cell.imageView.image = UIImage(named: "challengePreviewPlaceholder")
-        
-//        let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-//
-//        
-//        let test = NSURL(string: url)
-//        print("\(cell.imageView)")
-//        print("\(cell.imageView.image?.size.height)")
-//        
-//        
-//        
-//        
-//        cell.imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        cell.newImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
         
         return cell
     }
@@ -140,8 +101,12 @@ class ProfileCollectionViewController: UICollectionViewController {
 extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = (UIScreen.mainScreen().bounds.width / 3.0) - 1.0
-        return CGSize(width: width, height: width)
+        let width = (UIScreen.mainScreen().bounds.width / 3.0) - 0.5
+        
+        if (indexPath.row - 1) % 3 == 0 {
+            return CGSizeMake(width - 0.5, width)
+        }
+        return CGSizeMake(width, width)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
