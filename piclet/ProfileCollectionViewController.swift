@@ -8,6 +8,7 @@
 
 import UIKit
 import WebImage
+import ImageViewer
 
 class ProfileCollectionViewController: UICollectionViewController {
     
@@ -19,6 +20,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         self.collectionView?.dataSource = self
+        self.collectionView?.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -35,14 +37,6 @@ class ProfileCollectionViewController: UICollectionViewController {
             
         }
     }
-
-
-    
-
-    
-
-    
-    
     
 
     // MARK: UICollectionViewDataSource
@@ -66,37 +60,24 @@ class ProfileCollectionViewController: UICollectionViewController {
 
     
     // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
     
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let imageView = UIImageView()
+        let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        
+        let imageInfo = JTSImageInfo()
+        imageInfo.image = imageView.image
+        
+        let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
+        imageViewer.optionsDelegate = self
+        imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
     }
-    */
 }
 
+
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     
@@ -123,4 +104,15 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
+// MARK: JTSImageViewControllerOptionsDelegate
 
+extension ProfileCollectionViewController: JTSImageViewControllerOptionsDelegate {
+    
+    func backgroundColorImageViewInImageViewer(imageViewer: JTSImageViewController) -> UIColor {
+        return UIColor.blackColor()
+    }
+    
+    func alphaForBackgroundDimmingOverlayInImageViewer(imageViewer: JTSImageViewController) -> CGFloat {
+        return 1.0
+    }
+}

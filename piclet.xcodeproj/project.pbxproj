@@ -73,6 +73,24 @@
 		D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
 		D45650421C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
 		D45650431C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
+		D459D6971C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */; };
+		D459D6981C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */; };
+		D459D6991C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */; };
+		D459D69A1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68E1C1CDB81003A26E4 /* JTSImageInfo.m */; };
+		D459D69B1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68E1C1CDB81003A26E4 /* JTSImageInfo.m */; };
+		D459D69C1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68E1C1CDB81003A26E4 /* JTSImageInfo.m */; };
+		D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6901C1CDB81003A26E4 /* JTSImageViewController.m */; };
+		D459D69E1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6901C1CDB81003A26E4 /* JTSImageViewController.m */; };
+		D459D69F1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6901C1CDB81003A26E4 /* JTSImageViewController.m */; };
+		D459D6A01C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6921C1CDB81003A26E4 /* JTSSimpleImageDownloader.m */; };
+		D459D6A11C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6921C1CDB81003A26E4 /* JTSSimpleImageDownloader.m */; };
+		D459D6A21C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6921C1CDB81003A26E4 /* JTSSimpleImageDownloader.m */; };
+		D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6941C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m */; };
+		D459D6A41C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6941C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m */; };
+		D459D6A51C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6941C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m */; };
+		D459D6A61C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6961C1CDB81003A26E4 /* UIImage+JTSImageEffects.m */; };
+		D459D6A71C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6961C1CDB81003A26E4 /* UIImage+JTSImageEffects.m */; };
+		D459D6A81C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D6961C1CDB81003A26E4 /* UIImage+JTSImageEffects.m */; };
 		D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D462CB741BCBD3EE00701EFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
 		D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
@@ -170,6 +188,8 @@
 		D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		D42A2E881BF6935E00B96063 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		D42B5D381C1CC81E00BE771D /* ImageViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageViewer.framework; path = Carthage/Build/iOS/ImageViewer.framework; sourceTree = "<group>"; };
+		D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ImageViewer.framework.dSYM; path = Carthage/Build/iOS/ImageViewer.framework.dSYM; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
@@ -189,6 +209,18 @@
 		D445264E1BF3BF65007FE8D8 /* WebImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = WebImage.framework.dSYM; path = Carthage/Build/iOS/WebImage.framework.dSYM; sourceTree = "<group>"; };
 		D44526501BF3C28A007FE8D8 /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
 		D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		D459D68B1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSAnimatedGIFUtility.h; path = Frameworks/JTSAnimatedGIFUtility.h; sourceTree = "<group>"; };
+		D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSAnimatedGIFUtility.m; path = Frameworks/JTSAnimatedGIFUtility.m; sourceTree = "<group>"; };
+		D459D68D1C1CDB81003A26E4 /* JTSImageInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSImageInfo.h; path = Frameworks/JTSImageInfo.h; sourceTree = "<group>"; };
+		D459D68E1C1CDB81003A26E4 /* JTSImageInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSImageInfo.m; path = Frameworks/JTSImageInfo.m; sourceTree = "<group>"; };
+		D459D68F1C1CDB81003A26E4 /* JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSImageViewController.h; path = Frameworks/JTSImageViewController.h; sourceTree = "<group>"; };
+		D459D6901C1CDB81003A26E4 /* JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSImageViewController.m; path = Frameworks/JTSImageViewController.m; sourceTree = "<group>"; };
+		D459D6911C1CDB81003A26E4 /* JTSSimpleImageDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSSimpleImageDownloader.h; path = Frameworks/JTSSimpleImageDownloader.h; sourceTree = "<group>"; };
+		D459D6921C1CDB81003A26E4 /* JTSSimpleImageDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSSimpleImageDownloader.m; path = Frameworks/JTSSimpleImageDownloader.m; sourceTree = "<group>"; };
+		D459D6931C1CDB81003A26E4 /* UIApplication+JTSImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+JTSImageViewController.h"; path = "Frameworks/UIApplication+JTSImageViewController.h"; sourceTree = "<group>"; };
+		D459D6941C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+JTSImageViewController.m"; path = "Frameworks/UIApplication+JTSImageViewController.m"; sourceTree = "<group>"; };
+		D459D6951C1CDB81003A26E4 /* UIImage+JTSImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+JTSImageEffects.h"; path = "Frameworks/UIImage+JTSImageEffects.h"; sourceTree = "<group>"; };
+		D459D6961C1CDB81003A26E4 /* UIImage+JTSImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+JTSImageEffects.m"; path = "Frameworks/UIImage+JTSImageEffects.m"; sourceTree = "<group>"; };
 		D462CB711BCBD1D000701EFF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +283,9 @@
 		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
+				D42B5D381C1CC81E00BE771D /* ImageViewer.framework */,
+				D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */,
 				D42A2E881BF6935E00B96063 /* Alamofire.framework */,
 				D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */,
 				D49A70581BF3BE79004EA711 /* WebImage.framework */,
@@ -436,6 +471,25 @@
 			name = CoreData;
 			sourceTree = "<group>";
 		};
+		D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D459D68B1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.h */,
+				D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */,
+				D459D68D1C1CDB81003A26E4 /* JTSImageInfo.h */,
+				D459D68E1C1CDB81003A26E4 /* JTSImageInfo.m */,
+				D459D68F1C1CDB81003A26E4 /* JTSImageViewController.h */,
+				D459D6901C1CDB81003A26E4 /* JTSImageViewController.m */,
+				D459D6911C1CDB81003A26E4 /* JTSSimpleImageDownloader.h */,
+				D459D6921C1CDB81003A26E4 /* JTSSimpleImageDownloader.m */,
+				D459D6931C1CDB81003A26E4 /* UIApplication+JTSImageViewController.h */,
+				D459D6941C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m */,
+				D459D6951C1CDB81003A26E4 /* UIImage+JTSImageEffects.h */,
+				D459D6961C1CDB81003A26E4 /* UIImage+JTSImageEffects.m */,
+			);
+			name = JTSImageViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -597,8 +651,10 @@
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
+				D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
+				D459D6A61C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
@@ -607,10 +663,13 @@
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */,
 				D4438DD41BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
+				D459D69A1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
+				D459D6A01C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D4438DBF1BD60685000CB909 /* TimeHandler.swift in Sources */,
+				D459D6971C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */,
@@ -625,6 +684,7 @@
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,
@@ -637,11 +697,15 @@
 			files = (
 				D4CDEAB01BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */,
 				D46494821BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
+				D459D6981C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D46B6CA01C046365003E5CCF /* UIImagePickerExtension.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
+				D459D6A41C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
+				D459D6A11C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
+				D459D69E1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
@@ -655,10 +719,12 @@
 				D42F96A71BCC071100544C69 /* LoadingProgressViewController.swift in Sources */,
 				D4F10BA81BF3BA7A0097E0CE /* AppDelegate.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
+				D459D6A71C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4438DD51BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4085C541BF0FADE00051436 /* ImageHandler.swift in Sources */,
+				D459D69B1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */,
@@ -693,7 +759,9 @@
 				D4F10BA41BF3BA190097E0CE /* ObjectMapper.swift in Sources */,
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4254AE51BCD9C5300297FCF /* Post.swift in Sources */,
+				D459D6A51C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
+				D459D6A81C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D46799431C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */,
 				D4438DD61BD61767000CB909 /* AlertControllerExtension.swift in Sources */,
@@ -708,6 +776,8 @@
 				D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
+				D459D6991C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
+				D459D6A21C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
 				D44248F91BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D46B6CA11C046365003E5CCF /* UIImagePickerExtension.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,
@@ -717,6 +787,8 @@
 				D408DA341BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
 				D4F10BA71BF3BA780097E0CE /* AppDelegate.swift in Sources */,
 				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
+				D459D69F1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
+				D459D69C1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

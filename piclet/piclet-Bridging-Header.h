@@ -6,3 +6,6 @@
 #import <WebImage/UIImage+WebP.h>
 #import <WebImage/SDWebImageDownloader.h>
 
+#import "JTSImageViewController.h"
+#import "JTSImageInfo.h"
+
