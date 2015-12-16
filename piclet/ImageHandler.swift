@@ -24,12 +24,15 @@ class ImageHandler {
     private func cropImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat!
         let newHeight: CGFloat!
-        
+
         if image.size.width < image.size.height {
-            newHeight = (image.size.height / image.size.width) * imageSize
+            newHeight = (imageSize / image.size.width) * image.size.height
             newWidth = imageSize
+        } else if image.size.width > image.size.height{
+            newWidth = (imageSize / image.size.height) * image.size.width
+            newHeight = imageSize
         } else {
-            newWidth = (image.size.width / image.size.height) * imageSize
+            newWidth = imageSize
             newHeight = imageSize
         }
         
@@ -38,13 +41,13 @@ class ImageHandler {
         image.drawInRect(CGRectMake(0.0, 0.0, newWidth, newHeight))
         let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
         // crop
         let cropPositionX = (newWidth - imageSize) / 2.0
         let cropPositionY = (newHeight - imageSize) / 2.0
         let cropRect = CGRectMake(cropPositionX, cropPositionY, imageSize, imageSize)
         let imageRef = CGImageCreateWithImageInRect(resizedImage.CGImage, cropRect)!
-        let croppedImage = UIImage(CGImage: imageRef)
+        let croppedImage = UIImage(CGImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         let imageData = UIImageJPEGRepresentation(croppedImage, 0.7);
         
         return imageData
