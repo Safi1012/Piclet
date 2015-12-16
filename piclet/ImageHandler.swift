@@ -14,23 +14,14 @@ class ImageHandler {
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     
     func convertAvatarImageForUpload(image: UIImage, imageSize: ImageAvatarServerWidth) -> NSData? {
-        
-        
-        
-        
-        
-        return nil
-        //return compressImage(image, imageSize: imageSize.rawValue)
+        return cropImage(image, imageSize: imageSize.rawValue)
     }
     
     func convertPostsImageForUpload(image: UIImage, imageSize: ImagePostsServerWidth) -> NSData? {
         return compressImage(image, imageSize: imageSize.rawValue)
     }
     
-    
-    
     private func cropImage(image: UIImage, imageSize: CGFloat) -> NSData? {
-        
         let newWidth: CGFloat!
         let newHeight: CGFloat!
         
@@ -42,15 +33,22 @@ class ImageHandler {
             newHeight = imageSize
         }
         
-        // 1. resize to smaller size
-        // 2. crop
+        // resize to the smaller rect length
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.drawInRect(CGRectMake(0.0, 0.0, newWidth, newHeight))
+        let resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        // crop
+        let cropPositionX = (newWidth - imageSize) / 2.0
+        let cropPositionY = (newHeight - imageSize) / 2.0
+        let cropRect = CGRectMake(cropPositionX, cropPositionY, imageSize, imageSize)
+        let imageRef = CGImageCreateWithImageInRect(resizedImage.CGImage, cropRect)!
+        let croppedImage = UIImage(CGImage: imageRef)
+        let imageData = UIImageJPEGRepresentation(croppedImage, 0.7);
         
-        
-        return nil
+        return imageData
     }
-    
-    
-    
     
     private func compressImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat
@@ -66,19 +64,6 @@ class ImageHandler {
         UIGraphicsEndImageContext()
     
         return imageData
-    }
-    
-    func getMissingImagePosts(posts: [Post], imageSize: ImageSize, imageFormat: ImageFormat) -> [PostImage] {
-        var postImages = [PostImage]()
-
-        for post in posts {
-            let imagePath = documentPath.stringByAppendingPathComponent(post.id + "_\(imageSize.rawValue)" + ".\(imageFormat.rawValue)")
-
-            if !NSFileManager.defaultManager().fileExistsAtPath(imagePath) {
-                postImages.append(PostImage(imagePath: imagePath, postID: post.id))
-            }
-        }
-        return postImages
     }
 }
 

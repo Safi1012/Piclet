@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "piclet/ProfileCollectionViewController.swift"
-            timestampString = "471653264.183704"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "alphaForBackgroundDimmingOverlayInImageViewer(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "piclet/ProfileViewController.swift"
-            timestampString = "471794964.729067"
+            timestampString = "471951818.495761"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "182"
-            endingLineNumber = "182"
-            landmarkName = "uploadNewUserImage(_:)"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "displayNewUserImage(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "piclet/ProfileViewController.swift"
-            timestampString = "471884892.098111"
+            timestampString = "471952249.029516"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "displayNewUserImage(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "piclet/ProfileViewController.swift"
-            timestampString = "471884894.178096"
+            filePath = "piclet/ImageHandler.swift"
+            timestampString = "471951886.718369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "piclet/ProfileViewController.swift"
-            timestampString = "471885327.744234"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
-            landmarkName = "uploadNewUserImage(_:)"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "cropImage(_:imageSize:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

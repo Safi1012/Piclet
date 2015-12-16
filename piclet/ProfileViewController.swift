@@ -31,10 +31,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         imagePickerController.delegate = self
-        fetchUserInformation()
     }
     
     override func viewWillAppear(animated: Bool) {
+        fetchUserInformation()
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
@@ -163,6 +163,8 @@ class ProfileViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Destructive, handler: nil)
         
+        
+        // debug this, on real hardware
         if imagePickerController.isCameraAvailable() && imagePickerController.doesCameraSupportTakingPhotos() {
             alertController.addAction(cameraAction)
         }
@@ -173,7 +175,10 @@ class ProfileViewController: UIViewController {
     }
     
     func displayNewUserImage(pickedImage: UIImage) {
-        userProfileButton.setImage(pickedImage, forState: UIControlState.Normal)
+        dispatch_async(dispatch_get_main_queue()) {
+            self.userProfileButton.setImage(pickedImage, forState: UIControlState.Normal)
+            self.userProfileButton.setNeedsDisplay()
+        }
     }
     
 
@@ -189,6 +194,7 @@ class ProfileViewController: UIViewController {
         }
         
         let avatarImage = ImageHandler().convertAvatarImageForUpload(pickedImage, imageSize: ImageAvatarServerWidth.large)!
+        displayNewUserImage(UIImage(data: avatarImage)!)
         
         ApiProxy().uploadUserProfileImage(token, username: userName, image: avatarImage, success: { () -> () in
             SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "https://flash1293.de/users/\(userName)/avatar-large.jpeg", toDisk: true)
