@@ -131,10 +131,10 @@ class ProfileViewController: UIViewController {
         switch (UIScreen().getDisplayInchSize()) {
 
         case DeviceInchSize.inch_3_5:
-            imageSize = 74.0
+            imageSize = 78.0
 
         case DeviceInchSize.inch_4_0:
-            imageSize = 150.0
+            imageSize = 105.0
 
         case DeviceInchSize.inch_4_7, DeviceInchSize.inch_5_5:
             imageSize = 200.0
@@ -358,6 +358,14 @@ extension ProfileViewController: UITableViewDelegate {
         }
         return sectionHeight.rawValue
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if UIScreen().getDisplayInchSize() == DeviceInchSize.inch_3_5 {
+            return 35.0
+        }
+        return 44.0
+    }
 }
 
 
@@ -398,7 +406,7 @@ enum TableRowInSecondSection: Int {
 
 enum TableSectionHeight: CGFloat {
     case first  = 0.01
-    case small  = 18.0
+    case small  = 15.0
     case medium = 30.0
     case large  = 35.0
 }

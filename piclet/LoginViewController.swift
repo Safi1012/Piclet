@@ -14,27 +14,28 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loadingProgressContainerView: UIView!
+    @IBOutlet weak var topLogoConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomLogoConstraint: NSLayoutConstraint!
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    
     let userDataValidator = UserDataValidator()
     let objectMapper = ObjectMapper()
     let apiProxy = ApiProxy()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController = self
         uiStyling()
+        AppDelegate().loginViewController = self
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
     }
-    
     
     
     // MARK: - UI
     
     func uiStyling() {
+        adaptConstraintsToDisplaySize()
         placeholderColoring()
         bottomBorderStyling(usernameTextField)
         bottomBorderStyling(passwordTextField)
@@ -60,30 +61,27 @@ class LoginViewController: UIViewController {
         loginButton.layer.masksToBounds = true
     }
     
-//    func showLoadingSpinner() {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            let loadingSpinner = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//            loadingSpinner.labelText = "Loading Data"
-//        })
-//    }
-//    
-//    func hideLoadingSpinner() {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            MBProgressHUD.hideHUDForView(self.view, animated: true)
-//        })
-//    }
-    
-//    func displayAlert(alertController: UIAlertController) {
-//        dispatch_async(dispatch_get_main_queue(), {
-//            self.presentViewController(alertController, animated: true, completion: nil)
-//        })
-//    }
+    func adaptConstraintsToDisplaySize() {
+        switch (UIScreen().getDisplayInchSize()) {
+            
+        case DeviceInchSize.inch_3_5:
+            topLogoConstraint.constant = 30.0
+            bottomLogoConstraint.constant = 15.0
+            
+        case DeviceInchSize.inch_4_0:
+            topLogoConstraint.constant = 70.0
+            bottomLogoConstraint.constant = 20.0
+            
+        case DeviceInchSize.inch_4_7, DeviceInchSize.inch_5_5:
+            topLogoConstraint.constant = 80.0
+            bottomLogoConstraint.constant = 40.0
+        }
+    }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
-    
     
     // MARK: - Login
     
@@ -101,11 +99,14 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonPressed(sender: UIButton) {
+        performLogin()
+    }
+    
+    func performLogin() {
         if validateTextFields() {
-            
             apiProxy.signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
                 self.navigateToChallengesViewController()
-                
+            
             }, failure: { (errorCode) -> () in
                 self.displayAlert(errorCode)
                 
@@ -114,7 +115,6 @@ class LoginViewController: UIViewController {
     }
     
     func validateTextFields() -> Bool {
-        
         if (!userDataValidator.isUsernameLongEnough(usernameTextField.text!)) {
             self.displayAlert("UsernameTooShort")
             return false
@@ -131,8 +131,7 @@ class LoginViewController: UIViewController {
     }
 
     
-    
-    // MARK: - Naviation
+    // MARK: - Navigation
     
     @IBAction func skipButtonPressed(sender: UIButton) {
         navigateToChallengesViewController()
@@ -147,6 +146,24 @@ class LoginViewController: UIViewController {
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {}
 }
 
+
+// MARK: - UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        }
+        if textField == passwordTextField {
+            textField.resignFirstResponder()
+            performLogin()
+        }
+        return true
+    }
+    
+}
 
 
 
