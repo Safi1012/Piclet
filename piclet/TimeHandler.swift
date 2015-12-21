@@ -34,7 +34,7 @@ class TimeHandler {
         return calendar.second > 1 ? "\(calendar.second) seconds" : "\(calendar.second) second"
     }
     
-    func convertTimestampToNSDate(millisecons: Int) -> NSDate {
+    func convertTimestampToNSDate(millisecons: Int64) -> NSDate {
         return NSDate(timeIntervalSince1970: NSTimeInterval(Double(millisecons / 1000)))
     }
     

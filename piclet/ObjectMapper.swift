@@ -32,12 +32,13 @@ class ObjectMapper {
         }
         
         for element in objects {
+            
             let challenge = Challenge()
             guard
                 let id = element.valueForKey("_id") as? String,
                 let title = element.valueForKey("title") as? String,
                 let creator = element.valueForKey("creator") as? String,
-                let posted = element.valueForKey("posted") as? Int,
+                let posted = element.valueForKey("posted") as? NSNumber,
                 let votes = element.valueForKey("votes") as? Int,
                 let amountPosts = element.valueForKey("amountPosts") as? Int
             else {
@@ -46,7 +47,7 @@ class ObjectMapper {
             challenge.id = id
             challenge.title = title
             challenge.creator = creator
-            challenge.posted = TimeHandler().convertTimestampToNSDate(posted)
+            challenge.posted = TimeHandler().convertTimestampToNSDate(Int64(posted.longLongValue))
             challenge.votes = votes
             challenge.amountPosts = amountPosts
             challenge.creatorPost = element.valueForKey("creatorPost") as? String
@@ -73,7 +74,7 @@ class ObjectMapper {
             guard
                 let id = element.valueForKey("_id") as? String,
                 let creator = element.valueForKey("creator") as? String,
-                let posted = element.valueForKey("posted") as? Int,
+                let posted = element.valueForKey("posted") as? NSNumber,
                 let challengeId = element.valueForKey("challenge") as? String,
                 let votes = element.valueForKey("votes") as? Int,
                 let voters = element.valueForKey("voters") as? [String]
@@ -82,7 +83,7 @@ class ObjectMapper {
             }
             post.id = id
             post.creator = creator
-            post.posted = TimeHandler().convertTimestampToNSDate(posted)
+            post.posted = TimeHandler().convertTimestampToNSDate(Int64(posted.longLongValue))
             post.challengeId = challengeId
             post.votes = votes
             post.voters = voters
@@ -92,8 +93,6 @@ class ObjectMapper {
         }
         return posts
     }
-    
-    
     
     func parsePostIds(json: AnyObject) -> [PostInformation] {
         
@@ -117,15 +116,11 @@ class ObjectMapper {
         return postIds
     }
     
-    
-    
-    
-    
     func parseUserAccountInformations(json: AnyObject) -> UserAccount {
         guard
             let dict = json as? NSDictionary,
             let username = dict["username"] as? String,
-            let created = dict["created"] as? Int,
+            let created = dict["created"] as? NSNumber,
             let totalVotes = dict["totalVotes"] as? Int,
             let totalPosts = dict["totalPosts"] as? Int,
             let rank = dict["rank"] as? Int,
@@ -138,7 +133,7 @@ class ObjectMapper {
         
         let userAccount = UserAccount()
         userAccount.username = username
-        userAccount.created = TimeHandler().convertTimestampToNSDate(created)
+        userAccount.created = TimeHandler().convertTimestampToNSDate(Int64(created.longLongValue))
         userAccount.totalVotes = totalVotes
         userAccount.totalPosts = totalPosts
         userAccount.rank = rank

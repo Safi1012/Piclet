@@ -8,7 +8,6 @@
 
 import UIKit
 import WebImage
-import ImageViewer
 
 class ProfileCollectionViewController: UICollectionViewController {
     
@@ -82,7 +81,7 @@ class ProfileCollectionViewController: UICollectionViewController {
 extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let width = (UIScreen.mainScreen().bounds.width / 3.0) - 0.5
+        let width = (UIScreen.mainScreen().bounds.width / 3.0) - 0.55 // should be 0.5, iPhone 5S Simulator bug. Test on hardware
         
         if (indexPath.row - 1) % 3 == 0 {
             return CGSizeMake(width - 0.5, width)
