@@ -133,6 +133,9 @@
 		D4CDEAAF1BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */; };
 		D4CDEAB01BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */; };
 		D4CDEAB11BDDFCDD00F4C51B /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */; };
+		D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */; };
+		D4D588E21C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */; };
+		D4D588E31C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */; };
 		D4F10BA21BF3B9280097E0CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */; };
 		D4F10BA31BF3B9290097E0CE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */; };
 		D4F10BA41BF3BA190097E0CE /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
@@ -249,6 +252,7 @@
 		D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingProgressViewController.swift; sourceTree = "<group>"; };
 		D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* ViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		D4FA80BD1BDAAE1F004682CB /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -341,6 +345,7 @@
 			children = (
 				D4438DD21BD6159C000CB909 /* Extension */,
 				D46912441BAC0D600012CE7C /* Model */,
+				D4DE2F8A1C25A0F200C14B23 /* View */,
 				D46912451BAC0D650012CE7C /* Storyboard */,
 				D46912431BAC0D590012CE7C /* ViewController */,
 				D469124A1BAC0DB60012CE7C /* Others */,
@@ -488,6 +493,14 @@
 				D459D6961C1CDB81003A26E4 /* UIImage+JTSImageEffects.m */,
 			);
 			name = JTSImageViewController;
+			sourceTree = "<group>";
+		};
+		D4DE2F8A1C25A0F200C14B23 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,6 +664,7 @@
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4BDF8591BC3AD3700028566 /* LoadingProgressViewController.swift in Sources */,
+				D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
 				D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
@@ -701,6 +715,7 @@
 				D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D46B6CA01C046365003E5CCF /* UIImagePickerExtension.swift in Sources */,
 				D46912481BAC0D970012CE7C /* LoginViewController.swift in Sources */,
+				D4D588E21C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
 				D459D6A41C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */,
 				D44248EC1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
@@ -785,6 +800,7 @@
 				D4438DC11BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D46494831BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D408DA341BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
+				D4D588E31C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
 				D4F10BA71BF3BA780097E0CE /* AppDelegate.swift in Sources */,
 				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
 				D459D69F1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,

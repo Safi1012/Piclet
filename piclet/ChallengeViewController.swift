@@ -12,12 +12,21 @@ class ChallengeViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewFooter: UIView!
+    @IBOutlet weak var activityIndicatorView: UIView!
+    
+    var activityIndicator: ActivityIndicatorView!
     var challengeCollection: ChallengeCollection!
+    var isRequesting = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupActivityIndicator()
         styleNavigationBar()
+        styleTableView()
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -47,11 +56,35 @@ class ChallengeViewController: UIViewController {
     
     // MARK: - UI
     
+    func setupActivityIndicator() {
+        activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
+        activityIndicatorView.addSubview(activityIndicator)
+        activityIndicator.center = CGPointMake(activityIndicatorView.bounds.midX, activityIndicatorView.bounds.midY)
+        activityIndicatorView.hidden = true
+    }
+    
     func styleNavigationBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "transparentPixel")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "transparentPixel"), forBarMetrics: UIBarMetrics.Default)
     }
+    
+    func styleTableView() {
+        let border = CALayer()
+        border.backgroundColor = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0).CGColor
+        border.frame = CGRect(x: 15, y: 0, width: tableViewFooter.frame.width - 15.0, height: 0.5)
+        tableViewFooter.layer.addSublayer(border)
+    }
+    
+    func startActivityIndicator() {
+        activityIndicatorView.hidden = false
+        activityIndicator.startAnimating()
+    }
 
+    func stopActivityIndicator() {
+        activityIndicatorView.hidden = true
+        activityIndicator.stopAnimating()
+    }
+    
     @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
         
         if sender.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
@@ -79,22 +112,42 @@ class ChallengeViewController: UIViewController {
     func refreshSelectedSection(offset: Int) {
         if shouldRefreshChallenge(challengeCollection.timestamp) {
             refreshChallenges(offset)
+        } else  {
+            tableView.reloadData()
         }
     }
     
     func refreshChallenges(offset: Int) {
+        if isRequesting {
+            return
+        }
+        isRequesting = true
         
-        ApiProxy().fetchChallenges(offset, orderby: challengeCollection.section, archived: false, success: { (challenges) -> () in
-            self.challengeCollection.challenge = challenges
+        startActivityIndicator()
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
+            // sleep(2)
+            
+            ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: false, success: { (challenges) -> () in
+                
+                for challenge in challenges {
+                    self.challengeCollection.challenge.append(challenge)
+                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.tableView.reloadData()
+                    self.makePullToRefreshEndRefreshing()
+                    self.isRequesting = false
+                    self.stopActivityIndicator()
+                })
+                
+            }) { (errorCode) -> () in
                 self.makePullToRefreshEndRefreshing()
-            })
-            
-        }) { (errorCode) -> () in
-            self.makePullToRefreshEndRefreshing()
-            self.displayAlert(errorCode)
+                self.displayAlert(errorCode)
+                self.isRequesting = false
+                self.stopActivityIndicator()
+                
+            }
         }
     }
     
@@ -112,6 +165,7 @@ class ChallengeViewController: UIViewController {
     }
     
     func refresh() {
+        challengeCollection.challenge = [Challenge]()
         refreshChallenges(0)
     }
     
@@ -133,6 +187,9 @@ class ChallengeViewController: UIViewController {
         return "\(numberPosts) posts"
     }
 
+    
+
+    
 
     // MARK: - Navigation
     
@@ -186,6 +243,16 @@ extension ChallengeViewController: UITableViewDelegate {
         self.tableView.selectRowAtIndexPath(indexPath, animated: true, scrollPosition: UITableViewScrollPosition.None)
         let challenge = challengeCollection.challenge[indexPath.row]
         self.performSegueWithIdentifier("toPostsViewController", sender: challenge)
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+
+        if (maximumOffset - currentOffset) <= 350 {
+            refreshChallenges(0)
+            // refreshChallenges(challengeCollection.challenge.count + 30)
+        }
     }
 }
 
