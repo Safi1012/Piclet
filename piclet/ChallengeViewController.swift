@@ -30,7 +30,7 @@ class ChallengeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refresh") // todo: call method which refreshes -> check how offset should work
+        self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refresh")
         
         if segmentedControl.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
             challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
@@ -49,7 +49,11 @@ class ChallengeViewController: UIViewController {
         super.viewDidAppear(animated)
 
         tableView.flashScrollIndicators()
-        refreshSelectedSection(0) // todo: check whether hot | new -> pick the right offset (tableView)
+        refreshSelectedSection()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 
     
@@ -86,13 +90,16 @@ class ChallengeViewController: UIViewController {
     }
     
     @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
+        challengeCollection.offsetY = tableView.contentOffset.y
         
         if sender.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
             challengeCollection.section = SegmentedControlState.hot
         } else {
             challengeCollection.section = SegmentedControlState.new
         }
-        refreshSelectedSection(0) // todo: check whether hot | new -> pick the right offset (tableView)
+        
+        tableView.contentOffset.y = challengeCollection.offsetY
+        refreshSelectedSection()
     }
 
     @IBAction func pressedCreateChallenge(sender: UIBarButtonItem) {
@@ -109,10 +116,10 @@ class ChallengeViewController: UIViewController {
     
     // MARK: - Challenge
     
-    func refreshSelectedSection(offset: Int) {
-        if shouldRefreshChallenge(challengeCollection.timestamp) {
-            refreshChallenges(offset)
-        } else  {
+    func refreshSelectedSection() {
+        if shouldRefreshChallenge() {
+            refresh()
+        } else {
             tableView.reloadData()
         }
     }
@@ -121,55 +128,57 @@ class ChallengeViewController: UIViewController {
         if isRequesting {
             return
         }
+        fetchChallenges(offset)
+    }
+    
+    func fetchChallenges(offset: Int) {
         isRequesting = true
-        
         startActivityIndicator()
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            
-            // sleep(2)
-            
-            ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: false, success: { (challenges) -> () in
-                
-                for challenge in challenges {
-                    self.challengeCollection.challenge.append(challenge)
-                }
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.tableView.reloadData()
-                    self.makePullToRefreshEndRefreshing()
-                    self.isRequesting = false
-                    self.stopActivityIndicator()
-                })
-                
-            }) { (errorCode) -> () in
+        ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: false, success: { (challenges) -> () in
+            for challenge in challenges {
+                self.challengeCollection.challenge.append(challenge)
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.tableView.reloadData()
                 self.makePullToRefreshEndRefreshing()
-                self.displayAlert(errorCode)
                 self.isRequesting = false
                 self.stopActivityIndicator()
+            })
+            
+        }) { (errorCode) -> () in
+            self.makePullToRefreshEndRefreshing()
+            self.displayAlert(errorCode)
+            self.isRequesting = false
+            self.stopActivityIndicator()
                 
-            }
         }
     }
     
-    func shouldRefreshChallenge(var timestamp: NSDate?) -> Bool {   
-        if var timestamp = timestamp {
-            if TimeHandler().secondsPassedSinceDate(timestamp) > 300 {
-                timestamp = NSDate()
+    func shouldRefreshChallenge() -> Bool {
+        
+        if challengeCollection.timestamp != nil {
+            if TimeHandler().secondsPassedSinceDate(challengeCollection.timestamp!) > 300 {
+                challengeCollection.timestamp = NSDate()
                 return true
             } else {
                 return false
             }
         }
-        timestamp = NSDate()
+        challengeCollection.timestamp = NSDate()
         return true
     }
     
     func refresh() {
         challengeCollection.challenge = [Challenge]()
-        refreshChallenges(0)
+        challengeCollection.offsetY = 0.0
+        
+        // very important! otherwise the tableView will crash because the number of rows are wrong after wiping the data
+        self.tableView.reloadData()
+        fetchChallenges(0)
     }
     
-    
+
     
     // create new class that formats code!
     
@@ -187,9 +196,6 @@ class ChallengeViewController: UIViewController {
         return "\(numberPosts) posts"
     }
 
-    
-
-    
 
     // MARK: - Navigation
     
@@ -249,9 +255,8 @@ extension ChallengeViewController: UITableViewDelegate {
         let currentOffset = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
 
-        if (maximumOffset - currentOffset) <= 350 {
-            refreshChallenges(0)
-            // refreshChallenges(challengeCollection.challenge.count + 30)
+        if (maximumOffset - currentOffset) <= 70 {
+            refreshChallenges(challengeCollection.challenge.count + 20)
         }
     }
 }

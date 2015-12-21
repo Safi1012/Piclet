@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ChallengeCollection {
     
@@ -47,9 +48,31 @@ class ChallengeCollection {
             }
         }
     }
+    
+    var offsetY: CGFloat {
+        get {
+            if section == SegmentedControlState.hot {
+                return hotContentOffsetY
+            }
+            return newContentOffsetY
+        }
+        set {
+            if section == SegmentedControlState.hot {
+                self.hotContentOffsetY = newValue
+            } else {
+                self.newContentOffsetY = newValue
+            }
+        }
+    }
+    
     private var hotChallenges = [Challenge]()
     private var newChallenges = [Challenge]()
     
     private var hotTimestamp: NSDate?
     private var newTimestamp: NSDate?
+    
+    private var hotContentOffsetY = CGFloat(0.0)
+    private var newContentOffsetY = CGFloat(0.0)
 }
+
+
