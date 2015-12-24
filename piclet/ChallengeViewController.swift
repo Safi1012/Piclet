@@ -30,7 +30,7 @@ class ChallengeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        self.makePullToRefreshToTableView(tableView, triggerToMethodName: "refresh")
+        self.addPullToRefresh(tableView, selector: "refresh")
         
         if segmentedControl.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
             challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
@@ -128,12 +128,12 @@ class ChallengeViewController: UIViewController {
         if isRequesting {
             return
         }
-        fetchChallenges(offset)
+        fetchChallenges(offset, displayIndicator: true)
     }
     
-    func fetchChallenges(offset: Int) {
+    func fetchChallenges(offset: Int, displayIndicator: Bool) {
         isRequesting = true
-        startActivityIndicator()
+        if displayIndicator { startActivityIndicator() }
         
         ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: false, success: { (challenges) -> () in
             for challenge in challenges {
@@ -175,7 +175,7 @@ class ChallengeViewController: UIViewController {
         
         // very important! otherwise the tableView will crash because the number of rows are wrong after wiping the data
         self.tableView.reloadData()
-        fetchChallenges(0)
+        fetchChallenges(0, displayIndicator: false)
     }
     
 

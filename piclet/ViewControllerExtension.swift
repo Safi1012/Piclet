@@ -14,11 +14,27 @@ var refreshControl = UIRefreshControl()
 
 extension UIViewController {
     
-    func makePullToRefreshToTableView(tableName: UITableView,triggerToMethodName: String) {
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading")
+    func addPullToRefresh(view: UIView, selector: String) {
+        
+        // blueSpinner
+        let activityIndicatorView = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = true
+        activityIndicatorView.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin, .FlexibleBottomMargin]
+        
+        
+        // refresh View
+        let picletBlue = UIColor(red: 37.0/255.0, green: 106.0/255.0, blue: 185.0/255.0, alpha: 1.0)
+        refreshControl.attributedTitle = NSAttributedString(string: "Loading...", attributes: [NSForegroundColorAttributeName: picletBlue])
         refreshControl.backgroundColor = UIColor.whiteColor()
-        refreshControl.addTarget(self, action: Selector(triggerToMethodName), forControlEvents: UIControlEvents.ValueChanged)
-        tableName.addSubview(refreshControl)
+        refreshControl.tintColor = UIColor.clearColor()
+        refreshControl.addTarget(self, action: Selector(selector), forControlEvents: UIControlEvents.ValueChanged)
+        view.addSubview(refreshControl)
+
+        
+        // add blueSpinner to refresh View
+        refreshControl.addSubview(activityIndicatorView)
+        activityIndicatorView.center = CGPoint(x: refreshControl.bounds.midX, y: refreshControl.bounds.midY - 5.0)
     }
     
     func makePullToRefreshEndRefreshing() {
