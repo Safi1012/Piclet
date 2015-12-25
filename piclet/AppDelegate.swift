@@ -68,7 +68,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func appDelegate () -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+    
+    
+    // MARK: - Rotation
 
+    func application(application: UIApplication, supportedInterfaceOrientationsForWindow window: UIWindow?) -> UIInterfaceOrientationMask {
+        
+        if self.window?.rootViewController?.presentedViewController is JTSImageViewController {
+            let imageViewController = self.window!.rootViewController!.presentedViewController as! JTSImageViewController
+            
+            if imageViewController.isPresented {
+                return UIInterfaceOrientationMask.All;
+            }
+            return UIInterfaceOrientationMask.Portrait;
+        }
+        return UIInterfaceOrientationMask.Portrait;
+    }
+    
+    
     // MARK: - Core Data stack
 
     lazy var applicationDocumentsDirectory: NSURL = {

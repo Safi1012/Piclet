@@ -22,6 +22,7 @@ class PostsViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -136,9 +137,10 @@ class PostsViewController: UIViewController {
     }
     
     @IBAction func unwindToPostTableViewController(segue: UIStoryboardSegue) {}
-    
 }
 
+
+// MARK: - UITableViewDataSource
 
 extension PostsViewController: UITableViewDataSource {
     
@@ -178,6 +180,26 @@ extension PostsViewController: UITableViewDataSource {
 }
 
 
+// MARK: - UITableViewDelegate
+
+extension PostsViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let imageView = UIImageView()
+        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        
+        let imageInfo = JTSImageInfo()
+        imageInfo.image = imageView.image
+        
+        let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
+        imageViewer.optionsDelegate = self
+        imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
+    }
+}
+
+
 // MARK: - PostsTableViewDelegate
 
 extension PostsViewController: PostsTableViewDelegate {
@@ -209,5 +231,19 @@ extension PostsViewController: PostsTableViewDelegate {
             
             likeChallengePost(post, cell: cell, token: token)
         }
+    }
+}
+
+
+// MARK: - JTSImageViewControllerOptionsDelegate
+
+extension PostsViewController: JTSImageViewControllerOptionsDelegate {
+    
+    func backgroundColorImageViewInImageViewer(imageViewer: JTSImageViewController) -> UIColor {
+        return UIColor.blackColor()
+    }
+    
+    func alphaForBackgroundDimmingOverlayInImageViewer(imageViewer: JTSImageViewController) -> CGFloat {
+        return 1.0
     }
 }

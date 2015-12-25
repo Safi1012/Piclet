@@ -148,7 +148,7 @@ typedef struct {
 
 - (void)showFromViewController:(UIViewController *)viewController
                     transition:(JTSImageViewControllerTransition)transition {
-    
+    self.isPresented = YES;
     self.transition = transition;
     
     _startingInfo.statusBarHiddenPriorToPresentation = [UIApplication sharedApplication].statusBarHidden;
@@ -197,6 +197,7 @@ typedef struct {
             }
         }
     }
+    self.isPresented = NO;
 }
 
 #pragma mark - NSObject
