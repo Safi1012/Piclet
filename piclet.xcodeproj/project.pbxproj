@@ -375,13 +375,13 @@
 		D46912431BAC0D590012CE7C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D4CBA8821C2DF0FD00B47820 /* Login */,
 				D47E5E251BD293A0003E9351 /* Challenges */,
+				D4438DB51BD521B2000CB909 /* CreateChallenge */,
 				D47E5E261BD293AE003E9351 /* Posts */,
 				D4783E6A1BEDE07D007FAF9E /* CreatePost */,
-				D4438DB51BD521B2000CB909 /* CreateChallenge */,
 				D47E5E271BD293BD003E9351 /* Profile */,
 				D4BDF8571BC3AD3700028566 /* LoadingProgressViewController.swift */,
-				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
 				D4FA80BD1BDAAE1F004682CB /* NavigationViewController.swift */,
 				D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */,
 			);
@@ -474,6 +474,14 @@
 				D4431D051BBECAE000086759 /* piclet.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		D4CBA8821C2DF0FD00B47820 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */ = {
