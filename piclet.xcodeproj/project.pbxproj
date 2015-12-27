@@ -100,6 +100,21 @@
 		D46799411C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */; };
 		D46799421C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */; };
 		D46799431C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */; };
+		D46857F61C2FD8B0006C58B7 /* ChallengeProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857F41C2FD8B0006C58B7 /* ChallengeProfile.storyboard */; };
+		D46857F71C2FD8B0006C58B7 /* ChallengeProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857F41C2FD8B0006C58B7 /* ChallengeProfile.storyboard */; };
+		D46857F81C2FD8B0006C58B7 /* ChallengeProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857F41C2FD8B0006C58B7 /* ChallengeProfile.storyboard */; };
+		D46857FA1C2FDA1F006C58B7 /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857F91C2FDA1F006C58B7 /* Posts.storyboard */; };
+		D46857FB1C2FDA1F006C58B7 /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857F91C2FDA1F006C58B7 /* Posts.storyboard */; };
+		D46857FC1C2FDA1F006C58B7 /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857F91C2FDA1F006C58B7 /* Posts.storyboard */; };
+		D46857FE1C2FDA45006C58B7 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857FD1C2FDA45006C58B7 /* CreatePost.storyboard */; };
+		D46857FF1C2FDA45006C58B7 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857FD1C2FDA45006C58B7 /* CreatePost.storyboard */; };
+		D46858001C2FDA45006C58B7 /* CreatePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46857FD1C2FDA45006C58B7 /* CreatePost.storyboard */; };
+		D46858031C2FDA9A006C58B7 /* CreateChallenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46858011C2FDA9A006C58B7 /* CreateChallenge.storyboard */; };
+		D46858041C2FDA9A006C58B7 /* CreateChallenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46858011C2FDA9A006C58B7 /* CreateChallenge.storyboard */; };
+		D46858051C2FDA9A006C58B7 /* CreateChallenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46858011C2FDA9A006C58B7 /* CreateChallenge.storyboard */; };
+		D46858071C2FDAC4006C58B7 /* ProfilePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46858061C2FDAC4006C58B7 /* ProfilePost.storyboard */; };
+		D46858081C2FDAC4006C58B7 /* ProfilePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46858061C2FDAC4006C58B7 /* ProfilePost.storyboard */; };
+		D46858091C2FDAC4006C58B7 /* ProfilePost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46858061C2FDAC4006C58B7 /* ProfilePost.storyboard */; };
 		D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D46912181BAC03C30012CE7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46912161BAC03C30012CE7C /* Main.storyboard */; };
 		D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D469121C1BAC03C30012CE7C /* Assets.xcassets */; };
@@ -223,6 +238,11 @@
 		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
 		D46494841BEF900C00AA48C4 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		D46857F51C2FD8B0006C58B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChallengeProfile.storyboard; sourceTree = "<group>"; };
+		D46857F91C2FDA1F006C58B7 /* Posts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Posts.storyboard; sourceTree = "<group>"; };
+		D46857FD1C2FDA45006C58B7 /* CreatePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CreatePost.storyboard; sourceTree = "<group>"; };
+		D46858021C2FDA9A006C58B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/CreateChallenge.storyboard; sourceTree = "<group>"; };
+		D46858061C2FDAC4006C58B7 /* ProfilePost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilePost.storyboard; sourceTree = "<group>"; };
 		D469120F1BAC03C30012CE7C /* piclet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piclet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46912121BAC03C30012CE7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D46912171BAC03C30012CE7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -311,6 +331,15 @@
 			name = Extension;
 			sourceTree = "<group>";
 		};
+		D468580A1C2FDB3D006C58B7 /* ProfilePosts */ = {
+			isa = PBXGroup;
+			children = (
+				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
+				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
+			);
+			name = ProfilePosts;
+			sourceTree = "<group>";
+		};
 		D46912061BAC03C30012CE7C = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +402,7 @@
 				D47E5E261BD293AE003E9351 /* Posts */,
 				D4783E6A1BEDE07D007FAF9E /* CreatePost */,
 				D47E5E271BD293BD003E9351 /* Profile */,
+				D468580A1C2FDB3D006C58B7 /* ProfilePosts */,
 				D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */,
 			);
 			name = ViewController;
@@ -400,8 +430,13 @@
 		D46912451BAC0D650012CE7C /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				D46912161BAC03C30012CE7C /* Main.storyboard */,
 				D469121E1BAC03C30012CE7C /* LaunchScreen.storyboard */,
+				D46912161BAC03C30012CE7C /* Main.storyboard */,
+				D46857F41C2FD8B0006C58B7 /* ChallengeProfile.storyboard */,
+				D46858061C2FDAC4006C58B7 /* ProfilePost.storyboard */,
+				D46858011C2FDA9A006C58B7 /* CreateChallenge.storyboard */,
+				D46857F91C2FDA1F006C58B7 /* Posts.storyboard */,
+				D46857FD1C2FDA45006C58B7 /* CreatePost.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -450,8 +485,6 @@
 			isa = PBXGroup;
 			children = (
 				D4BDF85B1BC44EBB00028566 /* ProfileViewController.swift */,
-				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
-				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -609,10 +642,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46858031C2FDA9A006C58B7 /* CreateChallenge.storyboard in Resources */,
+				D46857FA1C2FDA1F006C58B7 /* Posts.storyboard in Resources */,
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
+				D46857FE1C2FDA45006C58B7 /* CreatePost.storyboard in Resources */,
+				D46857F61C2FD8B0006C58B7 /* ChallengeProfile.storyboard in Resources */,
+				D46858071C2FDAC4006C58B7 /* ProfilePost.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +658,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46858041C2FDA9A006C58B7 /* CreateChallenge.storyboard in Resources */,
+				D46857FB1C2FDA1F006C58B7 /* Posts.storyboard in Resources */,
+				D46858081C2FDAC4006C58B7 /* ProfilePost.storyboard in Resources */,
+				D46857F71C2FD8B0006C58B7 /* ChallengeProfile.storyboard in Resources */,
+				D46857FF1C2FDA45006C58B7 /* CreatePost.storyboard in Resources */,
 				D4438DC71BD60ABD000CB909 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,6 +671,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D46858051C2FDA9A006C58B7 /* CreateChallenge.storyboard in Resources */,
+				D46857FC1C2FDA1F006C58B7 /* Posts.storyboard in Resources */,
+				D46858091C2FDAC4006C58B7 /* ProfilePost.storyboard in Resources */,
+				D46857F81C2FD8B0006C58B7 /* ChallengeProfile.storyboard in Resources */,
+				D46858001C2FDA45006C58B7 /* CreatePost.storyboard in Resources */,
 				D4438DC81BD60ABD000CB909 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -823,6 +871,22 @@
 				D4438DCD1BD60B87000CB909 /* de */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D46857F41C2FD8B0006C58B7 /* ChallengeProfile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D46857F51C2FD8B0006C58B7 /* Base */,
+			);
+			name = ChallengeProfile.storyboard;
+			sourceTree = "<group>";
+		};
+		D46858011C2FDA9A006C58B7 /* CreateChallenge.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D46858021C2FDA9A006C58B7 /* Base */,
+			);
+			name = CreateChallenge.storyboard;
 			sourceTree = "<group>";
 		};
 		D46912161BAC03C30012CE7C /* Main.storyboard */ = {

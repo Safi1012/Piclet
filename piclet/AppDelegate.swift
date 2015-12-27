@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // check if User token exists (isUserAlreadyLoggedIn?) -> if yes skip to tabBar (user is logged in)
         if (User.getLoggedInUser(managedObjectContext) != nil) {
-            self.window?.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("TabBarController")
+            self.window?.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("ChallengeProfile")
         }
         
         // tabBar styling
