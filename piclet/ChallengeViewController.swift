@@ -136,6 +136,10 @@ class ChallengeViewController: UIViewController {
         if displayIndicator { startActivityIndicator() }
         
         ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: false, success: { (challenges) -> () in
+            if offset == 0 {
+                self.challengeCollection.challenge = [Challenge]()
+                self.challengeCollection.offsetY = 0.0
+            }
             for challenge in challenges {
                 self.challengeCollection.challenge.append(challenge)
             }
@@ -170,15 +174,9 @@ class ChallengeViewController: UIViewController {
     }
     
     func refresh() {
-        challengeCollection.challenge = [Challenge]()
-        challengeCollection.offsetY = 0.0
-        
-        // very important! otherwise the tableView will crash because the number of rows are wrong after wiping the data
-        self.tableView.reloadData()
         fetchChallenges(0, displayIndicator: false)
     }
     
-
     
     // create new class that formats code!
     
