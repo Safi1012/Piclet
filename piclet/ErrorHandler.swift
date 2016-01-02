@@ -72,6 +72,9 @@ class ErrorHandler {
         case "ChallengeNameOnlyBlankCharacters":
             return ("Invalid Title", "The title you typed is empty.. ")
             
+        case "AlreadyPostedError":
+            return ("Already Posted", "Sorry, You already posted in this challenge. Please choose a different Challenge.")
+            
         default:
             return ("Unexpected Error", "Please try again.")
         }

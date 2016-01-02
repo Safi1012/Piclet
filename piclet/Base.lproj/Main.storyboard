@@ -870,34 +870,13 @@
                                     <constraint firstItem="JTL-CA-CaA" firstAttribute="leading" secondItem="el3-1f-3iD" secondAttribute="leading" id="wfT-b6-oVI"/>
                                 </constraints>
                             </view>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zPL-y4-I0I">
-                                <rect key="frame" x="35" y="36" width="529" height="465"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvL-o7-0gm" userLabel="closeImageButton">
-                                <rect key="frame" x="544" y="16" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="ahL-Df-esr"/>
-                                    <constraint firstAttribute="width" constant="40" id="pab-oI-53M"/>
-                                </constraints>
-                                <state key="normal" image="closeImageUnfilledRed"/>
-                                <connections>
-                                    <action selector="pressedClosePreviewImage:" destination="Stj-pU-3ey" eventType="touchUpInside" id="Xn5-hf-9lh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="WDD-u9-Ctt" firstAttribute="top" secondItem="v8d-xm-TB9" secondAttribute="bottom" constant="220" id="3Hc-9a-xqU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="BvL-o7-0gm" secondAttribute="trailing" constant="-4" id="9Rf-6l-aO5"/>
-                            <constraint firstItem="SCT-RH-UZE" firstAttribute="top" secondItem="zPL-y4-I0I" secondAttribute="bottom" constant="35" id="Taz-yY-zXX"/>
-                            <constraint firstItem="zPL-y4-I0I" firstAttribute="leading" secondItem="c1R-Qs-U15" secondAttribute="leadingMargin" constant="15" id="ZNJ-Wc-edr"/>
-                            <constraint firstItem="BvL-o7-0gm" firstAttribute="top" secondItem="v8d-xm-TB9" secondAttribute="bottom" constant="16" id="eUg-A8-XHx"/>
                             <constraint firstItem="el3-1f-3iD" firstAttribute="top" secondItem="WDD-u9-Ctt" secondAttribute="bottom" constant="8" id="f3U-N4-yK9"/>
                             <constraint firstItem="el3-1f-3iD" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" constant="-1" id="mXd-xr-FcZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zPL-y4-I0I" secondAttribute="trailing" constant="16" id="nZT-va-wzS"/>
                             <constraint firstItem="WDD-u9-Ctt" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" id="ux6-OE-bAT"/>
-                            <constraint firstItem="zPL-y4-I0I" firstAttribute="top" secondItem="v8d-xm-TB9" secondAttribute="bottom" constant="36" id="yre-jh-I0h"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a Post" id="hBb-eC-jYc">
@@ -917,9 +896,7 @@
                     <connections>
                         <outlet property="buttonView" destination="el3-1f-3iD" id="TVz-Te-rBp"/>
                         <outlet property="cameraButton" destination="0eR-PL-Nx8" id="jlJ-sm-QSv"/>
-                        <outlet property="closeImageButton" destination="BvL-o7-0gm" id="qQi-Sd-6by"/>
                         <outlet property="descriptionLabel" destination="WDD-u9-Ctt" id="fjA-xr-gDK"/>
-                        <outlet property="previewImageView" destination="zPL-y4-I0I" id="BCy-aT-yth"/>
                         <segue destination="Vh5-Ru-2os" kind="show" identifier="toImageUploadViewController" id="aXB-Mi-RfN"/>
                     </connections>
                 </viewController>
@@ -1289,7 +1266,6 @@
         <image name="challengeLike" width="20" height="20"/>
         <image name="challengePosts" width="20" height="20"/>
         <image name="challengePreviewPlaceholder" width="500" height="500"/>
-        <image name="closeImageUnfilledRed" width="25" height="25"/>
         <image name="likeUnfilled" width="25" height="25"/>
         <image name="mascot" width="174" height="200"/>
         <image name="navBarCancel" width="22" height="22"/>

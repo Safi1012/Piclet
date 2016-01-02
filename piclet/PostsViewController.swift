@@ -49,7 +49,12 @@ class PostsViewController: UIViewController {
     }
     
     @IBAction func pressedCreatePost(sender: UIBarButtonItem) {
-        userPressedCreatePost()
+        
+        if !checkIfUserAlreadyPosted() {
+            userPressedCreatePost()
+        } else {
+            displayAlert("AlreadyPostedError")
+        }
     }
     
     func displayMascotView() {
@@ -123,6 +128,22 @@ class PostsViewController: UIViewController {
             }
         }
         self.displayAlert("NotLoggedIn")
+    }
+    
+    
+    func checkIfUserAlreadyPosted() -> Bool {
+        
+        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
+            if let userName = loggedInUser.username {
+                
+                for post in posts {
+                    if post.creator == userName {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
     }
     
     

@@ -14,33 +14,25 @@ class ImagePickerViewController: UIViewController {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var previewImageView: UIImageView!
-    @IBOutlet weak var closeImageButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     
+    
+    
     var imagePickerController = UIImagePickerController()
+    var previewImageView: UIImageView?
+    
     var token: String!
     var challengeID: String!
     var pickedImage: UIImage? = nil
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        displayCameraIconIfSupported()
         imagePickerController.delegate = self
-        styleImagePreview()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !self.isCameraAvailable() || !self.doesCameraSupportTakingPhotos() {
-            cameraButton.hidden = true
-        } else {
-            cameraButton.hidden = false
-        }
-    }
-
-
 
     // MARK: - UI
     
@@ -54,16 +46,17 @@ class ImagePickerViewController: UIViewController {
     
     @IBAction func pressedClosePreviewImage(sender: UIButton) {
         pickedImage = nil
-        previewImageView.image = nil
-        previewImageView.hidden = true
-        closeImageButton.hidden = true
-    }
-    
-    func styleImagePreview() {
-        previewImageView.layer.cornerRadius = CGFloat(7.0)
-        previewImageView.layer.borderWidth = CGFloat(1.0)
-        previewImageView.layer.borderColor = UIColor.darkGrayColor().CGColor
-        previewImageView.clipsToBounds = true
+        
+        UIView.animateWithDuration(0.35, animations: { () -> Void in
+            sender.alpha = 0.0
+            self.previewImageView?.alpha = 0.0
+            
+        }) { (value: Bool) -> Void in
+            sender.removeFromSuperview()
+            self.previewImageView?.removeFromSuperview()
+            self.displayLabelAndButtons()
+                
+        }
     }
     
     @IBAction func pressedNextNavBarItem(sender: UIBarButtonItem) {
@@ -72,6 +65,43 @@ class ImagePickerViewController: UIViewController {
         } else {
             displayAlert("NoPictureError")
         }
+    }
+    
+    func displayCameraIconIfSupported() {
+        if !self.isCameraAvailable() || !self.doesCameraSupportTakingPhotos() {
+            cameraButton.hidden = true
+        } else {
+            cameraButton.hidden = false
+        }
+    }
+    
+    func getSmallerViewSize() -> CGFloat {
+        if view.bounds.width > view.bounds.height {
+            return view.bounds.height
+        } else {
+            return view.bounds.width
+        }
+    }
+    
+    func addRoundedBoarder(view: UIView) {
+        view.layer.cornerRadius = CGFloat(7.0)
+        view.layer.borderWidth = CGFloat(1.0)
+        view.clipsToBounds = true
+    }
+    
+    func addAndCenterSubview(subview: UIView) {
+        view.addSubview(subview)
+        subview.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+    }
+    
+    func hideLabelAndButtons() {
+        descriptionLabel.hidden = true
+        buttonView.hidden = true
+    }
+    
+    func displayLabelAndButtons() {
+        descriptionLabel.hidden = false
+        buttonView.hidden = false
     }
     
     
@@ -112,6 +142,51 @@ class ImagePickerViewController: UIViewController {
         }
         return false
     }
+    
+    
+    // MARK: - PreviewImageView
+    
+    func createPreviewImageView(image: UIImage) -> UIImageView {
+        
+        let previewImageView: UIImageView!
+        let smallerViewSize = getSmallerViewSize() - 20.0 // - 20.0 is for margin
+        
+        if image.size.width > image.size.height {
+            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, smallerViewSize, smallerViewSize / (image.size.width / image.size.height)))
+            
+        } else if image.size.width < image.size.height {
+            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, smallerViewSize / (image.size.height / image.size.width), smallerViewSize))
+            
+        } else {
+            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, smallerViewSize, smallerViewSize))
+        }
+        
+        previewImageView.image = image
+        addRoundedBoarder(previewImageView)
+        addAndCenterSubview(previewImageView)
+        
+        return previewImageView
+    }
+    
+    func createClosePreviewButton(previewImageView: UIImageView) {
+        
+        let closeButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0))
+        closeButton.addTarget(self, action: "pressedClosePreviewImage:", forControlEvents: UIControlEvents.TouchUpInside)
+        closeButton.setImage(UIImage(named: "closeImageUnfilledRed"), forState: .Normal)
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(closeButton)
+        
+        
+        // Constraints
+        
+        let views = ["subView": closeButton, "preview": previewImageView]
+        let leftMargin = (view.bounds.width - previewImageView.bounds.width) / 2.0
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[subView]-\(leftMargin)-|", options: .AlignAllLeading, metrics: nil, views: views)
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[subView]-[preview]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        
+        view.addConstraints(horizontalConstraints)
+        view.addConstraints(verticalConstraints)
+    }
 
     
     // MARK: - Navigation
@@ -126,76 +201,6 @@ class ImagePickerViewController: UIViewController {
             imageUploadVC.challengeID = challengeID
         }
     }
-    
-    
-    
-    
-    
-    func createPreviewImageView(image: UIImage) {
-        
-        let smallerViewSize: CGFloat!
-        
-        if view.bounds.width > view.bounds.height {
-            smallerViewSize = view.bounds.height
-        } else {
-            smallerViewSize = view.bounds.width
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        print("\(image.size.width)")
-        print("\(image.size.height)")
-        
-        print("\(view.bounds.width)")
-        print("\(view.bounds.height)")
-        
-        
-        let previewImageView: UIImageView!
-        
-        if image.size.width > image.size.height {
-            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, view.bounds.width - 20.0, (view.bounds.width - 20.0) / (image.size.width / image.size.height)))
-            
-        } else if image.size.width < image.size.height {
-            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, (view.bounds.width - 10.0) / (image.size.height / image.size.width), view.bounds.width - 20.0))
-            
-        } else {
-            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, view.bounds.width - 20.0, view.bounds.width - 20.0))
-        }
-        
-        previewImageView.contentMode = UIViewContentMode.ScaleAspectFit
-        previewImageView.clipsToBounds = true
-        previewImageView.image = image
-
-        print("\(previewImageView.bounds.size.width)")
-        print("\(previewImageView.bounds.size.height)")
-        
-        print("\(previewImageView.image?.size.width)")
-        print("\(previewImageView.image?.size.height)")
-        
-        
-
-        previewImageView.layer.cornerRadius = CGFloat(7.0)
-        previewImageView.layer.borderWidth = CGFloat(1.0)
-        previewImageView.layer.borderColor = UIColor.darkGrayColor().CGColor
-        previewImageView.clipsToBounds = true
-        
-        
-        
-        view.addSubview(previewImageView)
-        previewImageView.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-        view.bringSubviewToFront(previewImageView)
-        
-        
-    }
-    
-
-    
-    
 }
 
 
@@ -211,12 +216,9 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             }
             pickedImage = image
-            
-            createPreviewImageView(pickedImage!)
-            
-//            previewImageView.image = image
-//            previewImageView.hidden = false
-            closeImageButton.hidden = false
+            hideLabelAndButtons()
+            previewImageView = createPreviewImageView(image)
+            createClosePreviewButton(previewImageView!)
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
