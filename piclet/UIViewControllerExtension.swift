@@ -41,6 +41,22 @@ extension UIViewController {
         refreshControl.endRefreshing()
     }
     
+    
+    // MARK: - ChildViewController
+    
+    func addChildViewController(viewController: UIViewController, toContainerView view: UIView) {
+        addChildViewController(viewController)
+        
+        viewController.view.frame = CGRectMake(0.0, 0.0, view.bounds.width, view.bounds.height)
+        view.addSubview(viewController.view)
+        
+        viewController.view.pinToSuperView()
+        viewController.didMoveToParentViewController(self)
+    }
+    
+    
+    // MARK: - Alert
+    
     func displayAlert(errorCode: String) {
         var alertController: UIAlertController
         
