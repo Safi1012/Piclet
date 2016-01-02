@@ -126,6 +126,76 @@ class ImagePickerViewController: UIViewController {
             imageUploadVC.challengeID = challengeID
         }
     }
+    
+    
+    
+    
+    
+    func createPreviewImageView(image: UIImage) {
+        
+        let smallerViewSize: CGFloat!
+        
+        if view.bounds.width > view.bounds.height {
+            smallerViewSize = view.bounds.height
+        } else {
+            smallerViewSize = view.bounds.width
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        print("\(image.size.width)")
+        print("\(image.size.height)")
+        
+        print("\(view.bounds.width)")
+        print("\(view.bounds.height)")
+        
+        
+        let previewImageView: UIImageView!
+        
+        if image.size.width > image.size.height {
+            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, view.bounds.width - 20.0, (view.bounds.width - 20.0) / (image.size.width / image.size.height)))
+            
+        } else if image.size.width < image.size.height {
+            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, (view.bounds.width - 10.0) / (image.size.height / image.size.width), view.bounds.width - 20.0))
+            
+        } else {
+            previewImageView = UIImageView(frame: CGRectMake(0.0, 0.0, view.bounds.width - 20.0, view.bounds.width - 20.0))
+        }
+        
+        previewImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        previewImageView.clipsToBounds = true
+        previewImageView.image = image
+
+        print("\(previewImageView.bounds.size.width)")
+        print("\(previewImageView.bounds.size.height)")
+        
+        print("\(previewImageView.image?.size.width)")
+        print("\(previewImageView.image?.size.height)")
+        
+        
+
+        previewImageView.layer.cornerRadius = CGFloat(7.0)
+        previewImageView.layer.borderWidth = CGFloat(1.0)
+        previewImageView.layer.borderColor = UIColor.darkGrayColor().CGColor
+        previewImageView.clipsToBounds = true
+        
+        
+        
+        view.addSubview(previewImageView)
+        previewImageView.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+        view.bringSubviewToFront(previewImageView)
+        
+        
+    }
+    
+
+    
+    
 }
 
 
@@ -141,8 +211,11 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             }
             pickedImage = image
-            previewImageView.image = image
-            previewImageView.hidden = false
+            
+            createPreviewImageView(pickedImage!)
+            
+//            previewImageView.image = image
+//            previewImageView.hidden = false
             closeImageButton.hidden = false
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
