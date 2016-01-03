@@ -629,34 +629,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="189"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wds-PA-9B4">
-                                <rect key="frame" x="228" y="8" width="144" height="144"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="144" id="YSy-TZ-arB"/>
-                                    <constraint firstAttribute="height" constant="144" id="faz-16-HLF"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-91-qKM">
                                 <rect key="frame" x="257" y="160" width="86" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bJo-im-sQF">
+                                <rect key="frame" x="228" y="8" width="144" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="144" id="nZT-WO-Jdw"/>
+                                    <constraint firstAttribute="height" constant="144" id="uBA-2A-gfs"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="userProfileRoundPlacholder"/>
+                                <connections>
+                                    <action selector="pressedUserProfileButton:" destination="gjF-tG-krH" eventType="touchUpInside" id="hbd-ua-oz0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LnW-91-qKM" firstAttribute="centerX" secondItem="QCr-y3-d9W" secondAttribute="centerX" id="4Yc-3H-FGa"/>
-                            <constraint firstItem="wds-PA-9B4" firstAttribute="top" secondItem="oH3-qh-JqL" secondAttribute="bottom" constant="8" id="6tA-oU-xxV"/>
                             <constraint firstItem="whq-Sj-Fb5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LnW-91-qKM" secondAttribute="bottom" constant="8" id="Ak3-Qz-0ok"/>
-                            <constraint firstItem="wds-PA-9B4" firstAttribute="centerX" secondItem="QCr-y3-d9W" secondAttribute="centerX" id="aqz-28-W7a"/>
-                            <constraint firstItem="LnW-91-qKM" firstAttribute="top" secondItem="wds-PA-9B4" secondAttribute="bottom" constant="8" id="kB7-FM-s9g"/>
+                            <constraint firstItem="LnW-91-qKM" firstAttribute="top" secondItem="bJo-im-sQF" secondAttribute="bottom" constant="8" id="SmT-Vc-HKr"/>
+                            <constraint firstItem="bJo-im-sQF" firstAttribute="centerX" secondItem="QCr-y3-d9W" secondAttribute="centerX" id="cYv-3N-h4r"/>
+                            <constraint firstItem="bJo-im-sQF" firstAttribute="top" secondItem="oH3-qh-JqL" secondAttribute="bottom" constant="8" id="e2E-Pg-iLv"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="189"/>
                     <connections>
-                        <outlet property="imageView" destination="wds-PA-9B4" id="UIq-go-2Id"/>
+                        <outlet property="profileImageButton" destination="bJo-im-sQF" id="hI1-fQ-mHu"/>
                         <outlet property="profileNameLabel" destination="LnW-91-qKM" id="MLZ-Ag-B22"/>
                     </connections>
                 </viewController>
@@ -668,7 +672,7 @@
         <scene sceneID="e66-z5-et4">
             <objects>
                 <tableViewController storyboardIdentifier="ProfileStatsTableViewController" id="k71-Qq-YYa" customClass="ProfileStatsTableViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="eyx-be-NbQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="eyx-be-NbQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="139"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1253,6 +1257,11 @@
                             <outlet property="delegate" destination="Z3g-uv-a5a" id="7m0-Yv-fJ0"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="challengesCell" destination="thM-8d-E5B" id="h7u-uS-QGF"/>
+                        <outlet property="likedCell" destination="qiw-fd-PaO" id="Rly-fy-8vr"/>
+                        <outlet property="postsCell" destination="RuJ-Kx-Iur" id="zYJ-wm-8Fm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lse-HW-jnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

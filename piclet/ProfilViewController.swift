@@ -11,12 +11,7 @@ import UIKit
 protocol ProfileViewControllerDelegate {
     
     func userDataWasRefreshed(profileViewController: ProfilViewController, userAccount: UserAccount)
-    
 }
-
-
-
-
 
 
 class ProfilViewController: UIViewController {
@@ -44,7 +39,6 @@ class ProfilViewController: UIViewController {
     }
 
     
-    
     // MARK: - Profile
     
     func getLoggedInUser() -> Bool {
@@ -63,18 +57,11 @@ class ProfilViewController: UIViewController {
     func fetchUserInformation() {
         
         ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
-            
             self.profileStatsDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
-            
-            
-            //self.userAccount = userAccount
-//            self.displayUserLabel(userAccount.username)
-//            self.displayUserProfileImage(userAccount.username)
-//            self.displayUserTableView()
+            self.profileHistoryDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
-            // self.displaySignupInformation()
                 
         }
     }
@@ -123,10 +110,10 @@ class ProfilViewController: UIViewController {
             let destinationVC = segue.destinationViewController as! ProfileStatsTableViewController
             self.profileStatsDelegate = destinationVC
         }
-//        if segue.identifier == "embedProfileHistoryTableViewController" {
-//            let destinationVC = segue.destinationViewController as! ProfileHistoryTableViewController
-//            self.profileHistoryDelegate = destinationVC
-//        }
+        if segue.identifier == "embedProfileHistoryTableViewController" {
+            let destinationVC = segue.destinationViewController as! ProfileHistoryTableViewController
+            self.profileHistoryDelegate = destinationVC
+        }
     }
     
     func navigatoToLoginViewController() {
