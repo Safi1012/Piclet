@@ -16,14 +16,9 @@ class ImagePickerViewController: UIViewController {
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     
-    
-    
     var imagePickerController = UIImagePickerController()
     var previewImageView: UIImageView?
-    
-    var token: String!
     var challengeID: String!
-    var pickedImage: UIImage? = nil
     
     
     override func viewDidLoad() {
@@ -37,15 +32,14 @@ class ImagePickerViewController: UIViewController {
     // MARK: - UI
     
     @IBAction func pressedCamera(sender: UIButton) {
-        displayCamera()
+        imagePickerController.displayCamera(self)
     }
     
     @IBAction func pressedCameraRoll(sender: UIButton) {
-        displayImageGallery()
+        imagePickerController.displayImageGallery(self)
     }
     
     @IBAction func pressedClosePreviewImage(sender: UIButton) {
-        pickedImage = nil
         
         UIView.animateWithDuration(0.35, animations: { () -> Void in
             sender.alpha = 0.0
@@ -60,18 +54,21 @@ class ImagePickerViewController: UIViewController {
     }
     
     @IBAction func pressedNextNavBarItem(sender: UIBarButtonItem) {
-        if let pickedImage = pickedImage {
-            performSegueWithIdentifier("toImageUploadViewController", sender: pickedImage)
-        } else {
+        guard
+            let previewImageView = previewImageView,
+            let previewImage = previewImageView.image
+        else {
             displayAlert("NoPictureError")
+            return
         }
+        performSegueWithIdentifier("toImageUploadViewController", sender: previewImage)
     }
     
     func displayCameraIconIfSupported() {
-        if !self.isCameraAvailable() || !self.doesCameraSupportTakingPhotos() {
-            cameraButton.hidden = true
-        } else {
+        if imagePickerController.isCameraAvailableForUse() {
             cameraButton.hidden = false
+        } else {
+            cameraButton.hidden = true
         }
     }
     
@@ -83,8 +80,8 @@ class ImagePickerViewController: UIViewController {
         }
     }
     
-    func addRoundedBoarder(view: UIView) {
-        view.layer.cornerRadius = CGFloat(7.0)
+    func addRoundedBorder(view: UIView) {
+        view.layer.cornerRadius = CGFloat(5.0)
         view.layer.borderWidth = CGFloat(1.0)
         view.clipsToBounds = true
     }
@@ -101,46 +98,14 @@ class ImagePickerViewController: UIViewController {
     
     func displayLabelAndButtons() {
         descriptionLabel.hidden = false
+        descriptionLabel.alpha = 0.0
         buttonView.hidden = false
-    }
-    
-    
-    // MARK: - UIImagePickerController
-    
-    func displayCamera() {
-        imagePickerController.sourceType = .Camera
-        imagePickerController.mediaTypes = [kUTTypeImage as String]
-        imagePickerController.allowsEditing = false
-        imagePickerController.showsCameraControls = true
+        buttonView.alpha = 0.0
         
-        presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func displayImageGallery() {
-        imagePickerController.sourceType = .PhotoLibrary
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func isCameraAvailable() -> Bool {
-        return UIImagePickerController.isSourceTypeAvailable(.Camera)
-    }
-    
-    func doesCameraSupportTakingPhotos() -> Bool {
-        return cameraSupportsMedia(kUTTypeImage as String, sourceType: .Camera)
-    }
-    
-    func cameraSupportsMedia(mediaType: String, sourceType: UIImagePickerControllerSourceType) -> Bool {
-        let availableMediaTypes = UIImagePickerController.availableMediaTypesForSourceType(sourceType)
-        
-        if let types = availableMediaTypes {
-            for type in types {
-                if type == mediaType {
-                    return true
-                }
-            }
+        UIView.animateWithDuration(0.5) { () -> Void in
+            self.descriptionLabel.alpha = 1.0
+            self.buttonView.alpha = 1.0
         }
-        return false
     }
     
     
@@ -162,7 +127,7 @@ class ImagePickerViewController: UIViewController {
         }
         
         previewImageView.image = image
-        addRoundedBoarder(previewImageView)
+        addRoundedBorder(previewImageView)
         addAndCenterSubview(previewImageView)
         
         return previewImageView
@@ -175,7 +140,6 @@ class ImagePickerViewController: UIViewController {
         closeButton.setImage(UIImage(named: "closeImageUnfilledRed"), forState: .Normal)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(closeButton)
-        
         
         // Constraints
         
@@ -197,7 +161,6 @@ class ImagePickerViewController: UIViewController {
             self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
             let imageUploadVC = segue.destinationViewController as! ImageUploadViewController
             imageUploadVC.pickedImage = (sender as! UIImage)
-            imageUploadVC.token = token
             imageUploadVC.challengeID = challengeID
         }
     }
@@ -215,7 +178,6 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
             if picker.sourceType == UIImagePickerControllerSourceType.Camera {
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             }
-            pickedImage = image
             hideLabelAndButtons()
             previewImageView = createPreviewImageView(image)
             createClosePreviewButton(previewImageView!)

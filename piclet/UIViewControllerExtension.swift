@@ -76,25 +76,5 @@ extension UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         })
     }
-    
-    
-    // MARK: - Imagepicker
-    
-    func displayCamera(imagePickerController: UIImagePickerController) {
-        imagePickerController.sourceType = .Camera
-        imagePickerController.mediaTypes = ["kUTTypeImage"]
-        imagePickerController.allowsEditing = false
-        imagePickerController.showsCameraControls = true
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func displayImageGallery(imagePickerController: UIImagePickerController) {
-        imagePickerController.sourceType = .PhotoLibrary
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-
 }
 
