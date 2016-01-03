@@ -823,17 +823,17 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDD-u9-Ctt" userLabel="descriptionLabel">
-                                <rect key="frame" x="215" y="220" width="170.5" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="el3-1f-3iD" userLabel="buttonView">
-                                <rect key="frame" x="224" y="252" width="150" height="64"/>
+                                <rect key="frame" x="215" y="215" width="170.5" height="89"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WDD-u9-Ctt" userLabel="descriptionLabel">
+                                        <rect key="frame" x="0.0" y="1" width="170.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JTL-CA-CaA" userLabel="cameraRollButton">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="17" y="25" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="36G-GJ-MKr"/>
                                             <constraint firstAttribute="width" constant="64" id="8xr-xj-bwE"/>
@@ -845,7 +845,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eR-PL-Nx8" userLabel="cameraButton">
-                                        <rect key="frame" x="86" y="0.0" width="64" height="64"/>
+                                        <rect key="frame" x="89" y="25" width="64" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="4D7-AG-tqJ"/>
                                             <constraint firstAttribute="height" constant="64" id="rPG-GM-yH1"/>
@@ -859,24 +859,26 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="JTL-CA-CaA" firstAttribute="top" secondItem="el3-1f-3iD" secondAttribute="top" id="58v-JI-JYK"/>
-                                    <constraint firstAttribute="width" constant="150" id="6tX-DH-JFr"/>
-                                    <constraint firstAttribute="bottom" secondItem="0eR-PL-Nx8" secondAttribute="bottom" id="MF5-lN-brV"/>
-                                    <constraint firstAttribute="height" constant="64" id="NIu-aS-TD1"/>
-                                    <constraint firstAttribute="trailing" secondItem="0eR-PL-Nx8" secondAttribute="trailing" id="VR7-1M-k9p"/>
-                                    <constraint firstItem="0eR-PL-Nx8" firstAttribute="top" secondItem="el3-1f-3iD" secondAttribute="top" id="mgm-IZ-mWA"/>
-                                    <constraint firstItem="0eR-PL-Nx8" firstAttribute="leading" secondItem="JTL-CA-CaA" secondAttribute="trailing" constant="22" id="nHl-nF-lgG"/>
-                                    <constraint firstAttribute="bottom" secondItem="JTL-CA-CaA" secondAttribute="bottom" id="tz9-j8-WRd"/>
-                                    <constraint firstItem="JTL-CA-CaA" firstAttribute="leading" secondItem="el3-1f-3iD" secondAttribute="leading" id="wfT-b6-oVI"/>
+                                    <constraint firstItem="WDD-u9-Ctt" firstAttribute="leading" secondItem="el3-1f-3iD" secondAttribute="leading" id="7CM-PD-GzB"/>
+                                    <constraint firstAttribute="bottom" secondItem="0eR-PL-Nx8" secondAttribute="bottom" id="7TR-PF-0HL"/>
+                                    <constraint firstItem="0eR-PL-Nx8" firstAttribute="leading" secondItem="JTL-CA-CaA" secondAttribute="trailing" constant="8" id="8Nt-4K-ZPw"/>
+                                    <constraint firstAttribute="width" constant="170.5" id="C4H-D9-1Yx"/>
+                                    <constraint firstAttribute="trailing" secondItem="0eR-PL-Nx8" secondAttribute="trailing" constant="17.5" id="CV2-km-I7h"/>
+                                    <constraint firstItem="WDD-u9-Ctt" firstAttribute="top" secondItem="el3-1f-3iD" secondAttribute="top" constant="1" id="Waa-cc-rIN"/>
+                                    <constraint firstAttribute="bottom" secondItem="JTL-CA-CaA" secondAttribute="bottom" id="cFg-TR-keV"/>
+                                    <constraint firstItem="JTL-CA-CaA" firstAttribute="leading" secondItem="el3-1f-3iD" secondAttribute="leading" constant="17" id="g9n-jU-zl5"/>
+                                    <constraint firstAttribute="trailing" secondItem="WDD-u9-Ctt" secondAttribute="trailing" id="lwW-5z-eLR"/>
+                                    <constraint firstItem="0eR-PL-Nx8" firstAttribute="top" secondItem="WDD-u9-Ctt" secondAttribute="bottom" id="pLz-Mn-770"/>
+                                    <constraint firstItem="JTL-CA-CaA" firstAttribute="top" secondItem="WDD-u9-Ctt" secondAttribute="bottom" id="qFu-T1-ap5"/>
+                                    <constraint firstAttribute="height" constant="89" id="yCq-ll-cWL"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="WDD-u9-Ctt" firstAttribute="top" secondItem="v8d-xm-TB9" secondAttribute="bottom" constant="220" id="3Hc-9a-xqU"/>
-                            <constraint firstItem="el3-1f-3iD" firstAttribute="top" secondItem="WDD-u9-Ctt" secondAttribute="bottom" constant="8" id="f3U-N4-yK9"/>
-                            <constraint firstItem="el3-1f-3iD" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" constant="-1" id="mXd-xr-FcZ"/>
-                            <constraint firstItem="WDD-u9-Ctt" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" id="ux6-OE-bAT"/>
+                            <constraint firstItem="SCT-RH-UZE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="el3-1f-3iD" secondAttribute="bottom" constant="232" id="EVJ-1K-iQH"/>
+                            <constraint firstItem="el3-1f-3iD" firstAttribute="centerX" secondItem="c1R-Qs-U15" secondAttribute="centerX" id="Yb0-PB-YAM"/>
+                            <constraint firstItem="el3-1f-3iD" firstAttribute="top" secondItem="v8d-xm-TB9" secondAttribute="bottom" constant="215" id="nr5-ac-AI8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a Post" id="hBb-eC-jYc">
@@ -896,7 +898,6 @@
                     <connections>
                         <outlet property="buttonView" destination="el3-1f-3iD" id="TVz-Te-rBp"/>
                         <outlet property="cameraButton" destination="0eR-PL-Nx8" id="jlJ-sm-QSv"/>
-                        <outlet property="descriptionLabel" destination="WDD-u9-Ctt" id="fjA-xr-gDK"/>
                         <segue destination="Vh5-Ru-2os" kind="show" identifier="toImageUploadViewController" id="aXB-Mi-RfN"/>
                     </connections>
                 </viewController>

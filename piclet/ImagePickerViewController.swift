@@ -12,7 +12,6 @@ import MobileCoreServices
 
 class ImagePickerViewController: UIViewController {
 
-    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var cameraButton: UIButton!
     
@@ -47,8 +46,9 @@ class ImagePickerViewController: UIViewController {
             
         }) { (value: Bool) -> Void in
             sender.removeFromSuperview()
+            self.previewImageView?.image = nil
             self.previewImageView?.removeFromSuperview()
-            self.displayLabelAndButtons()
+            self.displayButtonView()
                 
         }
     }
@@ -91,19 +91,15 @@ class ImagePickerViewController: UIViewController {
         subview.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
     }
     
-    func hideLabelAndButtons() {
-        descriptionLabel.hidden = true
+    func hideButtonView() {
         buttonView.hidden = true
     }
     
-    func displayLabelAndButtons() {
-        descriptionLabel.hidden = false
-        descriptionLabel.alpha = 0.0
+    func displayButtonView() {
         buttonView.hidden = false
         buttonView.alpha = 0.0
         
         UIView.animateWithDuration(0.5) { () -> Void in
-            self.descriptionLabel.alpha = 1.0
             self.buttonView.alpha = 1.0
         }
     }
@@ -178,7 +174,7 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
             if picker.sourceType == UIImagePickerControllerSourceType.Camera {
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             }
-            hideLabelAndButtons()
+            hideButtonView()
             previewImageView = createPreviewImageView(image)
             createClosePreviewButton(previewImageView!)
         }
