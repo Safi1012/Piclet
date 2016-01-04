@@ -185,7 +185,7 @@ extension PostsViewController: UITableViewDataSource {
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-        cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
         if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
             for username in posts[indexPath.row].voters {
@@ -208,7 +208,7 @@ extension PostsViewController: UITableViewDelegate {
         
         let imageView = UIImageView()
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
         let imageInfo = JTSImageInfo()
         imageInfo.image = imageView.image
