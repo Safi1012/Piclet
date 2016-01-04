@@ -2,14 +2,14 @@
 //  UIViewExtension.swift
 //  piclet
 //
-//  Created by Filipe Santos Correa on 28/12/15.
+//  Created by Filipe Santos Correa on 30/12/15.
 //  Copyright © 2015 Filipe Santos Correa. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension UIView {
-   
+    
     func pinToSuperView() {
         self.translatesAutoresizingMaskIntoConstraints = true
         

@@ -12,7 +12,6 @@ class ImageUploadViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: CreateTextField!
     var pickedImage: UIImage!
-    var token: String!
     var challengeID: String!
     
     override func viewDidLoad() {
@@ -54,6 +53,7 @@ class ImageUploadViewController: UIViewController {
     // MARK: - Upload
     
     func uploadPost(title: String, image: NSData) {
+        let token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
         
         ApiProxy().addPostToChallenge(token, challengeID: challengeID, image: image, description: title, success: { () -> () in
             self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)

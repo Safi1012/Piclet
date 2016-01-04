@@ -156,10 +156,10 @@ class ProfileViewController: UIViewController {
         let alertController = UIAlertController(title: "Choose your Picture", message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
         
         let cameraAction = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
-            self.displayCamera(self.imagePickerController)
+            // self.displayCamera(self.imagePickerController)
         }
         let imageGalleryAction = UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default) { (UIAlertAction) -> Void in
-            self.displayImageGallery(self.imagePickerController)
+            // self.displayImageGallery(self.imagePickerController)
         }
         let cancelAction = UIAlertAction(title: "cancel", style: UIAlertActionStyle.Destructive, handler: nil)
         

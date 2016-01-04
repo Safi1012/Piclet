@@ -14,47 +14,6 @@ var refreshControl = UIRefreshControl()
 
 extension UIViewController {
     
-    // MARK: - RefreshControl
-    
-    func createBlueRefreshControl(selector: String) -> UIRefreshControl {
-        let picletBlue = UIColor(red: 37.0/255.0, green: 106.0/255.0, blue: 185.0/255.0, alpha: 1.0)
-        
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading...", attributes: [NSForegroundColorAttributeName: picletBlue])
-        refreshControl.backgroundColor = UIColor.whiteColor()
-        refreshControl.tintColor = picletBlue
-        refreshControl.addTarget(self, action: Selector(selector), forControlEvents: UIControlEvents.ValueChanged)
-        
-        return refreshControl
-    }
-    
-    
-    
-    
-//    func createCustomRefreshControl(selector: String) -> UIRefreshControl {
-//        
-//        // blueSpinner
-//        let activityIndicatorView = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
-//        activityIndicatorView.startAnimating()
-//        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = true
-//        activityIndicatorView.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin, .FlexibleBottomMargin]
-//
-//
-//        // refresh View
-//        let picletBlue = UIColor(red: 37.0/255.0, green: 106.0/255.0, blue: 185.0/255.0, alpha: 1.0)
-//        refreshControl.attributedTitle = NSAttributedString(string: "Loading...", attributes: [NSForegroundColorAttributeName: picletBlue])
-//        refreshControl.backgroundColor = UIColor.whiteColor()
-//        refreshControl.tintColor = UIColor.clearColor()
-//        refreshControl.addTarget(self, action: Selector(selector), forControlEvents: UIControlEvents.ValueChanged)
-//
-//
-//        // add blueSpinner to refresh View
-//        refreshControl.addSubview(activityIndicatorView)
-//        activityIndicatorView.center = CGPoint(x: refreshControl.bounds.midX, y: refreshControl.bounds.midY - 5.0)
-//        
-//        return refreshControl
-//    }
-    
-    
     func addPullToRefresh(view: UIView, selector: String) {
         
         // blueSpinner
@@ -78,10 +37,6 @@ extension UIViewController {
         activityIndicatorView.center = CGPoint(x: refreshControl.bounds.midX, y: refreshControl.bounds.midY - 5.0)
     }
     
-    func makePullToRefreshStartRefreshing() {
-        refreshControl.beginRefreshing()
-    }
-    
     func makePullToRefreshEndRefreshing() {
         refreshControl.endRefreshing()
     }
@@ -90,7 +45,6 @@ extension UIViewController {
     // MARK: - ChildViewController
     
     func addChildViewController(viewController: UIViewController, toContainerView view: UIView) {
-        
         addChildViewController(viewController)
         
         viewController.view.frame = CGRectMake(0.0, 0.0, view.bounds.width, view.bounds.height)
@@ -99,7 +53,6 @@ extension UIViewController {
         viewController.view.pinToSuperView()
         viewController.didMoveToParentViewController(self)
     }
-    
     
     
     // MARK: - Alert
@@ -123,25 +76,5 @@ extension UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         })
     }
-    
-    
-    // MARK: - Imagepicker
-    
-    func displayCamera(imagePickerController: UIImagePickerController) {
-        imagePickerController.sourceType = .Camera
-        imagePickerController.mediaTypes = ["kUTTypeImage"]
-        imagePickerController.allowsEditing = false
-        imagePickerController.showsCameraControls = true
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-    func displayImageGallery(imagePickerController: UIImagePickerController) {
-        imagePickerController.sourceType = .PhotoLibrary
-        
-        presentViewController(imagePickerController, animated: true, completion: nil)
-    }
-    
-
 }
 

@@ -49,7 +49,12 @@ class PostsViewController: UIViewController {
     }
     
     @IBAction func pressedCreatePost(sender: UIBarButtonItem) {
-        userPressedCreatePost()
+        
+        if !checkIfUserAlreadyPosted() {
+            userPressedCreatePost()
+        } else {
+            displayAlert("AlreadyPostedError")
+        }
     }
     
     func displayMascotView() {
@@ -126,12 +131,27 @@ class PostsViewController: UIViewController {
     }
     
     
+    func checkIfUserAlreadyPosted() -> Bool {
+        
+        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
+            if let userName = loggedInUser.username {
+                
+                for post in posts {
+                    if post.creator == userName {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toImagePickerViewController" {
             let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! ImagePickerViewController
-            destinationVC.token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
             destinationVC.challengeID = challenge.id
         }
     }
@@ -165,7 +185,7 @@ extension PostsViewController: UITableViewDataSource {
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-        cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
         if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
             for username in posts[indexPath.row].voters {
@@ -188,7 +208,7 @@ extension PostsViewController: UITableViewDelegate {
         
         let imageView = UIImageView()
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "challengePreviewPlaceholder"))
+        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
         let imageInfo = JTSImageInfo()
         imageInfo.image = imageView.image
