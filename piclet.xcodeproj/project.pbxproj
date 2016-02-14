@@ -122,6 +122,9 @@
 		D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D4783E6E1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
+		D47C56521C41A838004F8FAC /* MyChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */; };
+		D47C56531C41A838004F8FAC /* MyChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */; };
+		D47C56541C41A838004F8FAC /* MyChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */; };
 		D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
 		D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
 		D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
@@ -255,6 +258,7 @@
 		D46912461BAC0D970012CE7C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChallengeViewController.swift; sourceTree = "<group>"; };
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
@@ -453,6 +457,7 @@
 			children = (
 				D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */,
 				D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */,
+				D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */,
 			);
 			name = Challenges;
 			sourceTree = "<group>";
@@ -731,6 +736,7 @@
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D47C56521C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
@@ -770,6 +776,7 @@
 				D459D6A71C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4438DD51BD61767000CB909 /* UIAlertControllerExtension.swift in Sources */,
+				D47C56531C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D4C225C31C343169002169DF /* ProfileImageViewController.swift in Sources */,
 				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4085C541BF0FADE00051436 /* ImageHandler.swift in Sources */,
@@ -832,6 +839,7 @@
 				D4C225C41C343169002169DF /* ProfileImageViewController.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
 				D459D6991C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
+				D47C56541C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D459D6A21C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
 				D44248F91BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */,

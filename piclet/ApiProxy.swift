@@ -168,8 +168,6 @@ class ApiProxy {
         }
     }
     
-    
-    
     func fetchUserCreatedPosts(username: String, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
         
         let apiPath = "users/\(username)/posts"
@@ -183,9 +181,25 @@ class ApiProxy {
         }
     }
     
+
     
     
     
+    
+    // TEST -> use for userProfil
+    
+    func fetchUserCreatedChallenges(username: String, offset: Int, success: (userChallenges: [Challenge]) -> (), failure: (errorCode: String) -> () ) {
+        
+        let apiPath = "users/\(username)/challenges?offset=\(offset)"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            success(userChallenges: ObjectMapper().parseChallenges(json))
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
     
 
     
@@ -217,24 +231,7 @@ class ApiProxy {
 
     
     
-    // TEST -> use for userProfil
-    
-    func getUserCreatedChallenges(username: String, success: (userChallenges: [Challenge]) -> (), failed: (errorCode: String) -> () ) {
-        
-        // GET /users/<nick>/challenges
-        let apiPath = "users/" + username + "/challenges'"
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            // success(userChallenges: self.objectMapper.getChallenges(validResponseData))
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
+
     
     
 

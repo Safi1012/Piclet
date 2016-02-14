@@ -45,10 +45,13 @@ class ImageHandler {
         // crop
         let cropPositionX = (newWidth - imageSize) / 2.0
         let cropPositionY = (newHeight - imageSize) / 2.0
+        
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         let cropRect = CGRectMake(cropPositionX, cropPositionY, imageSize, imageSize)
         let imageRef = CGImageCreateWithImageInRect(resizedImage.CGImage, cropRect)!
         let croppedImage = UIImage(CGImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         let imageData = UIImageJPEGRepresentation(croppedImage, 0.7);
+        UIGraphicsEndImageContext()
         
         return imageData
     }

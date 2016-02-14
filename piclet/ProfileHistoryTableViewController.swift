@@ -19,6 +19,43 @@ class ProfileHistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
+    }
+    
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if cell == postsCell {
+            self.parentViewController?.performSegueWithIdentifier("toProfileCollectionView", sender: userAccount!)
+        }
+        if cell == challengesCell {
+            self.parentViewController?.performSegueWithIdentifier("toChallenges", sender: userAccount!)
+        }
+    }
+    
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard
+            let userAccount = self.userAccount
+        else {
+            return
+        }
+        
+        if segue.identifier == "toProfileCollectionView" {
+            let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
+            destinationVC.userAccount = userAccount
+        }
+    }
 }
 
 
@@ -32,7 +69,7 @@ extension ProfileHistoryTableViewController: ProfileViewControllerDelegate {
         
         postsCell.detailTextLabel?.text = "\(userAccount.totalPosts)"
         likedCell.detailTextLabel?.text = "Unknown"
-        challengesCell.detailTextLabel?.text = "Unknown"
+        challengesCell.detailTextLabel?.text = "\(userAccount.totalChallenges)"
         
         tableView.reloadData()
     }

@@ -35,6 +35,7 @@ class ProfilViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+
         fetchUserInformation()
     }
 
@@ -114,6 +115,15 @@ class ProfilViewController: UIViewController {
             let destinationVC = segue.destinationViewController as! ProfileHistoryTableViewController
             self.profileHistoryDelegate = destinationVC
         }
+        if segue.identifier == "toProfileCollectionView" {
+            let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
+            destinationVC.userAccount = sender as! UserAccount // put guard here
+        }        
+        if segue.identifier == "toChallenges" {
+            let destinationVC = segue.destinationViewController as! MyChallengeViewController
+            destinationVC.userAccount = sender as! UserAccount // put guard here
+        }
+        
     }
     
     func navigatoToLoginViewController() {

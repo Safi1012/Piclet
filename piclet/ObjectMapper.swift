@@ -123,6 +123,7 @@ class ObjectMapper {
             let created = dict["created"] as? NSNumber,
             let totalVotes = dict["totalVotes"] as? Int,
             let totalPosts = dict["totalPosts"] as? Int,
+            let totalChallenges = dict["totalChallenges"] as? Int,
             let rank = dict["rank"] as? Int,
             let token = User.getLoggedInUserToken(AppDelegate().managedObjectContext)
         
@@ -136,6 +137,7 @@ class ObjectMapper {
         userAccount.created = TimeHandler().convertTimestampToNSDate(Int64(created.longLongValue))
         userAccount.totalVotes = totalVotes
         userAccount.totalPosts = totalPosts
+        userAccount.totalChallenges = totalChallenges
         userAccount.rank = rank
         userAccount.token = token
         

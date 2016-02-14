@@ -14,6 +14,7 @@ class UserAccount {
     var created: NSDate!
     var totalVotes: Int!
     var totalPosts: Int!
+    var totalChallenges :Int!
     var rank: Int!
     var token: String!
 
