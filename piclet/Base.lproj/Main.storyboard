@@ -956,7 +956,7 @@
                                 </constraints>
                             </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="413" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-Jm-hWC">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="535"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="413" id="LQr-Oh-DPt" customClass="PostsTableViewCell" customModule="piclet" customModuleProvider="target">
@@ -1050,7 +1050,7 @@
                             <constraint firstItem="l4R-dn-bxx" firstAttribute="top" secondItem="B0L-bU-xNK" secondAttribute="bottom" id="gf3-Pn-G6e"/>
                             <constraint firstItem="QpH-Jm-hWC" firstAttribute="top" secondItem="B0L-bU-xNK" secondAttribute="bottom" id="hv1-W0-FmA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="l4R-dn-bxx" secondAttribute="trailing" constant="-20" id="jst-Ac-iHv"/>
-                            <constraint firstItem="ODK-aD-FPq" firstAttribute="top" secondItem="QpH-Jm-hWC" secondAttribute="bottom" constant="-48" id="n29-XA-bkG"/>
+                            <constraint firstItem="ODK-aD-FPq" firstAttribute="top" secondItem="QpH-Jm-hWC" secondAttribute="bottom" id="n29-XA-bkG"/>
                             <constraint firstItem="l4R-dn-bxx" firstAttribute="leading" secondItem="zgY-Jf-JCo" secondAttribute="leadingMargin" constant="-20" id="rEZ-fz-6y1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QpH-Jm-hWC" secondAttribute="trailing" constant="-20" id="wx0-mO-SsR"/>
                         </constraints>
