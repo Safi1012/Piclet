@@ -124,6 +124,10 @@ class ProfilViewController: UIViewController {
             let destinationVC = segue.destinationViewController as! MyChallengeViewController
             destinationVC.userAccount = sender as! UserAccount // put guard here
         }
+        if segue.identifier == "toLikedPosts" {
+            let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
+            destinationVC.downloadUserCreatedPosts = false
+        }
     }
     
     func navigatoToLoginViewController() {

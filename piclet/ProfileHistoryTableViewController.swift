@@ -39,6 +39,9 @@ class ProfileHistoryTableViewController: UITableViewController {
         if cell == challengesCell {
             self.parentViewController?.performSegueWithIdentifier("toChallenges", sender: userAccount!)
         }
+        if cell == likedCell {
+            self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: nil)
+        }
     }
     
     

@@ -14,7 +14,8 @@ class ProfileCollectionViewController: UICollectionViewController {
     @IBOutlet weak var tileImageView: UIImageView!
     var userAccount: UserAccount!
     var userPostIds: [PostInformation] = []
-    
+    var downloadUserCreatedPosts = true
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,12 +24,29 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        fetchUserCreatedPosts()
+        if downloadUserCreatedPosts {
+            self.navigationItem.title = "Your Posts"
+            fetchUserCreatedPosts()
+        } else {
+            self.navigationItem.title = "Liked Posts"
+            fetchUserLikedPosts(0)
+        }
     }
     
     func fetchUserCreatedPosts() {
         ApiProxy().fetchUserCreatedPosts(userAccount.username, success: { (userPosts) -> () in
             self.userPostIds = userPosts
+            self.collectionView?.reloadData()
+            
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
+            
+        }
+    }
+    
+    func fetchUserLikedPosts(offset: Int) {
+        ApiProxy().fetchLikedPosts(offset, success: { (posts) -> () in
+            self.userPostIds = posts
             self.collectionView?.reloadData()
             
         }) { (errorCode) -> () in
