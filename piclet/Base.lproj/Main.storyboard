@@ -926,10 +926,10 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l4R-dn-bxx" userLabel="mascotView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4R-dn-bxx" userLabel="mascotView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="535"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-CJ-3Ab" userLabel="mascot">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-CJ-3Ab" userLabel="mascot">
                                         <rect key="frame" x="212" y="167" width="174.5" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="174.5" id="0m5-ch-Xex"/>
@@ -939,7 +939,7 @@
                                             <action selector="userPressedMascot:" destination="2iu-rY-l8I" eventType="touchUpInside" id="A1b-Jg-kWq"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="I'm sorry, there are no Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqA-Xs-Dwe">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm sorry, there are no Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqA-Xs-Dwe">
                                         <rect key="frame" x="194" y="111" width="213" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -954,7 +954,7 @@
                                     <constraint firstItem="yqA-Xs-Dwe" firstAttribute="centerX" secondItem="l4R-dn-bxx" secondAttribute="centerX" id="rsC-ar-xqO"/>
                                 </constraints>
                             </view>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="413" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-Jm-hWC">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="413" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QpH-Jm-hWC">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1044,12 +1044,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ODK-aD-FPq" firstAttribute="top" secondItem="l4R-dn-bxx" secondAttribute="bottom" id="DDt-79-6LG"/>
+                            <constraint firstItem="ODK-aD-FPq" firstAttribute="top" secondItem="l4R-dn-bxx" secondAttribute="bottom" constant="-48" id="DDt-79-6LG"/>
                             <constraint firstItem="QpH-Jm-hWC" firstAttribute="leading" secondItem="zgY-Jf-JCo" secondAttribute="leadingMargin" constant="-20" id="bXe-nr-kV4"/>
                             <constraint firstItem="l4R-dn-bxx" firstAttribute="top" secondItem="B0L-bU-xNK" secondAttribute="bottom" id="gf3-Pn-G6e"/>
                             <constraint firstItem="QpH-Jm-hWC" firstAttribute="top" secondItem="B0L-bU-xNK" secondAttribute="bottom" id="hv1-W0-FmA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="l4R-dn-bxx" secondAttribute="trailing" constant="-20" id="jst-Ac-iHv"/>
-                            <constraint firstItem="ODK-aD-FPq" firstAttribute="top" secondItem="QpH-Jm-hWC" secondAttribute="bottom" id="n29-XA-bkG"/>
+                            <constraint firstItem="ODK-aD-FPq" firstAttribute="top" secondItem="QpH-Jm-hWC" secondAttribute="bottom" constant="-48" id="n29-XA-bkG"/>
                             <constraint firstItem="l4R-dn-bxx" firstAttribute="leading" secondItem="zgY-Jf-JCo" secondAttribute="leadingMargin" constant="-20" id="rEZ-fz-6y1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="QpH-Jm-hWC" secondAttribute="trailing" constant="-20" id="wx0-mO-SsR"/>
                         </constraints>
