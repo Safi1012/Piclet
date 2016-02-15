@@ -254,7 +254,7 @@ extension ChallengeViewController: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
 
         if (maximumOffset - currentOffset) <= 70 {
-            refreshChallenges(challengeCollection.challenge.count + 20)
+            refreshChallenges((challengeCollection.challenge.count - 20) + 20)
         }
     }
 }

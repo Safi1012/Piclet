@@ -168,9 +168,9 @@ class ApiProxy {
         }
     }
     
-    func fetchUserCreatedPosts(username: String, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
+    func fetchUserCreatedPosts(username: String, offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
         
-        let apiPath = "users/\(username)/posts"
+        let apiPath = "users/\(username)/posts?offset=\(offset)"
         
         NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
             success(userPosts: ObjectMapper().parsePostIds(json))
@@ -180,13 +180,6 @@ class ApiProxy {
             
         }
     }
-    
-
-    
-    
-    
-    
-    // TEST -> use for userProfil
     
     func fetchUserCreatedChallenges(username: String, offset: Int, success: (userChallenges: [Challenge]) -> (), failure: (errorCode: String) -> () ) {
         

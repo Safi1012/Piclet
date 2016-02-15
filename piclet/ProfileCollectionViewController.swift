@@ -26,15 +26,22 @@ class ProfileCollectionViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         if downloadUserCreatedPosts {
             self.navigationItem.title = "Your Posts"
-            fetchUserCreatedPosts()
         } else {
             self.navigationItem.title = "Liked Posts"
-            fetchUserLikedPosts(0)
+        }
+        fetchPosts(0)
+    }
+    
+    func fetchPosts(offset: Int) {
+        if downloadUserCreatedPosts {
+            fetchUserCreatedPosts(offset)
+        } else {
+            fetchUserLikedPosts(offset)
         }
     }
     
-    func fetchUserCreatedPosts() {
-        ApiProxy().fetchUserCreatedPosts(userAccount.username, success: { (userPosts) -> () in
+    func fetchUserCreatedPosts(offset: Int) {
+        ApiProxy().fetchUserCreatedPosts(userAccount.username, offset: offset, success: { (userPosts) -> () in
             self.userPostIds = userPosts
             self.collectionView?.reloadData()
             
@@ -46,8 +53,21 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     func fetchUserLikedPosts(offset: Int) {
         ApiProxy().fetchLikedPosts(offset, success: { (posts) -> () in
-            self.userPostIds = posts
-            self.collectionView?.reloadData()
+            
+            if offset == 0 {
+                self.userPostIds = [PostInformation]()
+            }
+            for postId in posts {
+                self.userPostIds.append(postId)
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.collectionView?.reloadData()
+//                self.isRequesting = false
+            })
+            
+            
+//            self.userPostIds = posts
+//            self.collectionView?.reloadData()
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
@@ -117,6 +137,15 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 1.0
+    }
+    
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+
+        if (maximumOffset - currentOffset) <= 70 {
+            fetchPosts((userPostIds.count - 20) + 20)
+        }
     }
 }
 
