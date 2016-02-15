@@ -21,6 +21,8 @@ class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = challenge.title
+        
         tableView.dataSource = self
         tableView.delegate = self
     }

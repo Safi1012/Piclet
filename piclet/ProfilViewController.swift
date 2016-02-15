@@ -25,6 +25,8 @@ class ProfilViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        
         if getLoggedInUser() {
             performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
             performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
@@ -35,7 +37,6 @@ class ProfilViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-
         fetchUserInformation()
     }
 
@@ -123,7 +124,6 @@ class ProfilViewController: UIViewController {
             let destinationVC = segue.destinationViewController as! MyChallengeViewController
             destinationVC.userAccount = sender as! UserAccount // put guard here
         }
-        
     }
     
     func navigatoToLoginViewController() {
