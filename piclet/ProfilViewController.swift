@@ -21,6 +21,7 @@ class ProfilViewController: UIViewController {
     
     var userName: String?
     var token: String?
+    var loadedDataTimestamp: NSDate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +38,14 @@ class ProfilViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        fetchUserInformation()
+        if shouldRefreshData(&loadedDataTimestamp) {
+            showLoadingSpinner(UIOffset())
+            fetchUserInformation()
+        }
     }
-
     
-    // MARK: - Profile
+    
+    // MARK: Profile
     
     func getLoggedInUser() -> Bool {
         
@@ -57,8 +61,6 @@ class ProfilViewController: UIViewController {
     }
     
     func fetchUserInformation() {
-        showLoadingSpinner(UIOffset())
-        
         ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
             self.dismissLoadingSpinner()
             self.profileStatsDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
@@ -87,8 +89,8 @@ class ProfilViewController: UIViewController {
             User.removeUserToken(AppDelegate().managedObjectContext)
             self.navigatoToLoginViewController()
             
-            }) { (errorCode) -> () in
-                self.displayAlert(errorCode)
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
                 
         }
     }

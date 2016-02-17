@@ -113,11 +113,10 @@ class ChallengeViewController: UIViewController {
     }
 
     
-    
     // MARK: - Challenge
     
     func refreshSelectedSection() {
-        if shouldRefreshChallenge() {
+        if shouldRefreshData(&challengeCollection.timestamp) {
             showLoadingSpinner(UIOffset())
             refresh()
         } else {
@@ -159,20 +158,6 @@ class ChallengeViewController: UIViewController {
             self.stopActivityIndicator()
             self.dismissLoadingSpinner()
         }
-    }
-    
-    func shouldRefreshChallenge() -> Bool {
-        
-        if challengeCollection.timestamp != nil {
-            if TimeHandler().secondsPassedSinceDate(challengeCollection.timestamp!) > 300 {
-                challengeCollection.timestamp = NSDate()
-                return true
-            } else {
-                return false
-            }
-        }
-        challengeCollection.timestamp = NSDate()
-        return true
     }
     
     func refresh() {

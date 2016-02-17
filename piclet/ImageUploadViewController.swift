@@ -24,6 +24,9 @@ class ImageUploadViewController: UIViewController {
     @IBAction func pressedUploadNavBarItem(sender: UIBarButtonItem) {
         
         if validateTextField() {
+            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 50.0))
+            titleTextField.endEditing(true)
+            
             if let newImage = ImageHandler().convertPostsImageForUpload(pickedImage, imageSize: ImagePostsServerWidth.large) {
                 print("KB: \(newImage.length / 1024)")
                 uploadPost(titleTextField.text!, image: newImage)
@@ -56,9 +59,11 @@ class ImageUploadViewController: UIViewController {
         let token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
         
         ApiProxy().addPostToChallenge(token, challengeID: challengeID, image: image, description: title, success: { () -> () in
+            self.dismissLoadingSpinner()
             self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)
             
         }) { (errorCode) -> () in
+            self.dismissLoadingSpinner()
             self.displayAlert(errorCode)
             
         }

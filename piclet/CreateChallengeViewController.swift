@@ -23,7 +23,8 @@ class CreateChallengeViewController: UIViewController {
     @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
         
         if validateTextField() {
-            showLoadingSpinner(UIOffset())
+            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 50.0))
+            nameTextField.endEditing(true)
             
             ApiProxy().createNewChallenge(token, challengeName: nameTextField.text!, success: { () -> () in
                 self.performSegueWithIdentifier("unwindToChallengeViewController", sender: self)

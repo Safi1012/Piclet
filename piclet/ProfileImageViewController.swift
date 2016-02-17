@@ -51,7 +51,7 @@ class ProfileImageViewController: UIViewController {
     
     func loadUserProfileImage() {
         let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
-        profileImageButton.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
+        profileImageButton.sd_setBackgroundImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
     }
     
     func setUsernameLabel() {

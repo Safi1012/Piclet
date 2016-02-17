@@ -27,6 +27,8 @@ class MyChallengeViewController: UIViewController {
         setupActivityIndicator()
         styleTableView()
         
+        self.addPullToRefresh(tableView, selector: "refresh")
+        
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -35,6 +37,7 @@ class MyChallengeViewController: UIViewController {
         super.viewDidAppear(animated)
         
         tableView.flashScrollIndicators()
+        showLoadingSpinner(UIOffset())
         refreshChallenges(0)
     }
 
@@ -65,11 +68,12 @@ class MyChallengeViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
     
-
-    
-    
     
     // MARK: - Challenge
+    
+    func refresh() {
+        fetchChallenges(0, displayIndicator: false)
+    }
     
     func refreshChallenges(offset: Int) {
         if isRequesting {
@@ -80,7 +84,6 @@ class MyChallengeViewController: UIViewController {
     
     func fetchChallenges(offset: Int, displayIndicator: Bool) {
         isRequesting = true
-        if displayIndicator { startActivityIndicator() }
         
         ApiProxy().fetchUserCreatedChallenges(userAccount.username, offset: offset, success: { (userChallenges) -> () in
             for challenge in userChallenges {
@@ -90,18 +93,18 @@ class MyChallengeViewController: UIViewController {
                 self.tableView.reloadData()
                 self.isRequesting = false
                 self.stopActivityIndicator()
+                self.dismissLoadingSpinner()
             })
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
             self.isRequesting = false
             self.stopActivityIndicator()
+            self.dismissLoadingSpinner()
         }
     }
     
 
-    
-    
     // create new class that formats code!
     
     func formatVoteText(numberVotes: Int) -> String {
@@ -132,7 +135,6 @@ class MyChallengeViewController: UIViewController {
             destinationVC.token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
         }
     }
-    
 }
 
 
@@ -178,6 +180,7 @@ extension MyChallengeViewController: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if (maximumOffset - currentOffset) <= 70 {
+            startActivityIndicator()
             refreshChallenges((self.challenges.count - 20) + 20)
         }
     }

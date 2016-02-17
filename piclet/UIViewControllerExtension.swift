@@ -41,12 +41,30 @@ extension UIViewController {
         refreshControl.endRefreshing()
     }
     
+    
+    // MARK: - ReloadData
+    
+    func shouldRefreshData(inout timestamp: NSDate?) -> Bool {
+        
+        if timestamp != nil {
+            if TimeHandler().secondsPassedSinceDate(timestamp!) > 300 {
+                timestamp = NSDate()
+                return true
+            } else {
+                return false
+            }
+        }
+        timestamp = NSDate()
+        return true
+    }
+    
+    
     // MARK: - Loading Spinner
     
     func showLoadingSpinner(offset: UIOffset) {
-        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+        SVProgressHUD.setForegroundColor(UIColor.blackColor())
         SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Clear)
         SVProgressHUD.setOffsetFromCenter(offset)
         SVProgressHUD.show()
     }
