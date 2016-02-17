@@ -57,12 +57,15 @@ class ProfilViewController: UIViewController {
     }
     
     func fetchUserInformation() {
+        showLoadingSpinner(UIOffset())
         
         ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
+            self.dismissLoadingSpinner()
             self.profileStatsDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             self.profileHistoryDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             
         }) { (errorCode) -> () in
+            self.dismissLoadingSpinner()
             self.displayAlert(errorCode)
                 
         }

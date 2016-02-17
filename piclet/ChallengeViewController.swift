@@ -118,6 +118,7 @@ class ChallengeViewController: UIViewController {
     
     func refreshSelectedSection() {
         if shouldRefreshChallenge() {
+            showLoadingSpinner(UIOffset())
             refresh()
         } else {
             tableView.reloadData()
@@ -148,6 +149,7 @@ class ChallengeViewController: UIViewController {
                 self.makePullToRefreshEndRefreshing()
                 self.isRequesting = false
                 self.stopActivityIndicator()
+                self.dismissLoadingSpinner()
             })
             
         }) { (errorCode) -> () in
@@ -155,7 +157,7 @@ class ChallengeViewController: UIViewController {
             self.displayAlert(errorCode)
             self.isRequesting = false
             self.stopActivityIndicator()
-                
+            self.dismissLoadingSpinner()
         }
     }
     

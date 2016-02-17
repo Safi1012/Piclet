@@ -11,3 +11,5 @@
 #import "JTSImageViewController.h"
 #import "JTSImageInfo.h"
 
+// SVProgressHUD
+#import <SVProgressHUD/SVProgressHUD.h>

@@ -41,6 +41,30 @@ extension UIViewController {
         refreshControl.endRefreshing()
     }
     
+    // MARK: - Loading Spinner
+    
+    func showLoadingSpinner(offset: UIOffset) {
+        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+        SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Black)
+        SVProgressHUD.setOffsetFromCenter(offset)
+        SVProgressHUD.show()
+    }
+    
+    func showLoadingSpinnerWithoutMask(offset: UIOffset) {
+        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+        SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.None)
+        SVProgressHUD.setOffsetFromCenter(offset)
+        SVProgressHUD.show()
+    }
+
+    func dismissLoadingSpinner() {
+        dispatch_async(dispatch_get_main_queue()) {
+            SVProgressHUD.dismiss()
+        }
+    }
+    
     
     // MARK: - ChildViewController
     

@@ -23,11 +23,17 @@ class CreateChallengeViewController: UIViewController {
     @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
         
         if validateTextField() {
+            showLoadingSpinner(UIOffset())
+            
             ApiProxy().createNewChallenge(token, challengeName: nameTextField.text!, success: { () -> () in
                 self.performSegueWithIdentifier("unwindToChallengeViewController", sender: self)
+                self.dismissLoadingSpinner()
+                
+                // Force reload screen on ChallengeViewController
                 
             }, failure: { (errorCode) -> () in
                 self.displayAlert(errorCode)
+                self.dismissLoadingSpinner()
                 
             })
         }
