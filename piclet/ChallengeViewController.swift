@@ -47,6 +47,9 @@ class ChallengeViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+        showBanner("No Internet Connection", subtitle: "", image: UIImage(named: "bannerPlug"), backgroundColor: UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0), view: self.view)
 
         tableView.flashScrollIndicators()
         refreshSelectedSection()
@@ -116,6 +119,7 @@ class ChallengeViewController: UIViewController {
     // MARK: - Challenge
     
     func refreshSelectedSection() {
+
         if shouldRefreshData(&challengeCollection.timestamp) {
             showLoadingSpinner(UIOffset())
             refresh()
@@ -144,19 +148,21 @@ class ChallengeViewController: UIViewController {
                 self.challengeCollection.challenge.append(challenge)
             }
             dispatch_async(dispatch_get_main_queue(), {
+                self.dismissLoadingSpinner()
+                
                 self.tableView.reloadData()
                 self.makePullToRefreshEndRefreshing()
                 self.isRequesting = false
                 self.stopActivityIndicator()
-                self.dismissLoadingSpinner()
             })
             
         }) { (errorCode) -> () in
+            self.dismissLoadingSpinner()
+            
             self.makePullToRefreshEndRefreshing()
             self.displayAlert(errorCode)
             self.isRequesting = false
             self.stopActivityIndicator()
-            self.dismissLoadingSpinner()
         }
     }
     

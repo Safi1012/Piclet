@@ -163,6 +163,8 @@
 		D4FA80BC1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FED0941C74BB2F007633FB /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */; };
 		D4FED0961C74BC0E007633FB /* SVProgressHUD.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
+		D4FED0981C76246C007633FB /* BRYXBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FED0971C76246C007633FB /* BRYXBanner.framework */; };
+		D4FED09A1C7624CE007633FB /* BRYXBanner.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +191,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				D4FED09A1C7624CE007633FB /* BRYXBanner.framework.dSYM in CopyFiles */,
 				D4FED0961C74BC0E007633FB /* SVProgressHUD.framework.dSYM in CopyFiles */,
 				D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */,
 				D445264F1BF3BF65007FE8D8 /* WebImage.framework.dSYM in CopyFiles */,
@@ -276,6 +279,8 @@
 		D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SVProgressHUD.framework.dSYM; path = Carthage/Build/iOS/SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
+		D4FED0971C76246C007633FB /* BRYXBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BRYXBanner.framework; path = Carthage/Build/iOS/BRYXBanner.framework; sourceTree = "<group>"; };
+		D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = BRYXBanner.framework.dSYM; path = Carthage/Build/iOS/BRYXBanner.framework.dSYM; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,6 +288,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FED0981C76246C007633FB /* BRYXBanner.framework in Frameworks */,
 				D4FED0941C74BB2F007633FB /* SVProgressHUD.framework in Frameworks */,
 				D42A2E891BF6935E00B96063 /* Alamofire.framework in Frameworks */,
 				D49A70591BF3BE79004EA711 /* WebImage.framework in Frameworks */,
@@ -309,6 +315,7 @@
 		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4FED0971C76246C007633FB /* BRYXBanner.framework */,
 				D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */,
 				D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */,
 				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
@@ -347,6 +354,7 @@
 		D46912061BAC03C30012CE7C = {
 			isa = PBXGroup;
 			children = (
+				D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */,
 				D46912111BAC03C30012CE7C /* piclet */,
 				D46912291BAC03C30012CE7C /* picletTests */,
 				D46912341BAC03C30012CE7C /* picletUITests */,
@@ -690,6 +698,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BRYXBanner.framework",
 			);
 			outputPaths = (
 			);

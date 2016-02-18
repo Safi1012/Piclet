@@ -9,6 +9,7 @@
 
 import UIKit
 import Foundation
+import BRYXBanner
 
 var refreshControl = UIRefreshControl()
 
@@ -56,6 +57,16 @@ extension UIViewController {
         }
         timestamp = NSDate()
         return true
+    }
+    
+    
+    // MARK: - Banner
+    
+    func showBanner(title: String, subtitle: String, image: UIImage?, backgroundColor: UIColor, view: UIView) {
+        let banner = Banner(title: title, subtitle: subtitle, image: image, backgroundColor: backgroundColor)
+        banner.dismissesOnTap = true
+        banner.springiness = .None
+        banner.show(view, duration: 4.0)
     }
     
     
@@ -109,6 +120,10 @@ extension UIViewController {
             
         case "NotLoggedIn":
             alertController = UIAlertController.createAlertWithLoginSegue(errorCode, viewController: self)
+            
+        case "NetworkError":
+            self.showBanner("No Internet Coneection", subtitle: "", image: UIImage(named: "bannerPlug"), backgroundColor: UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1), view: self.view)
+            return
             
         default:
             alertController = UIAlertController.createErrorAlert(errorCode)
