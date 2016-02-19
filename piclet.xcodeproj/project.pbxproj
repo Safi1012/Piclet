@@ -165,6 +165,9 @@
 		D4FED0961C74BC0E007633FB /* SVProgressHUD.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
 		D4FED0981C76246C007633FB /* BRYXBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FED0971C76246C007633FB /* BRYXBanner.framework */; };
 		D4FED09A1C7624CE007633FB /* BRYXBanner.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */; };
+		D4FED09C1C775DD3007633FB /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FED09B1C775DD3007633FB /* Formater.swift */; };
+		D4FED09D1C775DD3007633FB /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FED09B1C775DD3007633FB /* Formater.swift */; };
+		D4FED09E1C775DD3007633FB /* Formater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FED09B1C775DD3007633FB /* Formater.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,6 +284,7 @@
 		D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SVProgressHUD.framework.dSYM; path = Carthage/Build/iOS/SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
 		D4FED0971C76246C007633FB /* BRYXBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BRYXBanner.framework; path = Carthage/Build/iOS/BRYXBanner.framework; sourceTree = "<group>"; };
 		D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = BRYXBanner.framework.dSYM; path = Carthage/Build/iOS/BRYXBanner.framework.dSYM; sourceTree = "<group>"; };
+		D4FED09B1C775DD3007633FB /* Formater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formater.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,10 +319,11 @@
 		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
+				D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */,
 				D4FED0971C76246C007633FB /* BRYXBanner.framework */,
 				D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */,
 				D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */,
-				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
 				D42B5D381C1CC81E00BE771D /* ImageViewer.framework */,
 				D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */,
 				D42A2E881BF6935E00B96063 /* Alamofire.framework */,
@@ -354,7 +359,6 @@
 		D46912061BAC03C30012CE7C = {
 			isa = PBXGroup;
 			children = (
-				D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */,
 				D46912111BAC03C30012CE7C /* piclet */,
 				D46912291BAC03C30012CE7C /* picletTests */,
 				D46912341BAC03C30012CE7C /* picletUITests */,
@@ -434,6 +438,7 @@
 				D4438DBE1BD60685000CB909 /* TimeHandler.swift */,
 				D46494841BEF900C00AA48C4 /* UserAccount.swift */,
 				D4085C511BF0FAD700051436 /* ImageHandler.swift */,
+				D4FED09B1C775DD3007633FB /* Formater.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -754,6 +759,7 @@
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D4FED09C1C775DD3007633FB /* Formater.swift in Sources */,
 				D47C56521C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
@@ -802,6 +808,7 @@
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E231BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D46494861BEF900C00AA48C4 /* UserAccount.swift in Sources */,
+				D4FED09D1C775DD3007633FB /* Formater.swift in Sources */,
 				D4783E6D1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D45650421C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
 				D44248F41BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
@@ -871,6 +878,7 @@
 				D4254AE31BCD9C4E00297FCF /* NetworkHandler.swift in Sources */,
 				D459D69F1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D459D69C1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
+				D4FED09E1C775DD3007633FB /* Formater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

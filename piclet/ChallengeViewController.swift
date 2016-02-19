@@ -22,24 +22,15 @@ class ChallengeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupActivityIndicator()
-        styleNavigationBar()
-        styleTableView()
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
-        self.addPullToRefresh(tableView, selector: "refresh")
-        
-        if segmentedControl.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
-            challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
-        } else  {
-            challengeCollection = ChallengeCollection(section: SegmentedControlState.new)
-        }
+
+        challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
+        setupTableView()
+        setupUI()
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
@@ -47,21 +38,26 @@ class ChallengeViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        
-        showBanner("No Internet Connection", subtitle: "", image: UIImage(named: "bannerPlug"), backgroundColor: UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0), view: self.view)
 
         tableView.flashScrollIndicators()
-        refreshSelectedSection()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
+        refreshSelectedSegement()
     }
 
     
+    // MARK: - SetupUI
     
-    // MARK: - UI
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        addDefaultPullToRefresh(tableView, selector: "refresh")
+    }
+    
+    func setupUI() {
+        setupActivityIndicator()
+        styleNavigationBar()
+        styleTableView()
+    }
     
     func setupActivityIndicator() {
         activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
@@ -82,15 +78,8 @@ class ChallengeViewController: UIViewController {
         tableViewFooter.layer.addSublayer(border)
     }
     
-    func startActivityIndicator() {
-        activityIndicatorView.hidden = false
-        activityIndicator.startAnimating()
-    }
-
-    func stopActivityIndicator() {
-        activityIndicatorView.hidden = true
-        activityIndicator.stopAnimating()
-    }
+    
+    // MARK: - UserBehaviour
     
     @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
         challengeCollection.offsetY = tableView.contentOffset.y
@@ -102,7 +91,7 @@ class ChallengeViewController: UIViewController {
         }
         
         tableView.contentOffset.y = challengeCollection.offsetY
-        refreshSelectedSection()
+        refreshSelectedSegement()
     }
 
     @IBAction func pressedCreateChallenge(sender: UIBarButtonItem) {
@@ -114,13 +103,24 @@ class ChallengeViewController: UIViewController {
         }
         self.displayAlert("NotLoggedIn")
     }
+    
+    func startActivityIndicator() {
+        activityIndicatorView.hidden = false
+        activityIndicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        activityIndicatorView.hidden = true
+        activityIndicator.stopAnimating()
+    }
 
     
     // MARK: - Challenge
     
-    func refreshSelectedSection() {
+    func refreshSelectedSegement() {
 
         if shouldRefreshData(&challengeCollection.timestamp) {
+            tableView.hidden = true
             showLoadingSpinner(UIOffset())
             refresh()
         } else {
@@ -128,14 +128,18 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    func refreshChallenges(offset: Int) {
+    func refresh() {
+        fetchChallenges(0, displayIndicator: false, isFullRefetch: true)
+    }
+    
+    func infiniteLoading(offset: Int) {
         if isRequesting {
             return
         }
-        fetchChallenges(offset, displayIndicator: true)
+        fetchChallenges(offset, displayIndicator: true, isFullRefetch: false)
     }
     
-    func fetchChallenges(offset: Int, displayIndicator: Bool) {
+    func fetchChallenges(offset: Int, displayIndicator: Bool, isFullRefetch: Bool) {
         isRequesting = true
         if displayIndicator { startActivityIndicator() }
         
@@ -144,47 +148,28 @@ class ChallengeViewController: UIViewController {
                 self.challengeCollection.challenge = [Challenge]()
                 self.challengeCollection.offsetY = 0.0
             }
+            
             for challenge in challenges {
                 self.challengeCollection.challenge.append(challenge)
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.dismissLoadingSpinner()
-                
-                self.tableView.reloadData()
-                self.makePullToRefreshEndRefreshing()
-                self.isRequesting = false
-                self.stopActivityIndicator()
-            })
             
+            self.tableView.reloadData()
+            self.requestFinished()
+
         }) { (errorCode) -> () in
-            self.dismissLoadingSpinner()
-            
-            self.makePullToRefreshEndRefreshing()
+            self.requestFinished()
             self.displayAlert(errorCode)
-            self.isRequesting = false
-            self.stopActivityIndicator()
+            if isFullRefetch { self.challengeCollection.timestamp = nil }
         }
     }
     
-    func refresh() {
-        fetchChallenges(0, displayIndicator: false)
-    }
-    
-    
-    // create new class that formats code!
-    
-    func formatVoteText(numberVotes: Int) -> String {
-        if numberVotes == 1 {
-            return "\(numberVotes) vote"
-        }
-        return "\(numberVotes) votes"
-    }
-    
-    func formatNumberPosts(numberPosts: Int) -> String {
-        if numberPosts == 1 {
-            return "\(numberPosts) post"
-        }
-        return "\(numberPosts) posts"
+    func requestFinished() {
+        tableView.hidden = false
+        self.makePullToRefreshEndRefreshing()
+        self.dismissLoadingSpinner()
+        self.stopActivityIndicator()
+        
+        isRequesting = false
     }
 
 
@@ -223,8 +208,8 @@ extension ChallengeViewController: UITableViewDataSource {
         
         cell.challengeTitleLabel.text = challengeCollection.challenge[indexPath.row].title
         cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(challengeCollection.challenge[indexPath.row].posted)
-        cell.numberPostsLabel.text = formatNumberPosts(challengeCollection.challenge[indexPath.row].amountPosts)
-        cell.numberLikesLabel.text = formatVoteText(challengeCollection.challenge[indexPath.row].votes)
+        cell.numberPostsLabel.text = Formater().formatSingularAndPlural(challengeCollection.challenge[indexPath.row].amountPosts, singularWord: "post")
+        cell.numberLikesLabel.text = Formater().formatSingularAndPlural(challengeCollection.challenge[indexPath.row].votes, singularWord: "vote")
     
         return cell
     }
@@ -247,7 +232,7 @@ extension ChallengeViewController: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
 
         if (maximumOffset - currentOffset) <= 70 {
-            refreshChallenges((challengeCollection.challenge.count - 20) + 20)
+            infiniteLoading((challengeCollection.challenge.count - 20) + 20)
         }
     }
 }

@@ -279,6 +279,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="vbM-gh-3iq" firstAttribute="top" secondItem="5tW-qy-LUs" secondAttribute="bottom" constant="5" id="5uO-Ta-NTp"/>
                                                 <constraint firstItem="vbM-gh-3iq" firstAttribute="leading" secondItem="IXZ-4Y-RTk" secondAttribute="leadingMargin" constant="15" id="ATM-Sx-xI6"/>

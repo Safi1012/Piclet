@@ -27,7 +27,7 @@ class MyChallengeViewController: UIViewController {
         setupActivityIndicator()
         styleTableView()
         
-        self.addPullToRefresh(tableView, selector: "refresh")
+        addDefaultPullToRefresh(tableView, selector: "refresh")
         
         tableView.dataSource = self
         tableView.delegate = self
