@@ -28,34 +28,28 @@ class ErrorHandler {
         switch(errorCode) {
             
         case "UsernameTakenError":
-            return ("Username is already taken", "The username you chose is already taken. Please try a different one. Thanks!")
+            return ("Username is already taken", "The username you chose is already taken. Please try a different one, Thanks!")
             
         case "UsernameNotFoundError":
-            return ("Username not found", "The username or password you typed does not exists. Please try it again.")
+            return ("Login not found", "The username or password you typed is wrong. Please try it again.")
             
         case "WrongPassword":
-            return ("Wrong Password", "The password you typed is wrong. Please try it again.")
-            
-        case "ErroneousFields":
-            return ("Login not found", "Could not find the Account. The username or password you typed is wrong. Please try it again.")
+            return ("Login not found", "The username or password you typed is wrong. Please try it again.")
             
         case "UsernameTooShort":
-            return ("Username invalid", "The Username must be at least 4 characters long.")
+            return ("Username is invalid", "The Username must be at least 4 characters long.")
             
         case "UsernameWrongCharacters":
-            return ("Username invalid", "The Username cannot contain any special characters.")
+            return ("Username is invalid", "The Username may not contain any special characters.")
             
         case "PasswordTooShort":
-            return ("Password invalid", "The password must be at least 8 characters long.")
+            return ("Password is invalid", "The password must be at least 8 characters long.")
             
         case "LogoutError":
             return ("Logout failed", "Could not logout from the app. Are you connected to the internet?")
             
-        case "AlreadyVoted":
-            return ("Already Voted", "You alredy voted for this challenge.")
-            
         case "NotLoggedIn":
-            return ("Not logged in", "Only users that have an account, can Vote.")
+            return ("Not logged in", "You are not logged in. Create a free account or login with your existing one.")
             
         case "UnauthorizedError":
             return ("Invalid Session", NSLocalizedString("NO_INTERNET_ALERT", comment: ""))
@@ -70,10 +64,10 @@ class ErrorHandler {
             return ("Challenge name is empty", "To create a Challenge, you need to type a challenge name.")
             
         case "ChallengeNameOnlyBlankCharacters":
-            return ("Invalid Title", "The title you typed is empty.. ")
+            return ("Invalid Title", "You only typed blank spaces. Please enter a title that describes your challenge best.")
             
         case "AlreadyPostedError":
-            return ("Already Posted", "Sorry, You already posted in this challenge. Please choose a different Challenge.")
+            return ("Already Posted", "You already posted in this challenge. Please choose a different Challenge.")
             
         default:
             return ("Unexpected Error", "Please try again.")

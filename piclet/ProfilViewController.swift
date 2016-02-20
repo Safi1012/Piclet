@@ -27,14 +27,7 @@ class ProfilViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        
-        if getLoggedInUser() {
-            performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
-            performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
-            createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
-        } else {
-            createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
-        }
+        getLoginInformation()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,6 +39,16 @@ class ProfilViewController: UIViewController {
     
     
     // MARK: Profile
+    
+    func getLoginInformation() {
+        if getLoggedInUser() {
+            performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
+            performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
+            createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
+        } else {
+            createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
+        }
+    }
     
     func getLoggedInUser() -> Bool {
         
@@ -68,8 +71,8 @@ class ProfilViewController: UIViewController {
             
         }) { (errorCode) -> () in
             self.dismissLoadingSpinner()
-            self.displayAlert(errorCode)
-                
+            if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
+            
         }
     }
     
@@ -113,25 +116,34 @@ class ProfilViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "embedProfileStatsTableViewController" {
-            let destinationVC = segue.destinationViewController as! ProfileStatsTableViewController
-            self.profileStatsDelegate = destinationVC
-        }
-        if segue.identifier == "embedProfileHistoryTableViewController" {
-            let destinationVC = segue.destinationViewController as! ProfileHistoryTableViewController
-            self.profileHistoryDelegate = destinationVC
-        }
-        if segue.identifier == "toProfileCollectionView" {
-            let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
-            destinationVC.userAccount = sender as! UserAccount // put guard here
-        }        
-        if segue.identifier == "toChallenges" {
-            let destinationVC = segue.destinationViewController as! MyChallengeViewController
-            destinationVC.userAccount = sender as! UserAccount // put guard here
-        }
-        if segue.identifier == "toLikedPosts" {
-            let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
-            destinationVC.downloadUserCreatedPosts = false
+        
+        if let identifier = segue.identifier {
+            
+            switch (identifier) {
+                
+            case "embedProfileStatsTableViewController":
+                let destinationVC = segue.destinationViewController as! ProfileStatsTableViewController
+                self.profileStatsDelegate = destinationVC
+                
+            case "embedProfileHistoryTableViewController":
+                let destinationVC = segue.destinationViewController as! ProfileHistoryTableViewController
+                self.profileHistoryDelegate = destinationVC
+                
+            case "toProfileCollectionView":
+                let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
+                destinationVC.downloadUserCreatedPosts = true // put guard here
+                
+            case "toChallenges":
+                let destinationVC = segue.destinationViewController as! MyChallengeViewController
+                destinationVC.userAccount = sender as! UserAccount // put guard here
+                
+            case "toLikedPosts":
+                let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
+                destinationVC.downloadUserCreatedPosts = false
+                
+            default:
+                print("Segue in ProfilViewController failed")
+            }
         }
     }
     
