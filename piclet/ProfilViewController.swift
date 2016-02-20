@@ -22,6 +22,7 @@ class ProfilViewController: UIViewController {
     var userName: String?
     var token: String?
     var loadedDataTimestamp: NSDate?
+    var intialLoading = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,6 @@ class ProfilViewController: UIViewController {
     
     func getLoginInformation() {
         if getLoggedInUser() {
-            performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
-            performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
             createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
         } else {
             createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
@@ -66,12 +65,22 @@ class ProfilViewController: UIViewController {
     func fetchUserInformation() {
         ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
             self.dismissLoadingSpinner()
+            self.addSubViews()
+
             self.profileStatsDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             self.profileHistoryDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             
         }) { (errorCode) -> () in
             self.dismissLoadingSpinner()
             if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
+            
+        }
+    }
+    
+    func addSubViews() {
+        if intialLoading {
+            performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
+            performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
             
         }
     }
@@ -106,10 +115,7 @@ class ProfilViewController: UIViewController {
     // MARK: - Navigation
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "embedProfileStatsTableViewController" {
-            return false
-        }
-        if identifier == "embedProfileHistoryTableViewController" {
+        if (identifier == "embedProfileStatsTableViewController") || (identifier == "embedProfileHistoryTableViewController") {
             return false
         }
         return true
@@ -132,6 +138,7 @@ class ProfilViewController: UIViewController {
             case "toProfileCollectionView":
                 let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
                 destinationVC.downloadUserCreatedPosts = true // put guard here
+                destinationVC.userAccount = sender as! UserAccount
                 
             case "toChallenges":
                 let destinationVC = segue.destinationViewController as! MyChallengeViewController
@@ -140,7 +147,8 @@ class ProfilViewController: UIViewController {
             case "toLikedPosts":
                 let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
                 destinationVC.downloadUserCreatedPosts = false
-                
+                destinationVC.userAccount = sender as! UserAccount
+    
             default:
                 print("Segue in ProfilViewController failed")
             }

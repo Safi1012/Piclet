@@ -466,7 +466,7 @@
                                             <constraint firstAttribute="height" constant="250" id="iFZ-M3-JCi"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="gjF-tG-krH" kind="embed" identifier="embedProfileImageViewController" id="2Kz-DB-1Bj"/>
+                                            <segue destination="gjF-tG-krH" kind="embed" identifier="ttt" id="ihk-sy-Gx1"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvI-nJ-kkZ">
@@ -575,7 +575,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xNs-hg-by2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="1255"/>
+            <point key="canvasLocation" x="2140" y="1262"/>
         </scene>
         <!--Profile Stats Table View Controller-->
         <scene sceneID="e66-z5-et4">
