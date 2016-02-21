@@ -67,10 +67,7 @@ class ProfileImageViewController: UIViewController {
     }
     
     func displayNewUserImage(pickedImage: UIImage) {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.profileImageButton.setImage(pickedImage, forState: .Normal)
-            self.profileImageButton.setNeedsDisplay()
-        }
+        profileImageButton.setBackgroundImage(pickedImage, forState: .Normal)
     }
     
 

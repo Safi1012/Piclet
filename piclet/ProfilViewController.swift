@@ -16,19 +16,26 @@ protocol ProfileViewControllerDelegate {
 
 class ProfilViewController: UIViewController {
 
-    var profileStatsDelegate: ProfileViewControllerDelegate?
-    var profileHistoryDelegate: ProfileViewControllerDelegate?
+    @IBOutlet weak var profileImageContainer: UIView!
+    @IBOutlet weak var profileStatsContainer: UIView!
+    @IBOutlet weak var profileHistoryContainer: UIView!
     
     var userName: String?
     var token: String?
     var loadedDataTimestamp: NSDate?
     var intialLoading = true
+    
+    var profileStatsDelegate: ProfileViewControllerDelegate?
+    var profileHistoryDelegate: ProfileViewControllerDelegate?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         getLoginInformation()
+        
+        embedContainer()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -37,6 +44,14 @@ class ProfilViewController: UIViewController {
             fetchUserInformation()
         }
     }
+    
+    
+    // MARK: - Setup
+    
+    func embedContainer() {
+        addChildViewController(ProfileImageViewController(), toView: profileImageContainer)
+    }
+    
     
     
     // MARK: Profile

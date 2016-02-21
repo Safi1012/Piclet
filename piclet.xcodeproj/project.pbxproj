@@ -500,11 +500,32 @@
 		D47E5E271BD293BD003E9351 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D4C225BC1C343116002169DF /* Test */,
+				D4C225BD1C343140002169DF /* ProfilViewController.swift */,
+				D4A917C31C7A45C200186DEC /* ProfileImageView */,
+				D4A917C41C7A50D000186DEC /* ProfileStatsTable */,
+				D44E04A51C352E40003B502C /* ProfileHistoryTableViewController.swift */,
 				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
 				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		D4A917C31C7A45C200186DEC /* ProfileImageView */ = {
+			isa = PBXGroup;
+			children = (
+				D4C225C11C343169002169DF /* ProfileImageViewController.swift */,
+				D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */,
+			);
+			name = ProfileImageView;
+			sourceTree = "<group>";
+		};
+		D4A917C41C7A50D000186DEC /* ProfileStatsTable */ = {
+			isa = PBXGroup;
+			children = (
+				D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */,
+				D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */,
+			);
+			name = ProfileStatsTable;
 			sourceTree = "<group>";
 		};
 		D4B609C71BBE8F8500697AFA /* CoreData */ = {
@@ -515,19 +536,6 @@
 				D4431D051BBECAE000086759 /* piclet.xcdatamodeld */,
 			);
 			name = CoreData;
-			sourceTree = "<group>";
-		};
-		D4C225BC1C343116002169DF /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */,
-				D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */,
-				D4C225BD1C343140002169DF /* ProfilViewController.swift */,
-				D4C225C11C343169002169DF /* ProfileImageViewController.swift */,
-				D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */,
-				D44E04A51C352E40003B502C /* ProfileHistoryTableViewController.swift */,
-			);
-			name = Test;
 			sourceTree = "<group>";
 		};
 		D4CBA8821C2DF0FD00B47820 /* Login */ = {
