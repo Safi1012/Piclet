@@ -60,7 +60,7 @@ extension UIViewController {
     func showLoadingSpinner(offset: UIOffset) {
         SVProgressHUD.setForegroundColor(UIColor.blackColor())
         SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
-        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Clear)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.None)
         SVProgressHUD.setOffsetFromCenter(offset)
         SVProgressHUD.show()
     }
@@ -88,6 +88,16 @@ extension UIViewController {
         viewController.view.frame = CGRectMake(0.0, 0.0, view.bounds.width, view.bounds.height)
         view.addSubview(viewController.view)
         
+        viewController.view.pinToSuperView()
+        viewController.didMoveToParentViewController(self)
+    }
+    
+    
+    // MARK: - ChildViewController
+    
+    func addChildViewController(viewController: UIViewController, toView view: UIView) {
+        self.addChildViewController(viewController)
+        view.addSubview(viewController.view)
         viewController.view.pinToSuperView()
         viewController.didMoveToParentViewController(self)
     }

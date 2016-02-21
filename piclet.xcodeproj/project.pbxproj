@@ -135,6 +135,12 @@
 		D49C3F661C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F671C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F681C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
+		D4A917BD1C7A447900186DEC /* ProfileImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */; };
+		D4A917BE1C7A447900186DEC /* ProfileImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */; };
+		D4A917BF1C7A447900186DEC /* ProfileImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */; };
+		D4A917C01C7A447900186DEC /* ProfileStatsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */; };
+		D4A917C11C7A447900186DEC /* ProfileStatsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */; };
+		D4A917C21C7A447900186DEC /* ProfileStatsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */; };
 		D4C225BE1C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
 		D4C225BF1C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
 		D4C225C01C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
@@ -270,6 +276,8 @@
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
 		D49A70581BF3BE79004EA711 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileImageViewController.xib; sourceTree = "<group>"; };
+		D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileStatsTableViewController.xib; sourceTree = "<group>"; };
 		D4C225BD1C343140002169DF /* ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -512,6 +520,8 @@
 		D4C225BC1C343116002169DF /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */,
+				D4A917BC1C7A447900186DEC /* ProfileStatsTableViewController.xib */,
 				D4C225BD1C343140002169DF /* ProfilViewController.swift */,
 				D4C225C11C343169002169DF /* ProfileImageViewController.swift */,
 				D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */,
@@ -667,6 +677,8 @@
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
+				D4A917BD1C7A447900186DEC /* ProfileImageViewController.xib in Resources */,
+				D4A917C01C7A447900186DEC /* ProfileStatsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,7 +686,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A917BE1C7A447900186DEC /* ProfileImageViewController.xib in Resources */,
 				D4438DC71BD60ABD000CB909 /* Localizable.strings in Resources */,
+				D4A917C11C7A447900186DEC /* ProfileStatsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,7 +696,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A917BF1C7A447900186DEC /* ProfileImageViewController.xib in Resources */,
 				D4438DC81BD60ABD000CB909 /* Localizable.strings in Resources */,
+				D4A917C21C7A447900186DEC /* ProfileStatsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
