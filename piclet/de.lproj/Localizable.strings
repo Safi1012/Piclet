@@ -8,4 +8,4 @@
 
 // UIAlert
 
-NO_INTERNET_ALERT = "Du bist nicht mit dem Internet verbunden. Bitte überprüfe deine Netzwerkeinstellungen.";
+NO_INTERNET_ALERT = "Sie sind nicht mit dem Internet verbunden. Bitte überprüfe deine Netzwerkeinstellungen.";

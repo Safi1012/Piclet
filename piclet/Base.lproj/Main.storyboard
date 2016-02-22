@@ -454,34 +454,34 @@
                         <viewControllerLayoutGuide type="bottom" id="hRI-lX-HIp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q4y-2J-iXa">
-                        <rect key="frame" x="0.0" y="64" width="600" height="695"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-eX-gmZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="616"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-iV-VJc" userLabel="imageContainer">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="270"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="300" id="iFZ-M3-JCi"/>
+                                            <constraint firstAttribute="height" constant="270" id="iFZ-M3-JCi"/>
                                         </constraints>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvI-nJ-kkZ">
-                                        <rect key="frame" x="0.0" y="455" width="600" height="191"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="191" id="rHS-25-gv3"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="Z3g-uv-a5a" kind="embed" identifier="embedProfileHistoryTableViewController" id="6pP-XY-IKE"/>
-                                        </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-zT-qXK">
-                                        <rect key="frame" x="0.0" y="308" width="600" height="139"/>
+                                        <rect key="frame" x="0.0" y="278" width="600" height="139"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="139" id="M6k-kb-Gx1"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="k71-Qq-YYa" kind="embed" identifier="embedProfileStatsTableViewController" id="jQu-u5-H1E"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvI-nJ-kkZ">
+                                        <rect key="frame" x="0.0" y="425" width="600" height="191"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="191" id="rHS-25-gv3"/>
+                                        </constraints>
+                                        <connections>
+                                            <segue destination="Z3g-uv-a5a" kind="embed" identifier="embedProfileHistoryTableViewController" id="6pP-XY-IKE"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -511,7 +511,7 @@
                     <navigationItem key="navigationItem" id="k0Y-bJ-pQy"/>
                     <value key="contentSizeForViewInPopover" type="size" width="600" height="648"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="759"/>
+                    <size key="freeformSize" width="600" height="729"/>
                     <connections>
                         <outlet property="profileHistoryContainer" destination="cvI-nJ-kkZ" id="pCq-g9-LrN"/>
                         <outlet property="profileImageContainer" destination="Ued-iV-VJc" id="shD-48-v2o"/>
@@ -601,14 +601,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fyf-It-kAi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="1426.5"/>
+            <point key="canvasLocation" x="2516" y="1242.5"/>
         </scene>
         <!--Posts-->
         <scene sceneID="wdT-qq-rZR">
             <objects>
                 <collectionViewController id="1co-zF-dJR" customClass="ProfileCollectionViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="xbR-i1-xee">
-                        <rect key="frame" x="0.0" y="64" width="600" height="695"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h4e-h2-dfp">
@@ -1124,22 +1124,22 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lse-HW-jnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="1748.5"/>
+            <point key="canvasLocation" x="2522" y="1500.5"/>
         </scene>
         <!--My Challenges-->
         <scene sceneID="L9m-VJ-X8J">
             <objects>
-                <viewController id="aYM-n8-to4" customClass="MyChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aYM-n8-to4" customClass="ChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="htJ-IU-mWC"/>
                         <viewControllerLayoutGuide type="bottom" id="cr5-Ls-0JB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uf0-bP-NSg">
-                        <rect key="frame" x="0.0" y="64" width="600" height="695"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nM-5h-7VR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="616"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="VGj-9Q-hYF">
                                     <rect key="frame" x="0.0" y="98" width="600" height="70"/>
@@ -1324,14 +1324,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AzS-YA-X58"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t1O-oe-MTH">
-                        <rect key="frame" x="0.0" y="64" width="600" height="695"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-1L-UmO" userLabel="mascotView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="616"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK5-Oi-cGW" userLabel="mascot">
-                                        <rect key="frame" x="212" y="223" width="174.5" height="200"/>
+                                        <rect key="frame" x="212" y="208" width="174.5" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="174.5" id="thK-Gb-k2a"/>
                                         </constraints>
@@ -1341,7 +1341,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm sorry, there are no Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD9-St-66h">
-                                        <rect key="frame" x="194" y="167" width="213" height="20.5"/>
+                                        <rect key="frame" x="194" y="152" width="213" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1356,7 +1356,7 @@
                                 </constraints>
                             </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="413" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cmg-JR-Zyi">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="646"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="616"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="413" id="qzP-7g-A0w" customClass="PostsTableViewCell" customModule="piclet" customModuleProvider="target">

@@ -15,6 +15,7 @@ class UserAccount {
     var totalVotes: Int!
     var totalPosts: Int!
     var totalChallenges :Int!
+    var totalLikedPosts: Int!
     var rank: Int!
     var token: String!
 
