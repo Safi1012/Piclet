@@ -86,6 +86,11 @@ class MyChallengeViewController: UIViewController {
         isRequesting = true
         
         ApiProxy().fetchUserCreatedChallenges(userAccount.username, offset: offset, success: { (userChallenges) -> () in
+            
+            if offset == 0 {
+                self.challenges = [Challenge]()
+            }
+            
             for challenge in userChallenges {
                 self.challenges.append(challenge)
             }

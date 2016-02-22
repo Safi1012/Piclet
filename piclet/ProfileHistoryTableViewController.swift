@@ -40,7 +40,7 @@ class ProfileHistoryTableViewController: UITableViewController {
             self.parentViewController?.performSegueWithIdentifier("toChallenges", sender: userAccount!)
         }
         if cell == likedCell {
-            self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: nil)
+            self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: userAccount!)
         }
     }
     
@@ -71,7 +71,7 @@ extension ProfileHistoryTableViewController: ProfileViewControllerDelegate {
         self.userAccount = userAccount
         
         postsCell.detailTextLabel?.text = "\(userAccount.totalPosts)"
-        likedCell.detailTextLabel?.text = "Unknown"
+        likedCell.detailTextLabel?.text = "\(userAccount.totalLikedPosts)"
         challengesCell.detailTextLabel?.text = "\(userAccount.totalChallenges)"
         
         tableView.reloadData()

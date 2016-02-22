@@ -39,10 +39,10 @@ class ProfilViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if shouldRefreshData(&loadedDataTimestamp) {
+        // if shouldRefreshData(&loadedDataTimestamp) {
             showLoadingSpinner(UIOffset())
             fetchUserInformation()
-        }
+        // }
     }
     
     
@@ -96,7 +96,7 @@ class ProfilViewController: UIViewController {
         if intialLoading {
             performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
             performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
-            
+            intialLoading = false
         }
     }
     

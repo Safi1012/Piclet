@@ -1129,7 +1129,7 @@
         <!--My Challenges-->
         <scene sceneID="L9m-VJ-X8J">
             <objects>
-                <viewController id="aYM-n8-to4" customClass="ChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aYM-n8-to4" customClass="MyChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="htJ-IU-mWC"/>
                         <viewControllerLayoutGuide type="bottom" id="cr5-Ls-0JB"/>
