@@ -42,8 +42,12 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     func fetchUserCreatedPosts(offset: Int) {
         ApiProxy().fetchUserCreatedPosts(userAccount.username, offset: offset, success: { (userPosts) -> () in
+            
             self.userPostIds = userPosts
-            self.collectionView?.reloadData()
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.collectionView?.reloadData()
+            })
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
@@ -62,13 +66,8 @@ class ProfileCollectionViewController: UICollectionViewController {
             }
             dispatch_async(dispatch_get_main_queue(), {
                 self.collectionView?.reloadData()
-//                self.isRequesting = false
             })
-            
-            
-//            self.userPostIds = posts
-//            self.collectionView?.reloadData()
-            
+
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
             
