@@ -112,6 +112,9 @@
 		D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4689B361C88C80E00647DDB /* ProfileStats.storyboard */; };
 		D4689B381C88C80E00647DDB /* ProfileStats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4689B361C88C80E00647DDB /* ProfileStats.storyboard */; };
 		D4689B391C88C80E00647DDB /* ProfileStats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4689B361C88C80E00647DDB /* ProfileStats.storyboard */; };
+		D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */; };
+		D4689B3C1C88CD2400647DDB /* ProfileImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */; };
+		D4689B3D1C88CD2400647DDB /* ProfileImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */; };
 		D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46912121BAC03C30012CE7C /* AppDelegate.swift */; };
 		D46912181BAC03C30012CE7C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D46912161BAC03C30012CE7C /* Main.storyboard */; };
 		D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D469121C1BAC03C30012CE7C /* Assets.xcassets */; };
@@ -138,9 +141,6 @@
 		D49C3F661C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F671C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F681C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
-		D4A917BD1C7A447900186DEC /* ProfileImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */; };
-		D4A917BE1C7A447900186DEC /* ProfileImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */; };
-		D4A917BF1C7A447900186DEC /* ProfileImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */; };
 		D4C225BE1C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
 		D4C225BF1C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
 		D4C225C01C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
@@ -257,6 +257,7 @@
 		D46494841BEF900C00AA48C4 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		D4689B361C88C80E00647DDB /* ProfileStats.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileStats.storyboard; sourceTree = "<group>"; };
+		D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileImage.storyboard; sourceTree = "<group>"; };
 		D469120F1BAC03C30012CE7C /* piclet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piclet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D46912121BAC03C30012CE7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D46912171BAC03C30012CE7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -277,7 +278,6 @@
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
 		D49A70581BF3BE79004EA711 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
-		D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileImageViewController.xib; sourceTree = "<group>"; };
 		D4C225BD1C343140002169DF /* ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -324,10 +324,10 @@
 			isa = PBXGroup;
 			children = (
 				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
-				D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */,
 				D4FED0971C76246C007633FB /* BRYXBanner.framework */,
-				D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */,
+				D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */,
 				D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */,
+				D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */,
 				D42B5D381C1CC81E00BE771D /* ImageViewer.framework */,
 				D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */,
 				D42A2E881BF6935E00B96063 /* Alamofire.framework */,
@@ -514,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				D4C225C11C343169002169DF /* ProfileImageViewController.swift */,
-				D4A917BB1C7A447900186DEC /* ProfileImageViewController.xib */,
+				D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */,
 			);
 			name = ProfileImageView;
 			sourceTree = "<group>";
@@ -682,11 +682,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
+				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
-				D4A917BD1C7A447900186DEC /* ProfileImageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,8 +694,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4A917BE1C7A447900186DEC /* ProfileImageViewController.xib in Resources */,
 				D4438DC71BD60ABD000CB909 /* Localizable.strings in Resources */,
+				D4689B3C1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B381C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,8 +704,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4A917BF1C7A447900186DEC /* ProfileImageViewController.xib in Resources */,
 				D4438DC81BD60ABD000CB909 /* Localizable.strings in Resources */,
+				D4689B3D1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B391C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

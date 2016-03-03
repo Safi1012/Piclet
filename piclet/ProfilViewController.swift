@@ -49,12 +49,15 @@ class ProfilViewController: UIViewController {
     // MARK: - Setup
     
     func embedContainer() {
-        addChildViewController(ProfileImageViewController(), toView: profileImageContainer)
+        
+        
+        let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
+        let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
+        addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
         
         
         let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
         let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
-        
         addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
         
         

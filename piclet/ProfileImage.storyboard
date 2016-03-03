@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="evH-2e-B1O">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Profile Image View Controller-->
+        <scene sceneID="yYy-ZQ-3zu">
+            <objects>
+                <viewController id="evH-2e-B1O" customClass="ProfileImageViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5b4-RF-hp1"/>
+                        <viewControllerLayoutGuide type="bottom" id="xJD-5X-8cl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8XS-PF-2aj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsn-bm-wKT">
+                                <rect key="frame" x="257" y="413" width="86" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lf4-VW-DDB">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="J0t-74-Fjz"/>
+                                    <constraint firstAttribute="width" constant="200" id="hYh-3d-Xf0"/>
+                                </constraints>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hsn-bm-wKT" firstAttribute="centerX" secondItem="8XS-PF-2aj" secondAttribute="centerX" id="2o1-rj-Ym5"/>
+                            <constraint firstItem="Lf4-VW-DDB" firstAttribute="centerX" secondItem="8XS-PF-2aj" secondAttribute="centerX" id="J4p-0m-0Co"/>
+                            <constraint firstItem="Hsn-bm-wKT" firstAttribute="top" secondItem="Lf4-VW-DDB" secondAttribute="bottom" constant="13" id="d93-ZK-0bT"/>
+                            <constraint firstItem="Lf4-VW-DDB" firstAttribute="centerY" secondItem="8XS-PF-2aj" secondAttribute="centerY" id="mLd-oH-fqS"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="profileImageButton" destination="Lf4-VW-DDB" id="FEy-T7-COx"/>
+                        <outlet property="profileNameLabel" destination="Hsn-bm-wKT" id="Avo-Ao-Cud"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xTb-S1-IgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="611" y="465"/>
+        </scene>
+    </scenes>
+</document>
