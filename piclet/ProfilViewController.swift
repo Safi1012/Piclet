@@ -60,7 +60,11 @@ class ProfilViewController: UIViewController {
         let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
         addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
         
+
         
+        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
+        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
+        addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
     }
     
     
@@ -106,7 +110,7 @@ class ProfilViewController: UIViewController {
     func addSubViews() {
         if intialLoading {
             // performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
-            performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
+            // performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
             intialLoading = false
         }
     }
