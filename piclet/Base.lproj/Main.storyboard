@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="704"/>
+            <point key="canvasLocation" x="145" y="1144"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="Xg5-td-h1U">
@@ -419,7 +419,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OUR-qH-a8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="704"/>
+            <point key="canvasLocation" x="932" y="1144"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="1ME-h9-iyt">
@@ -520,7 +520,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-t8-knY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zNK-Bt-FK5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="703.5"/>
+            <point key="canvasLocation" x="2516" y="1143.5"/>
         </scene>
         <!--Posts-->
         <scene sceneID="wdT-qq-rZR">
@@ -591,7 +591,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eQ-JB-qnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="704"/>
+            <point key="canvasLocation" x="1704" y="1144"/>
         </scene>
         <!--Add a Post-->
         <scene sceneID="p9L-CO-9aV">
@@ -1131,7 +1131,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZi-vq-rFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="FCo-vc-lyc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="1630.5"/>
+            <point key="canvasLocation" x="3293" y="1526.5"/>
         </scene>
         <!--My Posts-->
         <scene sceneID="Eq2-t4-KM1">
@@ -1283,7 +1283,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OrH-xB-zyG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4rp-kd-Ma3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3299" y="1630.5"/>
+            <point key="canvasLocation" x="4076" y="1526.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1302,6 +1302,6 @@
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vfR-0c-zcg"/>
+        <segue reference="i5T-h3-gDU"/>
     </inferredMetricsTieBreakers>
 </document>
