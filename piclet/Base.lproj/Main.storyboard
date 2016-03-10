@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145" y="639"/>
+            <point key="canvasLocation" x="145" y="704"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="Xg5-td-h1U">
@@ -419,7 +419,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OUR-qH-a8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="639"/>
+            <point key="canvasLocation" x="932" y="704"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="1ME-h9-iyt">
@@ -457,7 +457,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-eX-gmZ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-eX-gmZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="616"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-iV-VJc" userLabel="imageContainer">
@@ -510,6 +510,7 @@
                         <outlet property="profileHistoryContainer" destination="cvI-nJ-kkZ" id="pCq-g9-LrN"/>
                         <outlet property="profileImageContainer" destination="Ued-iV-VJc" id="shD-48-v2o"/>
                         <outlet property="profileStatsContainer" destination="3oI-zT-qXK" id="mrZ-zw-qCj"/>
+                        <outlet property="scrollView" destination="eaK-eX-gmZ" id="AHt-2Z-47h"/>
                         <segue destination="zNK-Bt-FK5" kind="unwind" identifier="unwindToLoginViewController" unwindAction="unwindToLoginViewController:" id="TM0-gI-cGj"/>
                         <segue destination="1co-zF-dJR" kind="show" identifier="toProfileCollectionView" id="i5T-h3-gDU"/>
                         <segue destination="aYM-n8-to4" kind="show" identifier="toChallenges" id="m8n-3Y-O5W"/>
@@ -519,7 +520,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-t8-knY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="zNK-Bt-FK5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="662.5"/>
+            <point key="canvasLocation" x="2516" y="703.5"/>
         </scene>
         <!--Posts-->
         <scene sceneID="wdT-qq-rZR">
@@ -570,7 +571,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cs7-AH-tU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3293" y="663"/>
+            <point key="canvasLocation" x="3293" y="703.5"/>
         </scene>
         <!--Profile-->
         <scene sceneID="P72-Ej-RuG">
@@ -590,7 +591,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4eQ-JB-qnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1704" y="639"/>
+            <point key="canvasLocation" x="1704" y="704"/>
         </scene>
         <!--Add a Post-->
         <scene sceneID="p9L-CO-9aV">
@@ -1301,6 +1302,6 @@
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="i5T-h3-gDU"/>
+        <segue reference="vfR-0c-zcg"/>
     </inferredMetricsTieBreakers>
 </document>

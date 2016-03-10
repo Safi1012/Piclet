@@ -109,23 +109,6 @@ class MyChallengeViewController: UIViewController {
         }
     }
     
-
-    // create new class that formats code!
-    
-    func formatVoteText(numberVotes: Int) -> String {
-        if numberVotes == 1 {
-            return "\(numberVotes) vote"
-        }
-        return "\(numberVotes) votes"
-    }
-    
-    func formatNumberPosts(numberPosts: Int) -> String {
-        if numberPosts == 1 {
-            return "\(numberPosts) post"
-        }
-        return "\(numberPosts) posts"
-    }
-    
     
     // MARK: - Navigation
     
@@ -164,8 +147,8 @@ extension MyChallengeViewController: UITableViewDataSource {
         
         cell.challengeTitleLabel.text = self.challenges[indexPath.row].title
         cell.timepostedLabel.text = TimeHandler().getPostedTimestampFormated(self.challenges[indexPath.row].posted)
-        cell.numberPostsLabel.text = formatNumberPosts(self.challenges[indexPath.row].amountPosts)
-        cell.numberLikesLabel.text = formatVoteText(self.challenges[indexPath.row].votes)
+        cell.numberPostsLabel.text = Formater().formatSingularAndPlural(self.challenges[indexPath.row].amountPosts, singularWord: "post")
+        cell.numberLikesLabel.text = Formater().formatSingularAndPlural(self.challenges[indexPath.row].votes, singularWord: "vote")
         
         return cell
     }

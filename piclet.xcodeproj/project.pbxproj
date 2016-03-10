@@ -148,6 +148,9 @@
 		D4A27E191C919032007DC1E1 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A27E161C919032007DC1E1 /* UserAccess.swift */; };
 		D4A27E1B1C919434007DC1E1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A27E1A1C919434007DC1E1 /* Realm.framework */; };
 		D4A27E1D1C919457007DC1E1 /* Realm.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */; };
+		D4BE33EF1C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */; };
+		D4BE33F01C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */; };
+		D4BE33F11C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C31C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C41C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
@@ -289,6 +292,7 @@
 		D4A27E161C919032007DC1E1 /* UserAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccess.swift; sourceTree = "<group>"; };
 		D4A27E1A1C919434007DC1E1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
+		D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -535,6 +539,7 @@
 			isa = PBXGroup;
 			children = (
 				D427341C1C91807E006BA9DB /* ProfileViewController.swift */,
+				D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */,
 				D4A917C31C7A45C200186DEC /* ProfileImage */,
 				D4A917C41C7A50D000186DEC /* ProfileStatsTable */,
 				D4689B3E1C88D04100647DDB /* ProfileHistoryTable */,
@@ -779,6 +784,7 @@
 				D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */,
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
+				D4BE33EF1C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */,
 				D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
 				D427341D1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
@@ -841,6 +847,7 @@
 				D459D69E1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
+				D4BE33F01C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */,
 				D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
 				D4A27E181C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */,
@@ -883,6 +890,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4133F4E1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */,
+				D4BE33F11C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */,
 				D4431D0D1BBED72900086759 /* User.swift in Sources */,
 				D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */,
 				D46D1AFB1C02E5C000C712C7 /* PostsViewController.swift in Sources */,

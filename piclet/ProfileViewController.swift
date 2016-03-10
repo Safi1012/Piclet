@@ -8,23 +8,16 @@
 
 import UIKit
 
-protocol ProfileViewControllerDelegate {
-    
-    func userDataWasRefreshed(profileViewController: ProfileViewController, userAccount: UserAccount)
-}
-
-
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageContainer: UIView!
     @IBOutlet weak var profileStatsContainer: UIView!
     @IBOutlet weak var profileHistoryContainer: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var userName: String?
     var token: String?
     var loadedDataTimestamp: NSDate?
-    var intialLoading = true
-    
     var profileStatsDelegate: ProfileViewControllerDelegate?
     var profileHistoryDelegate: ProfileViewControllerDelegate?
     
@@ -33,40 +26,34 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        getLoginInformation()
         
+        getLoginInformation()
         embedContainer()
+        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
     }
     
     override func viewWillAppear(animated: Bool) {
-        // if shouldRefreshData(&loadedDataTimestamp) {
-        showLoadingSpinner(UIOffset())
         fetchUserInformation()
-        // }
     }
     
     
     // MARK: - Setup
     
     func embedContainer() {
-        
-        
         let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
         let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
         addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
         
-        
         let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
         let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
         addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
-        
-        
+        profileStatsDelegate = profileStatsViewController
         
         let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
         let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
         addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
+        profileHistoryDelegate = profileHistoryViewController
     }
-    
     
     
     // MARK: Profile
@@ -92,24 +79,12 @@ class ProfileViewController: UIViewController {
     
     func fetchUserInformation() {
         ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
-            self.dismissLoadingSpinner()
-            self.addSubViews()
-            
             self.profileStatsDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             self.profileHistoryDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             
-            }) { (errorCode) -> () in
-                self.dismissLoadingSpinner()
-                if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
+        }) { (errorCode) -> () in
+            if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
                 
-        }
-    }
-    
-    func addSubViews() {
-        if intialLoading {
-            // performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
-            // performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
-            intialLoading = false
         }
     }
     

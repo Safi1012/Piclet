@@ -202,8 +202,9 @@ class ApiProxy {
                 failure(errorCode: errorCode)
                     
             }
+        } else {
+            failure(errorCode: "NotLoggedIn")
         }
-        failure(errorCode: "NotLoggedIn")
     }
     
     

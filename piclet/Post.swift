@@ -17,5 +17,4 @@ class Post {
     var challengeId: String!
     var votes: Int!
     var voters: [String]!
-    
 }
