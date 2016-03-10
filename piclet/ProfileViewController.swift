@@ -1,5 +1,5 @@
 //
-//  ProfilViewController.swift
+//  ProfileViewController.swift
 //  piclet
 //
 //  Created by Filipe Santos Correa on 30/12/15.
@@ -15,35 +15,58 @@ protocol ProfileViewControllerDelegate {
 
 
 class ProfileViewController: UIViewController {
-
-    var profileStatsDelegate: ProfileViewControllerDelegate?
-    var profileHistoryDelegate: ProfileViewControllerDelegate?
-    @IBOutlet weak var container: UIView!
+    
+    @IBOutlet weak var profileImageContainer: UIView!
+    @IBOutlet weak var profileStatsContainer: UIView!
+    @IBOutlet weak var profileHistoryContainer: UIView!
     
     var userName: String?
     var token: String?
     var loadedDataTimestamp: NSDate?
     var intialLoading = true
-
+    
+    var profileStatsDelegate: ProfileViewControllerDelegate?
+    var profileHistoryDelegate: ProfileViewControllerDelegate?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // let imageVC =  ProfileImageViewController()
-        // self.addChildViewController(imageVC, toContainerView: container)
-
-
-            
-        
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         getLoginInformation()
+        
+        embedContainer()
     }
     
     override func viewWillAppear(animated: Bool) {
-        if shouldRefreshData(&loadedDataTimestamp) {
-            showLoadingSpinner(UIOffset())
-            fetchUserInformation()
-        }
+        // if shouldRefreshData(&loadedDataTimestamp) {
+        showLoadingSpinner(UIOffset())
+        fetchUserInformation()
+        // }
     }
+    
+    
+    // MARK: - Setup
+    
+    func embedContainer() {
+        
+        
+        let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
+        let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
+        addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
+        
+        
+        let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
+        let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
+        addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
+        
+        
+        
+        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
+        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
+        addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
+    }
+    
     
     
     // MARK: Profile
@@ -73,22 +96,22 @@ class ProfileViewController: UIViewController {
         ApiProxy().fetchUserAccountInformation({ (userAccount) -> () in
             self.dismissLoadingSpinner()
             self.addSubViews()
-
+            
             self.profileStatsDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             self.profileHistoryDelegate?.userDataWasRefreshed(self, userAccount: userAccount)
             
-        }) { (errorCode) -> () in
-            self.dismissLoadingSpinner()
-            if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
-            
+            }) { (errorCode) -> () in
+                self.dismissLoadingSpinner()
+                if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
+                
         }
     }
     
     func addSubViews() {
         if intialLoading {
-            performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
-            performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
-            
+            // performSegueWithIdentifier("embedProfileStatsTableViewController", sender: self)
+            // performSegueWithIdentifier("embedProfileHistoryTableViewController", sender: self)
+            intialLoading = false
         }
     }
     
@@ -108,8 +131,8 @@ class ProfileViewController: UIViewController {
             User.removeUserToken(AppDelegate().managedObjectContext)
             self.navigatoToLoginViewController()
             
-        }) { (errorCode) -> () in
-            self.displayAlert(errorCode)
+            }) { (errorCode) -> () in
+                self.displayAlert(errorCode)
                 
         }
     }
@@ -155,9 +178,9 @@ class ProfileViewController: UIViewController {
                 let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
                 destinationVC.downloadUserCreatedPosts = false
                 destinationVC.userAccount = sender as! UserAccount
-    
+                
             default:
-                print("Segue in ProfilViewController failed")
+                print("Segue in ProfileViewController failed")
             }
         }
     }
@@ -176,5 +199,5 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
-
+    
 }

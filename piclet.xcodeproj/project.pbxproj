@@ -32,6 +32,9 @@
 		D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; };
 		D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D4254AE91BCD9C7B00297FCF /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
+		D427341D1C91807E006BA9DB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D427341C1C91807E006BA9DB /* ProfileViewController.swift */; };
+		D427341E1C91807E006BA9DB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D427341C1C91807E006BA9DB /* ProfileViewController.swift */; };
+		D427341F1C91807E006BA9DB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D427341C1C91807E006BA9DB /* ProfileViewController.swift */; };
 		D42A2E891BF6935E00B96063 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42A2E881BF6935E00B96063 /* Alamofire.framework */; };
 		D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */; };
 		D42F969D1BCBDE2100544C69 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
@@ -144,9 +147,6 @@
 		D49C3F661C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F671C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F681C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
-		D4C225BE1C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
-		D4C225BF1C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
-		D4C225C01C343140002169DF /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225BD1C343140002169DF /* ProfilViewController.swift */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C31C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C41C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
@@ -217,6 +217,7 @@
 		D4181CC71BAC4456001155B6 /* UserDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidator.swift; sourceTree = "<group>"; };
 		D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidatorTests.swift; sourceTree = "<group>"; };
 		D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
+		D427341C1C91807E006BA9DB /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D42A2E881BF6935E00B96063 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Alamofire.framework.dSYM; path = Carthage/Build/iOS/Alamofire.framework.dSYM; sourceTree = "<group>"; };
 		D42B5D381C1CC81E00BE771D /* ImageViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageViewer.framework; path = Carthage/Build/iOS/ImageViewer.framework; sourceTree = "<group>"; };
@@ -282,7 +283,6 @@
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
 		D49A70581BF3BE79004EA711 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
-		D4C225BD1C343140002169DF /* ProfilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -513,7 +513,7 @@
 		D47E5E271BD293BD003E9351 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D4C225BD1C343140002169DF /* ProfilViewController.swift */,
+				D427341C1C91807E006BA9DB /* ProfileViewController.swift */,
 				D4A917C31C7A45C200186DEC /* ProfileImageView */,
 				D4A917C41C7A50D000186DEC /* ProfileStatsTable */,
 				D4689B3E1C88D04100647DDB /* ProfileHistoryTable */,
@@ -759,6 +759,7 @@
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
+				D427341D1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
@@ -787,7 +788,6 @@
 				D44E04A21C352E1A003B502C /* ProfileStatsTableViewController.swift in Sources */,
 				D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */,
-				D4C225BE1C343140002169DF /* ProfilViewController.swift in Sources */,
 				D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
@@ -807,7 +807,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C225BF1C343140002169DF /* ProfilViewController.swift in Sources */,
 				D4CDEAB01BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */,
 				D46494821BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D459D6981C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
@@ -829,6 +828,7 @@
 				D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */,
 				D46D1AFA1C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4181CC91BAC4456001155B6 /* UserDataValidator.swift in Sources */,
+				D427341E1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D4F10BA81BF3BA7A0097E0CE /* AppDelegate.swift in Sources */,
 				D4431D0C1BBED72800086759 /* User.swift in Sources */,
 				D459D6A71C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
@@ -863,7 +863,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4C225C01C343140002169DF /* ProfilViewController.swift in Sources */,
 				D4133F4E1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */,
 				D4431D0D1BBED72900086759 /* User.swift in Sources */,
 				D4254AE61BCD9C5600297FCF /* ErrorHandler.swift in Sources */,
@@ -895,6 +894,7 @@
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D4C225C41C343169002169DF /* ProfileImageViewController.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
+				D427341F1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D459D6991C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D47C56541C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D459D6A21C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,

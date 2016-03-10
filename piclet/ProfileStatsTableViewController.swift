@@ -20,7 +20,7 @@ class ProfileStatsTableViewController: UITableViewController {
 
 extension ProfileStatsTableViewController: ProfileViewControllerDelegate {
     
-    func userDataWasRefreshed(profileViewController: ProfilViewController, userAccount: UserAccount) {
+    func userDataWasRefreshed(profileViewController: ProfileViewController, userAccount: UserAccount) {
         rankCell.detailTextLabel?.text = "\(userAccount.rank)"
         totalLikesCell.detailTextLabel?.text = "\(userAccount.totalVotes)"
         

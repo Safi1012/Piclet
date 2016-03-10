@@ -445,10 +445,10 @@
             </objects>
             <point key="canvasLocation" x="1704" y="-103"/>
         </scene>
-        <!--Profil View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="cwb-oD-d1l">
             <objects>
-                <viewController id="sEx-Yr-Ob7" customClass="ProfilViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sEx-Yr-Ob7" customClass="ProfileViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MZs-ch-Yac"/>
                         <viewControllerLayoutGuide type="bottom" id="hRI-lX-HIp"/>

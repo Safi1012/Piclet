@@ -66,7 +66,7 @@ class ProfileHistoryTableViewController: UITableViewController {
 
 extension ProfileHistoryTableViewController: ProfileViewControllerDelegate {
     
-    func userDataWasRefreshed(profileViewController: ProfilViewController, userAccount: UserAccount) {
+    func userDataWasRefreshed(profileViewController: ProfileViewController, userAccount: UserAccount) {
         
         self.userAccount = userAccount
         
