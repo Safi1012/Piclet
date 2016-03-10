@@ -7,12 +7,14 @@
 //
 
 import Foundation
-import CoreData
+import RealmSwift
 
-// @objc(User)
-class User: NSManagedObject {
-
-    @NSManaged var username: String?
-    @NSManaged var token: String?
-
+class User: Object {
+    
+    dynamic var username: String = ""
+    dynamic var token = ""
+    
+    override static func primaryKey() -> String? {
+        return "username"
+    }
 }

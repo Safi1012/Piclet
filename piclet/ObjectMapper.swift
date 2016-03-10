@@ -19,7 +19,7 @@ class ObjectMapper {
                 print("createUserToken: couldn't serialize data")
                 return
         }
-        User.updateUserDatabase(AppDelegate().managedObjectContext, username: username, token: token)
+        UserAccess.sharedInstance.addUser(username, token: token)
     }
     
     func parseChallenges(json: AnyObject) -> [Challenge] {
@@ -126,7 +126,7 @@ class ObjectMapper {
             let totalLikedPosts = dict["totalLikedPosts"] as? Int,
             let totalChallenges = dict["totalChallenges"] as? Int,
             let rank = dict["rank"] as? Int,
-            let token = User.getLoggedInUserToken(AppDelegate().managedObjectContext)
+            let token = UserAccess.sharedInstance.getUser()?.token
         
         else {
             print("parseUserAccountInformationsError")

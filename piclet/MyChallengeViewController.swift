@@ -137,7 +137,10 @@ class MyChallengeViewController: UIViewController {
         }
         if segue.identifier == "toCreateChallengeViewController" {
             let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! CreateChallengeViewController
-            destinationVC.token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
+            
+            if let token = UserAccess.sharedInstance.getUser()?.token {
+               destinationVC.token = token
+            }
         }
     }
 }

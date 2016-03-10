@@ -149,23 +149,19 @@ class ApiProxy {
     }
     
     func fetchUserAccountInformation(success: (userAccount: UserAccount) -> (), failure: (errorCode: String) -> () ) {
-        guard
-            let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext),
-            let userName = loggedInUser.username
-        else {
-            failure(errorCode: "NotLoggedIn")
-            return
-        }
         
-        let apiPath = "users/" + userName
-        
-        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
-            success(userAccount: ObjectMapper().parseUserAccountInformations(json))
-            
-        }) { (errorCode) -> () in
-            failure(errorCode: errorCode)
-            
+        if let user = UserAccess.sharedInstance.getUser() {
+            let apiPath = "users/" + user.username
+    
+            NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+                success(userAccount: ObjectMapper().parseUserAccountInformations(json))
+    
+            }) { (errorCode) -> () in
+                failure(errorCode: errorCode)
+                
+            }
         }
+        failure(errorCode: "NotLoggedIn")
     }
     
     func fetchUserCreatedPosts(username: String, offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
@@ -195,23 +191,19 @@ class ApiProxy {
     }
     
     func fetchLikedPosts(offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
-        guard
-            let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext),
-            let userName = loggedInUser.username
-        else {
-            failure(errorCode: "NotLoggedIn")
-            return
-        }
         
-        let apiPath = "users/\(userName)/likedPosts?offset=\(offset)"
-        
-        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
-            success(userPosts: ObjectMapper().parsePostIds(json))
-            
-        }) { (errorCode) -> () in
-            failure(errorCode: errorCode)
-                
+        if let user = UserAccess.sharedInstance.getUser() {
+            let apiPath = "users/\(user.username)/likedPosts?offset=\(offset)"
+    
+            NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+                success(userPosts: ObjectMapper().parsePostIds(json))
+    
+            }) { (errorCode) -> () in
+                failure(errorCode: errorCode)
+                    
+            }
         }
+        failure(errorCode: "NotLoggedIn")
     }
     
     

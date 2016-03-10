@@ -95,13 +95,12 @@ class ChallengeViewController: UIViewController {
     }
 
     @IBAction func pressedCreateChallenge(sender: UIBarButtonItem) {
-        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
-            if loggedInUser.token != nil {
-                performSegueWithIdentifier("toCreateChallengeViewController", sender: self)
-                return
-            }
+        
+        if UserAccess.sharedInstance.isUserLoggedIn() {
+            performSegueWithIdentifier("toCreateChallengeViewController", sender: self)
+        } else {
+            self.displayAlert("NotLoggedIn")
         }
-        self.displayAlert("NotLoggedIn")
     }
     
     func startActivityIndicator() {
@@ -182,8 +181,11 @@ class ChallengeViewController: UIViewController {
             destinationVC.challenge = (sender as? Challenge)
         }
         if segue.identifier == "toCreateChallengeViewController" {
-            let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! CreateChallengeViewController
-            destinationVC.token = User.getLoggedInUser(AppDelegate().managedObjectContext)!.token!
+            
+            if let token = UserAccess.sharedInstance.getUser()?.token {
+                let destinationVC = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! CreateChallengeViewController
+                destinationVC.token = token
+            }
         }
     }
     

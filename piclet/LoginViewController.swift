@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var topLogoConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomLogoConstraint: NSLayoutConstraint!
     
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
     let userDataValidator = UserDataValidator()
     let objectMapper = ObjectMapper()
     let apiProxy = ApiProxy()
@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
     func performLogin() {
         if validateTextFields() {
             showLoadingSpinnerWithoutMask(UIOffset(horizontal: 0.0, vertical: 140.0))
-            
+                        
             apiProxy.signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
                 self.navigateToChallengesViewController()
                 self.dismissLoadingSpinner()

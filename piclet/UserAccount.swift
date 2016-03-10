@@ -18,12 +18,6 @@ class UserAccount {
     var totalLikedPosts: Int!
     var rank: Int!
     var token: String!
-
-    // allChallenges created by the user
-    // var myChallenges: [Challenge]?
-    
-    // allPosts created by the user
-    // var myPosts: [Posts]?
     
     func createUserToken(json: AnyObject, username: String) {
         guard
@@ -33,6 +27,6 @@ class UserAccount {
             print("createUserToken: couldn't serialize data")
             return
         }
-        User.updateUserDatabase(managedObjectContext, username: username, token: token)
+        UserAccess.sharedInstance.addUser(username, token: token)
     }
 }

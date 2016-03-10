@@ -30,14 +30,12 @@ class ProfileImageViewController: UIViewController {
     }
     
     func getLoggedInUsername() {
-        guard
-            let user = User.getLoggedInUser(AppDelegate().managedObjectContext),
-            let username = user.username
-        else {
+        
+        if let username = UserAccess.sharedInstance.getUser()?.username {
+            self.username = username
+        } else {
             self.username = "Guest User"
-            return
         }
-        self.username = username
     }
     
     
@@ -101,25 +99,23 @@ class ProfileImageViewController: UIViewController {
     // MARK: - Upload
     
     func uploadNewUserImage(pickedImage: UIImage) {
-        guard
-            let user = User.getLoggedInUser(AppDelegate().managedObjectContext),
-            let token = user.token,
-            let username = user.username
-        else {
-            displayAlert("NotLoggedIn")
-            return
-        }
         
-        let avatarImage = ImageHandler().convertAvatarImageForUpload(pickedImage, imageSize: ImageAvatarServerWidth.large)!
-        displayNewUserImage(UIImage(data: avatarImage)!)
-        
-        ApiProxy().uploadUserProfileImage(token, username: username, image: avatarImage, success: { () -> () in
-            SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "https://flash1293.de/users/\(username)/avatar-large.jpeg", toDisk: true)
+        if let user = UserAccess.sharedInstance.getUser() {
+            let avatarImage = ImageHandler().convertAvatarImageForUpload(pickedImage, imageSize: ImageAvatarServerWidth.large)!
+            displayNewUserImage(UIImage(data: avatarImage)!)
             
-        }) { (errorCode) -> () in
-            self.loadUserProfileImage()
-            self.displayAlert(errorCode)
+            ApiProxy().uploadUserProfileImage(user.token, username: user.username, image: avatarImage, success: { () -> () in
+                SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "https://flash1293.de/users/\(user.username)/avatar-large.jpeg", toDisk: true)
                 
+            }) { (errorCode) -> () in
+                self.loadUserProfileImage()
+                self.displayAlert(errorCode)
+                    
+            }
+            
+        } else {
+            displayAlert("NotLoggedIn")
+            
         }
     }
 }

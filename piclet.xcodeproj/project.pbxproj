@@ -48,15 +48,9 @@
 		D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
 		D44248F81BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
 		D44248F91BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
-		D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4431D051BBECAE000086759 /* piclet.xcdatamodeld */; };
-		D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
 		D4431D0B1BBECB4B00086759 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D091BBECB4B00086759 /* User.swift */; };
 		D4431D0C1BBED72800086759 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D091BBECB4B00086759 /* User.swift */; };
 		D4431D0D1BBED72900086759 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D091BBECB4B00086759 /* User.swift */; };
-		D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4431D051BBECAE000086759 /* piclet.xcdatamodeld */; };
-		D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4431D051BBECAE000086759 /* piclet.xcdatamodeld */; };
-		D4431D101BBED73400086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
-		D4431D111BBED73500086759 /* User+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431D081BBECB4B00086759 /* User+CoreData.swift */; };
 		D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
 		D4438DB81BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
 		D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */; };
@@ -147,6 +141,13 @@
 		D49C3F661C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F671C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D49C3F681C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
+		D4A27E0F1C918701007DC1E1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A27E0E1C918701007DC1E1 /* RealmSwift.framework */; };
+		D4A27E111C918757007DC1E1 /* RealmSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4A27E101C918757007DC1E1 /* RealmSwift.framework.dSYM */; };
+		D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A27E161C919032007DC1E1 /* UserAccess.swift */; };
+		D4A27E181C919032007DC1E1 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A27E161C919032007DC1E1 /* UserAccess.swift */; };
+		D4A27E191C919032007DC1E1 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A27E161C919032007DC1E1 /* UserAccess.swift */; };
+		D4A27E1B1C919434007DC1E1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A27E1A1C919434007DC1E1 /* Realm.framework */; };
+		D4A27E1D1C919457007DC1E1 /* Realm.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C31C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C41C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
@@ -200,6 +201,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				D4A27E1D1C919457007DC1E1 /* Realm.framework.dSYM in CopyFiles */,
+				D4A27E111C918757007DC1E1 /* RealmSwift.framework.dSYM in CopyFiles */,
 				D4FED09A1C7624CE007633FB /* BRYXBanner.framework.dSYM in CopyFiles */,
 				D4FED0961C74BC0E007633FB /* SVProgressHUD.framework.dSYM in CopyFiles */,
 				D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */,
@@ -226,8 +229,6 @@
 		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
 		D44248F61BE583E100C88B50 /* ChallengeCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCollection.swift; sourceTree = "<group>"; };
-		D4431D061BBECAE000086759 /* piclet.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = piclet.xcdatamodel; sourceTree = "<group>"; };
-		D4431D081BBECB4B00086759 /* User+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreData.swift"; sourceTree = "<group>"; };
 		D4431D091BBECB4B00086759 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D4438DB61BD521DA000CB909 /* CreateChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengeViewController.swift; sourceTree = "<group>"; };
 		D4438DBA1BD57883000CB909 /* CreateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTextField.swift; sourceTree = "<group>"; };
@@ -283,6 +284,11 @@
 		D49396451BC2D19600D2D505 /* User+CoreDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataTests.swift"; sourceTree = "<group>"; };
 		D49A70581BF3BE79004EA711 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
 		D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
+		D4A27E0E1C918701007DC1E1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D4A27E101C918757007DC1E1 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/iOS/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
+		D4A27E161C919032007DC1E1 /* UserAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccess.swift; sourceTree = "<group>"; };
+		D4A27E1A1C919434007DC1E1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -300,6 +306,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A27E1B1C919434007DC1E1 /* Realm.framework in Frameworks */,
+				D4A27E0F1C918701007DC1E1 /* RealmSwift.framework in Frameworks */,
 				D4FED0981C76246C007633FB /* BRYXBanner.framework in Frameworks */,
 				D4FED0941C74BB2F007633FB /* SVProgressHUD.framework in Frameworks */,
 				D42A2E891BF6935E00B96063 /* Alamofire.framework in Frameworks */,
@@ -328,6 +336,10 @@
 			isa = PBXGroup;
 			children = (
 				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
+				D4A27E1A1C919434007DC1E1 /* Realm.framework */,
+				D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */,
+				D4A27E0E1C918701007DC1E1 /* RealmSwift.framework */,
+				D4A27E101C918757007DC1E1 /* RealmSwift.framework.dSYM */,
 				D4FED0971C76246C007633FB /* BRYXBanner.framework */,
 				D4FED0991C7624CE007633FB /* BRYXBanner.framework.dSYM */,
 				D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */,
@@ -452,7 +464,7 @@
 		D46912441BAC0D600012CE7C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D4B609C71BBE8F8500697AFA /* CoreData */,
+				D4A27E091C9186B2007DC1E1 /* Realm */,
 				D4181CC71BAC4456001155B6 /* UserDataValidator.swift */,
 				D4105BEE1BBE65AC006D742D /* ApiProxy.swift */,
 				D4445B7F1BB84D76005D155F /* ObjectMapper.swift */,
@@ -531,6 +543,15 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		D4A27E091C9186B2007DC1E1 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				D4431D091BBECB4B00086759 /* User.swift */,
+				D4A27E161C919032007DC1E1 /* UserAccess.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
 		D4A917C31C7A45C200186DEC /* ProfileImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,16 +568,6 @@
 				D4689B361C88C80E00647DDB /* ProfileStats.storyboard */,
 			);
 			name = ProfileStatsTable;
-			sourceTree = "<group>";
-		};
-		D4B609C71BBE8F8500697AFA /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				D4431D091BBECB4B00086759 /* User.swift */,
-				D4431D081BBECB4B00086759 /* User+CoreData.swift */,
-				D4431D051BBECAE000086759 /* piclet.xcdatamodeld */,
-			);
-			name = CoreData;
 			sourceTree = "<group>";
 		};
 		D4CBA8821C2DF0FD00B47820 /* Login */ = {
@@ -747,6 +758,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/BRYXBanner.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 			);
 			outputPaths = (
 			);
@@ -769,6 +782,7 @@
 				D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
 				D427341D1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
+				D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D459D6A61C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
@@ -790,12 +804,10 @@
 				D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
-				D4431D071BBECAE000086759 /* piclet.xcdatamodeld in Sources */,
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
 				D44E04A61C352E40003B502C /* ProfileHistoryTableViewController.swift in Sources */,
 				D44E04A21C352E1A003B502C /* ProfileStatsTableViewController.swift in Sources */,
 				D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
-				D4431D0A1BBECB4B00086759 /* User+CoreData.swift in Sources */,
 				D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
@@ -828,9 +840,9 @@
 				D44E04A71C352E40003B502C /* ProfileHistoryTableViewController.swift in Sources */,
 				D459D69E1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
 				D4438DC01BD60685000CB909 /* TimeHandler.swift in Sources */,
-				D4431D111BBED73500086759 /* User+CoreData.swift in Sources */,
 				D4254AE41BCD9C5200297FCF /* Post.swift in Sources */,
 				D48E3C7E1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
+				D4A27E181C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D49396461BC2D19600D2D505 /* User+CoreDataTests.swift in Sources */,
 				D4181CCC1BAC4C28001155B6 /* UserDataValidatorTests.swift in Sources */,
 				D4254AE81BCD9C7A00297FCF /* ChallengeTableViewCell.swift in Sources */,
@@ -844,7 +856,6 @@
 				D4438DD51BD61767000CB909 /* UIAlertControllerExtension.swift in Sources */,
 				D47C56531C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D4C225C31C343169002169DF /* ProfileImageViewController.swift in Sources */,
-				D4431D0E1BBED72E00086759 /* piclet.xcdatamodeld in Sources */,
 				D4085C541BF0FADE00051436 /* ImageHandler.swift in Sources */,
 				D459D69B1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
 				D4438DBC1BD57883000CB909 /* CreateTextField.swift in Sources */,
@@ -877,7 +888,6 @@
 				D46D1AFB1C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4438DB91BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
 				D45650431C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
-				D4431D0F1BBED73000086759 /* piclet.xcdatamodeld in Sources */,
 				D49C3F681C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */,
 				D4F10BA41BF3BA190097E0CE /* ObjectMapper.swift in Sources */,
 				D4181CCA1BAC4456001155B6 /* UserDataValidator.swift in Sources */,
@@ -896,12 +906,12 @@
 				D44E04A41C352E1A003B502C /* ProfileStatsTableViewController.swift in Sources */,
 				D4438DBD1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D47E5E241BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
-				D4431D101BBED73400086759 /* User+CoreData.swift in Sources */,
 				D4F10BA61BF3BA720097E0CE /* LoginViewController.swift in Sources */,
 				D44248F51BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4254AE11BCD9C3600297FCF /* ApiProxy.swift in Sources */,
 				D4C225C41C343169002169DF /* ProfileImageViewController.swift in Sources */,
 				D46912361BAC03C40012CE7C /* picletUITests.swift in Sources */,
+				D4A27E191C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D427341F1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D459D6991C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D47C56541C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
@@ -1054,12 +1064,14 @@
 		D469123B1BAC03C40012CE7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "SD_WEBP=1";
 				INFOPLIST_FILE = piclet/Info.plist;
@@ -1077,12 +1089,14 @@
 		D469123C1BAC03C40012CE7C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "SD_WEBP=1";
 				INFOPLIST_FILE = piclet/Info.plist;
@@ -1194,19 +1208,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D4431D051BBECAE000086759 /* piclet.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D4431D061BBECAE000086759 /* piclet.xcdatamodel */,
-			);
-			currentVersion = D4431D061BBECAE000086759 /* piclet.xcdatamodel */;
-			path = piclet.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D46912071BAC03C30012CE7C /* Project object */;
 }

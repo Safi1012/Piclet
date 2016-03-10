@@ -121,27 +121,24 @@ class PostsViewController: UIViewController {
     }
     
     func userPressedCreatePost() {
-        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
-            if loggedInUser.token != nil {
-                
-                displayTableView()
-                performSegueWithIdentifier("toImagePickerViewController", sender: self)
-                return
-            }
+
+        if UserAccess.sharedInstance.isUserLoggedIn() {
+            displayTableView()
+            performSegueWithIdentifier("toImagePickerViewController", sender: self)
+            
+        } else {
+            self.displayAlert("NotLoggedIn")
+            
         }
-        self.displayAlert("NotLoggedIn")
     }
     
     
     func checkIfUserAlreadyPosted() -> Bool {
         
-        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
-            if let userName = loggedInUser.username {
-                
-                for post in posts {
-                    if post.creator == userName {
-                        return true
-                    }
+        if let user = UserAccess.sharedInstance.getUser() {
+            for post in posts {
+                if post.creator == user.username {
+                    return true
                 }
             }
         }
@@ -189,9 +186,9 @@ extension PostsViewController: UITableViewDataSource {
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
         cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
-        if let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext) {
+        if let user = UserAccess.sharedInstance.getUser() {
             for username in posts[indexPath.row].voters {
-                if username == loggedInUser.username {
+                if username == user.username {
                     cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
                     break
                 }
@@ -228,30 +225,25 @@ extension PostsViewController: PostsTableViewDelegate {
     
     func likeButtonInCellWasPressed(cell: PostsTableViewCell, post: Post) {
         
-        guard
-            let loggedInUser = User.getLoggedInUser(AppDelegate().managedObjectContext),
-            let token = loggedInUser.token
-        else {
-            self.displayAlert("NotLoggedIn")
-            return
-        }
-        if isRequesting {
-            return
-        }
-        isRequesting = true
-        
-        if cell.postLikeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
-            cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-            post.votes!--
-            cell.postVotesLabel.text = "\(post.votes) Votes"
+        if let user = UserAccess.sharedInstance.getUser() {
+            if isRequesting {
+                return
+            }
+            isRequesting = true
             
-            revertChallengePost(post, cell: cell, token: token)
-        } else {
-            cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-            post.votes!++
-            cell.postVotesLabel.text = "\(post.votes) Votes"
-            
-            likeChallengePost(post, cell: cell, token: token)
+            if cell.postLikeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
+                cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
+                post.votes!--
+                cell.postVotesLabel.text = "\(post.votes) Votes"
+                revertChallengePost(post, cell: cell, token: user.token)
+                
+            } else {
+                cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
+                post.votes!++
+                cell.postVotesLabel.text = "\(post.votes) Votes"
+                likeChallengePost(post, cell: cell, token: user.token)
+                
+            }
         }
     }
 }

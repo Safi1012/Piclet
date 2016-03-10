@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-var managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
 extension UIAlertController {
     
     public class func createErrorAlert(errorCode: String) -> UIAlertController {
@@ -38,9 +36,7 @@ extension UIAlertController {
                     let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
                     viewController.presentViewController(loginVC, animated: true, completion: nil)
                 }
-                if let loggedInUser = User.getLoggedInUser(managedObjectContext) {
-                    User.updateUserToken(managedObjectContext, user: loggedInUser, newToken: nil)
-                }
+                UserAccess.sharedInstance.deleteAllUsers()
             }
         }))
         return alertController

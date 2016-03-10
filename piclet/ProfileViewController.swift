@@ -81,13 +81,11 @@ class ProfileViewController: UIViewController {
     
     func getLoggedInUser() -> Bool {
         
-        if let user = User.getLoggedInUser(AppDelegate().managedObjectContext) {
-            if let userName = user.username, let token = user.token {
-                self.userName = userName
-                self.token = token
-                
-                return true
-            }
+        if let user = UserAccess.sharedInstance.getUser() {
+            self.userName = user.username
+            self.token = user.token
+
+            return true
         }
         return false
     }
@@ -128,11 +126,11 @@ class ProfileViewController: UIViewController {
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
         
         ApiProxy().deleteThisUserToken(token!, success: { () -> () in
-            User.removeUserToken(AppDelegate().managedObjectContext)
+            UserAccess.sharedInstance.deleteAllUsers()
             self.navigatoToLoginViewController()
             
-            }) { (errorCode) -> () in
-                self.displayAlert(errorCode)
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
                 
         }
     }
