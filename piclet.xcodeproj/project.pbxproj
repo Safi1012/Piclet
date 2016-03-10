@@ -342,6 +342,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D42734201C9180D3006BA9DB /* ProfileCollection */ = {
+			isa = PBXGroup;
+			children = (
+				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
+				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
+			);
+			name = ProfileCollection;
+			sourceTree = "<group>";
+		};
 		D4438DB51BD521B2000CB909 /* CreateChallenge */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,22 +523,21 @@
 			isa = PBXGroup;
 			children = (
 				D427341C1C91807E006BA9DB /* ProfileViewController.swift */,
-				D4A917C31C7A45C200186DEC /* ProfileImageView */,
+				D4A917C31C7A45C200186DEC /* ProfileImage */,
 				D4A917C41C7A50D000186DEC /* ProfileStatsTable */,
 				D4689B3E1C88D04100647DDB /* ProfileHistoryTable */,
-				D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */,
-				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
+				D42734201C9180D3006BA9DB /* ProfileCollection */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
 		};
-		D4A917C31C7A45C200186DEC /* ProfileImageView */ = {
+		D4A917C31C7A45C200186DEC /* ProfileImage */ = {
 			isa = PBXGroup;
 			children = (
 				D4C225C11C343169002169DF /* ProfileImageViewController.swift */,
 				D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */,
 			);
-			name = ProfileImageView;
+			name = ProfileImage;
 			sourceTree = "<group>";
 		};
 		D4A917C41C7A50D000186DEC /* ProfileStatsTable */ = {
