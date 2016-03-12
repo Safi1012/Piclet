@@ -56,7 +56,6 @@
 		D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
 		D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; };
 		D49A70591BF3BE79004EA711 /* WebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49A70581BF3BE79004EA711 /* WebImage.framework */; };
-		D49C3F661C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */; };
 		D4A27E0F1C918701007DC1E1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A27E0E1C918701007DC1E1 /* RealmSwift.framework */; };
 		D4A27E111C918757007DC1E1 /* RealmSwift.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4A27E101C918757007DC1E1 /* RealmSwift.framework.dSYM */; };
 		D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A27E161C919032007DC1E1 /* UserAccess.swift */; };
@@ -175,7 +174,6 @@
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		D49A70581BF3BE79004EA711 /* WebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebImage.framework; path = Carthage/Build/iOS/WebImage.framework; sourceTree = "<group>"; };
-		D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreenExtension.swift; sourceTree = "<group>"; };
 		D4A27E0E1C918701007DC1E1 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D4A27E101C918757007DC1E1 /* RealmSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RealmSwift.framework.dSYM; path = Carthage/Build/iOS/RealmSwift.framework.dSYM; sourceTree = "<group>"; };
 		D4A27E161C919032007DC1E1 /* UserAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccess.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */,
 				D4438DD31BD61767000CB909 /* UIAlertControllerExtension.swift */,
 				D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */,
-				D49C3F651C0E2EE8003AAA7C /* UIScreenExtension.swift */,
 				D4C225C51C34329F002169DF /* UIViewExtension.swift */,
 				D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */,
 			);
@@ -617,7 +614,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
-				D49C3F661C0E2EE8003AAA7C /* UIScreenExtension.swift in Sources */,
 				D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */,
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
@@ -914,6 +910,7 @@
 				D4BE34011C91DE2900483576 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

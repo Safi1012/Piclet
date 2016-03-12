@@ -14,8 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var topLogoConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomLogoConstraint: NSLayoutConstraint!
+    @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet var scrollView: UIScrollView!
     
     let userDataValidator = UserDataValidator()
     let objectMapper = ObjectMapper()
@@ -27,15 +27,23 @@ class LoginViewController: UIViewController {
         
         uiStyling()
         AppDelegate().loginViewController = self
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     
-    // MARK: - UI
+    // MARK: - Stying
     
     func uiStyling() {
-        adaptConstraintsToDisplaySize()
         placeholderColoring()
         bottomBorderStyling(usernameTextField)
         bottomBorderStyling(passwordTextField)
@@ -61,27 +69,6 @@ class LoginViewController: UIViewController {
         loginButton.layer.masksToBounds = true
     }
     
-    func adaptConstraintsToDisplaySize() {
-        switch (UIScreen().getDisplayInchSize()) {
-            
-        case DeviceInchSize.inch_3_5:
-            topLogoConstraint.constant = 30.0
-            bottomLogoConstraint.constant = 15.0
-            
-        case DeviceInchSize.inch_4_0:
-            topLogoConstraint.constant = 70.0
-            bottomLogoConstraint.constant = 20.0
-            
-        case DeviceInchSize.inch_4_7, DeviceInchSize.inch_5_5:
-            topLogoConstraint.constant = 80.0
-            bottomLogoConstraint.constant = 40.0
-        }
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-
     
     // MARK: - Login
     
@@ -149,6 +136,29 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {}
+    
+    
+    // MARK: - Keyboard 
+    
+    func keyboardWillShow(notification: NSNotification) {
+        var info = notification.userInfo!
+        let kbSize: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        
+        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: kbSize.height, right: 0.0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect = self.view.frame
+        aRect.size.height -= kbSize.height
+        
+        if !CGRectContainsPoint(aRect, signupButton.frame.origin) {
+            scrollView.scrollRectToVisible(signupButton.frame, animated: true)
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        scrollView.setContentOffset(CGPoint(x: 0.0, y: -self.scrollView.contentInset.top), animated: true)
+    }
 }
 
 
@@ -167,7 +177,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-    
 }
 
 
