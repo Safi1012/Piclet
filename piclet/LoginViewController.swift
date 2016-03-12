@@ -17,10 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet var scrollView: UIScrollView!
     
-    let userDataValidator = UserDataValidator()
-    let objectMapper = ObjectMapper()
-    let apiProxy = ApiProxy()
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +72,7 @@ class LoginViewController: UIViewController {
         if validateTextFields() {
             showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0))
 
-            apiProxy.createUserAccount(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+            ApiProxy().createUserAccount(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
                 self.navigateToChallengesViewController()
                 
             }, failure: { (errorCode) -> () in
@@ -94,7 +90,7 @@ class LoginViewController: UIViewController {
         if validateTextFields() {
             showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0))
                         
-            apiProxy.signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+            ApiProxy().signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
                 self.navigateToChallengesViewController()
                 self.dismissLoadingSpinner()
             
@@ -107,15 +103,15 @@ class LoginViewController: UIViewController {
     }
     
     func validateTextFields() -> Bool {
-        if (!userDataValidator.isUsernameLongEnough(usernameTextField.text!)) {
+        if (!UserDataValidator().isUsernameLongEnough(usernameTextField.text!)) {
             self.displayAlert("UsernameTooShort")
             return false
         }
-        if (userDataValidator.containsSpecialCharacters(usernameTextField.text!)) {
+        if (UserDataValidator().containsSpecialCharacters(usernameTextField.text!)) {
             self.displayAlert("UsernameWrongCharacters")
             return false
         }
-        if (!userDataValidator.isPasswordLongEnough(passwordTextField.text!)) {
+        if (!UserDataValidator().isPasswordLongEnough(passwordTextField.text!)) {
             self.displayAlert("PasswordTooShort")
             return false
         }

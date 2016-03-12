@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         getLoginInformation()
-        embedContainer()
+        embedProfileAvatar()
         addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
     }
     
@@ -39,20 +39,22 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Setup
     
-    func embedContainer() {
+    func embedProfileAvatar() {
         let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
         let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
         addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
+    }
+    
+    func embedProfileInformation() {
+        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
+        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
+        addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
+        profileHistoryDelegate = profileHistoryViewController
         
         let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
         let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
         addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
         profileStatsDelegate = profileStatsViewController
-        
-        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
-        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
-        addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
-        profileHistoryDelegate = profileHistoryViewController
     }
     
     
@@ -71,7 +73,9 @@ class ProfileViewController: UIViewController {
         if let user = UserAccess.sharedInstance.getUser() {
             self.userName = user.username
             self.token = user.token
-
+            embedProfileInformation()
+            scrollView.scrollEnabled = true
+            
             return true
         }
         return false
