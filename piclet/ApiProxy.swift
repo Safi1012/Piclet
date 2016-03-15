@@ -132,6 +132,19 @@ class ApiProxy {
         }
     }
     
+    func deleteUserPost(token: String, challengeID: String, postID: String, success: () -> (), failure: (errorCode: String) -> () ) {
+        
+        let apiPath = "challenges/\(challengeID)/posts/\(postID)"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
+            success()
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
 
     // MARK: - User profile
     

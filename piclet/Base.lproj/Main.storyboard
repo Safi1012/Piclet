@@ -461,7 +461,17 @@
                             <outlet property="delegate" destination="1co-zF-dJR" id="xv3-zM-tOc"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Posts" id="yji-Vj-7oX"/>
+                    <navigationItem key="navigationItem" title="Posts" id="yji-Vj-7oX">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="xzG-1l-PMP">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="userPressedEditButton:" destination="1co-zF-dJR" id="LnA-rF-N9i"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="editBarButtonItem" destination="xzG-1l-PMP" id="8kC-xg-2LF"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cs7-AH-tU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,26 +11,32 @@ import WebImage
 
 class ProfileCollectionViewController: UICollectionViewController {
     
-    @IBOutlet weak var tileImageView: UIImageView!
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
+    
     var userAccount: UserAccount!
     var userPostIds: [PostInformation] = []
+    var selectedPostIds: [PostInformation] = []
     var downloadUserCreatedPosts = true
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.collectionView?.dataSource = self
-        self.collectionView?.delegate = self
+        collectionView?.dataSource = self
+        collectionView?.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
         if downloadUserCreatedPosts {
-            self.navigationItem.title = "Your Posts"
+            navigationItem.title = "Your Posts"
         } else {
-            self.navigationItem.title = "Liked Posts"
+            navigationItem.title = "Liked Posts"
         }
         fetchPosts(0)
     }
+    
+    
+    // Handle Data
     
     func fetchPosts(offset: Int) {
         if downloadUserCreatedPosts {
@@ -74,6 +80,69 @@ class ProfileCollectionViewController: UICollectionViewController {
         }
     }
     
+    func deleteUserPost() {
+        showLoadingSpinner(UIOffset())
+        
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        let group = dispatch_group_create();
+        
+        for postInformation in selectedPostIds {
+            dispatch_group_enter(group)
+            
+            ApiProxy().deleteUserPost(userAccount.token, challengeID: postInformation.challengeId, postID: postInformation.postId, success: { () -> () in
+                dispatch_group_leave(group)
+                
+            }, failure: { (errorCode) -> () in
+                dispatch_group_leave(group)
+                self.displayAlert(errorCode)
+                    
+            })
+        }
+        
+        dispatch_group_notify(group, queue) { () -> Void in
+            self.dismissLoadingSpinner()
+            self.selectedPostIds = []
+            self.fetchPosts(0)
+        }
+    }
+    
+    func animateNavigationBarTitle(title: String, barButton: UIBarButtonItem) {
+        let fadeTextAnimation = CATransition()
+        fadeTextAnimation.duration = 0.45
+        fadeTextAnimation.type = kCATransitionFade
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            self.navigationController?.navigationBar.layer.addAnimation(fadeTextAnimation, forKey: "fadeText")
+            barButton.title = title
+        })
+    }
+    
+    
+    // User
+    
+    @IBAction func userPressedEditButton(sender: UIBarButtonItem) {
+        
+        switch (sender.title!) {
+            
+        case "Edit":
+            animateNavigationBarTitle("Cancel", barButton: sender)
+            collectionView?.allowsMultipleSelection = true
+            
+        case "Cancel":
+            animateNavigationBarTitle("Edit", barButton: sender)
+            collectionView?.allowsMultipleSelection = false
+            
+        case "Delete":
+            animateNavigationBarTitle("Edit", barButton: sender)
+            collectionView?.allowsMultipleSelection = false
+            deleteUserPost()
+            
+        default:
+            print("Right NavigationButton has an unknown Title")
+            
+        }
+    }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -99,16 +168,48 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
-        let imageView = UIImageView()
-        let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
+        if editBarButtonItem.title == "Edit" {
+            let imageView = UIImageView()
+            let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+            imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
+            
+            let imageInfo = JTSImageInfo()
+            imageInfo.image = imageView.image
+            
+            let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
+            imageViewer.optionsDelegate = self
+            imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
+            
+        } else {
+            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
+            cell.layer.borderWidth = 6.0
+            cell.layer.borderColor = UIColor(red: 0.0, green: 125.0/255.0, blue: 255.0/255.0, alpha: 1.0).CGColor
+            
+            if editBarButtonItem.title == "Cancel" {
+                animateNavigationBarTitle("Delete", barButton: editBarButtonItem)
+            }
+            selectedPostIds.append(PostInformation(postId: userPostIds[indexPath.row].postId, challengeId: userPostIds[indexPath.row].challengeId))
+            
+        }
+    }
+    
+    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
+        cell.layer.borderWidth = 0.0
         
-        let imageInfo = JTSImageInfo()
-        imageInfo.image = imageView.image
+        for var i = 0; i < selectedPostIds.count; i++ {
+            if selectedPostIds[i].postId == userPostIds[indexPath.row].postId && selectedPostIds[i].challengeId == userPostIds[indexPath.row].challengeId {
+                selectedPostIds.removeAtIndex(i)
+            }
+        }
         
-        let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
-        imageViewer.optionsDelegate = self
-        imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
+        if selectedPostIds.count == 0 {
+            animateNavigationBarTitle("Cancel", barButton: editBarButtonItem)
+        }
+    }
+    
+    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
     }
 }
 
@@ -138,14 +239,15 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
         return 1.0
     }
     
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        let currentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-
-        if (maximumOffset - currentOffset) <= 70 {
-            fetchPosts((userPostIds.count - 20) + 20)
-        }
-    }
+//    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        let currentOffset = scrollView.contentOffset.y
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+//
+//        if (maximumOffset - currentOffset) <= 70 {
+//            fetchPosts((userPostIds.count - 20) + 20)
+//        }
+//    }
+    
 }
 
 
