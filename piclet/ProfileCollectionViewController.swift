@@ -31,6 +31,7 @@ class ProfileCollectionViewController: UICollectionViewController {
             navigationItem.title = "Your Posts"
         } else {
             navigationItem.title = "Liked Posts"
+            navigationItem.setRightBarButtonItem(nil, animated: true)
         }
         fetchPosts(0)
     }
@@ -127,14 +128,17 @@ class ProfileCollectionViewController: UICollectionViewController {
         case "Edit":
             animateNavigationBarTitle("Cancel", barButton: sender)
             collectionView?.allowsMultipleSelection = true
+            navigationItem.title = "Select to Delete"
             
         case "Cancel":
             animateNavigationBarTitle("Edit", barButton: sender)
             collectionView?.allowsMultipleSelection = false
+            navigationItem.title = "Your Posts"
             
         case "Delete":
             animateNavigationBarTitle("Edit", barButton: sender)
             collectionView?.allowsMultipleSelection = false
+            navigationItem.title = "Your Posts"
             deleteUserPost()
             
         default:
