@@ -26,6 +26,8 @@ class LoginViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
     }
     
     deinit {
@@ -85,6 +87,12 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(sender: UIButton) {
         performLogin()
     }
+    
+    @IBAction func googleLoginButtonPressed(sender: UIButton) {
+        
+        
+    }
+    
     
     func performLogin() {
         if validateTextFields() {
@@ -172,6 +180,24 @@ extension LoginViewController: UITextFieldDelegate {
             performLogin()
         }
         return true
+    }
+}
+
+
+// MARK: - GIDSignInUIDelegate
+
+extension LoginViewController: GIDSignInUIDelegate {
+    
+    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+        self.dismissLoadingSpinner()
+    }
+    
+    func signIn(signIn: GIDSignIn!, presentViewController viewController: UIViewController!) {
+        self.presentViewController(viewController, animated: true, completion: nil)
+    }
+    
+    func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
 

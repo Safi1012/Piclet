@@ -40,6 +40,20 @@ class ApiProxy {
         }
     }
     
+    // add later device id, for push
+    func signInUserWithGoogle(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
+        let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), tokentype: (tokenType), "os" : "ios"]
+        
+        NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
+            UserAccount().createUserToken(json, username: username)
+            success()
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
     func deleteThisUserToken(token: String, success: () -> (), failure: (errorCode: String) -> ()) {
         
         NetworkHandler().requestJSON([:], apiPath: "tokens/this", httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
@@ -323,4 +337,9 @@ enum ImageFormat: String {
 enum ChallengeOrder: String {
     case hot = "hot"
     case new = "new"
+}
+
+enum TokenType: String {
+    case facebook = "facebook"
+    case google   = "google"
 }

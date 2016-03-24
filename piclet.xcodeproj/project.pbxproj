@@ -72,6 +72,15 @@
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C51C34329F002169DF /* UIViewExtension.swift */; };
 		D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */; };
+		D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
+		D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
+		D4CF2F2D1CA3E2F000FC0AE0 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */; };
+		D4CF2F2E1CA3E2F000FC0AE0 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */; };
+		D4CF2F301CA3E65B00FC0AE0 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F2F1CA3E65B00FC0AE0 /* AddressBook.framework */; };
+		D4CF2F321CA3E66400FC0AE0 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F311CA3E66400FC0AE0 /* SafariServices.framework */; };
+		D4CF2F341CA3E66D00FC0AE0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F331CA3E66D00FC0AE0 /* SystemConfiguration.framework */; };
+		D4CF2F361CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F351CA3E76300FC0AE0 /* GoogleService-Info.plist */; };
+		D4CF2F371CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F351CA3E76300FC0AE0 /* GoogleService-Info.plist */; };
 		D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */; };
 		D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FED0941C74BB2F007633FB /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */; };
@@ -185,6 +194,12 @@
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		D4CF2F2F1CA3E65B00FC0AE0 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		D4CF2F311CA3E66400FC0AE0 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		D4CF2F331CA3E66D00FC0AE0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D4CF2F351CA3E76300FC0AE0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
@@ -199,6 +214,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CF2F341CA3E66D00FC0AE0 /* SystemConfiguration.framework in Frameworks */,
+				D4CF2F321CA3E66400FC0AE0 /* SafariServices.framework in Frameworks */,
+				D4CF2F301CA3E65B00FC0AE0 /* AddressBook.framework in Frameworks */,
+				D4CF2F2D1CA3E2F000FC0AE0 /* GoogleSignIn.framework in Frameworks */,
 				D4A27E1B1C919434007DC1E1 /* Realm.framework in Frameworks */,
 				D4A27E0F1C918701007DC1E1 /* RealmSwift.framework in Frameworks */,
 				D4FED0981C76246C007633FB /* BRYXBanner.framework in Frameworks */,
@@ -213,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4BE34081C91E12A00483576 /* SVProgressHUD.framework in Frameworks */,
+				D4CF2F2E1CA3E2F000FC0AE0 /* GoogleSignIn.framework in Frameworks */,
 				D4BE34051C91E0E300483576 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +243,10 @@
 		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4CF2F331CA3E66D00FC0AE0 /* SystemConfiguration.framework */,
+				D4CF2F311CA3E66400FC0AE0 /* SafariServices.framework */,
+				D4CF2F2F1CA3E65B00FC0AE0 /* AddressBook.framework */,
+				D4CF2F281CA3E2D000FC0AE0 /* GoogleSignIn */,
 				D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */,
 				D4A27E1A1C919434007DC1E1 /* Realm.framework */,
 				D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */,
@@ -284,6 +308,7 @@
 		D46912061BAC03C30012CE7C = {
 			isa = PBXGroup;
 			children = (
+				D4CF2F351CA3E76300FC0AE0 /* GoogleService-Info.plist */,
 				D46912111BAC03C30012CE7C /* piclet */,
 				D4BE33F91C91DE2900483576 /* picletTests */,
 				D46912101BAC03C30012CE7C /* Products */,
@@ -454,6 +479,15 @@
 			name = Login;
 			sourceTree = "<group>";
 		};
+		D4CF2F281CA3E2D000FC0AE0 /* GoogleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */,
+				D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */,
+			);
+			name = GoogleSignIn;
+			sourceTree = "<group>";
+		};
 		D4D9A8851C1CD21F009F5F22 /* JTSImageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,7 +600,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
+				D4CF2F361CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */,
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
@@ -580,7 +616,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */,
+				D4CF2F371CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,11 +846,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "SD_WEBP=1";
 				INFOPLIST_FILE = piclet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -833,11 +876,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(SRCROOT)/Carthage/Build/iOS/WebImage.framework",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = "SD_WEBP=1";
 				INFOPLIST_FILE = piclet/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -853,6 +901,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = picletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -871,6 +920,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = picletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;

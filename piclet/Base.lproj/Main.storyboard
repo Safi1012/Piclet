@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z88-C0-S9e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z88-C0-S9e">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1259,13 +1259,22 @@
                                                     <action selector="createAccountButtonPressed:" destination="Z88-C0-S9e" eventType="touchUpInside" id="iF3-es-CKt"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfS-PQ-daw">
+                                                <rect key="frame" x="220" y="347" width="160" height="30"/>
+                                                <connections>
+                                                    <action selector="googleLoginButtonPressed:" destination="Z88-C0-S9e" eventType="touchUpInside" id="q8b-AM-cpX"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="lui-ZV-dwu" firstAttribute="top" secondItem="6MB-pP-Vd2" secondAttribute="bottom" constant="8" id="4q9-wy-f83"/>
                                             <constraint firstItem="6MB-pP-Vd2" firstAttribute="top" secondItem="vq1-81-kaZ" secondAttribute="bottom" constant="65" id="5NB-lA-gvL"/>
                                             <constraint firstAttribute="trailing" secondItem="6MB-pP-Vd2" secondAttribute="trailing" constant="85" id="H3p-mE-S28"/>
+                                            <constraint firstItem="JfS-PQ-daw" firstAttribute="top" secondItem="Nzc-b3-kkJ" secondAttribute="bottom" constant="8" id="TVu-CW-Ucy"/>
+                                            <constraint firstItem="JfS-PQ-daw" firstAttribute="leading" secondItem="soq-aX-fzF" secondAttribute="leading" constant="220" id="TfC-YL-a41"/>
                                             <constraint firstAttribute="trailing" secondItem="toI-du-e04" secondAttribute="trailing" constant="100" id="VUh-Uy-rYU"/>
                                             <constraint firstItem="Nzc-b3-kkJ" firstAttribute="top" secondItem="toI-du-e04" secondAttribute="bottom" constant="8" id="ZLN-Zb-Oos"/>
+                                            <constraint firstAttribute="trailing" secondItem="JfS-PQ-daw" secondAttribute="trailing" constant="220" id="gh5-VI-8L3"/>
                                             <constraint firstItem="vq1-81-kaZ" firstAttribute="top" secondItem="soq-aX-fzF" secondAttribute="top" constant="90" id="hgA-UP-loR"/>
                                             <constraint firstItem="vq1-81-kaZ" firstAttribute="centerX" secondItem="soq-aX-fzF" secondAttribute="centerX" id="ofA-t9-Qxy"/>
                                             <constraint firstItem="Nzc-b3-kkJ" firstAttribute="centerX" secondItem="soq-aX-fzF" secondAttribute="centerX" id="qQt-QZ-G1Z"/>

@@ -13,3 +13,7 @@
 
 // SVProgressHUD
 #import <SVProgressHUD/SVProgressHUD.h>
+
+// GoogleSignIn
+// #import <Google/SignIn.h>
+#import <GoogleSignIn/GoogleSignIn.h>
