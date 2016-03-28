@@ -24,7 +24,7 @@ class ImageUploadViewController: UIViewController {
     @IBAction func pressedUploadNavBarItem(sender: UIBarButtonItem) {
         
         if validateTextField() {
-            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 50.0))
+            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 50.0), color: UIColor.blackColor())
             titleTextField.endEditing(true)
             
             if let newImage = ImageHandler().convertPostsImageForUpload(pickedImage, imageSize: ImagePostsServerWidth.large) {

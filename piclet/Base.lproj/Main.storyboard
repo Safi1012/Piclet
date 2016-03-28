@@ -297,10 +297,10 @@
             </objects>
             <point key="canvasLocation" x="4038" y="-859"/>
         </scene>
-        <!--Tab Bar View Controller-->
+        <!--tabBar-->
         <scene sceneID="8F0-Vp-ns7">
             <objects>
-                <tabBarController storyboardIdentifier="ChallengeProfile" id="ve4-tc-YVU" customClass="TabBarViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="ChallengeProfile" title="tabBar" id="ve4-tc-YVU" customClass="TabBarViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="pCJ-6v-R6R">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -9,37 +9,28 @@
 import UIKit
 import Foundation
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var googleSigninButton: GIDSignInButton!
-
+    @IBOutlet var scrollView: UIScrollView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         uiStyling()
         AppDelegate().loginViewController = self
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
         
-    
         // Google SignIn
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        googleSigninButton.colorScheme = .Light
-        googleSigninButton.style = .Standard
-        
-        GIDSignIn.sharedInstance().signOut()
-        googleSigninButton.addTarget(self, action: #selector(LoginViewController.googleSignInButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        GIDSignIn.sharedInstance().signOut()            // remove, after testing
     }
 
     override func prefersStatusBarHidden() -> Bool {
@@ -50,29 +41,13 @@ class LoginViewController: UIViewController {
     // MARK: - Stying
     
     func uiStyling() {
-        placeholderColoring()
-        bottomBorderStyling(usernameTextField)
-        bottomBorderStyling(passwordTextField)
-        addLoginButtonBorder()
-    }
-    
-    func bottomBorderStyling(textField: UITextField) {
-        let bottomBorder = CALayer()
-        bottomBorder.frame = CGRectMake(0.0, usernameTextField.frame.size.height - 1, usernameTextField.frame.size.width, 1.0);
-        bottomBorder.backgroundColor = UIColor.whiteColor().CGColor
-        textField.layer.addSublayer(bottomBorder)
-    }
-    
-    func placeholderColoring() {
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: usernameTextField.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.lightTextColor()])
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: passwordTextField.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.lightTextColor()])
-    }
-    
-    func addLoginButtonBorder() {
-        loginButton.layer.borderWidth = 1.0
-        loginButton.layer.borderColor = UIColor.whiteColor().CGColor
-        loginButton.layer.cornerRadius = 5.0
-        loginButton.layer.masksToBounds = true
+        usernameTextField.changePlaceholderColoring(UIColor.lightTextColor())
+        passwordTextField.changePlaceholderColoring(UIColor.lightTextColor())
+        
+        usernameTextField.addBottomBorder(UIColor.whiteColor())
+        passwordTextField.addBottomBorder(UIColor.whiteColor())
+        
+        loginButton.addRoundButtonBorder()
     }
     
     
@@ -80,20 +55,18 @@ class LoginViewController: UIViewController {
     
     @IBAction func createAccountButtonPressed(sender: UIButton) {
         if validateTextFields() {
-            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0))
+            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0), color: UIColor.whiteColor())
 
             ApiProxy().createUserAccount(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+                self.dismissLoadingSpinner()
                 self.navigateToChallengesViewController()
                 
             }, failure: { (errorCode) -> () in
+                self.dismissLoadingSpinner()
                 self.displayAlert(errorCode)
                 
             })
         }
-    }
-    @IBAction func googleSignInButtonPressed(sender: GIDSignInButton) {
-        print("TEST")
-        // GIDSignIn.sharedInstance().signIn()
     }
     
     @IBAction func loginButtonPressed(sender: UIButton) {
@@ -102,15 +75,15 @@ class LoginViewController: UIViewController {
     
     func performLogin() {
         if validateTextFields() {
-            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0))
+            showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0), color: UIColor.whiteColor())
                         
             ApiProxy().signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+                self.dismissLoadingSpinner()
                 self.navigateToChallengesViewController()
-                self.dismissLoadingSpinner()
-            
+                
             }, failure: { (errorCode) -> () in
-                self.displayAlert(errorCode)
                 self.dismissLoadingSpinner()
+                self.displayAlert(errorCode)
                 
             })
         }
@@ -140,9 +113,7 @@ class LoginViewController: UIViewController {
     }
     
     func navigateToChallengesViewController() {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.performSegueWithIdentifier("toChallengesViewController", sender: self)
-        }
+        self.performSegueWithIdentifier("toChallengesViewController", sender: self)
     }
     
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue) {}
@@ -190,47 +161,28 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 
-// MARK: - GIDSignInUIDelegate
-
-extension LoginViewController: GIDSignInUIDelegate {
-    
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        self.dismissLoadingSpinner()
-    }
-    
-    func signIn(signIn: GIDSignIn!, presentViewController viewController: UIViewController!) {
-        self.presentViewController(viewController, animated: true, completion: nil)
-    }
-    
-    func signIn(signIn: GIDSignIn!, dismissViewController viewController: UIViewController!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
-
 // MARK: - GIDSignInDelegate
 
 extension LoginViewController: GIDSignInDelegate {
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        
         if (error == nil) {
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let name = user.profile.name
-            let email = user.profile.email
-
-            // call new View to choose the username
+            let storyboardProfileImage = UIStoryboard(name: "Username", bundle: nil)
+            let usernameViewController = storyboardProfileImage.instantiateInitialViewController() as! UsernameViewController
+            usernameViewController.thirdPartyToken = user.authentication.idToken
+            usernameViewController.tokenType = TokenType.google
             
-            // call Joahannes API -> to generate API key
+            presentViewController(usernameViewController, animated: false, completion: nil)
             
         } else {
             print("\(error.localizedDescription)")
+            
         }
     }
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
-        // Perform any operations when the user disconnects from app here.
-        print("TEST")
+        print("User Disconnected - Google SignIn")
     }
 }
 

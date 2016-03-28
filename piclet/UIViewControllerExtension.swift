@@ -36,9 +36,8 @@ extension UIViewController {
             if TimeHandler().secondsPassedSinceDate(timestamp!) > 300 {
                 timestamp = NSDate()
                 return true
-            } else {
-                return false
             }
+            return false
         }
         timestamp = NSDate()
         return true
@@ -57,13 +56,24 @@ extension UIViewController {
     
     // MARK: - Loading Spinner
     
-    func showLoadingSpinner(offset: UIOffset) {
-        SVProgressHUD.setForegroundColor(UIColor.blackColor())
+    func showLoadingSpinner(offset: UIOffset, color: UIColor) {
+        SVProgressHUD.setForegroundColor(color)
         SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Custom)
         SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.None)
         SVProgressHUD.setOffsetFromCenter(offset)
         SVProgressHUD.show()
     }
+    
+//    func showLoadingSpinner(offset: UIOffset) {
+//        SVProgressHUD.setForegroundColor(UIColor.blackColor())
+//        SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
+//        
+//        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Custom)
+//        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.None)
+//        SVProgressHUD.setOffsetFromCenter(offset)
+//        SVProgressHUD.show()
+//    }
 
     func dismissLoadingSpinner() {
         dispatch_async(dispatch_get_main_queue()) {

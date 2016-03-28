@@ -41,7 +41,7 @@ class ApiProxy {
     }
     
     // add later device id, for push
-    func signInUserWithGoogle(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
+    func signInUserWithThirdPartyService(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
         let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in

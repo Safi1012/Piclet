@@ -37,7 +37,7 @@ class MyChallengeViewController: UIViewController {
         super.viewDidAppear(animated)
         
         tableView.flashScrollIndicators()
-        showLoadingSpinner(UIOffset())
+        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         refreshChallenges(0)
     }
 

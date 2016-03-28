@@ -18,6 +18,14 @@
 		D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */; };
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D4422FC71CA92FB900216C72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4422FC61CA92FB900216C72 /* StoreKit.framework */; };
+		D4422FCC1CA9748100216C72 /* Username.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4422FCB1CA9748100216C72 /* Username.storyboard */; };
+		D4422FCD1CA9748100216C72 /* Username.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4422FCB1CA9748100216C72 /* Username.storyboard */; };
+		D4422FCF1CA9768B00216C72 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */; };
+		D4422FD01CA9768B00216C72 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */; };
+		D4422FD21CA98D5B00216C72 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */; };
+		D4422FD31CA98D5B00216C72 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */; };
+		D4422FD51CA98F9500216C72 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FD41CA98F9500216C72 /* UIButtonExtension.swift */; };
+		D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FD41CA98F9500216C72 /* UIButtonExtension.swift */; };
 		D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
 		D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
 		D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
@@ -72,8 +80,6 @@
 		D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C51C34329F002169DF /* UIViewExtension.swift */; };
-		D4CC81CB1CA457F700D109DA /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CC81CA1CA457F700D109DA /* Posts.storyboard */; };
-		D4CC81CC1CA457F700D109DA /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CC81CA1CA457F700D109DA /* Posts.storyboard */; };
 		D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */; };
 		D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
 		D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
@@ -136,6 +142,10 @@
 		D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ImageViewer.framework.dSYM; path = Carthage/Build/iOS/ImageViewer.framework.dSYM; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D4422FC61CA92FB900216C72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D4422FCB1CA9748100216C72 /* Username.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Username.storyboard; sourceTree = "<group>"; };
+		D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
+		D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
+		D4422FD41CA98F9500216C72 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
 		D44248F61BE583E100C88B50 /* ChallengeCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCollection.swift; sourceTree = "<group>"; };
@@ -197,7 +207,6 @@
 		D4BE33FC1C91DE2900483576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		D4CC81CA1CA457F700D109DA /* Posts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Posts.storyboard; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -299,6 +308,8 @@
 				D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */,
 				D4C225C51C34329F002169DF /* UIViewExtension.swift */,
 				D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */,
+				D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */,
+				D4422FD41CA98F9500216C72 /* UIButtonExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -425,7 +436,6 @@
 				D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */,
 				D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */,
 				D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */,
-				D4CC81CA1CA457F700D109DA /* Posts.storyboard */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -483,6 +493,8 @@
 			isa = PBXGroup;
 			children = (
 				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
+				D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */,
+				D4422FCB1CA9748100216C72 /* Username.storyboard */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -608,13 +620,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4422FCC1CA9748100216C72 /* Username.storyboard in Resources */,
 				D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D4CF2F361CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */,
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
-				D4CC81CB1CA457F700D109DA /* Posts.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
@@ -625,7 +637,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4CC81CC1CA457F700D109DA /* Posts.storyboard in Resources */,
+				D4422FCD1CA9748100216C72 /* Username.storyboard in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */,
 				D4CF2F371CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */,
@@ -672,6 +684,7 @@
 				D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D46912471BAC0D970012CE7C /* LoginViewController.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
+				D4422FD51CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
 				D459D6A61C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
@@ -686,6 +699,7 @@
 				D459D6A01C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
+				D4422FD21CA98D5B00216C72 /* UITextFieldExtension.swift in Sources */,
 				D4438DBF1BD60685000CB909 /* TimeHandler.swift in Sources */,
 				D459D6971C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
@@ -705,6 +719,7 @@
 				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
+				D4422FCF1CA9768B00216C72 /* UsernameViewController.swift in Sources */,
 				D4133F4C1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,
 			);
@@ -714,8 +729,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4422FD01CA9768B00216C72 /* UsernameViewController.swift in Sources */,
+				D4422FD31CA98D5B00216C72 /* UITextFieldExtension.swift in Sources */,
 				D4BE34061C91E0F300483576 /* UserDataValidator.swift in Sources */,
 				D4BE34071C91E0FC00483576 /* ErrorHandler.swift in Sources */,
+				D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
 				D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */,
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
 			);

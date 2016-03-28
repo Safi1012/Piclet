@@ -120,7 +120,7 @@ class ChallengeViewController: UIViewController {
 
         if shouldRefreshData(&challengeCollection.timestamp) {
             tableView.hidden = true
-            showLoadingSpinner(UIOffset())
+            showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
             refresh()
         } else {
             tableView.reloadData()

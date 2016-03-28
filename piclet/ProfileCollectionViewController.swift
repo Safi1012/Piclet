@@ -82,7 +82,7 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     
     func deleteUserPost() {
-        showLoadingSpinner(UIOffset())
+        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         let group = dispatch_group_create();
