@@ -15,5 +15,9 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 // GoogleSignIn
-// #import <Google/SignIn.h>
+
+
+
 #import <GoogleSignIn/GoogleSignIn.h>
+#import <GoogleSignIn/GIDProfileData.h>
+#import <GoogleSignIn/GIDAuthentication.h>

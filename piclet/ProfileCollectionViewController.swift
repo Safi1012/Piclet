@@ -201,7 +201,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
         cell.layer.borderWidth = 0.0
         
-        for var i = 0; i < selectedPostIds.count; i++ {
+        for i in 0 ..< selectedPostIds.count {
             if selectedPostIds[i].postId == userPostIds[indexPath.row].postId && selectedPostIds[i].challengeId == userPostIds[indexPath.row].challengeId {
                 selectedPostIds.removeAtIndex(i)
             }

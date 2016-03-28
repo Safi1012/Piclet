@@ -17,6 +17,7 @@
 		D42A2E891BF6935E00B96063 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42A2E881BF6935E00B96063 /* Alamofire.framework */; };
 		D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */; };
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
+		D4422FC71CA92FB900216C72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4422FC61CA92FB900216C72 /* StoreKit.framework */; };
 		D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */; };
 		D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */; };
 		D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44248F61BE583E100C88B50 /* ChallengeCollection.swift */; };
@@ -71,6 +72,8 @@
 		D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C51C34329F002169DF /* UIViewExtension.swift */; };
+		D4CC81CB1CA457F700D109DA /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CC81CA1CA457F700D109DA /* Posts.storyboard */; };
+		D4CC81CC1CA457F700D109DA /* Posts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CC81CA1CA457F700D109DA /* Posts.storyboard */; };
 		D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */; };
 		D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
 		D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
@@ -132,6 +135,7 @@
 		D42B5D381C1CC81E00BE771D /* ImageViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageViewer.framework; path = Carthage/Build/iOS/ImageViewer.framework; sourceTree = "<group>"; };
 		D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ImageViewer.framework.dSYM; path = Carthage/Build/iOS/ImageViewer.framework.dSYM; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		D4422FC61CA92FB900216C72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D44248EA1BE5405E00C88B50 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D44248F21BE5567800C88B50 /* UIImageExtenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtenstion.swift; sourceTree = "<group>"; };
 		D44248F61BE583E100C88B50 /* ChallengeCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeCollection.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 		D4BE33FC1C91DE2900483576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D4CC81CA1CA457F700D109DA /* Posts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Posts.storyboard; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -214,6 +219,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4422FC71CA92FB900216C72 /* StoreKit.framework in Frameworks */,
 				D4CF2F341CA3E66D00FC0AE0 /* SystemConfiguration.framework in Frameworks */,
 				D4CF2F321CA3E66400FC0AE0 /* SafariServices.framework in Frameworks */,
 				D4CF2F301CA3E65B00FC0AE0 /* AddressBook.framework in Frameworks */,
@@ -243,6 +249,7 @@
 		7244FEF7F9F0A29AAA20F52B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4422FC61CA92FB900216C72 /* StoreKit.framework */,
 				D4CF2F331CA3E66D00FC0AE0 /* SystemConfiguration.framework */,
 				D4CF2F311CA3E66400FC0AE0 /* SafariServices.framework */,
 				D4CF2F2F1CA3E65B00FC0AE0 /* AddressBook.framework */,
@@ -418,6 +425,7 @@
 				D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */,
 				D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */,
 				D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */,
+				D4CC81CA1CA457F700D109DA /* Posts.storyboard */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -606,6 +614,7 @@
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
+				D4CC81CB1CA457F700D109DA /* Posts.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
@@ -616,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CC81CC1CA457F700D109DA /* Posts.storyboard in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */,
 				D4CF2F371CA3E76300FC0AE0 /* GoogleService-Info.plist in Resources */,
@@ -855,6 +865,7 @@
 				OTHER_LDFLAGS = (
 					"$(OTHER_LDFLAGS)",
 					"-ObjC",
+					"-lz",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -885,6 +896,7 @@
 				OTHER_LDFLAGS = (
 					"$(OTHER_LDFLAGS)",
 					"-ObjC",
+					"-lz",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.santoscorrea.piclet;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1259,22 +1259,26 @@
                                                     <action selector="createAccountButtonPressed:" destination="Z88-C0-S9e" eventType="touchUpInside" id="iF3-es-CKt"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JfS-PQ-daw">
-                                                <rect key="frame" x="220" y="347" width="160" height="30"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSb-qD-5nT" customClass="GIDSignInButton">
+                                                <rect key="frame" x="194" y="347" width="211" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="76B-ty-eQW"/>
+                                                    <constraint firstAttribute="width" constant="211" id="p0u-hu-3U2"/>
+                                                </constraints>
                                                 <connections>
-                                                    <action selector="googleLoginButtonPressed:" destination="Z88-C0-S9e" eventType="touchUpInside" id="q8b-AM-cpX"/>
+                                                    <action selector="googleSignInButtonPressed:" destination="Z88-C0-S9e" eventType="valueChanged" id="lPb-DI-sE9"/>
                                                 </connections>
-                                            </button>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="lui-ZV-dwu" firstAttribute="top" secondItem="6MB-pP-Vd2" secondAttribute="bottom" constant="8" id="4q9-wy-f83"/>
                                             <constraint firstItem="6MB-pP-Vd2" firstAttribute="top" secondItem="vq1-81-kaZ" secondAttribute="bottom" constant="65" id="5NB-lA-gvL"/>
                                             <constraint firstAttribute="trailing" secondItem="6MB-pP-Vd2" secondAttribute="trailing" constant="85" id="H3p-mE-S28"/>
-                                            <constraint firstItem="JfS-PQ-daw" firstAttribute="top" secondItem="Nzc-b3-kkJ" secondAttribute="bottom" constant="8" id="TVu-CW-Ucy"/>
-                                            <constraint firstItem="JfS-PQ-daw" firstAttribute="leading" secondItem="soq-aX-fzF" secondAttribute="leading" constant="220" id="TfC-YL-a41"/>
                                             <constraint firstAttribute="trailing" secondItem="toI-du-e04" secondAttribute="trailing" constant="100" id="VUh-Uy-rYU"/>
+                                            <constraint firstItem="nSb-qD-5nT" firstAttribute="centerX" secondItem="soq-aX-fzF" secondAttribute="centerX" id="Wir-q4-q9m"/>
                                             <constraint firstItem="Nzc-b3-kkJ" firstAttribute="top" secondItem="toI-du-e04" secondAttribute="bottom" constant="8" id="ZLN-Zb-Oos"/>
-                                            <constraint firstAttribute="trailing" secondItem="JfS-PQ-daw" secondAttribute="trailing" constant="220" id="gh5-VI-8L3"/>
+                                            <constraint firstItem="nSb-qD-5nT" firstAttribute="top" secondItem="Nzc-b3-kkJ" secondAttribute="bottom" constant="8" id="def-YX-tHu"/>
                                             <constraint firstItem="vq1-81-kaZ" firstAttribute="top" secondItem="soq-aX-fzF" secondAttribute="top" constant="90" id="hgA-UP-loR"/>
                                             <constraint firstItem="vq1-81-kaZ" firstAttribute="centerX" secondItem="soq-aX-fzF" secondAttribute="centerX" id="ofA-t9-Qxy"/>
                                             <constraint firstItem="Nzc-b3-kkJ" firstAttribute="centerX" secondItem="soq-aX-fzF" secondAttribute="centerX" id="qQt-QZ-G1Z"/>
@@ -1319,6 +1323,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="googleSigninButton" destination="nSb-qD-5nT" id="fEi-gH-Tkh"/>
                         <outlet property="loginButton" destination="toI-du-e04" id="XOn-Sq-qg4"/>
                         <outlet property="passwordTextField" destination="lui-ZV-dwu" id="WU6-mj-H6t"/>
                         <outlet property="scrollView" destination="iTF-WX-NPe" id="V4z-tM-cpM"/>

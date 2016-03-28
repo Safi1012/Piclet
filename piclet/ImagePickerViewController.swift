@@ -132,13 +132,13 @@ class ImagePickerViewController: UIViewController {
     func createClosePreviewButton(previewImageView: UIImageView) {
         
         let closeButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0))
-        closeButton.addTarget(self, action: "pressedClosePreviewImage:", forControlEvents: UIControlEvents.TouchUpInside)
+        closeButton.addTarget(self, action: #selector(ImagePickerViewController.pressedClosePreviewImage(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         closeButton.setImage(UIImage(named: "closeImageUnfilledRed"), forState: .Normal)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(closeButton)
         
         // Constraints
-        
+
         let views = ["subView": closeButton, "preview": previewImageView]
         let leftMargin = (view.bounds.width - previewImageView.bounds.width) / 2.0
         let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:[subView]-\(leftMargin)-|", options: .AlignAllLeading, metrics: nil, views: views)

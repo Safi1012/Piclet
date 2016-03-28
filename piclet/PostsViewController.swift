@@ -16,12 +16,12 @@ class PostsViewController: UIViewController {
     
     var challenge: Challenge!
     var posts = [Post]()
-    var isRequesting = false
+    private var isRequesting = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = challenge.title
+        navigationItem.title = challenge.title
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -60,13 +60,13 @@ class PostsViewController: UIViewController {
     }
     
     func displayMascotView() {
-        self.tableView.hidden = true
-        self.mascotView.hidden = false
+        tableView.hidden = true
+        mascotView.hidden = false
     }
     
     func displayTableView() {
-        self.tableView.hidden = false
-        self.mascotView.hidden = true
+        tableView.hidden = false
+        mascotView.hidden = true
     }
     
 
@@ -79,7 +79,7 @@ class PostsViewController: UIViewController {
             
             if self.posts.count > 0 {
                 self.displayTableView()
-                self.tableView.performSelectorOnMainThread(Selector("reloadData"), withObject: nil, waitUntilDone: true)
+                self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
             } else {
                 self.displayMascotView()
             }
@@ -96,12 +96,12 @@ class PostsViewController: UIViewController {
             self.isRequesting = false
             
         }) { (errorCode) -> () in
-            post.votes!--
+            post.votes! -= 1
             cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = (post.votes > 1 || post.votes == 0) ? "\(post.votes) Votes" : "\(post.votes) Vote"
-            self.displayAlert(errorCode)
+            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
             self.isRequesting = false
-                
+            self.displayAlert(errorCode)
+            
         }
     }
     
@@ -111,12 +111,12 @@ class PostsViewController: UIViewController {
             self.isRequesting = false
             
         }) { (errorCode) -> () in
-            post.votes!++
+            post.votes! += 1
             cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = (post.votes > 1 || post.votes == 0) ? "\(post.votes) Votes" : "\(post.votes) Vote"
-            self.displayAlert(errorCode)
+            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
             self.isRequesting = false
-                
+            self.displayAlert(errorCode)
+            
         }
     }
     
@@ -131,7 +131,6 @@ class PostsViewController: UIViewController {
             
         }
     }
-    
     
     func checkIfUserAlreadyPosted() -> Bool {
         
@@ -173,18 +172,19 @@ extension PostsViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
+        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
 
         cell.post = posts[indexPath.row]
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
-        cell.postVotesLabel.text = posts[indexPath.row].votes > 1 || posts[indexPath.row].votes == 0 ? "\(posts[indexPath.row].votes) Votes" : "\(posts[indexPath.row].votes) Vote"
-        
+        cell.postVotesLabel.text = Formater().formatSingularAndPlural(posts[indexPath.row].votes, singularWord: "Vote")
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
-        
-        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
         cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
+        
+        // configure dynamic cell size
+        // here or in storyboard
         
         if let user = UserAccess.sharedInstance.getUser() {
             for username in posts[indexPath.row].voters {
@@ -232,18 +232,21 @@ extension PostsViewController: PostsTableViewDelegate {
             isRequesting = true
             
             if cell.postLikeButton.imageForState(UIControlState.Normal) == UIImage(named: "likeFilled") {
+                post.votes! -= 1
                 cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-                post.votes!--
-                cell.postVotesLabel.text = "\(post.votes) Votes"
                 revertChallengePost(post, cell: cell, token: user.token)
                 
             } else {
+                post.votes! += 1
                 cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-                post.votes!++
-                cell.postVotesLabel.text = "\(post.votes) Votes"
                 likeChallengePost(post, cell: cell, token: user.token)
                 
             }
+            
+            // check if neccesary
+            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
+            
+            
         }
     }
 }

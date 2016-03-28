@@ -33,7 +33,7 @@ class PostsTableViewCell: UITableViewCell {
     func addDoubleTapGestureRecognizer(postViewController: PostsViewController) {
         self.postViewController = postViewController
         
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "detectedDoubleTap")
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(PostsTableViewCell.detectedDoubleTap))
             doubleTapRecognizer.numberOfTapsRequired = 2
         
         postImage.userInteractionEnabled = true

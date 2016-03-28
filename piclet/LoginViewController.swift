@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet var scrollView: UIScrollView!
-    
+    @IBOutlet weak var googleSigninButton: GIDSignInButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,18 @@ class LoginViewController: UIViewController {
         uiStyling()
         AppDelegate().loginViewController = self
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: nil);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
         
+    
+        // Google SignIn
         GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
+        googleSigninButton.colorScheme = .Light
+        googleSigninButton.style = .Standard
+        
+        GIDSignIn.sharedInstance().signOut()
+        googleSigninButton.addTarget(self, action: #selector(LoginViewController.googleSignInButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     deinit {
@@ -83,16 +91,14 @@ class LoginViewController: UIViewController {
             })
         }
     }
+    @IBAction func googleSignInButtonPressed(sender: GIDSignInButton) {
+        print("TEST")
+        // GIDSignIn.sharedInstance().signIn()
+    }
     
     @IBAction func loginButtonPressed(sender: UIButton) {
         performLogin()
     }
-    
-    @IBAction func googleLoginButtonPressed(sender: UIButton) {
-        
-        
-    }
-    
     
     func performLogin() {
         if validateTextFields() {
@@ -202,4 +208,29 @@ extension LoginViewController: GIDSignInUIDelegate {
 }
 
 
+// MARK: - GIDSignInDelegate
+
+extension LoginViewController: GIDSignInDelegate {
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        if (error == nil) {
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let name = user.profile.name
+            let email = user.profile.email
+
+            // call new View to choose the username
+            
+            // call Joahannes API -> to generate API key
+            
+        } else {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
+        // Perform any operations when the user disconnects from app here.
+        print("TEST")
+    }
+}
 

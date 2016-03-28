@@ -40,10 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         // Initialize Google Sign-In
-        var configureError: NSError?
-        GGLContext.sharedInstance().configureWithError(&configureError)
-        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+//        var configureError: NSError?
+//        GGLContext.sharedInstance().configureWithError(&configureError)
+//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
         GIDSignIn.sharedInstance().clientID = "334561171822-imjnkbci15m9ae8m1chk417g5sgl856t.apps.googleusercontent.com"
+        // GIDSignIn.sharedInstance().delegate = self
         
 
         return true
@@ -73,21 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // self.saveContext()
     }
     
-    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        
-        return GIDSignIn.sharedInstance().handleURL(url,
-                                                    sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey],
-                                                    annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
-        
+    @available(iOS, introduced=8.0, deprecated=9.0)
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication!, annotation: annotation)
     }
     
     func appDelegate () -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-    
-
-    
-    
     
     // MARK: - Rotation
 
@@ -105,29 +99,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
-// MARK: GIDSignInDelegate
-extension AppDelegate: GIDSignInDelegate {
-    
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
-        if (error == nil) {
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let name = user.profile.name
-            let email = user.profile.email
-            
-            // call Joahannes API -> to generate API key
-        } else {
-            print("\(error.localizedDescription)")
-        }
-    }
-    
-    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
-        // Perform any operations when the user disconnects from app here.
-        
-        print("TEST")
-    }
-    
-}
 
