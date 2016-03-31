@@ -15,9 +15,9 @@
 #import <SVProgressHUD/SVProgressHUD.h>
 
 // GoogleSignIn
-
-
-
 #import <GoogleSignIn/GoogleSignIn.h>
-#import <GoogleSignIn/GIDProfileData.h>
-#import <GoogleSignIn/GIDAuthentication.h>
+
+// EAIntroView - Onboarding
+#import "EAIntroPage.h"
+#import "EAIntroView.h"
+#import "EARestrictedScrollView.h"
