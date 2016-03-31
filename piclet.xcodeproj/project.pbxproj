@@ -52,8 +52,6 @@
 		D45E2B9E1CAABC9800002BC3 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E2B9A1CAABC9800002BC3 /* EAIntroView.m */; };
 		D45E2BA11CAABCBE00002BC3 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E2BA01CAABCBE00002BC3 /* EARestrictedScrollView.m */; };
 		D45E2BA21CAABCBE00002BC3 /* EARestrictedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = D45E2BA01CAABCBE00002BC3 /* EARestrictedScrollView.m */; };
-		D45E2BB41CAACCFE00002BC3 /* Onboarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45E2BB31CAACCFE00002BC3 /* Onboarder.swift */; };
-		D45E2BB51CAACCFE00002BC3 /* Onboarder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45E2BB31CAACCFE00002BC3 /* Onboarder.swift */; };
 		D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB711BCBD1D000701EFF /* Challenge.swift */; };
 		D462CB741BCBD3EE00701EFF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462CB731BCBD3EE00701EFF /* Post.swift */; };
 		D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */; };
@@ -196,7 +194,6 @@
 		D45E2B9A1CAABC9800002BC3 /* EAIntroView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAIntroView.m; sourceTree = "<group>"; };
 		D45E2B9F1CAABCBE00002BC3 /* EARestrictedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EARestrictedScrollView.h; sourceTree = "<group>"; };
 		D45E2BA01CAABCBE00002BC3 /* EARestrictedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EARestrictedScrollView.m; sourceTree = "<group>"; };
-		D45E2BB31CAACCFE00002BC3 /* Onboarder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarder.swift; sourceTree = "<group>"; };
 		D462CB711BCBD1D000701EFF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		D462CB731BCBD3EE00701EFF /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D46494801BEF523900AA48C4 /* ImageUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadViewController.swift; sourceTree = "<group>"; };
@@ -435,7 +432,6 @@
 				D46494841BEF900C00AA48C4 /* UserAccount.swift */,
 				D4085C511BF0FAD700051436 /* ImageHandler.swift */,
 				D4FED09B1C775DD3007633FB /* Formater.swift */,
-				D45E2BB31CAACCFE00002BC3 /* Onboarder.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -753,7 +749,6 @@
 				D4438DD41BD61767000CB909 /* UIAlertControllerExtension.swift in Sources */,
 				D459D69A1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
-				D45E2BB41CAACCFE00002BC3 /* Onboarder.swift in Sources */,
 				D459D6A01C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
 				D462CB721BCBD1D000701EFF /* Challenge.swift in Sources */,
 				D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */,
@@ -795,7 +790,6 @@
 				D4BE34061C91E0F300483576 /* UserDataValidator.swift in Sources */,
 				D45E2BA21CAABCBE00002BC3 /* EARestrictedScrollView.m in Sources */,
 				D4BE34071C91E0FC00483576 /* ErrorHandler.swift in Sources */,
-				D45E2BB51CAACCFE00002BC3 /* Onboarder.swift in Sources */,
 				D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
 				D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */,
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
