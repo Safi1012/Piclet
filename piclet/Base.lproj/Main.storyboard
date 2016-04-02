@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Z88-C0-S9e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="teC-cs-OF8">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -1335,6 +1335,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R8H-Ny-7bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="238" y="1144"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="PcX-B4-G8K">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" id="teC-cs-OF8" customClass="WelcomeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UqJ-80-VAr"/>
+                        <viewControllerLayoutGuide type="bottom" id="fHx-Pw-P0F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2px-rZ-mtO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGI-XU-avZ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fHx-Pw-P0F" firstAttribute="top" secondItem="RGI-XU-avZ" secondAttribute="bottom" id="Jsf-ec-U1E"/>
+                            <constraint firstItem="RGI-XU-avZ" firstAttribute="leading" secondItem="2px-rZ-mtO" secondAttribute="leadingMargin" constant="-20" id="g5j-5M-iq2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RGI-XU-avZ" secondAttribute="trailing" constant="-20" id="iap-jz-ynM"/>
+                            <constraint firstItem="RGI-XU-avZ" firstAttribute="top" secondItem="UqJ-80-VAr" secondAttribute="bottom" id="yvc-fL-der"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="containerView" destination="RGI-XU-avZ" id="FWe-Sb-E9k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36B-g6-vqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238" y="1835"/>
         </scene>
     </scenes>
     <resources>

@@ -50,15 +50,15 @@ class UsernameViewController: UIViewController {
     func signupUser(username: String) {
         showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 0.0), color: UIColor.whiteColor())
         
-        ApiProxy().signInUserWithThirdPartyService(username, oauthToken: thirdPartyToken, tokenType: tokenType, success: {
-            self.dismissLoadingSpinner()
-            self.navigateToChallengesViewController()
-            
-        }) { (errorCode) in
-            self.dismissLoadingSpinner()
-            self.displayAlert(errorCode)
-            
-        }
+//        ApiProxy().signInUserWithThirdPartyService(username, oauthToken: thirdPartyToken, tokenType: tokenType, success: {
+//            self.dismissLoadingSpinner()
+//            self.navigateToChallengesViewController()
+//            
+//        }) { (errorCode) in
+//            self.dismissLoadingSpinner()
+//            self.displayAlert(errorCode)
+//            
+//        }
     }
     
     func validateTextFields() -> Bool {

@@ -19,6 +19,15 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet var scrollView: UIScrollView!
     
     
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        
+//        
+//    }
+    
+    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +44,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signOut()            // remove, after testing
     }
+ 
 
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -197,12 +207,15 @@ extension LoginViewController: GIDSignInDelegate {
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
         
         if (error == nil) {
-            let storyboardProfileImage = UIStoryboard(name: "Username", bundle: nil)
-            let usernameViewController = storyboardProfileImage.instantiateInitialViewController() as! UsernameViewController
-            usernameViewController.thirdPartyToken = user.authentication.idToken
-            usernameViewController.tokenType = TokenType.google
+            print("\(user.authentication.idToken)")
+    
             
-            presentViewController(usernameViewController, animated: false, completion: nil)
+            // let storyboardProfileImage = UIStoryboard(name: "Username", bundle: nil)
+            // let usernameViewController = storyboardProfileImage.instantiateInitialViewController() as! UsernameViewController
+            // usernameViewController.thirdPartyToken = user.authentication.idToken
+            // usernameViewController.tokenType = TokenType.google
+            
+            // presentViewController(usernameViewController, animated: false, completion: nil)
             
         } else {
             print("\(error.localizedDescription)")

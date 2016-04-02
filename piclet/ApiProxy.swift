@@ -27,6 +27,20 @@ class ApiProxy {
         }
     }
     
+    // add later device id, for push
+    func createUserWithThirdPartyService(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
+        let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "os" : "ios"]
+        
+        NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
+            UserAccount().createUserToken(json, username: username)
+            success()
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         
@@ -40,15 +54,13 @@ class ApiProxy {
         }
     }
     
-    // add later device id, for push
-    func signInUserWithThirdPartyService(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "os" : "ios"]
+    func signInUserWithThirdPartyService(oauthtoken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
+        let parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "os" : "ios"]
         
-        NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
-            UserAccount().createUserToken(json, username: username)
+        NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) in
             success()
             
-        }) { (errorCode) -> () in
+        }) { (errorCode) in
             failure(errorCode: errorCode)
             
         }

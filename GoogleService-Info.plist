@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>334561171822-imjnkbci15m9ae8m1chk417g5sgl856t.apps.googleusercontent.com</string>
+	<string>341730212595-ir18hmkfcji9ke2h7opc4t7ovdlbfj68.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.334561171822-imjnkbci15m9ae8m1chk417g5sgl856t</string>
+	<string>com.googleusercontent.apps.341730212595-ir18hmkfcji9ke2h7opc4t7ovdlbfj68</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
@@ -21,8 +21,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:334561171822:ios:ebfbf3135a6d8e16</string>
+	<string>1:341730212595:ios:ebfbf3135a6d8e16</string>
 	<key>PROJECT_ID</key>
-	<string>picelt-d6807</string>
+	<string>piclet-1258</string>
 </dict>
 </plist>

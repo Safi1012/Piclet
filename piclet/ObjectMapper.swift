@@ -145,6 +145,15 @@ class ObjectMapper {
         
         return userAccount
     }
+    
+    func parseJWTResponse(json: AnyObject) {
+        
+        print("\(json)")
+        
+        
+        
+    }
+    
 }
 
 
