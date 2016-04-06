@@ -1344,30 +1344,143 @@
                         <viewControllerLayoutGuide type="top" id="UqJ-80-VAr"/>
                         <viewControllerLayoutGuide type="bottom" id="fHx-Pw-P0F"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2px-rZ-mtO">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="LX9-EA-qHR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGI-XU-avZ">
+                            <imageView userInteractionEnabled="NO" alpha="0.94999998807907104" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundLogin" translatesAutoresizingMaskIntoConstraints="NO" id="bNX-In-6AN">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Piclet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZKV-u7-c99">
+                                <rect key="frame" x="172" y="90" width="256" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picletIcon_Outline" translatesAutoresizingMaskIntoConstraints="NO" id="zjK-V2-UIb" userLabel="picletIcon">
+                                <rect key="frame" x="259" y="250" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="j0N-OB-o8c"/>
+                                    <constraint firstAttribute="height" constant="100" id="msC-ao-psf"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQT-tL-MXJ">
+                                <rect key="frame" x="0.0" y="395" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="w7y-QR-fAH"/>
+                                </constraints>
+                                <state key="normal" title="Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedFacebookButton:" destination="teC-cs-OF8" eventType="touchUpInside" id="0nq-xN-qgv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUz-gU-VhD">
+                                <rect key="frame" x="0.0" y="455" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="mcF-hG-Lb3"/>
+                                </constraints>
+                                <state key="normal" title="Google">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedGoogleButton:" destination="teC-cs-OF8" eventType="touchUpInside" id="HhW-H9-89h"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dw-dD-hGJ">
+                                <rect key="frame" x="0.0" y="515" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="lMi-Fb-h3R"/>
+                                </constraints>
+                                <state key="normal" title="Username">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="pressedUsernameButton:" destination="teC-cs-OF8" eventType="touchUpInside" id="feN-zu-1h2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WUz-gU-VhD" firstAttribute="leading" secondItem="LX9-EA-qHR" secondAttribute="leading" id="0Y4-VW-kgV"/>
+                            <constraint firstItem="bNX-In-6AN" firstAttribute="leading" secondItem="LX9-EA-qHR" secondAttribute="leading" id="9zA-uC-vAA"/>
+                            <constraint firstAttribute="trailing" secondItem="bNX-In-6AN" secondAttribute="trailing" id="MTJ-kf-RS0"/>
+                            <constraint firstItem="8dw-dD-hGJ" firstAttribute="leading" secondItem="LX9-EA-qHR" secondAttribute="leading" id="OBu-k0-HVX"/>
+                            <constraint firstItem="ZKV-u7-c99" firstAttribute="centerX" secondItem="LX9-EA-qHR" secondAttribute="centerX" id="ToR-hW-j4a"/>
+                            <constraint firstItem="WUz-gU-VhD" firstAttribute="top" secondItem="ZQT-tL-MXJ" secondAttribute="bottom" id="Wdo-4E-CU1"/>
+                            <constraint firstAttribute="trailing" secondItem="8dw-dD-hGJ" secondAttribute="trailing" id="Zdz-IX-0qh"/>
+                            <constraint firstItem="bNX-In-6AN" firstAttribute="top" secondItem="LX9-EA-qHR" secondAttribute="top" id="deA-dF-bcE"/>
+                            <constraint firstAttribute="trailing" secondItem="WUz-gU-VhD" secondAttribute="trailing" id="gGN-o0-acN"/>
+                            <constraint firstItem="zjK-V2-UIb" firstAttribute="top" secondItem="ZKV-u7-c99" secondAttribute="bottom" constant="124" id="gV5-J6-4CN"/>
+                            <constraint firstItem="ZQT-tL-MXJ" firstAttribute="leading" secondItem="LX9-EA-qHR" secondAttribute="leading" id="ivZ-jU-1NH"/>
+                            <constraint firstAttribute="bottom" secondItem="bNX-In-6AN" secondAttribute="bottom" id="lsP-zE-hrr"/>
+                            <constraint firstItem="8dw-dD-hGJ" firstAttribute="top" secondItem="WUz-gU-VhD" secondAttribute="bottom" id="mSp-zs-YR2"/>
+                            <constraint firstItem="zjK-V2-UIb" firstAttribute="centerY" secondItem="LX9-EA-qHR" secondAttribute="centerY" id="ocm-b7-MJh"/>
+                            <constraint firstAttribute="trailing" secondItem="ZQT-tL-MXJ" secondAttribute="trailing" id="pxR-HV-7lR"/>
+                            <constraint firstItem="zjK-V2-UIb" firstAttribute="centerX" secondItem="LX9-EA-qHR" secondAttribute="centerX" constant="9" id="w51-nQ-CT8"/>
+                            <constraint firstAttribute="bottom" secondItem="8dw-dD-hGJ" secondAttribute="bottom" constant="25" id="ywD-Dz-grP"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="facebookButton" destination="ZQT-tL-MXJ" id="w3Q-j1-eAG"/>
+                        <outlet property="googleButton" destination="WUz-gU-VhD" id="76o-4P-Nih"/>
+                        <outlet property="usernameButton" destination="8dw-dD-hGJ" id="Dpb-iK-HIn"/>
+                        <segue destination="22g-JY-zFi" kind="presentation" identifier="toUserViewController" id="pBW-Lj-kMf"/>
+                        <segue destination="WkX-Od-B04" kind="presentation" identifier="toThirdPartyServiceViewController" id="bC5-89-6AF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36B-g6-vqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2932" y="1171"/>
+        </scene>
+        <!--Third Party Service View Controller-->
+        <scene sceneID="Cbo-Lx-b4L">
+            <objects>
+                <viewController id="WkX-Od-B04" customClass="ThirdPartyServiceViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KfF-TC-8YX"/>
+                        <viewControllerLayoutGuide type="bottom" id="5t5-NU-pUa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Tu-OQ-l0m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="grw-4h-fNL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fHx-Pw-P0F" firstAttribute="top" secondItem="RGI-XU-avZ" secondAttribute="bottom" id="Jsf-ec-U1E"/>
-                            <constraint firstItem="RGI-XU-avZ" firstAttribute="leading" secondItem="2px-rZ-mtO" secondAttribute="leadingMargin" constant="-20" id="g5j-5M-iq2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="RGI-XU-avZ" secondAttribute="trailing" constant="-20" id="iap-jz-ynM"/>
-                            <constraint firstItem="RGI-XU-avZ" firstAttribute="top" secondItem="UqJ-80-VAr" secondAttribute="bottom" id="yvc-fL-der"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="grw-4h-fNL" secondAttribute="trailing" constant="-20" id="7UQ-4Z-Gde"/>
+                            <constraint firstItem="5t5-NU-pUa" firstAttribute="top" secondItem="grw-4h-fNL" secondAttribute="bottom" id="81G-Zc-Sau"/>
+                            <constraint firstItem="grw-4h-fNL" firstAttribute="leading" secondItem="5Tu-OQ-l0m" secondAttribute="leadingMargin" constant="-20" id="aMF-Cz-Bvv"/>
+                            <constraint firstItem="grw-4h-fNL" firstAttribute="top" secondItem="KfF-TC-8YX" secondAttribute="bottom" constant="-20" id="jST-jn-qp4"/>
                         </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <connections>
-                        <outlet property="containerView" destination="RGI-XU-avZ" id="FWe-Sb-E9k"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="36B-g6-vqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rr7-Mn-bD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="1835"/>
+            <point key="canvasLocation" x="-2212" y="836"/>
+        </scene>
+        <!--User View Controller-->
+        <scene sceneID="dpa-49-8rT">
+            <objects>
+                <viewController id="22g-JY-zFi" customClass="UserViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tLP-Ag-rnE"/>
+                        <viewControllerLayoutGuide type="bottom" id="y1f-eG-E5A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="E3v-B6-Qrl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sny-Rr-oL6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2212" y="1530"/>
         </scene>
     </scenes>
     <resources>
@@ -1382,6 +1495,7 @@
         <image name="mascot" width="174" height="200"/>
         <image name="navBarCancel" width="22" height="22"/>
         <image name="navBarNext" width="22" height="22"/>
+        <image name="picletIcon_Outline" width="118" height="205"/>
         <image name="tabBarChallenges" width="25" height="25"/>
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>

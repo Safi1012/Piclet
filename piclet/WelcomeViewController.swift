@@ -9,8 +9,12 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
-    @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var facebookButton: UIButton!
+    @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var usernameButton: UIButton!
+    
+    var selectedService = SignInService.username
     
     
     // MARK: - Lifecycle
@@ -18,7 +22,10 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadSignInOrSignUpViewController()
+        facebookButton.addBoarderTop()
+        googleButton.addBoarderTop()
+        usernameButton.addBoarderTop()
+        usernameButton.addBoarderBottom()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -26,40 +33,72 @@ class WelcomeViewController: UIViewController {
     }
     
     func removeChildViewController() {
-        self.childViewControllers[0].removeFromParentViewController()
-        loadSignInOrSignUpViewController()
+        childViewControllers[0].removeFromParentViewController()
     }
     
     
-    // MARK: - Load Views
+    // MARK: - UI
     
-    func loadSignInOrSignUpViewController() {
-        let signInOrSignUpViewController = SignInOrSignUpViewController(nibName: "SignInOrSignUpViewController", bundle: NSBundle.mainBundle())
-        addChildViewController(signInOrSignUpViewController, toContainerView: containerView)
+    @IBAction func pressedFacebookButton(sender: UIButton) {
+        selectedService = SignInService.facebook
+        loadTermsOfServiceViewController()
     }
     
-    func loadGoogleViewController() {
-        let googleViewController = GoogleViewController(nibName: "GoogleViewController", bundle: NSBundle.mainBundle())
-        addChildViewController(googleViewController, toContainerView: containerView)
+    @IBAction func pressedGoogleButton(sender: UIButton) {
+        selectedService = SignInService.google
+        loadTermsOfServiceViewController()
     }
     
-    
-    
-    
-    
-
-    
-    func loadSigInViewController() {
-        let signInViewController = SignInViewController(nibName: "SignInViewController", bundle: NSBundle.mainBundle())
-        addChildViewController(signInViewController, toContainerView: containerView)
-    }
-
-    func loadSigUpViewController() {
-        let signUpViewController = SignUpViewController(nibName: "SignUpViewController", bundle: NSBundle.mainBundle())
-        addChildViewController(signUpViewController, toContainerView: containerView)
+    @IBAction func pressedUsernameButton(sender: UIButton) {
+        selectedService = SignInService.username
+        
+        // perfrom segue to userVC
     }
     
     
+    // MARK: - Navigation
+    
+    func loadTermsOfServiceViewController() {
+        let tosViewController = TosViewController(nibName: "TosViewController", bundle: NSBundle.mainBundle())
+        addChildViewController(tosViewController, toContainerView: view)
+    }
+    
+    func navigateToSelectedServiceViewController() {
+        removeChildViewController()
+        
+        switch selectedService {
+            
+        case .facebook:
+            print("fb")
+            
+        case .google:
+            print("google")
+            
+        case .username:
+            performSegueWithIdentifier("toUserViewController", sender: self)
+        }
+    }
 }
 
 
+enum SignInService {
+    case facebook
+    case google
+    case username
+}
+
+
+
+
+
+
+
+//    func removeChildViewController() {
+//        self.childViewControllers[0].removeFromParentViewController()
+//        loadSignInOrSignUpViewController()
+//    }
+//
+//    func loadSignInOrSignUpViewController() {
+//        let signInOrSignUpViewController = SignInOrSignUpViewController(nibName: "SignInOrSignUpViewController", bundle: NSBundle.mainBundle())
+//        addChildViewController(signInOrSignUpViewController, toContainerView: containerView)
+//    }

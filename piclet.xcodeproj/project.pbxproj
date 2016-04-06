@@ -17,6 +17,14 @@
 		D42A2E891BF6935E00B96063 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D42A2E881BF6935E00B96063 /* Alamofire.framework */; };
 		D42A2E8B1BF6938A00B96063 /* Alamofire.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D42A2E8A1BF6938A00B96063 /* Alamofire.framework.dSYM */; };
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
+		D43721071CB16BFA0058B262 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721061CB16BFA0058B262 /* UserViewController.swift */; };
+		D43721081CB16BFA0058B262 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721061CB16BFA0058B262 /* UserViewController.swift */; };
+		D437210B1CB16DAB0058B262 /* TosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721091CB16DAB0058B262 /* TosViewController.swift */; };
+		D437210C1CB16DAB0058B262 /* TosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721091CB16DAB0058B262 /* TosViewController.swift */; };
+		D437210D1CB16DAB0058B262 /* TosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D437210A1CB16DAB0058B262 /* TosViewController.xib */; };
+		D437210E1CB16DAB0058B262 /* TosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D437210A1CB16DAB0058B262 /* TosViewController.xib */; };
+		D43721111CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */; };
+		D43721121CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */; };
 		D4422FC71CA92FB900216C72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4422FC61CA92FB900216C72 /* StoreKit.framework */; };
 		D4422FCF1CA9768B00216C72 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */; };
 		D4422FD01CA9768B00216C72 /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */; };
@@ -82,20 +90,8 @@
 		D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */; };
 		D4B583211CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */; };
 		D4B583221CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */; };
-		D4B583321CADA1FE005C5AD9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B583301CADA1FE005C5AD9 /* SignInViewController.swift */; };
-		D4B583331CADA1FE005C5AD9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B583301CADA1FE005C5AD9 /* SignInViewController.swift */; };
-		D4B583341CADA1FE005C5AD9 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583311CADA1FE005C5AD9 /* SignInViewController.xib */; };
-		D4B583351CADA1FE005C5AD9 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583311CADA1FE005C5AD9 /* SignInViewController.xib */; };
-		D4B583381CADB19A005C5AD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B583361CADB19A005C5AD9 /* SignUpViewController.swift */; };
-		D4B583391CADB19A005C5AD9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B583361CADB19A005C5AD9 /* SignUpViewController.swift */; };
-		D4B5833A1CADB19A005C5AD9 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583371CADB19A005C5AD9 /* SignUpViewController.xib */; };
-		D4B5833B1CADB19A005C5AD9 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583371CADB19A005C5AD9 /* SignUpViewController.xib */; };
 		D4B5833F1CADB459005C5AD9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */; };
 		D4B583401CADB459005C5AD9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */; };
-		D4B583461CADB502005C5AD9 /* SignInOrSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B583441CADB502005C5AD9 /* SignInOrSignUpViewController.swift */; };
-		D4B583471CADB502005C5AD9 /* SignInOrSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B583441CADB502005C5AD9 /* SignInOrSignUpViewController.swift */; };
-		D4B583481CADB502005C5AD9 /* SignInOrSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583451CADB502005C5AD9 /* SignInOrSignUpViewController.xib */; };
-		D4B583491CADB502005C5AD9 /* SignInOrSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583451CADB502005C5AD9 /* SignInOrSignUpViewController.xib */; };
 		D4B5834B1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4B5834A1CADCBDD005C5AD9 /* GoogleService-Info.plist */; };
 		D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4B5834A1CADCBDD005C5AD9 /* GoogleService-Info.plist */; };
 		D4B583501CB03DE2005C5AD9 /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5834E1CB03DE2005C5AD9 /* GoogleViewController.swift */; };
@@ -171,6 +167,10 @@
 		D42B5D381C1CC81E00BE771D /* ImageViewer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageViewer.framework; path = Carthage/Build/iOS/ImageViewer.framework; sourceTree = "<group>"; };
 		D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ImageViewer.framework.dSYM; path = Carthage/Build/iOS/ImageViewer.framework.dSYM; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		D43721061CB16BFA0058B262 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		D43721091CB16DAB0058B262 /* TosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TosViewController.swift; sourceTree = "<group>"; };
+		D437210A1CB16DAB0058B262 /* TosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TosViewController.xib; sourceTree = "<group>"; };
+		D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyServiceViewController.swift; sourceTree = "<group>"; };
 		D4422FC61CA92FB900216C72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
 		D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -241,13 +241,7 @@
 		D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_0.xib; sourceTree = "<group>"; };
 		D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_1.xib; sourceTree = "<group>"; };
 		D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_2.xib; sourceTree = "<group>"; };
-		D4B583301CADA1FE005C5AD9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		D4B583311CADA1FE005C5AD9 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
-		D4B583361CADB19A005C5AD9 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		D4B583371CADB19A005C5AD9 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
 		D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		D4B583441CADB502005C5AD9 /* SignInOrSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInOrSignUpViewController.swift; sourceTree = "<group>"; };
-		D4B583451CADB502005C5AD9 /* SignInOrSignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignInOrSignUpViewController.xib; sourceTree = "<group>"; };
 		D4B5834A1CADCBDD005C5AD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4B5834E1CB03DE2005C5AD9 /* GoogleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleViewController.swift; sourceTree = "<group>"; };
 		D4B5834F1CB03DE2005C5AD9 /* GoogleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleViewController.xib; sourceTree = "<group>"; };
@@ -338,6 +332,40 @@
 				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
 			);
 			name = ProfileCollection;
+			sourceTree = "<group>";
+		};
+		D43721011CB16A180058B262 /* TermsOfService */ = {
+			isa = PBXGroup;
+			children = (
+				D43721091CB16DAB0058B262 /* TosViewController.swift */,
+				D437210A1CB16DAB0058B262 /* TosViewController.xib */,
+			);
+			name = TermsOfService;
+			sourceTree = "<group>";
+		};
+		D43721051CB16BCA0058B262 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D43721061CB16BFA0058B262 /* UserViewController.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		D437210F1CB179A10058B262 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */,
+				D43721131CB179DB0058B262 /* Facebook */,
+				D4B5834D1CB03DB6005C5AD9 /* Google */,
+			);
+			name = ThirdParty;
+			sourceTree = "<group>";
+		};
+		D43721131CB179DB0058B262 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Facebook;
 			sourceTree = "<group>";
 		};
 		D4438DB51BD521B2000CB909 /* CreateChallenge */ = {
@@ -554,39 +582,12 @@
 			name = ProfileStatsTable;
 			sourceTree = "<group>";
 		};
-		D4B583271CAD9DBD005C5AD9 /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				D4B583301CADA1FE005C5AD9 /* SignInViewController.swift */,
-				D4B583311CADA1FE005C5AD9 /* SignInViewController.xib */,
-			);
-			name = SignIn;
-			sourceTree = "<group>";
-		};
 		D4B5832E1CAD9ECA005C5AD9 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
 				D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */,
 			);
 			name = Welcome;
-			sourceTree = "<group>";
-		};
-		D4B5832F1CAD9EE8005C5AD9 /* SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				D4B583361CADB19A005C5AD9 /* SignUpViewController.swift */,
-				D4B583371CADB19A005C5AD9 /* SignUpViewController.xib */,
-			);
-			name = SignUp;
-			sourceTree = "<group>";
-		};
-		D4B583431CADB4E9005C5AD9 /* SignIn or SignUp */ = {
-			isa = PBXGroup;
-			children = (
-				D4B583441CADB502005C5AD9 /* SignInOrSignUpViewController.swift */,
-				D4B583451CADB502005C5AD9 /* SignInOrSignUpViewController.xib */,
-			);
-			name = "SignIn or SignUp";
 			sourceTree = "<group>";
 		};
 		D4B5834D1CB03DB6005C5AD9 /* Google */ = {
@@ -611,10 +612,9 @@
 			isa = PBXGroup;
 			children = (
 				D4B5832E1CAD9ECA005C5AD9 /* Welcome */,
-				D4B583431CADB4E9005C5AD9 /* SignIn or SignUp */,
-				D4B5834D1CB03DB6005C5AD9 /* Google */,
-				D4B583271CAD9DBD005C5AD9 /* SignIn */,
-				D4B5832F1CAD9EE8005C5AD9 /* SignUp */,
+				D43721011CB16A180058B262 /* TermsOfService */,
+				D43721051CB16BCA0058B262 /* User */,
+				D437210F1CB179A10058B262 /* ThirdParty */,
 				D46912461BAC0D970012CE7C /* LoginViewController.swift */,
 				D4422FCE1CA9768B00216C72 /* UsernameViewController.swift */,
 			);
@@ -745,10 +745,8 @@
 				D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D4B5834B1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
-				D4B5833A1CADB19A005C5AD9 /* SignUpViewController.xib in Resources */,
 				D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B583521CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */,
-				D4B583341CADA1FE005C5AD9 /* SignInViewController.xib in Resources */,
 				D4B5831E1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
@@ -756,7 +754,7 @@
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
-				D4B583481CADB502005C5AD9 /* SignInOrSignUpViewController.xib in Resources */,
+				D437210D1CB16DAB0058B262 /* TosViewController.xib in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -765,16 +763,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B583351CADA1FE005C5AD9 /* SignInViewController.xib in Resources */,
+				D437210E1CB16DAB0058B262 /* TosViewController.xib in Resources */,
 				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D4B583531CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */,
-				D4B583491CADB502005C5AD9 /* SignInOrSignUpViewController.xib in Resources */,
 				D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4B583221CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,
 				D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */,
-				D4B5833B1CADB19A005C5AD9 /* SignUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
+				D43721071CB16BFA0058B262 /* UserViewController.swift in Sources */,
 				D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */,
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
 				D4438DB71BD521DA000CB909 /* CreateChallengeViewController.swift in Sources */,
@@ -822,7 +819,6 @@
 				D4422FD51CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
 				D459D6A61C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
-				D4B583321CADA1FE005C5AD9 /* SignInViewController.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
 				D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */,
 				D46799411C18463500B24EF2 /* ProfileCollectionViewCell.swift in Sources */,
@@ -831,7 +827,6 @@
 				D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */,
 				D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */,
 				D4438DD41BD61767000CB909 /* UIAlertControllerExtension.swift in Sources */,
-				D4B583461CADB502005C5AD9 /* SignInOrSignUpViewController.swift in Sources */,
 				D459D69A1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */,
 				D46912131BAC03C30012CE7C /* AppDelegate.swift in Sources */,
 				D459D6A01C1CDB81003A26E4 /* JTSSimpleImageDownloader.m in Sources */,
@@ -843,16 +838,17 @@
 				D459D6971C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */,
+				D437210B1CB16DAB0058B262 /* TosViewController.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
 				D44E04A61C352E40003B502C /* ProfileHistoryTableViewController.swift in Sources */,
 				D44E04A21C352E1A003B502C /* ProfileStatsTableViewController.swift in Sources */,
 				D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */,
 				D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */,
+				D43721111CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */,
 				D45E2B9D1CAABC9800002BC3 /* EAIntroView.m in Sources */,
 				D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */,
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
-				D4B583381CADB19A005C5AD9 /* SignUpViewController.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
 				D4B5833F1CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
@@ -873,6 +869,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4422FD01CA9768B00216C72 /* UsernameViewController.swift in Sources */,
+				D43721081CB16BFA0058B262 /* UserViewController.swift in Sources */,
 				D4422FD31CA98D5B00216C72 /* UITextFieldExtension.swift in Sources */,
 				D45E2B9E1CAABC9800002BC3 /* EAIntroView.m in Sources */,
 				D4BE34061C91E0F300483576 /* UserDataValidator.swift in Sources */,
@@ -880,12 +877,11 @@
 				D4BE34071C91E0FC00483576 /* ErrorHandler.swift in Sources */,
 				D4B583401CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
-				D4B583331CADA1FE005C5AD9 /* SignInViewController.swift in Sources */,
-				D4B583471CADB502005C5AD9 /* SignInOrSignUpViewController.swift in Sources */,
 				D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */,
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
 				D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
-				D4B583391CADB19A005C5AD9 /* SignUpViewController.swift in Sources */,
+				D43721121CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */,
+				D437210C1CB16DAB0058B262 /* TosViewController.swift in Sources */,
 				D45E2B9C1CAABC9800002BC3 /* EAIntroPage.m in Sources */,
 				D4B583511CB03DE2005C5AD9 /* GoogleViewController.swift in Sources */,
 			);

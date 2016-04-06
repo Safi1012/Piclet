@@ -53,7 +53,7 @@ class GoogleViewController: UIViewController, GIDSignInUIDelegate {
         if username.characters.count > 0 {
             // userinput with username as placeholder
         } else {
-            
+            // default placeholde: e.g. 'Choose a username'
         }
     }
     
@@ -61,6 +61,21 @@ class GoogleViewController: UIViewController, GIDSignInUIDelegate {
         // create user account
         
     }
+    
+    
+    // MARK: - Navigation
+    
+//    func displayParentViewController() {
+//        if let welcomeViewController = parentViewController as? WelcomeViewController {
+//            welcomeViewController.removeChildViewController()
+//        }
+//    }
+//    
+//    func displayTos() {
+//        if let welcomeViewController = parentViewController as? WelcomeViewController {
+//            welcomeViewController.presentViewController(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+//        }
+//    }
 }
 
 
@@ -72,7 +87,14 @@ extension GoogleViewController: GIDSignInDelegate {
         if (error == nil) {
             isUserAlreadySignedUp(user.authentication.idToken)
         } else {
+            // self.displayParentViewController()
             print("\(error.localizedDescription)")
+            
+            // maye add check internet connectivity
+            
+            
+            
+            
         }
     }
     
