@@ -10,7 +10,6 @@ import UIKit
 
 class TosViewController: UIViewController {
     
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var textView: UITextView!
     
 
@@ -20,6 +19,8 @@ class TosViewController: UIViewController {
         textView.sizeToFit()
         textView.layoutIfNeeded()
         textView.text = loadTermsOfService()
+        textView.textContainerInset = UIEdgeInsetsZero;
+        textView.textContainer.lineFragmentPadding = 3.0;
     }
     
     func loadTermsOfService() -> String? {
@@ -30,6 +31,12 @@ class TosViewController: UIViewController {
     @IBAction func tosPressed(sender: UIButton) {
         if let welcomeViewController = parentViewController as? WelcomeViewController {
             welcomeViewController.navigateToSelectedServiceViewController()
+        }
+    }
+    
+    @IBAction func cancelPressed(sender: UIButton) {
+        if let welcomeViewController = parentViewController as? WelcomeViewController {
+            removeLastChildViewController(welcomeViewController)
         }
     }
 }

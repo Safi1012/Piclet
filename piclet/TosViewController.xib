@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TosViewController" customModule="piclet" customModuleProvider="target">
             <connections>
-                <outlet property="scrollView" destination="ru3-ew-dsP" id="htf-QC-xBA"/>
                 <outlet property="textView" destination="wmt-5t-XMy" id="A93-s4-oIS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -16,8 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qG1-9O-UcW" userLabel="Cancel">
+                    <rect key="frame" x="8" y="8" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="5yr-nr-UbH"/>
+                        <constraint firstAttribute="height" constant="25" id="Uzm-8F-bp2"/>
+                    </constraints>
+                    <state key="normal" image="cancelLight"/>
+                    <connections>
+                        <action selector="cancelPressed:" destination="-1" eventType="touchUpInside" id="jDU-lp-a94"/>
+                    </connections>
+                </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ru3-ew-dsP">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <rect key="frame" x="0.0" y="41" width="600" height="559"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wmt-5t-XMy">
                             <rect key="frame" x="8" y="8" width="584" height="200"/>
@@ -37,7 +47,7 @@
                     <constraints>
                         <constraint firstItem="wmt-5t-XMy" firstAttribute="leading" secondItem="ru3-ew-dsP" secondAttribute="leading" constant="8" id="3A6-Ze-yIH"/>
                         <constraint firstItem="wmt-5t-XMy" firstAttribute="top" secondItem="ru3-ew-dsP" secondAttribute="top" constant="8" id="3hv-5y-FaM"/>
-                        <constraint firstAttribute="bottom" secondItem="qXl-NR-aBq" secondAttribute="bottom" constant="14" id="4qG-xf-6yJ"/>
+                        <constraint firstAttribute="bottom" secondItem="qXl-NR-aBq" secondAttribute="bottom" constant="8" id="4qG-xf-6yJ"/>
                         <constraint firstItem="qXl-NR-aBq" firstAttribute="centerX" secondItem="ru3-ew-dsP" secondAttribute="centerX" id="6te-RX-R7a"/>
                         <constraint firstAttribute="trailing" secondItem="wmt-5t-XMy" secondAttribute="trailing" constant="8" id="8bi-Rc-axR"/>
                         <constraint firstItem="qXl-NR-aBq" firstAttribute="top" secondItem="wmt-5t-XMy" secondAttribute="bottom" constant="8" id="jHB-bA-4Wy"/>
@@ -46,13 +56,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="qG1-9O-UcW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="8" id="MF5-dR-2U9"/>
+                <constraint firstItem="qG1-9O-UcW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="bzp-1h-FLh"/>
                 <constraint firstItem="ru3-ew-dsP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dP1-9r-yQs"/>
                 <constraint firstAttribute="trailing" secondItem="ru3-ew-dsP" secondAttribute="trailing" id="hWQ-o5-FNw"/>
                 <constraint firstAttribute="bottom" secondItem="ru3-ew-dsP" secondAttribute="bottom" id="mbN-0p-xue"/>
                 <constraint firstItem="wmt-5t-XMy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-16" id="qe7-gk-xFa"/>
-                <constraint firstItem="ru3-ew-dsP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tGg-BO-91g"/>
+                <constraint firstItem="ru3-ew-dsP" firstAttribute="top" secondItem="qG1-9O-UcW" secondAttribute="bottom" constant="8" id="uBA-gn-83S"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="cancelLight" width="57" height="57"/>
+    </resources>
 </document>
