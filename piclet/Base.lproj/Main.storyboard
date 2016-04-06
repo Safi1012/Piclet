@@ -1428,7 +1428,7 @@
                         <outlet property="googleButton" destination="WUz-gU-VhD" id="76o-4P-Nih"/>
                         <outlet property="usernameButton" destination="8dw-dD-hGJ" id="Dpb-iK-HIn"/>
                         <segue destination="22g-JY-zFi" kind="presentation" identifier="toUserViewController" id="pBW-Lj-kMf"/>
-                        <segue destination="WkX-Od-B04" kind="presentation" identifier="toThirdPartyServiceViewController" id="bC5-89-6AF"/>
+                        <segue destination="WkX-Od-B04" kind="presentation" identifier="toThirdPartyServiceViewController" modalTransitionStyle="crossDissolve" id="bC5-89-6AF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36B-g6-vqQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

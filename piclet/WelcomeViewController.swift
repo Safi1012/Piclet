@@ -60,14 +60,16 @@ class WelcomeViewController: UIViewController {
     }
     
     func navigateToSelectedServiceViewController() {
-        removeLastChildViewController(self)
+        // removeLastChildViewController(self)
         
         switch selectedService {
             
         case .facebook:
+            performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
             print("fb")
             
         case .google:
+            performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
             print("google")
             
         case .username:
