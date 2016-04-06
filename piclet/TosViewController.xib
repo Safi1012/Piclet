@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TosViewController" customModule="piclet" customModuleProvider="target">
             <connections>
+                <outlet property="scrollView" destination="ru3-ew-dsP" id="htf-QC-xBA"/>
+                <outlet property="textView" destination="wmt-5t-XMy" id="A93-s4-oIS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -14,25 +16,43 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundLogin" translatesAutoresizingMaskIntoConstraints="NO" id="5TP-CL-TQZ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ru3-ew-dsP">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXl-NR-aBq">
-                    <rect key="frame" x="264" y="285" width="72" height="30"/>
-                    <state key="normal" title="I'm the tos"/>
-                    <connections>
-                        <action selector="tosPressed:" destination="-1" eventType="touchUpInside" id="lyN-ly-oXS"/>
-                    </connections>
-                </button>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wmt-5t-XMy">
+                            <rect key="frame" x="8" y="8" width="584" height="200"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.oident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.oident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.oident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXl-NR-aBq">
+                            <rect key="frame" x="273" y="216" width="55" height="30"/>
+                            <state key="normal" title="I accept"/>
+                            <connections>
+                                <action selector="tosPressed:" destination="-1" eventType="touchUpInside" id="lyN-ly-oXS"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="wmt-5t-XMy" firstAttribute="leading" secondItem="ru3-ew-dsP" secondAttribute="leading" constant="8" id="3A6-Ze-yIH"/>
+                        <constraint firstItem="wmt-5t-XMy" firstAttribute="top" secondItem="ru3-ew-dsP" secondAttribute="top" constant="8" id="3hv-5y-FaM"/>
+                        <constraint firstAttribute="bottom" secondItem="qXl-NR-aBq" secondAttribute="bottom" constant="14" id="4qG-xf-6yJ"/>
+                        <constraint firstItem="qXl-NR-aBq" firstAttribute="centerX" secondItem="ru3-ew-dsP" secondAttribute="centerX" id="6te-RX-R7a"/>
+                        <constraint firstAttribute="trailing" secondItem="wmt-5t-XMy" secondAttribute="trailing" constant="8" id="8bi-Rc-axR"/>
+                        <constraint firstItem="qXl-NR-aBq" firstAttribute="top" secondItem="wmt-5t-XMy" secondAttribute="bottom" constant="8" id="jHB-bA-4Wy"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="qXl-NR-aBq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="P1O-Ym-OY2"/>
-                <constraint firstItem="qXl-NR-aBq" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="m6A-Qq-n3z"/>
+                <constraint firstItem="ru3-ew-dsP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dP1-9r-yQs"/>
+                <constraint firstAttribute="trailing" secondItem="ru3-ew-dsP" secondAttribute="trailing" id="hWQ-o5-FNw"/>
+                <constraint firstAttribute="bottom" secondItem="ru3-ew-dsP" secondAttribute="bottom" id="mbN-0p-xue"/>
+                <constraint firstItem="wmt-5t-XMy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-16" id="qe7-gk-xFa"/>
+                <constraint firstItem="ru3-ew-dsP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tGg-BO-91g"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
-    <resources>
-        <image name="backgroundLogin" width="400" height="660"/>
-    </resources>
 </document>

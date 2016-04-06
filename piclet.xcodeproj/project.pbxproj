@@ -10,6 +10,8 @@
 		D4085C521BF0FAD700051436 /* ImageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4085C511BF0FAD700051436 /* ImageHandler.swift */; };
 		D408DA321BECC27C00772757 /* PostsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */; };
 		D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4105BEE1BBE65AC006D742D /* ApiProxy.swift */; };
+		D41190B71CB5A22100BB09F7 /* termsOfService.txt in Resources */ = {isa = PBXBuildFile; fileRef = D41190B61CB5A22100BB09F7 /* termsOfService.txt */; };
+		D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */ = {isa = PBXBuildFile; fileRef = D41190B61CB5A22100BB09F7 /* termsOfService.txt */; };
 		D4133F4C1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */; };
 		D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; };
 		D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; };
@@ -157,6 +159,7 @@
 		D4085C511BF0FAD700051436 /* ImageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHandler.swift; sourceTree = "<group>"; };
 		D408DA311BECC27C00772757 /* PostsTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewDelegate.swift; sourceTree = "<group>"; };
 		D4105BEE1BBE65AC006D742D /* ApiProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiProxy.swift; sourceTree = "<group>"; };
+		D41190B61CB5A22100BB09F7 /* termsOfService.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = termsOfService.txt; sourceTree = "<group>"; };
 		D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerExtension.swift; sourceTree = "<group>"; };
 		D4181CC71BAC4456001155B6 /* UserDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidator.swift; sourceTree = "<group>"; };
 		D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidatorTests.swift; sourceTree = "<group>"; };
@@ -507,6 +510,7 @@
 				D469121C1BAC03C30012CE7C /* Assets.xcassets */,
 				D44526501BF3C28A007FE8D8 /* piclet-Bridging-Header.h */,
 				D45E2BA01CAABCBE00002BC3 /* EARestrictedScrollView.m */,
+				D41190B61CB5A22100BB09F7 /* termsOfService.txt */,
 				D46912211BAC03C30012CE7C /* Info.plist */,
 				D4438DCA1BD60ABD000CB909 /* Localizable.strings */,
 			);
@@ -751,6 +755,7 @@
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
 				D4B583211CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,
+				D41190B71CB5A22100BB09F7 /* termsOfService.txt in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
@@ -766,6 +771,7 @@
 				D437210E1CB16DAB0058B262 /* TosViewController.xib in Resources */,
 				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
+				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
 				D4B583531CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */,
 				D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,

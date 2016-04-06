@@ -104,6 +104,13 @@ extension UIViewController {
         viewController.didMoveToParentViewController(self)
     }
     
+    func removeLastChildViewController(viewController: UIViewController) {
+        let vc = viewController.childViewControllers.last
+        vc?.willMoveToParentViewController(nil)
+        vc?.view.removeFromSuperview()
+        vc?.removeFromParentViewController()
+    }
+    
     
     // MARK: - Alert
     

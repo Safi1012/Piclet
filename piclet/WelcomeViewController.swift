@@ -32,10 +32,6 @@ class WelcomeViewController: UIViewController {
         return true
     }
     
-    func removeChildViewController() {
-        childViewControllers[0].removeFromParentViewController()
-    }
-    
     
     // MARK: - UI
     
@@ -64,7 +60,7 @@ class WelcomeViewController: UIViewController {
     }
     
     func navigateToSelectedServiceViewController() {
-        removeChildViewController()
+        removeLastChildViewController(self)
         
         switch selectedService {
             
