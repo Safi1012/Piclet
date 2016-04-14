@@ -76,6 +76,24 @@ class WelcomeViewController: UIViewController {
             performSegueWithIdentifier("toUserViewController", sender: self)
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let test = segue.destinationViewController as! ThirdPartyServiceViewController
+        test.thirdPartyService = selectedService
+        
+        
+        
+//        switch selectedService {
+//        case .google:
+//            let googleViewController = ThirdPartyServiceViewController(thirdPartyService: selectedService)
+//            segue.
+//            
+//        default:
+//            break;
+//        }
+        
+    }
 }
 
 

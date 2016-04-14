@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoogleViewController" customModule="piclet" customModuleProvider="target">
             <connections>
+                <outlet property="doneButton" destination="5Cf-wt-hSi" id="sOx-pd-2R5"/>
+                <outlet property="usernameTextField" destination="b7r-CY-cNR" id="kOU-B7-QD9"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,14 +19,50 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundLogin" translatesAutoresizingMaskIntoConstraints="NO" id="kCk-yN-6SK">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwX-wh-PLw">
-                    <rect key="frame" x="155" y="53" width="291" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwX-wh-PLw">
+                    <rect key="frame" x="155" y="22" width="291" height="36"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose a username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzC-At-N2F">
+                    <rect key="frame" x="85" y="101" width="430" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b7r-CY-cNR">
+                    <rect key="frame" x="85" y="130" width="430" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="d84-cJ-pgn"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Cf-wt-hSi">
+                    <rect key="frame" x="282" y="194" width="37" height="30"/>
+                    <state key="normal" title="Done">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="pressedDoneButton:" destination="-1" eventType="touchUpInside" id="cyF-xA-lqQ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="b7r-CY-cNR" firstAttribute="top" secondItem="yzC-At-N2F" secondAttribute="bottom" constant="8" id="2ks-7m-GCu"/>
+                <constraint firstAttribute="trailing" secondItem="yzC-At-N2F" secondAttribute="trailing" constant="85" id="Bhd-1p-SiK"/>
+                <constraint firstAttribute="trailing" secondItem="b7r-CY-cNR" secondAttribute="trailing" constant="85" id="GKG-dx-WB1"/>
+                <constraint firstItem="5Cf-wt-hSi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LIh-OT-Nne"/>
+                <constraint firstItem="5Cf-wt-hSi" firstAttribute="top" secondItem="b7r-CY-cNR" secondAttribute="bottom" constant="40" id="Rr6-y2-2Sm"/>
+                <constraint firstItem="b7r-CY-cNR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="85" id="bEB-22-jGV"/>
+                <constraint firstItem="xwX-wh-PLw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="d0X-z2-juY"/>
+                <constraint firstItem="yzC-At-N2F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="85" id="fmo-Hl-tsy"/>
+                <constraint firstAttribute="bottom" secondItem="5Cf-wt-hSi" secondAttribute="bottom" constant="376" id="o2K-sU-Seb"/>
+                <constraint firstItem="yzC-At-N2F" firstAttribute="top" secondItem="xwX-wh-PLw" secondAttribute="bottom" constant="43" id="zkN-5v-DJ9"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
         </view>
     </objects>
