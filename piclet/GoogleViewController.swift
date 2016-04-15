@@ -17,13 +17,6 @@ class GoogleViewController: UIViewController, GIDSignInUIDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.hidden = true
-    
-        // Instantiate Google
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().signOut()            // remove, after testing
     }
     
     override func viewDidAppear(animated: Bool) {

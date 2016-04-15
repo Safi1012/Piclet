@@ -39,14 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "navBarBack")
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        // Initialize Google Sign-In
-//        var configureError: NSError?
-//        GGLContext.sharedInstance().configureWithError(&configureError)
-//        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        // google sign-In
         GIDSignIn.sharedInstance().clientID = "341730212595-ir18hmkfcji9ke2h7opc4t7ovdlbfj68.apps.googleusercontent.com"
-        // GIDSignIn.sharedInstance().delegate = self
-        
-
+    
         return true
     }
 

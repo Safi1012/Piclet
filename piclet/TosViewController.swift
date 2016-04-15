@@ -12,7 +12,6 @@ class TosViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,9 +28,7 @@ class TosViewController: UIViewController {
     }
     
     @IBAction func tosPressed(sender: UIButton) {
-        if let welcomeViewController = parentViewController as? WelcomeViewController {
-            welcomeViewController.navigateToSelectedServiceViewController()
-        }
+        parentViewController?.performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
     }
     
     @IBAction func cancelPressed(sender: UIButton) {
