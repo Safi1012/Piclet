@@ -10,39 +10,60 @@ import UIKit
 
 class ThirdPartyServiceViewController: UIViewController {
     
-    @IBOutlet weak var containerView: UIView!
-    var thirdPartyService: SignInService!
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    var thirdPartyService: SignInService! // delete?
+    var oauthToken: String!
+    var username: String?
     
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addViewControllerToContainer()
     }
     
     
     // MARK: - UI
     
-    func addViewControllerToContainer() {
-        
+    @IBAction func pressedDone(sender: UIButton) {
         switch thirdPartyService! {
-            
-        case SignInService.facebook:
-            print("To Do")
-            
-        case SignInService.google:
-            let googleViewController = GoogleViewController(nibName: "GoogleViewController", bundle: NSBundle.mainBundle())
-            addChildViewController(googleViewController, toContainerView: view)
-            
+        
+        case .facebook:
+            print("fb")
+        
+        case .google:
+            signUpInPiclet()
+        
         default:
-            break;
+            break
         }
     }
     
     
-    // MARK: - Navgiation
+    // MARK: - SignIn / SignUp
+    
+    func signUpInPiclet() {
+        
+        guard
+            let username = usernameTextField.text,
+            let oauthToken = oauthToken
+        else {
+            print("username or oatuhtoken is nil!")
+            return
+        }
+        
+        ApiProxy().createUserWithThirdPartyService(username, oauthToken: oauthToken, tokenType: TokenType.google, success: {
+            self.navigateToChallengeViewController()
+
+        }) { (errorCode) in
+            self.displayAlert(errorCode)
+
+        }
+    }
+    
+    
+    // MARK: - Navigation
     
     func navigateToChallengeViewController() {
         performSegueWithIdentifier("toChallengesViewController", sender: self)
@@ -50,8 +71,4 @@ class ThirdPartyServiceViewController: UIViewController {
 }
 
 
-// add google extension
 
-
-
-// add fb extension

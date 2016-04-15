@@ -98,8 +98,6 @@
 		D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4B5834A1CADCBDD005C5AD9 /* GoogleService-Info.plist */; };
 		D4B583501CB03DE2005C5AD9 /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5834E1CB03DE2005C5AD9 /* GoogleViewController.swift */; };
 		D4B583511CB03DE2005C5AD9 /* GoogleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5834E1CB03DE2005C5AD9 /* GoogleViewController.swift */; };
-		D4B583521CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5834F1CB03DE2005C5AD9 /* GoogleViewController.xib */; };
-		D4B583531CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5834F1CB03DE2005C5AD9 /* GoogleViewController.xib */; };
 		D4BE33EF1C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */; };
 		D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */; };
 		D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; };
@@ -247,7 +245,6 @@
 		D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D4B5834A1CADCBDD005C5AD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4B5834E1CB03DE2005C5AD9 /* GoogleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleViewController.swift; sourceTree = "<group>"; };
-		D4B5834F1CB03DE2005C5AD9 /* GoogleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoogleViewController.xib; sourceTree = "<group>"; };
 		D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		D4BE33F81C91DE2900483576 /* picletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = picletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BE33FC1C91DE2900483576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -598,7 +595,6 @@
 			isa = PBXGroup;
 			children = (
 				D4B5834E1CB03DE2005C5AD9 /* GoogleViewController.swift */,
-				D4B5834F1CB03DE2005C5AD9 /* GoogleViewController.xib */,
 			);
 			name = Google;
 			sourceTree = "<group>";
@@ -750,7 +746,6 @@
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D4B5834B1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
-				D4B583521CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */,
 				D4B5831E1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
@@ -772,7 +767,6 @@
 				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
-				D4B583531CB03DE2005C5AD9 /* GoogleViewController.xib in Resources */,
 				D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4B583221CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,

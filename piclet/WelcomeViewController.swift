@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
-class WelcomeViewController: UIViewController {
+
+class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     
-    @IBOutlet weak var facebookButton: UIButton!
+    // @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
     @IBOutlet weak var usernameButton: UIButton!
+    @IBOutlet weak var facebookButton: FBSDKLoginButton!
     
     var selectedService = SignInService.username
+    var oauthToken: String?
     
     
     // MARK: - Lifecycle
@@ -52,6 +56,37 @@ class WelcomeViewController: UIViewController {
     }
     
     
+    // MARK: - SignIn / SignUp
+
+    func signInInPiclet(jwt: String) {
+        ApiProxy().signInUserWithThirdPartyService(jwt, tokenType: TokenType.google, success: {
+            self.performSegueWithIdentifier("toChallengesViewController", sender: self)
+            
+        }) { (errorCode) in
+            if errorCode == "UsernameNotFoundError" {
+                // self.parseOauthtokenForSuggestion(jwt)
+                self.performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
+                
+            } else {
+                self.displayAlert(errorCode)
+            }
+        }
+    }
+    
+    func parseOauthtokenForSuggestion(jwt: String) -> String {
+        let username = JWTParser().suggestUsernameFromJWT(jwt)
+        
+        if username.characters.count > 0 {
+            return username
+        } else {
+            return "Username"
+        }
+    }
+    
+    
+    
+    
+    
     // MARK: - Navigation
     
     func loadTermsOfServiceViewController() {
@@ -59,43 +94,105 @@ class WelcomeViewController: UIViewController {
         addChildViewController(tosViewController, toContainerView: view)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toThirdPartyServiceViewController" {
+            let thirdPartyViewController = segue.destinationViewController as! ThirdPartyServiceViewController
+            thirdPartyViewController.oauthToken = oauthToken!
+        }
+    }
+    
+
+    
+    
+    
+    
     func navigateToSelectedServiceViewController() {
         // removeLastChildViewController(self)
         
         switch selectedService {
             
         case .facebook:
-            performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
-            print("fb")
+            
+            facebookButton.delegate = self
+            let fbLoginManager = FBSDKLoginManager()
+            
+            if (FBSDKAccessToken.currentAccessToken() != nil) {
+                // User is logged in, do work such as go to next view controller.
+                
+                print("\(FBSDKAccessToken.currentAccessToken().tokenString)")
+                print("User already logged in")
+            }
+            
+            fbLoginManager.logOut()
+            
+            
+            fbLoginManager.logInWithReadPermissions(["public_profile", "email"], fromViewController: self, handler: { (result: FBSDKLoginManagerLoginResult!, error: NSError!) in
+                print("done")
+                
+                if (error != nil) {
+                    print("process Error")
+                } else if result.isCancelled {
+                    print("Get called, when the user pressed Done in the top left corner")
+                } else {
+                    print("logged In")
+                }
+                
+            })
+
             
         case .google:
-            performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
-            print("google")
+            removeLastChildViewController(self)
+            
+            GIDSignIn.sharedInstance().uiDelegate = self
+            GIDSignIn.sharedInstance().delegate = self
+            GIDSignIn.sharedInstance().signOut()
+            GIDSignIn.sharedInstance().signIn()
             
         case .username:
             performSegueWithIdentifier("toUserViewController", sender: self)
         }
     }
+}
+
+
+// MARK: - FBSDKLoginButtonDelegate
+
+extension WelcomeViewController: FBSDKLoginButtonDelegate {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        let test = segue.destinationViewController as! ThirdPartyServiceViewController
-        test.thirdPartyService = selectedService
-        
-        
-        
-//        switch selectedService {
-//        case .google:
-//            let googleViewController = ThirdPartyServiceViewController(thirdPartyService: selectedService)
-//            segue.
-//            
-//        default:
-//            break;
-//        }
-        
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        print("done?")
+        print("\(result.token.tokenString)")
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("done?")
+    }
+    
+    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        return true
     }
 }
 
+
+extension WelcomeViewController: GIDSignInDelegate {
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
+        
+        if (error == nil) {
+            oauthToken = user.authentication.idToken
+            // signInInPiclet(user.authentication.idToken)
+        } else {
+            print("\(error.localizedDescription)")
+            
+            // self.displayParentViewController()
+            // maye add check internet connectivity
+        }
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!, withError error: NSError!) {
+        // later remove token from Realm
+    }
+}
 
 enum SignInService {
     case facebook
@@ -104,17 +201,3 @@ enum SignInService {
 }
 
 
-
-
-
-
-
-//    func removeChildViewController() {
-//        self.childViewControllers[0].removeFromParentViewController()
-//        loadSignInOrSignUpViewController()
-//    }
-//
-//    func loadSignInOrSignUpViewController() {
-//        let signInOrSignUpViewController = SignInOrSignUpViewController(nibName: "SignInOrSignUpViewController", bundle: NSBundle.mainBundle())
-//        addChildViewController(signInOrSignUpViewController, toContainerView: containerView)
-//    }
