@@ -16,6 +16,7 @@ class UserAccount {
     var totalPosts: Int!
     var totalChallenges :Int!
     var totalLikedPosts: Int!
+    var totalWonChallenges: Int!
     var rank: Int!
     var token: String!
     
@@ -42,12 +43,3 @@ class UserAccount {
         UserAccess.sharedInstance.addUser(username, token: token)
     }
 }
-
-
-
-// MARK: - User LogIn Information
-
-//struct UserLoginInformation {
-//    var username: String
-//    var token: String
-//}

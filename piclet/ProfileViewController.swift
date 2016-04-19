@@ -147,9 +147,14 @@ class ProfileViewController: UIViewController {
                 destinationVC.downloadUserCreatedPosts = true // put guard here
                 destinationVC.userAccount = sender as! UserAccount
                 
-            case "toChallenges":
+            case "toUserChallenges":
                 let destinationVC = segue.destinationViewController as! MyChallengeViewController
                 destinationVC.userAccount = sender as! UserAccount // put guard here
+                
+            case "toWonChallenges":
+                let destinationVC = segue.destinationViewController as! MyChallengeViewController
+                destinationVC.userAccount = sender as! UserAccount // put guard here
+                destinationVC.wonChallenges = true
                 
             case "toLikedPosts":
                 let destinationVC = segue.destinationViewController as! ProfileCollectionViewController

@@ -13,6 +13,7 @@ class ProfileHistoryTableViewController: UITableViewController {
     @IBOutlet weak var postsCell: UITableViewCell!
     @IBOutlet weak var likedCell: UITableViewCell!
     @IBOutlet weak var challengesCell: UITableViewCell!
+    @IBOutlet weak var wonCell: UITableViewCell!
     
     var userAccount: UserAccount?
     
@@ -37,10 +38,13 @@ class ProfileHistoryTableViewController: UITableViewController {
             self.parentViewController?.performSegueWithIdentifier("toProfileCollectionView", sender: userAccount!)
         }
         if cell == challengesCell {
-            self.parentViewController?.performSegueWithIdentifier("toChallenges", sender: userAccount!)
+            self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount!)
         }
         if cell == likedCell {
             self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: userAccount!)
+        }
+        if cell == wonCell {
+            self.parentViewController?.performSegueWithIdentifier("toWonChallenges", sender: userAccount!)
         }
     }
     
@@ -73,6 +77,7 @@ extension ProfileHistoryTableViewController: ProfileViewControllerDelegate {
         postsCell.detailTextLabel?.text = "\(userAccount.totalPosts)"
         likedCell.detailTextLabel?.text = "\(userAccount.totalLikedPosts)"
         challengesCell.detailTextLabel?.text = "\(userAccount.totalChallenges)"
+        wonCell.detailTextLabel?.text = "\(userAccount.totalWonChallenges)"
         
         tableView.reloadData()
     }

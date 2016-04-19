@@ -18,6 +18,7 @@ class MyChallengeViewController: UIViewController {
     var activityIndicator: ActivityIndicatorView!
     var isRequesting = false
     var challenges: [Challenge]!
+    var wonChallenges = false
 
     
     override func viewDidLoad() {
@@ -79,34 +80,55 @@ class MyChallengeViewController: UIViewController {
         if isRequesting {
             return
         }
-        fetchChallenges(offset, displayIndicator: true)
+        if wonChallenges {
+            fetchWonChallenges(offset, displayIndicator: true)
+        } else {
+            fetchChallenges(offset, displayIndicator: true)
+        }
     }
     
     func fetchChallenges(offset: Int, displayIndicator: Bool) {
         isRequesting = true
         
         ApiProxy().fetchUserCreatedChallenges(userAccount.username, offset: offset, success: { (userChallenges) -> () in
-            
-            if offset == 0 {
-                self.challenges = [Challenge]()
-            }
-            
-            for challenge in userChallenges {
-                self.challenges.append(challenge)
-            }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.tableView.reloadData()
-                self.isRequesting = false
-                self.stopActivityIndicator()
-                self.dismissLoadingSpinner()
-            })
+            self.fetchUserSuccess(offset, userChallenges: userChallenges)
             
         }) { (errorCode) -> () in
-            self.displayAlert(errorCode)
+            self.fetchUserFailure(errorCode)
+        }
+    }
+    
+    func fetchWonChallenges(offset: Int, displayIndicator: Bool) {
+        isRequesting = true
+        
+        ApiProxy().fetchWonChallenges(offset, username: userAccount.username, success: { (userChallenges) in
+            self.fetchUserSuccess(offset, userChallenges: userChallenges)
+            
+        }) { (errorCode) in
+            self.fetchUserFailure(errorCode)
+        }
+    }
+    
+    func fetchUserSuccess(offset: Int, userChallenges: [Challenge]) {
+        if offset == 0 {
+            challenges = [Challenge]()
+        }
+        for challenge in userChallenges {
+            challenges.append(challenge)
+        }
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
             self.isRequesting = false
             self.stopActivityIndicator()
             self.dismissLoadingSpinner()
-        }
+        })
+    }
+    
+    func fetchUserFailure(errorCode: String) {
+        displayAlert(errorCode)
+        isRequesting = false
+        stopActivityIndicator()
+        dismissLoadingSpinner()
     }
     
     
@@ -127,7 +149,6 @@ class MyChallengeViewController: UIViewController {
         }
     }
 }
-
 
 
 // MARK: - UITableViewDataSource

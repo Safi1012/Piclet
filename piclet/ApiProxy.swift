@@ -94,6 +94,20 @@ class ApiProxy {
         }
     }
     
+    func fetchWonChallenges(offset: Int, username: String, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
+        //GET /users/<nick>/wonChallenges[?offset=<offset>]
+        let apiPath = "challenges/\(username)/wonChallenges?offset=\(offset)"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: .get, token: nil, success: { (json) in
+            success(challenges: ObjectMapper().parseChallenges(json))
+            
+        }) { (errorCode) in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
+    
     func createNewChallenge(token: String, challengeName: String, success: () -> (), failure: (errorCode: String) -> () ){
         
         NetworkHandler().requestJSON(["title" : (challengeName)], apiPath: "challenges", httpVerb: HTTPVerb.post, token: token, success: { (json) -> () in

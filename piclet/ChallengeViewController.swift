@@ -149,9 +149,9 @@ class ChallengeViewController: UIViewController {
             return
         }
         if challengeCollection.section == .archived {
-            fetchChallenges(0, displayIndicator: false, isFullRefetch: true, archived: true)
+            fetchChallenges(offset, displayIndicator: true, isFullRefetch: false, archived: true)
         } else {
-            fetchChallenges(0, displayIndicator: false, isFullRefetch: true, archived: false)
+            fetchChallenges(offset, displayIndicator: true, isFullRefetch: false, archived: false)
         }
     }
     

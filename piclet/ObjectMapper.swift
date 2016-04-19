@@ -125,9 +125,9 @@ class ObjectMapper {
             let totalPosts = dict["totalPosts"] as? Int,
             let totalLikedPosts = dict["totalLikedPosts"] as? Int,
             let totalChallenges = dict["totalChallenges"] as? Int,
+            let totalWonChallenges = dict["wonChallenges"] as? Int,
             let rank = dict["rank"] as? Int,
             let token = UserAccess.sharedInstance.getUser()?.token
-        
         else {
             print("parseUserAccountInformationsError")
             return UserAccount()
@@ -140,6 +140,7 @@ class ObjectMapper {
         userAccount.totalPosts = totalPosts
         userAccount.totalLikedPosts = totalLikedPosts
         userAccount.totalChallenges = totalChallenges
+        userAccount.totalWonChallenges = totalWonChallenges
         userAccount.rank = rank
         userAccount.token = token
         
