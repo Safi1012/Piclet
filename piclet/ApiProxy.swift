@@ -12,6 +12,7 @@ import Alamofire
 
 class ApiProxy {
     
+    
     // MARK: - User Account
     
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
@@ -58,6 +59,7 @@ class ApiProxy {
         let parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) in
+            UserAccount().createUserToken(json)
             success()
             
         }) { (errorCode) in
@@ -67,7 +69,6 @@ class ApiProxy {
     }
     
     func deleteThisUserToken(token: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        
         NetworkHandler().requestJSON([:], apiPath: "tokens/this", httpVerb: HTTPVerb.delete, token: token, success: { (json) -> () in
             success()
         

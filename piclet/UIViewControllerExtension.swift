@@ -107,8 +107,23 @@ extension UIViewController {
     func removeLastChildViewController(viewController: UIViewController) {
         let vc = viewController.childViewControllers.last
         vc?.willMoveToParentViewController(nil)
-        vc?.view.removeFromSuperview()
-        vc?.removeFromParentViewController()
+//        vc?.view.removeFromSuperview()
+//        vc?.removeFromParentViewController()
+        
+        UIView.animateWithDuration(0.2, animations: { 
+            vc?.view.alpha = 0.0
+            
+        }) { (finished) in
+            vc?.view.removeFromSuperview()
+            vc?.removeFromParentViewController()
+            
+        }
+        
+        
+        
+//        [UIView animateWithDuration:0.2
+//            animations:^{view.alpha = 0.0;}
+//            completion:^(BOOL finished){ [view removeFromSuperview]; }];
     }
     
     

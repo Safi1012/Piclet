@@ -28,7 +28,10 @@ class TosViewController: UIViewController {
     }
     
     @IBAction func tosPressed(sender: UIButton) {
-        parentViewController?.performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
+        if let userViewController = parentViewController as? UserViewController {
+            userViewController.userAcceptedTos = true
+            userViewController.dismissTosAndSignUp()
+        }
     }
     
     @IBAction func cancelPressed(sender: UIButton) {

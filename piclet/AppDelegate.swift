@@ -15,7 +15,7 @@ let realm = try! Realm()
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var loginViewController: LoginViewController?
+    var welcomeViewController: WelcomeViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         

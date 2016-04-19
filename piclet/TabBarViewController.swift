@@ -18,4 +18,8 @@ class TabBarViewController: UITabBarController {
             item.image = item.selectedImage?.imageWithColor(greyColor).imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         }
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }

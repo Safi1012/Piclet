@@ -35,7 +35,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         showOnboarding()
 
         uiStyling()
-        AppDelegate().loginViewController = self
+        // AppDelegate().welcomeViewController = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
         

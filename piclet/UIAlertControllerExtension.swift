@@ -29,11 +29,11 @@ extension UIAlertController {
         alertController.addAction(UIAlertAction(title: "Signup", style: UIAlertActionStyle.Default, handler: { (action) -> Void in
         
             dispatch_async(dispatch_get_main_queue()) {
-                if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
-                    viewController.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
+                if (UIApplication.sharedApplication().delegate as! AppDelegate).welcomeViewController != nil {
+                    viewController.performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
                 } else {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("WelcomeViewController")
                     viewController.presentViewController(loginVC, animated: true, completion: nil)
                 }
                 UserAccess.sharedInstance.deleteAllUsers()

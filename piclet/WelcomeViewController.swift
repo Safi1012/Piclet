@@ -22,6 +22,11 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // todo: check if app was opened for the first time
+        // showOnboarding()
+        
+        
+        
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         
@@ -34,6 +39,31 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
         return true
     }
     
+    // MARK: - Onboarding
+    
+    func showOnboarding() {
+        // let page0 = EAIntroPage()
+        // page0.title = "Welcome to Piclet"
+        // page0.titlePositionY = 30.0
+        // page0.desc = "Start sharing your Pictures and particacipate \n in competive challeneges."
+        // page0.descPositionY = 100.0
+        // page0.titleIconPositionY = 100.0
+        // page0.titleIconView = UIImageView(image: UIImage(named: "picletIcon"))
+        
+        // build pages
+        let page0 = EAIntroPage(customViewFromNibNamed: "Onboarding_Screen_0", bundle: NSBundle.mainBundle())
+        let page1 = EAIntroPage(customViewFromNibNamed: "Onboarding_Screen_1", bundle: NSBundle.mainBundle())
+        let page2 = EAIntroPage(customViewFromNibNamed: "Onboarding_Screen_2", bundle: NSBundle.mainBundle())
+        
+        // create introduction view
+        let intro = EAIntroView(frame: self.view.bounds, andPages: [page0, page1, page2])
+        intro.bgImage = UIImage(named: "backgroundLogin")
+        // intro.delegate = self
+        
+        // display introduction view
+        intro.showInView(self.view, animateDuration: 0.0)
+    }
+    
     
     // MARK: - UI
     
@@ -41,15 +71,15 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
         thirdPartySignInService = ThirdPartySignInService.google
         GIDSignIn.sharedInstance().signOut()    // remove later
         GIDSignIn.sharedInstance().signIn()
-        
-        
-//        thirdPartySignInService = ThirdPartySignInService.google
-//        loadTermsOfServiceViewController()
     }
     
     @IBAction func pressedUsernameButton(sender: UIButton) {
         thirdPartySignInService = ThirdPartySignInService.username
-        // perfrom segue to userVC
+        performSegueWithIdentifier("toUserViewController", sender: self)
+    }
+    
+    @IBAction func pressedSkipButton(sender: AnyObject) {
+        performSegueWithIdentifier("toChallengesViewController", sender: self)
     }
     
     
@@ -64,14 +94,13 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
         case .google:
             break
             
-            
         default:
             break
         }
     }
 
     func signInInPiclet(jwt: String) {
-        ApiProxy().signInUserWithThirdPartyService(jwt, tokenType: TokenType.google, success: {
+        ApiProxy().signInUserWithThirdPartyService(jwt, tokenType: TokenType.google, success: { () in
             self.performSegueWithIdentifier("toChallengesViewController", sender: self)
             
         }) { (errorCode) in
@@ -101,7 +130,9 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
         }
     }
     
-    @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {
+        print("UnwindToWelcomeVC")
+    }
 }
 
 

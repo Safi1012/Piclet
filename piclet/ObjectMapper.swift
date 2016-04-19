@@ -145,15 +145,6 @@ class ObjectMapper {
         
         return userAccount
     }
-    
-    func parseJWTResponse(json: AnyObject) {
-        
-        print("\(json)")
-        
-        
-        
-    }
-    
 }
 
 
@@ -163,6 +154,8 @@ struct PostInformation {
     var postId: String
     var challengeId: String
 }
+
+
 
 
 

@@ -29,4 +29,25 @@ class UserAccount {
         }
         UserAccess.sharedInstance.addUser(username, token: token)
     }
+    
+    func createUserToken(json: AnyObject) {
+        guard
+            let dict = json as? NSDictionary,
+            let username = dict["username"] as? String,
+            let token = dict["token"] as? String
+        else {
+            print("createUserToken: couldn't serialize data")
+            return
+        }
+        UserAccess.sharedInstance.addUser(username, token: token)
+    }
 }
+
+
+
+// MARK: - User LogIn Information
+
+//struct UserLoginInformation {
+//    var username: String
+//    var token: String
+//}

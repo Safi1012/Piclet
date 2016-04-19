@@ -106,7 +106,7 @@ class ProfileViewController: UIViewController {
         
         ApiProxy().deleteThisUserToken(token!, success: { () -> () in
             UserAccess.sharedInstance.deleteAllUsers()
-            self.navigatoToLoginViewController()
+            self.navigatoToWelcomeViewController()
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
@@ -115,7 +115,7 @@ class ProfileViewController: UIViewController {
     }
     
     func pressedLoginNavbarButton(sender: UIBarButtonItem) {
-        navigatoToLoginViewController()
+        navigatoToWelcomeViewController()
     }
     
     
@@ -162,14 +162,14 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func navigatoToLoginViewController() {
+    func navigatoToWelcomeViewController() {
         
         dispatch_async(dispatch_get_main_queue()) {
-            if (UIApplication.sharedApplication().delegate as! AppDelegate).loginViewController != nil {
-                self.performSegueWithIdentifier("unwindToLoginViewController", sender: self)
+            if (UIApplication.sharedApplication().delegate as! AppDelegate).welcomeViewController != nil {
+                self.performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
             } else {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginVC = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
+                let loginVC = storyboard.instantiateViewControllerWithIdentifier("WelcomeViewController")
                 self.presentViewController(loginVC, animated: true, completion: nil)
             }
         }
