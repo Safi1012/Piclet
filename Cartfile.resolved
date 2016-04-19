@@ -1,5 +1,5 @@
-github "Alamofire/Alamofire" "3.3.0"
+github "Alamofire/Alamofire" "3.3.1"
 github "bryx-inc/BRYXBanner" "0.5.2"
 github "rs/SDWebImage" "3.7.5"
-github "SVProgressHUD/SVProgressHUD" "2.0"
-github "realm/realm-cocoa" "v0.98.6"
+github "SVProgressHUD/SVProgressHUD" "2.0.3"
+github "realm/realm-cocoa" "v0.98.8"

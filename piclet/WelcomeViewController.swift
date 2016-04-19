@@ -25,19 +25,17 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
         // todo: check if app was opened for the first time
         // showOnboarding()
         
+        uiStyling()
         
-        
+        // Google SignIn Service setup
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        
-        googleButton.addBoarderTop()
-        usernameButton.addBoarderTop()
-        usernameButton.addBoarderBottom()
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
     
     // MARK: - Onboarding
     
@@ -66,6 +64,12 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     
     
     // MARK: - UI
+    
+    func uiStyling() {
+        googleButton.addBoarderTop()
+        usernameButton.addBoarderTop()
+        usernameButton.addBoarderBottom()
+    }
     
     @IBAction func pressedGoogleButton(sender: UIButton) {
         thirdPartySignInService = ThirdPartySignInService.google

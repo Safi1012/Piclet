@@ -19,60 +19,102 @@ class ChallengeCollection {
     
     var challenge: [Challenge] {
         get {
-            if section == SegmentedControlState.hot {
+            switch section {
+                
+            case .hot:
                 return hotChallenges
+            
+            case .new:
+                return newChallenges
+                
+            case .archived:
+                return archivedChallenges
             }
-            return newChallenges
         }
         set {
-            if section == SegmentedControlState.hot {
+            switch section {
+                
+            case .hot:
                 self.hotChallenges = newValue
-            } else {
+                
+            case .new:
                 self.newChallenges = newValue
+                
+            case .archived:
+                self.archivedChallenges = newValue
             }
         }
     }
     
     var timestamp: NSDate? {
         get {
-            if section == SegmentedControlState.hot {
+            switch section {
+                
+            case .hot:
                 return hotTimestamp
+                
+            case .new:
+                return newTimestamp
+                
+            case .archived:
+                return archivedTimestamp
             }
-            return newTimestamp
         }
         set {
-            if section == SegmentedControlState.hot {
+            switch section {
+                
+            case .hot:
                 self.hotTimestamp = newValue
-            } else {
+                
+            case .new:
                 self.newTimestamp = newValue
+                
+            case .archived:
+                self.archivedTimestamp = newValue
             }
         }
     }
     
     var offsetY: CGFloat {
         get {
-            if section == SegmentedControlState.hot {
+            switch section {
+                
+            case .hot:
                 return hotContentOffsetY
+                
+            case .new:
+                return newContentOffsetY
+                
+            case .archived:
+                return archivedContentOffsetY
             }
-            return newContentOffsetY
         }
         set {
-            if section == SegmentedControlState.hot {
+            switch section {
+                
+            case .hot:
                 self.hotContentOffsetY = newValue
-            } else {
+                
+            case .new:
                 self.newContentOffsetY = newValue
+                
+            case .archived:
+                self.archivedContentOffsetY = newValue
             }
         }
     }
     
     private var hotChallenges = [Challenge]()
     private var newChallenges = [Challenge]()
+    private var archivedChallenges = [Challenge]()
     
     private var hotTimestamp: NSDate?
     private var newTimestamp: NSDate?
+    private var archivedTimestamp: NSDate?
     
     private var hotContentOffsetY = CGFloat(0.0)
     private var newContentOffsetY = CGFloat(0.0)
+    private var archivedContentOffsetY = CGFloat(0.0)
 }
 
 

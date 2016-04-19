@@ -84,10 +84,19 @@ class ChallengeViewController: UIViewController {
     @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
         challengeCollection.offsetY = tableView.contentOffset.y
         
-        if sender.selectedSegmentIndex == SegmentedControlState.hot.rawValue {
+        switch sender.selectedSegmentIndex {
+            
+        case SegmentedControlState.hot.rawValue:
             challengeCollection.section = SegmentedControlState.hot
-        } else {
+            
+        case SegmentedControlState.new.rawValue:
             challengeCollection.section = SegmentedControlState.new
+            
+        case SegmentedControlState.archived.rawValue:
+            challengeCollection.section = SegmentedControlState.archived
+            
+        default:
+            challengeCollection.section = SegmentedControlState.hot
         }
         
         tableView.contentOffset.y = challengeCollection.offsetY
@@ -128,30 +137,36 @@ class ChallengeViewController: UIViewController {
     }
     
     func refresh() {
-        fetchChallenges(0, displayIndicator: false, isFullRefetch: true)
+        if challengeCollection.section == .archived {
+            fetchChallenges(0, displayIndicator: false, isFullRefetch: true, archived: true)
+        } else {
+            fetchChallenges(0, displayIndicator: false, isFullRefetch: true, archived: false)
+        }
     }
     
     func infiniteLoading(offset: Int) {
         if isRequesting {
             return
         }
-        fetchChallenges(offset, displayIndicator: true, isFullRefetch: false)
+        if challengeCollection.section == .archived {
+            fetchChallenges(0, displayIndicator: false, isFullRefetch: true, archived: true)
+        } else {
+            fetchChallenges(0, displayIndicator: false, isFullRefetch: true, archived: false)
+        }
     }
     
-    func fetchChallenges(offset: Int, displayIndicator: Bool, isFullRefetch: Bool) {
+    func fetchChallenges(offset: Int, displayIndicator: Bool, isFullRefetch: Bool, archived: Bool) {
         isRequesting = true
         if displayIndicator { startActivityIndicator() }
         
-        ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: false, success: { (challenges) -> () in
+        ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: archived, success: { (challenges) -> () in
             if offset == 0 {
                 self.challengeCollection.challenge = [Challenge]()
                 self.challengeCollection.offsetY = 0.0
             }
-            
             for challenge in challenges {
                 self.challengeCollection.challenge.append(challenge)
             }
-            
             self.tableView.reloadData()
             self.requestFinished()
 
@@ -245,5 +260,6 @@ extension ChallengeViewController: UITableViewDelegate {
 enum SegmentedControlState: Int {
     case hot = 0
     case new = 1
+    case archived = 2
 }
 
