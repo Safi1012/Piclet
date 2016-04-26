@@ -13,7 +13,8 @@ class ThirdPartyServiceViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    var thirdPartySignInService: ThirdPartySignInService! // delete?
+    
+    var thirdPartySignInService: ThirdPartySignInService!
     var oauthToken: String!
     
     
@@ -23,7 +24,8 @@ class ThirdPartyServiceViewController: UIViewController {
         super.viewDidLoad()
         
         uiStyling()
-        // parseOauthtokenForSuggestion(oauthToken)
+        
+        parseOauthtokenForSuggestion(oauthToken)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ThirdPartyServiceViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ThirdPartyServiceViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
     }
@@ -70,7 +72,6 @@ class ThirdPartyServiceViewController: UIViewController {
     }
     
     
-    
     // MARK: - SignIn / SignUp
     
     func signUpInPiclet() {
@@ -79,7 +80,7 @@ class ThirdPartyServiceViewController: UIViewController {
             let username = usernameTextField.text,
             let oauthToken = oauthToken
         else {
-            print("username or oatuhtoken is nil!")
+            print("username or oauthToken is nil!")
             return
         }
         

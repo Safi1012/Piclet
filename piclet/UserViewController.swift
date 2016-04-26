@@ -113,7 +113,6 @@ class UserViewController: UIViewController {
         return true
     }
     
-    
     func dismissTosAndSignUp() {
         removeLastChildViewController(self)
         signUpUser()

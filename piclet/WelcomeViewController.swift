@@ -137,6 +137,12 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {
         print("UnwindToWelcomeVC")
     }
+    
+    func dismissTosAndSignUp() {
+        removeLastChildViewController(self)
+        performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
+    }
+
 }
 
 

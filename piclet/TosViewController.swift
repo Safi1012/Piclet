@@ -32,6 +32,9 @@ class TosViewController: UIViewController {
             userViewController.userAcceptedTos = true
             userViewController.dismissTosAndSignUp()
         }
+        if let welcomeViewController = parentViewController as? WelcomeViewController {
+            welcomeViewController.dismissTosAndSignUp()
+        }
     }
     
     @IBAction func cancelPressed(sender: UIButton) {
