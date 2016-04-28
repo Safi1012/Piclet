@@ -30,6 +30,33 @@ class PostsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    internal var aspectConstraint : NSLayoutConstraint? {
+        didSet {
+            if oldValue != nil {
+                postImage.removeConstraint(oldValue!)
+            }
+            if aspectConstraint != nil {
+                postImage.addConstraint(aspectConstraint!)
+            }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        aspectConstraint = nil
+    }
+    
+    func setPostedImage(image : UIImage) {
+        
+        let aspect = image.size.width / image.size.height
+        print(image.size.width)
+        print(image.size.height)
+        
+        aspectConstraint = NSLayoutConstraint(item: postImage, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: postImage, attribute: NSLayoutAttribute.Height, multiplier: aspect, constant: 0.0)
+        
+        postImage.image = image
+    }
+    
     func addDoubleTapGestureRecognizer(postViewController: PostsViewController) {
         self.postViewController = postViewController
         
@@ -43,6 +70,9 @@ class PostsTableViewCell: UITableViewCell {
     func detectedDoubleTap() {
         userPressedLikeButton()
     }
+    
+    
+    // MARK: - UI
     
     @IBAction func userPressedLikeButton() {
         delegate?.likeButtonInCellWasPressed(self, post: post)

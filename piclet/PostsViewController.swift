@@ -25,6 +25,11 @@ class PostsViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.estimatedRowHeight = 300.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // tableView.setNeedsLayout()
+        // tableView.layoutIfNeeded()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -181,10 +186,10 @@ extension PostsViewController: UITableViewDataSource {
         cell.postVotesLabel.text = Formater().formatSingularAndPlural(posts[indexPath.row].votes, singularWord: "Vote")
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
-        cell.postImage.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
-        // configure dynamic cell size
-        // here or in storyboard
+        UIImageView().sd_setImageWithURL(NSURL(string: url)) { (image, error, cache, url) in
+            cell.setPostedImage(image)
+        }
         
         if let user = UserAccess.sharedInstance.getUser() {
             for username in posts[indexPath.row].voters {
@@ -245,8 +250,6 @@ extension PostsViewController: PostsTableViewDelegate {
             
             // check if neccesary
             cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
-            
-            
         }
     }
 }
