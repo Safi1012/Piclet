@@ -406,7 +406,7 @@
                         <outlet property="scrollView" destination="eaK-eX-gmZ" id="AHt-2Z-47h"/>
                         <segue destination="zNK-Bt-FK5" kind="unwind" identifier="unwindToWelcomeViewController" unwindAction="unwindToWelcomeViewController:" id="TM0-gI-cGj"/>
                         <segue destination="1co-zF-dJR" kind="show" identifier="toProfileCollectionView" id="i5T-h3-gDU"/>
-                        <segue destination="aYM-n8-to4" kind="show" identifier="toChallenges" id="m8n-3Y-O5W"/>
+                        <segue destination="aYM-n8-to4" kind="show" identifier="toUserChallenges" id="m8n-3Y-O5W"/>
                         <segue destination="1co-zF-dJR" kind="show" identifier="toLikedPosts" id="vfR-0c-zcg"/>
                         <segue destination="aYM-n8-to4" kind="show" identifier="toWonChallenges" id="IVb-Hx-qTU"/>
                     </connections>
@@ -1686,7 +1686,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Xg-LV-up7"/>
-        <segue reference="IVb-Hx-qTU"/>
+        <segue reference="m8n-3Y-O5W"/>
         <segue reference="i5T-h3-gDU"/>
     </inferredMetricsTieBreakers>
 </document>
