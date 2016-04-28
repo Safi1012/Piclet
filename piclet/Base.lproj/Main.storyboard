@@ -347,11 +347,11 @@
                         <viewControllerLayoutGuide type="bottom" id="hRI-lX-HIp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q4y-2J-iXa">
-                        <rect key="frame" x="0.0" y="44" width="600" height="685"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaK-eX-gmZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="636"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="680"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-iV-VJc" userLabel="imageContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="270"/>
@@ -366,9 +366,9 @@
                                         </constraints>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvI-nJ-kkZ">
-                                        <rect key="frame" x="0.0" y="425" width="600" height="191"/>
+                                        <rect key="frame" x="0.0" y="425" width="600" height="235"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="191" id="rHS-25-gv3"/>
+                                            <constraint firstAttribute="height" constant="235" id="rHS-25-gv3"/>
                                         </constraints>
                                     </containerView>
                                 </subviews>
@@ -377,7 +377,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Ued-iV-VJc" secondAttribute="trailing" id="Dbj-mQ-gc6"/>
                                     <constraint firstItem="3oI-zT-qXK" firstAttribute="leading" secondItem="eaK-eX-gmZ" secondAttribute="leading" id="G5r-va-wjT"/>
                                     <constraint firstItem="Ued-iV-VJc" firstAttribute="top" secondItem="eaK-eX-gmZ" secondAttribute="top" id="SPD-Dr-sUl"/>
-                                    <constraint firstAttribute="bottom" secondItem="cvI-nJ-kkZ" secondAttribute="bottom" id="WLH-gN-Y8B"/>
+                                    <constraint firstAttribute="bottom" secondItem="cvI-nJ-kkZ" secondAttribute="bottom" constant="20" id="WLH-gN-Y8B"/>
                                     <constraint firstItem="3oI-zT-qXK" firstAttribute="top" secondItem="Ued-iV-VJc" secondAttribute="bottom" constant="8" id="agS-wU-c3b"/>
                                     <constraint firstItem="cvI-nJ-kkZ" firstAttribute="leading" secondItem="eaK-eX-gmZ" secondAttribute="leading" id="cVm-Eq-NaG"/>
                                     <constraint firstAttribute="trailing" secondItem="cvI-nJ-kkZ" secondAttribute="trailing" id="ohC-hl-way"/>
@@ -398,7 +398,7 @@
                     <navigationItem key="navigationItem" id="k0Y-bJ-pQy"/>
                     <value key="contentSizeForViewInPopover" type="size" width="600" height="648"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="729"/>
+                    <size key="freeformSize" width="600" height="773"/>
                     <connections>
                         <outlet property="profileHistoryContainer" destination="cvI-nJ-kkZ" id="pCq-g9-LrN"/>
                         <outlet property="profileImageContainer" destination="Ued-iV-VJc" id="shD-48-v2o"/>
@@ -408,6 +408,7 @@
                         <segue destination="1co-zF-dJR" kind="show" identifier="toProfileCollectionView" id="i5T-h3-gDU"/>
                         <segue destination="aYM-n8-to4" kind="show" identifier="toChallenges" id="m8n-3Y-O5W"/>
                         <segue destination="1co-zF-dJR" kind="show" identifier="toLikedPosts" id="vfR-0c-zcg"/>
+                        <segue destination="aYM-n8-to4" kind="show" identifier="toWonChallenges" id="IVb-Hx-qTU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-t8-knY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -420,7 +421,7 @@
             <objects>
                 <collectionViewController id="1co-zF-dJR" customClass="ProfileCollectionViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="xbR-i1-xee">
-                        <rect key="frame" x="0.0" y="44" width="600" height="685"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="h4e-h2-dfp">
@@ -856,11 +857,11 @@
                         <viewControllerLayoutGuide type="bottom" id="cr5-Ls-0JB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uf0-bP-NSg">
-                        <rect key="frame" x="0.0" y="44" width="600" height="685"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nM-5h-7VR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="636"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="680"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="VGj-9Q-hYF">
                                     <rect key="frame" x="0.0" y="98" width="600" height="70"/>
@@ -1045,14 +1046,14 @@
                         <viewControllerLayoutGuide type="bottom" id="AzS-YA-X58"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t1O-oe-MTH">
-                        <rect key="frame" x="0.0" y="44" width="600" height="685"/>
+                        <rect key="frame" x="0.0" y="44" width="600" height="729"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvK-1L-UmO" userLabel="mascotView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="636"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="680"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EK5-Oi-cGW" userLabel="mascot">
-                                        <rect key="frame" x="212" y="218" width="174.5" height="200"/>
+                                        <rect key="frame" x="212" y="240" width="174.5" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="174.5" id="thK-Gb-k2a"/>
                                         </constraints>
@@ -1062,7 +1063,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm sorry, there are no Posts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD9-St-66h">
-                                        <rect key="frame" x="194" y="162" width="213" height="20.5"/>
+                                        <rect key="frame" x="194" y="184" width="213" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1077,7 +1078,7 @@
                                 </constraints>
                             </view>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="413" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cmg-JR-Zyi">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="636"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="680"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="413" id="qzP-7g-A0w" customClass="PostsTableViewCell" customModule="piclet" customModuleProvider="target">
@@ -1685,6 +1686,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0Xg-LV-up7"/>
+        <segue reference="IVb-Hx-qTU"/>
         <segue reference="i5T-h3-gDU"/>
     </inferredMetricsTieBreakers>
 </document>

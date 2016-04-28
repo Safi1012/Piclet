@@ -15,9 +15,8 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     var userAccount: UserAccount!
     var userPostIds: [PostInformation] = []
-    var selectedPostIds: [PostInformation] = []
+    var selectedPosts: [SelectedPost] = []
     var downloadUserCreatedPosts = true
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,10 +86,10 @@ class ProfileCollectionViewController: UICollectionViewController {
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         let group = dispatch_group_create();
         
-        for postInformation in selectedPostIds {
+        for selectedPost in selectedPosts {
             dispatch_group_enter(group)
             
-            ApiProxy().deleteUserPost(userAccount.token, challengeID: postInformation.challengeId, postID: postInformation.postId, success: { () -> () in
+            ApiProxy().deleteUserPost(userAccount.token, challengeID: selectedPost.challengeID, postID: selectedPost.postID, success: { () -> () in
                 dispatch_group_leave(group)
                 
             }, failure: { (errorCode) -> () in
@@ -99,11 +98,18 @@ class ProfileCollectionViewController: UICollectionViewController {
                     
             })
         }
-        
         dispatch_group_notify(group, queue) { () -> Void in
             self.dismissLoadingSpinner()
-            self.selectedPostIds = []
+            self.removeDeleteMarkers()
+            self.selectedPosts = []
             self.fetchPosts(0)
+        }
+    }
+    
+    func removeDeleteMarkers() {
+        for selctedPost in selectedPosts {
+            let cell = self.collectionView?.cellForItemAtIndexPath(selctedPost.indexPath) as! ProfileCollectionViewCell
+            cell.layer.borderWidth = 0.0
         }
     }
     
@@ -136,10 +142,10 @@ class ProfileCollectionViewController: UICollectionViewController {
             navigationItem.title = "Your Posts"
             
         case "Delete":
+            deleteUserPost()
             animateNavigationBarTitle("Edit", barButton: sender)
             collectionView?.allowsMultipleSelection = false
             navigationItem.title = "Your Posts"
-            deleteUserPost()
             
         default:
             print("Right NavigationButton has an unknown Title")
@@ -185,6 +191,7 @@ class ProfileCollectionViewController: UICollectionViewController {
             imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
             
         } else {
+            // add delete marker
             let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
             cell.layer.borderWidth = 6.0
             cell.layer.borderColor = UIColor(red: 0.0, green: 125.0/255.0, blue: 255.0/255.0, alpha: 1.0).CGColor
@@ -192,7 +199,7 @@ class ProfileCollectionViewController: UICollectionViewController {
             if editBarButtonItem.title == "Cancel" {
                 animateNavigationBarTitle("Delete", barButton: editBarButtonItem)
             }
-            selectedPostIds.append(PostInformation(postId: userPostIds[indexPath.row].postId, challengeId: userPostIds[indexPath.row].challengeId))
+            selectedPosts.append(SelectedPost(indexPath: indexPath, postID: userPostIds[indexPath.row].postId, challengeID: userPostIds[indexPath.row].challengeId))
             
         }
     }
@@ -201,14 +208,15 @@ class ProfileCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
         cell.layer.borderWidth = 0.0
         
-        for i in 0 ..< selectedPostIds.count {
-            if selectedPostIds[i].postId == userPostIds[indexPath.row].postId && selectedPostIds[i].challengeId == userPostIds[indexPath.row].challengeId {
-                selectedPostIds.removeAtIndex(i)
-            }
+        if selectedPosts.count - 1 == 0 {
+            animateNavigationBarTitle("Cancel", barButton: editBarButtonItem)
         }
         
-        if selectedPostIds.count == 0 {
-            animateNavigationBarTitle("Cancel", barButton: editBarButtonItem)
+        for i in (0...selectedPosts.count - 1).reverse() {
+            if selectedPosts[i].indexPath == indexPath {
+                selectedPosts.removeAtIndex(i)
+                return
+            }
         }
     }
     
@@ -267,3 +275,13 @@ extension ProfileCollectionViewController: JTSImageViewControllerOptionsDelegate
         return 1.0
     }
 }
+
+
+// MARK: SelectedPost
+
+struct SelectedPost {
+    var indexPath: NSIndexPath!
+    var postID: String!
+    var challengeID: String!
+}
+

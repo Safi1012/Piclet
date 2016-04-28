@@ -69,6 +69,4 @@ class JWTParser {
         
         return base64String
     }
-    
-    
 }
