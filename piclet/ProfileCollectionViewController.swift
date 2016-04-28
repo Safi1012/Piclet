@@ -105,25 +105,7 @@ class ProfileCollectionViewController: UICollectionViewController {
             self.fetchPosts(0)
         }
     }
-    
-    func removeDeleteMarkers() {
-        for selctedPost in selectedPosts {
-            let cell = self.collectionView?.cellForItemAtIndexPath(selctedPost.indexPath) as! ProfileCollectionViewCell
-            cell.layer.borderWidth = 0.0
-        }
-    }
-    
-    func animateNavigationBarTitle(title: String, barButton: UIBarButtonItem) {
-        let fadeTextAnimation = CATransition()
-        fadeTextAnimation.duration = 0.45
-        fadeTextAnimation.type = kCATransitionFade
-        
-        dispatch_async(dispatch_get_main_queue(),{
-            self.navigationController?.navigationBar.layer.addAnimation(fadeTextAnimation, forKey: "fadeText")
-            barButton.title = title
-        })
-    }
-    
+
     
     // User
     
@@ -153,6 +135,48 @@ class ProfileCollectionViewController: UICollectionViewController {
         }
     }
     
+    func addDeleteMarker(indexPath: NSIndexPath) {
+        let cell = collectionView?.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
+        cell.layer.borderWidth = 6.0
+        cell.layer.borderColor = UIColor(red: 0.0, green: 125.0/255.0, blue: 255.0/255.0, alpha: 1.0).CGColor
+        
+        if editBarButtonItem.title == "Cancel" {
+            animateNavigationBarTitle("Delete", barButton: editBarButtonItem)
+        }
+        selectedPosts.append(SelectedPost(indexPath: indexPath, postID: userPostIds[indexPath.row].postId, challengeID: userPostIds[indexPath.row].challengeId))
+    }
+    
+    func removeDeleteMarkers() {
+        for selctedPost in selectedPosts {
+            let cell = self.collectionView?.cellForItemAtIndexPath(selctedPost.indexPath) as! ProfileCollectionViewCell
+            cell.layer.borderWidth = 0.0
+        }
+    }
+    
+    func showPostInFullscreen(indexPath: NSIndexPath) {
+        let imageView = UIImageView()
+        let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
+        
+        let imageInfo = JTSImageInfo()
+        imageInfo.image = imageView.image
+        
+        let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
+        imageViewer.optionsDelegate = self
+        imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
+    }
+    
+    func animateNavigationBarTitle(title: String, barButton: UIBarButtonItem) {
+        let fadeTextAnimation = CATransition()
+        fadeTextAnimation.duration = 0.45
+        fadeTextAnimation.type = kCATransitionFade
+        
+        dispatch_async(dispatch_get_main_queue(),{
+            self.navigationController?.navigationBar.layer.addAnimation(fadeTextAnimation, forKey: "fadeText")
+            barButton.title = title
+        })
+    }
+    
 
     // MARK: UICollectionViewDataSource
 
@@ -177,29 +201,17 @@ class ProfileCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        if editBarButtonItem.title == "Edit" {
-            let imageView = UIImageView()
-            let url = "https://flash1293.de/challenges/\(userPostIds[indexPath.row].challengeId)/posts/\(userPostIds[indexPath.row].postId)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-            imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
-            
-            let imageInfo = JTSImageInfo()
-            imageInfo.image = imageView.image
-            
-            let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
-            imageViewer.optionsDelegate = self
-            imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
+        if downloadUserCreatedPosts {
+            if editBarButtonItem.title == "Edit" {
+                showPostInFullscreen(indexPath)
+                
+            } else {
+                addDeleteMarker(indexPath)
+                
+            }
             
         } else {
-            // add delete marker
-            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ProfileCollectionViewCell
-            cell.layer.borderWidth = 6.0
-            cell.layer.borderColor = UIColor(red: 0.0, green: 125.0/255.0, blue: 255.0/255.0, alpha: 1.0).CGColor
-            
-            if editBarButtonItem.title == "Cancel" {
-                animateNavigationBarTitle("Delete", barButton: editBarButtonItem)
-            }
-            selectedPosts.append(SelectedPost(indexPath: indexPath, postID: userPostIds[indexPath.row].postId, challengeID: userPostIds[indexPath.row].challengeId))
+            showPostInFullscreen(indexPath)
             
         }
     }
