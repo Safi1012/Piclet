@@ -16,6 +16,7 @@ class Challenge {
     var posted: NSDate!
     var votes: Int!
     var amountPosts: Int!
+    var archived: Bool!
 
     var creatorPost: String?
     var description: String?

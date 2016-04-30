@@ -40,7 +40,8 @@ class ObjectMapper {
                 let creator = element.valueForKey("creator") as? String,
                 let posted = element.valueForKey("posted") as? NSNumber,
                 let votes = element.valueForKey("votes") as? Int,
-                let amountPosts = element.valueForKey("amountPosts") as? Int
+                let amountPosts = element.valueForKey("amountPosts") as? Int,
+                let archived = element.valueForKey("archived") as? Bool
             else {
                 break
             }
@@ -52,6 +53,7 @@ class ObjectMapper {
             challenge.amountPosts = amountPosts
             challenge.creatorPost = element.valueForKey("creatorPost") as? String
             challenge.description = element.valueForKey("description") as? String
+            challenge.archived = archived
             
             challenges.append(challenge)
         }

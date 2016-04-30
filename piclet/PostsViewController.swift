@@ -27,16 +27,11 @@ class PostsViewController: UIViewController {
         tableView.delegate = self
         tableView.estimatedRowHeight = 300.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // tableView.setNeedsLayout()
-        // tableView.layoutIfNeeded()
     }
 
     override func viewDidAppear(animated: Bool) {
         refreshPosts()
     }
-
-
     
     func downloadAndCacheImages() {
         var uncachedURL = [NSURL]()
@@ -76,9 +71,6 @@ class PostsViewController: UIViewController {
             self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
         }
     }
-    
-    
-    
     
     
     // MARK: - UI
@@ -234,6 +226,10 @@ extension PostsViewController: UITableViewDataSource {
         cell.postVotesLabel.text = Formater().formatSingularAndPlural(posts[indexPath.row].votes, singularWord: "Vote")
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
+        
+        if challenge.archived! {
+            cell.postLikeButton.hidden = true
+        }
         
         SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: SDWebImageDownloaderOptions.AllowInvalidSSLCertificates, progress: { (a, b) in
             print("a: \(a)")
