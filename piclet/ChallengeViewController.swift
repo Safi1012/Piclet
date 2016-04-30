@@ -164,6 +164,7 @@ class ChallengeViewController: UIViewController {
                 self.challengeCollection.challenge = [Challenge]()
                 self.challengeCollection.offsetY = 0.0
             }
+            
             for challenge in challenges {
                 self.challengeCollection.challenge.append(challenge)
             }
@@ -184,6 +185,12 @@ class ChallengeViewController: UIViewController {
         self.stopActivityIndicator()
         
         isRequesting = false
+        
+        if challengeCollection.challenge.count == 0 {
+            addCenteredLabel("There are no challenges yet. \n Let's go and create one!", view: tableView)
+        } else {
+            removeCentered(tableView)
+        }
     }
 
 

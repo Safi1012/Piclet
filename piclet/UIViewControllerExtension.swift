@@ -64,21 +64,32 @@ extension UIViewController {
         SVProgressHUD.setOffsetFromCenter(offset)
         SVProgressHUD.show()
     }
-    
-//    func showLoadingSpinner(offset: UIOffset) {
-//        SVProgressHUD.setForegroundColor(UIColor.blackColor())
-//        SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
-//        
-//        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Custom)
-//        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.None)
-//        SVProgressHUD.setOffsetFromCenter(offset)
-//        SVProgressHUD.show()
-//    }
 
     func dismissLoadingSpinner() {
         dispatch_async(dispatch_get_main_queue()) {
             SVProgressHUD.dismiss()
         }
+    }
+    
+    
+    // MARK: - Text
+    
+    func addCenteredLabel(text: String, view: UIView) {
+        let label = UILabel()
+        label.frame.size.height = 42
+        label.frame.size.width = view.frame.size.width
+        label.center = view.center
+        label.center.y = (view.frame.size.height/2)
+        label.numberOfLines = 2
+        label.textColor = UIColor.grayColor()
+        label.text = text
+        label.textAlignment = .Center
+        label.tag = 1
+        view.addSubview(label)
+    }
+    
+    func removeCentered(view: UIView) {
+        view.viewWithTag(1)?.removeFromSuperview()
     }
     
     

@@ -110,12 +110,23 @@ class MyChallengeViewController: UIViewController {
     }
     
     func fetchUserSuccess(offset: Int, userChallenges: [Challenge]) {
+        removeCentered(tableView)
+        
         if offset == 0 {
             challenges = [Challenge]()
         }
         for challenge in userChallenges {
             challenges.append(challenge)
         }
+        
+        if challenges.count == 0 {
+            if wonChallenges {
+                addCenteredLabel("You didn't win any challenges", view: tableView)
+            } else {
+                addCenteredLabel("You don't have any challenges. \n Let's go and create one!", view: tableView)
+            }
+        }
+        
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
             self.isRequesting = false

@@ -47,13 +47,21 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     
     func fetchUserCreatedPosts(offset: Int) {
+        self.removeCentered(self.collectionView!)
+        
         ApiProxy().fetchUserCreatedPosts(userAccount.username, offset: offset, success: { (userPosts) -> () in
             
             self.userPostIds = userPosts
             
-            dispatch_async(dispatch_get_main_queue(), {
-                self.collectionView?.reloadData()
-            })
+            if self.userPostIds.count == 0 {
+                self.addCenteredLabel("You don't have any posts. \n Let's go and create some!", view: self.collectionView!)
+                self.view.viewWithTag(1)?.center.y -= 30
+            } else {
+                self.removeCentered(self.collectionView!)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.collectionView?.reloadData()
+                })
+            }
             
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
@@ -62,6 +70,8 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     
     func fetchUserLikedPosts(offset: Int) {
+        self.removeCentered(self.collectionView!)
+        
         ApiProxy().fetchLikedPosts(offset, success: { (posts) -> () in
             
             if offset == 0 {
@@ -70,9 +80,15 @@ class ProfileCollectionViewController: UICollectionViewController {
             for postId in posts {
                 self.userPostIds.append(postId)
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                self.collectionView?.reloadData()
-            })
+            if self.userPostIds.count == 0 {
+                self.addCenteredLabel("You didn't like any posts. \n Let's go and share some ♥️", view: self.collectionView!)
+                self.view.viewWithTag(1)?.center.y -= 30
+            } else {
+                self.removeCentered(self.collectionView!)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.collectionView?.reloadData()
+                })
+            }
 
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
