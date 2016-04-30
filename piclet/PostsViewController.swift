@@ -36,6 +36,50 @@ class PostsViewController: UIViewController {
         refreshPosts()
     }
 
+
+    
+    func downloadAndCacheImages() {
+        var uncachedURL = [NSURL]()
+        
+        for post in posts {
+            let url = NSURL(string: "https://flash1293.de/challenges/\(challenge.id)/posts/\(post.id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)")!
+            if !SDImageCache.sharedImageCache().diskImageExistsWithKey(url.URLString) {
+                uncachedURL.append(url)
+            }
+        }
+        cacheImages(uncachedURL)
+    }
+    
+    func cacheImages(uncachedURL: [NSURL]) {
+        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
+        
+        
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        let group = dispatch_group_create();
+        
+        for url in uncachedURL {
+            dispatch_group_enter(group)
+            SDWebImageDownloader.sharedDownloader().downloadImageWithURL(url, options: SDWebImageDownloaderOptions.AllowInvalidSSLCertificates, progress: { (a, b) in
+                print("a: \(a)")
+                print("b: \(b)")
+                
+            }, completed: { (image, data, error, completed) in
+                SDImageCache.sharedImageCache().storeImage(image, forKey: url.URLString, toDisk: true)
+                dispatch_group_leave(group)
+                
+            })
+        }
+        
+        dispatch_group_notify(group, queue) { () -> Void in
+            self.dismissLoadingSpinner()
+            self.displayTableView()
+            self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
+        }
+    }
+    
+    
+    
+    
     
     // MARK: - UI
     
@@ -83,8 +127,12 @@ class PostsViewController: UIViewController {
             self.posts = posts
             
             if self.posts.count > 0 {
+                
+                // self.dismissLoadingSpinner()
                 self.displayTableView()
                 self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
+                
+                // self.downloadAndCacheImages()
             } else {
                 self.displayMascotView()
             }
@@ -187,9 +235,14 @@ extension PostsViewController: UITableViewDataSource {
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         
-        UIImageView().sd_setImageWithURL(NSURL(string: url)) { (image, error, cache, url) in
+        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: SDWebImageDownloaderOptions.AllowInvalidSSLCertificates, progress: { (a, b) in
+            print("a: \(a)")
+            print("b: \(b)")
+            
+        }, completed: { (image, data, error, completed) in
             cell.setPostedImage(image)
-        }
+                
+        })
         
         if let user = UserAccess.sharedInstance.getUser() {
             for username in posts[indexPath.row].voters {

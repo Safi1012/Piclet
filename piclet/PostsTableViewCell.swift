@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebImage
 
 class PostsTableViewCell: UITableViewCell {
 
@@ -46,8 +47,20 @@ class PostsTableViewCell: UITableViewCell {
         aspectConstraint = nil
     }
     
-    func setPostedImage(image : UIImage) {
+    func setImageUrl(url: NSURL) {
+        let manager = SDWebImageManager.sharedManager()
         
+        manager.downloadImageWithURL(url, options: SDWebImageOptions.ProgressiveDownload, progress: { (a, b) in
+            print("a: \(a)")
+            print("b: \(b)")
+        
+        }) { (image, error, chache, completed, url) in
+            self.setPostedImage(image)
+                
+        }
+    }
+    
+    func setPostedImage(image : UIImage) {
         let aspect = image.size.width / image.size.height
         print(image.size.width)
         print(image.size.height)
