@@ -103,6 +103,10 @@
 		D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C51C34329F002169DF /* UIViewExtension.swift */; };
+		D4CCE3CF1CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */; };
+		D4CCE3D01CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */; };
+		D4CCE3D21CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3D11CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift */; };
+		D4CCE3D31CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3D11CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift */; };
 		D4CDEAAF1BDDFCDD00F4C51B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */; };
 		D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
 		D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */; };
@@ -242,6 +246,8 @@
 		D4BE33FC1C91DE2900483576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRankingTableViewController.swift; sourceTree = "<group>"; };
+		D4CCE3D11CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRankingTableViewCell.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		D4CF2F291CA3E2F000FC0AE0 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
 		D4CF2F2A1CA3E2F000FC0AE0 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
@@ -535,6 +541,7 @@
 				D4A917C41C7A50D000186DEC /* ProfileStatsTable */,
 				D4689B3E1C88D04100647DDB /* ProfileHistoryTable */,
 				D42734201C9180D3006BA9DB /* ProfileCollection */,
+				D4CCE3CD1CD57A2E001D70D3 /* ProfileRanking */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -592,6 +599,15 @@
 				D43721011CB16A180058B262 /* TermsOfService */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		D4CCE3CD1CD57A2E001D70D3 /* ProfileRanking */ = {
+			isa = PBXGroup;
+			children = (
+				D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */,
+				D4CCE3D11CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift */,
+			);
+			name = ProfileRanking;
 			sourceTree = "<group>";
 		};
 		D4CF2F281CA3E2D000FC0AE0 /* GoogleSignIn */ = {
@@ -777,6 +793,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */,
+				D4CCE3D21CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */,
 				D43721071CB16BFA0058B262 /* UserViewController.swift in Sources */,
 				D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */,
 				D46494811BEF523900AA48C4 /* ImageUploadViewController.swift in Sources */,
@@ -788,6 +805,7 @@
 				D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4422FD51CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
+				D4CCE3CF1CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */,
 				D459D6A61C1CDB81003A26E4 /* UIImage+JTSImageEffects.m in Sources */,
 				D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */,
 				D44248EB1BE5405E00C88B50 /* TabBarViewController.swift in Sources */,
@@ -851,6 +869,8 @@
 				D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
 				D43721121CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */,
 				D437210C1CB16DAB0058B262 /* TosViewController.swift in Sources */,
+				D4CCE3D01CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */,
+				D4CCE3D31CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */,
 				D45E2B9C1CAABC9800002BC3 /* EAIntroPage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -156,11 +156,6 @@ class ProfileViewController: UIViewController {
                 destinationVC.userAccount = sender as! UserAccount // put guard here
                 destinationVC.wonChallenges = true
                 
-            case "toLikedPosts":
-                let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
-                destinationVC.downloadUserCreatedPosts = false
-                destinationVC.userAccount = sender as! UserAccount
-                
             default:
                 print("Segue in ProfileViewController failed")
             }

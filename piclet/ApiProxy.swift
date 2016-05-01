@@ -261,7 +261,20 @@ class ApiProxy {
     }
     
     
+    // MARK: - Rank
     
+    func fetchRanks(offset: Int, success: (ranks: [UserRank]) -> (), failure: (errorCode: String) -> () ) {
+        
+        let apiPath = "users?offset=\(offset)"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: nil, success: { (json) -> () in
+            success(ranks: ObjectMapper().parseRanks(json))
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
     
     
     

@@ -12,7 +12,21 @@ class ProfileStatsTableViewController: UITableViewController {
     
     @IBOutlet weak var rankCell: UITableViewCell!
     @IBOutlet weak var totalLikesCell: UITableViewCell!
-   
+    
+    
+    // MARK: - UITableViewDelegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        if cell == rankCell {
+            self.parentViewController?.performSegueWithIdentifier("toRanking", sender: nil)
+        }
+        if cell == totalLikesCell {
+            // self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount!)
+        }
+    }
 }
 
 

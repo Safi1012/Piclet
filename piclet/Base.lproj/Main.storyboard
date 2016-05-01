@@ -409,6 +409,7 @@
                         <segue destination="aYM-n8-to4" kind="show" identifier="toUserChallenges" id="m8n-3Y-O5W"/>
                         <segue destination="1co-zF-dJR" kind="show" identifier="toLikedPosts" id="vfR-0c-zcg"/>
                         <segue destination="aYM-n8-to4" kind="show" identifier="toWonChallenges" id="IVb-Hx-qTU"/>
+                        <segue destination="r7l-6q-c2C" kind="show" identifier="toRanking" id="42i-ye-cbx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qSw-t8-knY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1036,6 +1037,99 @@
                 <exit id="FCo-vc-lyc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3293" y="1526.5"/>
+        </scene>
+        <!--Rankings-->
+        <scene sceneID="Ssp-Nr-oY5">
+            <objects>
+                <tableViewController title="Rankings" id="r7l-6q-c2C" customClass="ProfileRankingTableViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" id="aFM-O5-DSn">
+                        <rect key="frame" x="0.0" y="44" width="600" height="729"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="bi4-Ur-aEF">
+                            <rect key="frame" x="0.0" y="78" width="600" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7a-s9-REU">
+                                    <rect key="frame" x="283" y="17" width="35" height="35"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="35" id="6C7-n5-ABI"/>
+                                        <constraint firstAttribute="height" constant="35" id="b7A-Ox-jv2"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="y7a-s9-REU" firstAttribute="centerX" secondItem="bi4-Ur-aEF" secondAttribute="centerX" id="Hs3-fa-W0M"/>
+                                <constraint firstItem="y7a-s9-REU" firstAttribute="centerY" secondItem="bi4-Ur-aEF" secondAttribute="centerY" id="UI3-It-ji5"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="50" id="YlO-8V-udK" customClass="ProfileRankingTableViewCell" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YlO-8V-udK" id="FXw-E8-SLx">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29v-8r-87K">
+                                            <rect key="frame" x="0.0" y="15" width="43" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="43" id="rH3-PM-9Jv"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpy-5Q-ZVj">
+                                            <rect key="frame" x="61" y="5" width="40" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="8qI-uf-tD2"/>
+                                                <constraint firstAttribute="height" constant="40" id="QUe-a5-sbF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcl-iJ-iLT">
+                                            <rect key="frame" x="109" y="15" width="45" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bpy-5Q-ZVj" firstAttribute="leading" secondItem="29v-8r-87K" secondAttribute="trailing" constant="18" id="0jA-RX-jYm"/>
+                                        <constraint firstItem="29v-8r-87K" firstAttribute="centerY" secondItem="FXw-E8-SLx" secondAttribute="centerY" id="80F-KW-Csk"/>
+                                        <constraint firstItem="bpy-5Q-ZVj" firstAttribute="centerY" secondItem="FXw-E8-SLx" secondAttribute="centerY" id="CaS-3n-CSJ"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="29v-8r-87K" secondAttribute="leading" constant="8" id="Tf5-kL-ChH"/>
+                                        <constraint firstItem="mcl-iJ-iLT" firstAttribute="leading" secondItem="bpy-5Q-ZVj" secondAttribute="trailing" constant="8" id="gFU-eY-FyU"/>
+                                        <constraint firstItem="mcl-iJ-iLT" firstAttribute="centerY" secondItem="FXw-E8-SLx" secondAttribute="centerY" id="yyw-0h-dLh"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="avatarImageView" destination="bpy-5Q-ZVj" id="AWd-3b-Lt3"/>
+                                    <outlet property="rankLabel" destination="29v-8r-87K" id="ZoJ-Ax-Elu"/>
+                                    <outlet property="usernameLabel" destination="mcl-iJ-iLT" id="yMW-ja-Vz1"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="r7l-6q-c2C" id="J94-ks-fi3"/>
+                            <outlet property="delegate" destination="r7l-6q-c2C" id="HP9-BO-rQg"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Rankings" id="myr-H9-zAD"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="y7a-s9-REU" id="GzT-HZ-rLG"/>
+                        <outlet property="tableViewFooter" destination="bi4-Ur-aEF" id="y9a-mJ-BK9"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O3T-Oa-50P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3293" y="2369.5"/>
         </scene>
         <!--My Posts-->
         <scene sceneID="Eq2-t4-KM1">
@@ -1685,7 +1779,7 @@
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Xg-LV-up7"/>
+        <segue reference="oua-GM-v9c"/>
         <segue reference="m8n-3Y-O5W"/>
         <segue reference="i5T-h3-gDU"/>
     </inferredMetricsTieBreakers>

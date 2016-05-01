@@ -148,6 +148,28 @@ class ObjectMapper {
         
         return userAccount
     }
+    
+    func parseRanks(json: AnyObject) -> [UserRank] {
+        var allRanks = [UserRank]()
+        
+        guard
+            let dict = json as? [NSDictionary]
+        else {
+            print("error")
+            return allRanks
+        }
+        
+        for element in dict {
+            guard
+                let rank = element.valueForKey("rank") as? Int,
+                let username = element.valueForKey("username") as? String
+            else {
+                break
+            }
+            allRanks.append(UserRank(rank: rank, username: username))
+        }
+        return allRanks
+    }
 }
 
 
@@ -156,6 +178,13 @@ class ObjectMapper {
 struct PostInformation {
     var postId: String
     var challengeId: String
+}
+
+// MARK: - Rank
+
+struct UserRank {
+    var rank: Int
+    var username: String
 }
 
 
