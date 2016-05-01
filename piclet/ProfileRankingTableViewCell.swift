@@ -21,8 +21,4 @@ class ProfileRankingTableViewCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2.0
         avatarImageView.layer.masksToBounds = true
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
 }
