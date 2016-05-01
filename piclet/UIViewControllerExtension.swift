@@ -93,7 +93,7 @@ extension UIViewController {
     }
     
     
-    // MARK: - TableViewFooter (infinite loading)
+    // MARK: - TableViewFooter (infinite loading) -- DELETE THIS
     
     func addInfiniteLoadingTableViewFooter(tableViewFooter: UIView) {
         let border = CALayer()

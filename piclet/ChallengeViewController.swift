@@ -12,10 +12,7 @@ class ChallengeViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewFooter: UIView!
-    @IBOutlet weak var activityIndicatorView: UIView!
     
-    var activityIndicator: ActivityIndicatorView!
     var challengeCollection: ChallengeCollection!
     var isRequesting = false
     
@@ -25,7 +22,7 @@ class ChallengeViewController: UIViewController {
 
         challengeCollection = ChallengeCollection(section: SegmentedControlState.hot)
         setupTableView()
-        setupUI()
+        styleNavigationBar()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,21 +46,9 @@ class ChallengeViewController: UIViewController {
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.addActivityIndicatorView()
         
         addDefaultPullToRefresh(tableView, selector: "refresh")
-    }
-    
-    func setupUI() {
-        setupActivityIndicator()
-        styleNavigationBar()
-        addInfiniteLoadingTableViewFooter(tableViewFooter)
-    }
-    
-    func setupActivityIndicator() {
-        activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
-        activityIndicatorView.addSubview(activityIndicator)
-        activityIndicator.center = CGPointMake(activityIndicatorView.bounds.midX, activityIndicatorView.bounds.midY)
-        activityIndicatorView.hidden = true
     }
     
     func styleNavigationBar() {
@@ -105,17 +90,7 @@ class ChallengeViewController: UIViewController {
         }
     }
     
-    func startActivityIndicator() {
-        activityIndicatorView.hidden = false
-        activityIndicator.startAnimating()
-    }
-    
-    func stopActivityIndicator() {
-        activityIndicatorView.hidden = true
-        activityIndicator.stopAnimating()
-    }
 
-    
     // MARK: - Challenge
     
     func refreshSelectedSegement() {
@@ -150,7 +125,7 @@ class ChallengeViewController: UIViewController {
     
     func fetchChallenges(offset: Int, displayIndicator: Bool, isFullRefetch: Bool, archived: Bool) {
         isRequesting = true
-        if displayIndicator { startActivityIndicator() }
+        if displayIndicator { tableView.startAnimatingIndicatorView() }
         
         ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: archived, success: { (challenges) -> () in
             if offset == 0 {
@@ -175,7 +150,7 @@ class ChallengeViewController: UIViewController {
         tableView.hidden = false
         self.makePullToRefreshEndRefreshing()
         self.dismissLoadingSpinner()
-        self.stopActivityIndicator()
+        self.tableView.stopAnimatingIndicatorView()
         
         isRequesting = false
         

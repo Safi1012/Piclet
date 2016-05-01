@@ -11,11 +11,8 @@ import UIKit
 class MyChallengeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewFooter: UIView!
-    @IBOutlet weak var activityIndicatorView: UIView!
     
     var userAccount: UserAccount!
-    var activityIndicator: ActivityIndicatorView!
     var isRequesting = false
     var challenges: [Challenge]!
     var wonChallenges = false
@@ -24,14 +21,13 @@ class MyChallengeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.challenges = [Challenge]()
-        setupActivityIndicator()
-        addInfiniteLoadingTableViewFooter(tableViewFooter)
+        challenges = [Challenge]()
         
         addDefaultPullToRefresh(tableView, selector: "refresh")
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.addActivityIndicatorView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,26 +36,6 @@ class MyChallengeViewController: UIViewController {
         tableView.flashScrollIndicators()
         showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         refreshChallenges(0)
-    }
-
-    
-    // MARK: - UI
-    
-    func setupActivityIndicator() {
-        activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
-        activityIndicatorView.addSubview(activityIndicator)
-        activityIndicator.center = CGPointMake(activityIndicatorView.bounds.midX, activityIndicatorView.bounds.midY)
-        activityIndicatorView.hidden = true
-    }
-    
-    func startActivityIndicator() {
-        activityIndicatorView.hidden = false
-        activityIndicator.startAnimating()
-    }
-    
-    func stopActivityIndicator() {
-        activityIndicatorView.hidden = true
-        activityIndicator.stopAnimating()
     }
     
     
@@ -123,7 +99,7 @@ class MyChallengeViewController: UIViewController {
         dispatch_async(dispatch_get_main_queue(), {
             self.tableView.reloadData()
             self.isRequesting = false
-            self.stopActivityIndicator()
+            self.tableView.stopAnimatingIndicatorView()
             self.dismissLoadingSpinner()
         })
     }
@@ -131,7 +107,7 @@ class MyChallengeViewController: UIViewController {
     func fetchUserFailure(errorCode: String) {
         displayAlert(errorCode)
         isRequesting = false
-        stopActivityIndicator()
+        tableView.stopAnimatingIndicatorView()
         dismissLoadingSpinner()
     }
     
@@ -196,7 +172,7 @@ extension MyChallengeViewController: UITableViewDelegate {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if (maximumOffset - currentOffset) <= 70 {
-            startActivityIndicator()
+            tableView.startAnimatingIndicatorView()
             refreshChallenges((self.challenges.count - 20) + 20)
         }
     }

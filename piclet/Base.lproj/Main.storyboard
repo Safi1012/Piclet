@@ -46,25 +46,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mYa-wf-Hjw">
                                 <rect key="frame" x="0.0" y="44" width="600" height="463"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="0L7-4e-T36">
-                                    <rect key="frame" x="0.0" y="98" width="600" height="70"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3B-5w-PwW">
-                                            <rect key="frame" x="283" y="17" width="35" height="35"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="WKg-3S-SvF"/>
-                                                <constraint firstAttribute="width" constant="35" id="sh7-fE-7FK"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="W3B-5w-PwW" firstAttribute="centerX" secondItem="0L7-4e-T36" secondAttribute="centerX" id="9Ol-ar-fUX"/>
-                                        <constraint firstItem="W3B-5w-PwW" firstAttribute="centerY" secondItem="0L7-4e-T36" secondAttribute="centerY" id="BZQ-8d-i8Z"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="70" id="9bH-79-OQT" customClass="ChallengeTableViewCell" customModule="piclet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="70"/>
@@ -219,10 +200,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="W3B-5w-PwW" id="G2s-yC-npu"/>
                         <outlet property="segmentedControl" destination="6gd-fn-GhR" id="XRE-jL-cqG"/>
                         <outlet property="tableView" destination="mYa-wf-Hjw" id="mkI-VS-iEf"/>
-                        <outlet property="tableViewFooter" destination="0L7-4e-T36" id="Yb6-kH-oAV"/>
                         <segue destination="rSA-2F-2xF" kind="presentation" identifier="toCreateChallengeViewController" id="oRI-PF-lvN"/>
                         <segue destination="qW2-XJ-DYI" kind="unwind" identifier="unwindToWelcomeViewController" unwindAction="unwindToWelcomeViewController:" id="dxd-fY-RkW"/>
                         <segue destination="2iu-rY-l8I" kind="show" identifier="toPostsViewController" id="4Zn-Js-kf1"/>
@@ -864,25 +843,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7nM-5h-7VR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="680"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="VGj-9Q-hYF">
-                                    <rect key="frame" x="0.0" y="98" width="600" height="70"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DcU-YX-Iij">
-                                            <rect key="frame" x="283" y="17" width="35" height="35"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="1Zc-q5-yH0"/>
-                                                <constraint firstAttribute="width" constant="35" id="4vb-zN-nxa"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstItem="DcU-YX-Iij" firstAttribute="centerX" secondItem="VGj-9Q-hYF" secondAttribute="centerX" id="Lgq-ds-tq8"/>
-                                        <constraint firstItem="DcU-YX-Iij" firstAttribute="centerY" secondItem="VGj-9Q-hYF" secondAttribute="centerY" id="y3S-AT-MN2"/>
-                                    </constraints>
-                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="70" id="KSS-oH-hgh" customClass="ChallengeTableViewCell" customModule="piclet" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="70"/>
@@ -1026,9 +986,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="My Challenges" id="9PS-0Q-Ga9"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="DcU-YX-Iij" id="AZZ-oZ-xMj"/>
                         <outlet property="tableView" destination="7nM-5h-7VR" id="rxn-pc-Moi"/>
-                        <outlet property="tableViewFooter" destination="VGj-9Q-hYF" id="g0B-5a-KSl"/>
                         <segue destination="FCo-vc-lyc" kind="unwind" identifier="unwindToWelcomeViewController" unwindAction="unwindToWelcomeViewController:" id="pRb-Qh-Nha"/>
                         <segue destination="aaG-Jg-Mbh" kind="show" identifier="toPostsViewController" id="vwb-XZ-GvJ"/>
                     </connections>
