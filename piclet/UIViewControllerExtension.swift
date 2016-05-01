@@ -93,6 +93,16 @@ extension UIViewController {
     }
     
     
+    // MARK: - TableViewFooter (infinite loading)
+    
+    func addInfiniteLoadingTableViewFooter(tableViewFooter: UIView) {
+        let border = CALayer()
+        border.backgroundColor = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0).CGColor
+        border.frame = CGRect(x: 15, y: 0, width: tableViewFooter.frame.width - 15.0, height: 0.5)
+        tableViewFooter.layer.addSublayer(border)
+    }
+    
+    
     // MARK: - ChildViewController
     
     func addChildViewController(viewController: UIViewController, toContainerView view: UIView) {
@@ -118,23 +128,14 @@ extension UIViewController {
     func removeLastChildViewController(viewController: UIViewController) {
         let vc = viewController.childViewControllers.last
         vc?.willMoveToParentViewController(nil)
-//        vc?.view.removeFromSuperview()
-//        vc?.removeFromParentViewController()
-        
+
         UIView.animateWithDuration(0.2, animations: { 
             vc?.view.alpha = 0.0
             
         }) { (finished) in
             vc?.view.removeFromSuperview()
             vc?.removeFromParentViewController()
-            
         }
-        
-        
-        
-//        [UIView animateWithDuration:0.2
-//            animations:^{view.alpha = 0.0;}
-//            completion:^(BOOL finished){ [view removeFromSuperview]; }];
     }
     
     

@@ -10,21 +10,17 @@ import UIKit
 import WebImage
 
 class ProfileRankingTableViewController: UITableViewController {
-    
-    @IBOutlet weak var activityIndicatorView: UIView!
-    @IBOutlet weak var tableViewFooter: UIView!
-    
+
     var userRanks = [UserRank]()
     var isRequesting = false
-    var activityIndicator: ActivityIndicatorView!
     
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        styleTableView()
-        setupActivityIndicator()
+        
+        tableView.addActivityIndicatorView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -32,30 +28,6 @@ class ProfileRankingTableViewController: UITableViewController {
         
         showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         refreshRanks(0)
-    }
-    
-    func styleTableView() {
-        let border = CALayer()
-        border.backgroundColor = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 15, y: 0, width: tableViewFooter.frame.width - 15.0, height: 0.5)
-        tableViewFooter.layer.addSublayer(border)
-    }
-    
-    func setupActivityIndicator() {
-        activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
-        activityIndicatorView.addSubview(activityIndicator)
-        activityIndicator.center = CGPointMake(activityIndicatorView.bounds.midX, activityIndicatorView.bounds.midY)
-        activityIndicatorView.hidden = true
-    }
-    
-    func startActivityIndicator() {
-        activityIndicatorView.hidden = false
-        activityIndicator.startAnimating()
-    }
-    
-    func stopActivityIndicator() {
-        activityIndicatorView.hidden = true
-        activityIndicator.stopAnimating()
     }
     
 
@@ -86,14 +58,14 @@ class ProfileRankingTableViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
                 self.isRequesting = false
-                self.stopActivityIndicator()
+                self.tableView.stopAnimatingIndicatorView()
                 self.dismissLoadingSpinner()
             })
             
         }) { (errorCode) in
             self.displayAlert(errorCode)
             self.isRequesting = false
-            self.stopActivityIndicator()
+            self.tableView.stopAnimatingIndicatorView()
             self.dismissLoadingSpinner()
             
         }
@@ -117,7 +89,7 @@ class ProfileRankingTableViewController: UITableViewController {
         cell.rankLabel.text = "\(userRanks[indexPath.row].rank)"
         cell.usernameLabel.text = userRanks[indexPath.row].username
         cell.avatarImageView.sd_setImageWithURL(url)
-        
+       
         return cell
     }
     
@@ -129,7 +101,7 @@ class ProfileRankingTableViewController: UITableViewController {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if (maximumOffset - currentOffset) <= 70 {
-            startActivityIndicator()
+            tableView.startAnimatingIndicatorView()
             refreshRanks((self.userRanks.count - 20) + 20)
         }
     }

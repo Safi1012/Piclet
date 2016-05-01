@@ -26,7 +26,7 @@ class MyChallengeViewController: UIViewController {
         
         self.challenges = [Challenge]()
         setupActivityIndicator()
-        styleTableView()
+        addInfiniteLoadingTableViewFooter(tableViewFooter)
         
         addDefaultPullToRefresh(tableView, selector: "refresh")
         
@@ -50,13 +50,6 @@ class MyChallengeViewController: UIViewController {
         activityIndicatorView.addSubview(activityIndicator)
         activityIndicator.center = CGPointMake(activityIndicatorView.bounds.midX, activityIndicatorView.bounds.midY)
         activityIndicatorView.hidden = true
-    }
-    
-    func styleTableView() {
-        let border = CALayer()
-        border.backgroundColor = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 15, y: 0, width: tableViewFooter.frame.width - 15.0, height: 0.5)
-        tableViewFooter.layer.addSublayer(border)
     }
     
     func startActivityIndicator() {

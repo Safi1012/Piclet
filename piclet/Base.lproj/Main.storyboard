@@ -1048,25 +1048,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="bi4-Ur-aEF">
-                            <rect key="frame" x="0.0" y="78" width="600" height="70"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7a-s9-REU">
-                                    <rect key="frame" x="283" y="17" width="35" height="35"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="6C7-n5-ABI"/>
-                                        <constraint firstAttribute="height" constant="35" id="b7A-Ox-jv2"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="y7a-s9-REU" firstAttribute="centerX" secondItem="bi4-Ur-aEF" secondAttribute="centerX" id="Hs3-fa-W0M"/>
-                                <constraint firstItem="y7a-s9-REU" firstAttribute="centerY" secondItem="bi4-Ur-aEF" secondAttribute="centerY" id="UI3-It-ji5"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="50" id="YlO-8V-udK" customClass="ProfileRankingTableViewCell" customModule="piclet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="50"/>
@@ -1122,10 +1103,6 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Rankings" id="myr-H9-zAD"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="activityIndicatorView" destination="y7a-s9-REU" id="GzT-HZ-rLG"/>
-                        <outlet property="tableViewFooter" destination="bi4-Ur-aEF" id="y9a-mJ-BK9"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O3T-Oa-50P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

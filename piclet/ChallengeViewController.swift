@@ -56,7 +56,7 @@ class ChallengeViewController: UIViewController {
     func setupUI() {
         setupActivityIndicator()
         styleNavigationBar()
-        styleTableView()
+        addInfiniteLoadingTableViewFooter(tableViewFooter)
     }
     
     func setupActivityIndicator() {
@@ -69,13 +69,6 @@ class ChallengeViewController: UIViewController {
     func styleNavigationBar() {
         self.navigationController?.navigationBar.shadowImage = UIImage(named: "transparentPixel")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "transparentPixel"), forBarMetrics: UIBarMetrics.Default)
-    }
-    
-    func styleTableView() {
-        let border = CALayer()
-        border.backgroundColor = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 15, y: 0, width: tableViewFooter.frame.width - 15.0, height: 0.5)
-        tableViewFooter.layer.addSublayer(border)
     }
     
     

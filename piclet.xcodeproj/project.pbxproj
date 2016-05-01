@@ -83,6 +83,8 @@
 		D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A27E161C919032007DC1E1 /* UserAccess.swift */; };
 		D4A27E1B1C919434007DC1E1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A27E1A1C919434007DC1E1 /* Realm.framework */; };
 		D4A27E1D1C919457007DC1E1 /* Realm.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */; };
+		D4AE6A321CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */; };
+		D4AE6A331CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */; };
 		D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */; };
 		D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */; };
 		D4B5831E1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */; };
@@ -236,6 +238,7 @@
 		D4A27E161C919032007DC1E1 /* UserAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccess.swift; sourceTree = "<group>"; };
 		D4A27E1A1C919434007DC1E1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
+		D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_0.xib; sourceTree = "<group>"; };
 		D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_1.xib; sourceTree = "<group>"; };
 		D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_2.xib; sourceTree = "<group>"; };
@@ -376,6 +379,7 @@
 				D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */,
 				D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */,
 				D4422FD41CA98F9500216C72 /* UIButtonExtension.swift */,
+				D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -847,6 +851,7 @@
 				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
+				D4AE6A321CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */,
 				D4133F4C1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,
 			);
@@ -864,6 +869,7 @@
 				D4BE34071C91E0FC00483576 /* ErrorHandler.swift in Sources */,
 				D4B583401CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
+				D4AE6A331CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */,
 				D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */,
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
 				D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
