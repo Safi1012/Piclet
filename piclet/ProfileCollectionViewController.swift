@@ -23,6 +23,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         
         collectionView?.dataSource = self
         collectionView?.delegate = self
+        collectionView?.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "footer")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -251,6 +252,17 @@ class ProfileCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        if (kind == UICollectionElementKindSectionFooter) {
+            let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "footer", forIndexPath: indexPath)
+            footerView.addActivityIndicatorView()
+            
+            return footerView
+        }
+        return UICollectionReusableView()
+    }
 }
 
 
@@ -277,6 +289,10 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 1.0
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.mainScreen().bounds.width, height: 70.0)
     }
     
 //    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
