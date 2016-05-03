@@ -31,10 +31,10 @@ class ErrorHandler {
             return ("Username is already taken", "The username you chose is already taken. Please try a different one, Thanks!")
             
         case "UsernameNotFoundError":
-            return ("Login not found", "The username or password you typed is wrong. Please try it again.")
+            return ("Incorrect Username", "Could not find the username you typed. Please try it again.")
             
-        case "WrongPassword":
-            return ("Login not found", "The username or password you typed is wrong. Please try it again.")
+        case "WrongPasswordError":
+            return ("Incorrect Password", "The password you typed is wrong. Please try it again.")
             
         case "UsernameTooShort":
             return ("Username is invalid", "The Username must be at least 4 characters long.")
@@ -43,7 +43,7 @@ class ErrorHandler {
             return ("Username is invalid", "The Username may not contain any special characters.")
             
         case "PasswordTooShort":
-            return ("Password is invalid", "The password must be at least 8 characters long.")
+            return ("Password is invalid", "The password must be at least 4 characters long.")
             
         case "LogoutError":
             return ("Logout failed", "Could not logout from the app. Are you connected to the internet?")
@@ -69,8 +69,11 @@ class ErrorHandler {
         case "AlreadyPostedError":
             return ("Already Posted", "You already posted in this challenge. Please choose a different Challenge.")
             
+        case "PasswordNewTooShort":
+            return ("Password is too short", "Your new password must be at least 4 characters long.")
+            
         default:
-            return ("Unexpected Error", "Please try again.")
+            return ("", "")
         }
     }
 }

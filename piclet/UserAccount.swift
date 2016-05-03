@@ -28,6 +28,7 @@ class UserAccount {
             print("createUserToken: couldn't serialize data")
             return
         }
+        UserAccess.sharedInstance.deleteAllUsers()
         UserAccess.sharedInstance.addUser(username, token: token)
     }
     
@@ -40,6 +41,7 @@ class UserAccount {
             print("createUserToken: couldn't serialize data")
             return
         }
+        UserAccess.sharedInstance.deleteAllUsers()
         UserAccess.sharedInstance.addUser(username, token: token)
     }
 }

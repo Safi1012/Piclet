@@ -17,8 +17,8 @@ class UserDataValidator {
         return false
     }
     
-    func isPasswordLongEnough(userName: String) -> Bool {
-        if (userName.characters.count >= 8) {
+    func isPasswordLongEnough(password: String) -> Bool {
+        if (password.characters.count >= 4) {
             return true
         }
         return false
@@ -41,5 +41,8 @@ class UserDataValidator {
         }
         return true
     }
-
+    
+    func isPasswordEqual(firstPassword: String, secondPassword: String) -> Bool {
+        return firstPassword == secondPassword ? true : false
+    }
 }

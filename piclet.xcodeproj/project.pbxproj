@@ -122,6 +122,8 @@
 		D4CF2F321CA3E66400FC0AE0 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F311CA3E66400FC0AE0 /* SafariServices.framework */; };
 		D4CF2F341CA3E66D00FC0AE0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4CF2F331CA3E66D00FC0AE0 /* SystemConfiguration.framework */; };
 		D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */; };
+		D4F9BFF01CD8E1F700C99427 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */; };
+		D4F9BFF11CD8E1F700C99427 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */; };
 		D4FA80BA1BDAAB63004682CB /* ChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */; };
 		D4FED0941C74BB2F007633FB /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */; };
 		D4FED0961C74BC0E007633FB /* SVProgressHUD.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
@@ -264,6 +266,7 @@
 		D4CF2F311CA3E66400FC0AE0 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		D4CF2F331CA3E66D00FC0AE0 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		D4FA80B91BDAAB63004682CB /* ChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeViewController.swift; sourceTree = "<group>"; };
 		D4FED0931C74BB2F007633FB /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SVProgressHUD.framework.dSYM; path = Carthage/Build/iOS/SVProgressHUD.framework.dSYM; sourceTree = "<group>"; };
@@ -617,6 +620,7 @@
 		D4CBA8821C2DF0FD00B47820 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D4F9BFEE1CD8E1DF00C99427 /* Password */,
 				D4B5832E1CAD9ECA005C5AD9 /* Welcome */,
 				D43721051CB16BCA0058B262 /* User */,
 				D437210F1CB179A10058B262 /* ThirdParty */,
@@ -668,6 +672,14 @@
 				D4D588E01C25B6A100BBC9C6 /* ActivityIndicatorView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		D4F9BFEE1CD8E1DF00C99427 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */,
+			);
+			name = Password;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -864,6 +876,7 @@
 				D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */,
 				D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */,
 				D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */,
+				D4F9BFF01CD8E1F700C99427 /* ChangePasswordViewController.swift in Sources */,
 				D4B5833F1CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D4FED09C1C775DD3007633FB /* Formater.swift in Sources */,
 				D477B76C1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
@@ -884,6 +897,7 @@
 				D43721081CB16BFA0058B262 /* UserViewController.swift in Sources */,
 				D4422FD31CA98D5B00216C72 /* UITextFieldExtension.swift in Sources */,
 				D45E2B9E1CAABC9800002BC3 /* EAIntroView.m in Sources */,
+				D4F9BFF11CD8E1F700C99427 /* ChangePasswordViewController.swift in Sources */,
 				D4BE34061C91E0F300483576 /* UserDataValidator.swift in Sources */,
 				D45E2BA21CAABCBE00002BC3 /* EARestrictedScrollView.m in Sources */,
 				D4BE34071C91E0FC00483576 /* ErrorHandler.swift in Sources */,
@@ -1032,6 +1046,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

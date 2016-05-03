@@ -62,9 +62,10 @@ class ProfileViewController: UIViewController {
     
     func getLoginInformation() {
         if getLoggedInUser() {
-            createNavbarButton("Logout", action: "pressedLogoutNavbarButton:")
+            createNavbarButton("Logout", action: "pressedLogoutNavbarButton:", isLeftButton: false)
+            createNavbarButton("Change PW", action: "pressedChangePWNavbarButton:", isLeftButton: true)
         } else {
-            createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:")
+            createNavbarButton("Login/Signup", action: "pressedLoginNavbarButton:", isLeftButton: false)
         }
     }
     
@@ -95,27 +96,37 @@ class ProfileViewController: UIViewController {
     
     // MARK: - NavBar
     
-    func createNavbarButton(buttonTitle: String, action: String) {
+    func createNavbarButton(buttonTitle: String, action: String, isLeftButton: Bool) {
         let logoutNavbarItem = UIBarButtonItem(title: buttonTitle, style: UIBarButtonItemStyle.Plain, target: self, action: Selector(action))
         logoutNavbarItem.tintColor = UIColor.whiteColor()
         
-        self.navigationItem.rightBarButtonItem = logoutNavbarItem
+        if isLeftButton {
+            self.navigationItem.leftBarButtonItem = logoutNavbarItem
+        } else {
+            self.navigationItem.rightBarButtonItem = logoutNavbarItem
+        }
     }
     
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
-        
-        ApiProxy().deleteThisUserToken(token!, success: { () -> () in
-            UserAccess.sharedInstance.deleteAllUsers()
-            self.navigatoToWelcomeViewController()
+        if let newToken = UserAccess.sharedInstance.getUser()?.token {
             
-        }) { (errorCode) -> () in
-            self.displayAlert(errorCode)
+            ApiProxy().deleteThisUserToken(newToken, success: { () -> () in
+                UserAccess.sharedInstance.deleteAllUsers()
+                self.navigatoToWelcomeViewController()
                 
+            }) { (errorCode) -> () in
+                self.displayAlert(errorCode)
+                
+            }
         }
     }
     
     func pressedLoginNavbarButton(sender: UIBarButtonItem) {
         navigatoToWelcomeViewController()
+    }
+    
+    func pressedChangePWNavbarButton(sender: UIBarButtonItem) {
+        performSegueWithIdentifier("toChangePasswordViewController", sender: self)
     }
     
     
@@ -181,5 +192,4 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
-    
 }

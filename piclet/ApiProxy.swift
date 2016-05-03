@@ -77,6 +77,18 @@ class ApiProxy {
         }
     }
     
+    func changePassword(token: String, username: String, oldPassword: String, newPassword: String, success: () -> (), failure: (errorCode: String) -> ()) {
+        let parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
+        
+        NetworkHandler().requestJSON(parameter, apiPath: "users/\(username)", httpVerb: HTTPVerb.put, token: token, success: { (json) in
+            success()
+            
+        }) { (errorCode) in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
     
     // MARK: - Challenges
     
