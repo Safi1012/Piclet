@@ -85,6 +85,7 @@ class ThirdPartyServiceViewController: UIViewController {
         }
         
         ApiProxy().createUserWithThirdPartyService(username, oauthToken: oauthToken, tokenType: TokenType.google, success: {
+            AppDelegate().logUser(username)
             self.navigateToChallengeViewController()
 
         }) { (errorCode) in

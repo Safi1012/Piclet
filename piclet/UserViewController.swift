@@ -72,6 +72,7 @@ class UserViewController: UIViewController {
         showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0), color: UIColor.whiteColor())
         
         ApiProxy().createUserAccount(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+            AppDelegate().logUser(self.usernameTextField.text!)
             self.dismissLoadingSpinner()
             self.navigateToChallengesViewController()
             
@@ -86,6 +87,7 @@ class UserViewController: UIViewController {
             showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 140.0), color: UIColor.whiteColor())
             
             ApiProxy().signInUser(usernameTextField.text!, password: passwordTextField.text!, success: { () -> () in
+                AppDelegate().logUser(self.usernameTextField.text!)
                 self.dismissLoadingSpinner()
                 self.navigateToChallengesViewController()
                 

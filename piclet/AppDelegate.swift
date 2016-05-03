@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Fabric
+import Crashlytics
 
 let realm = try! Realm()
 
@@ -41,6 +43,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // google sign-In
         GIDSignIn.sharedInstance().clientID = "341730212595-ir18hmkfcji9ke2h7opc4t7ovdlbfj68.apps.googleusercontent.com"
+        
+        // fabric
+        Fabric.with([Crashlytics.self])
+        
+        /*
+        
+        // register the supported interaction types
+        let notifcationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(notifcationSettings)
+        
+        // register for remote notifications
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+        // handling the notification
+        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? UILocalNotification {
+            print("\(remoteNotification.userInfo)")
+            
+//            NSString *itemName = [localNotif.userInfo objectForKey:ToDoItemKey];
+//            [viewController displayItem:itemName];  // custom method
+//            app.applicationIconBadgeNumber = localNotif.applicationIconBadgeNumber-1;
+        }
+        
+//        [window addSubview:viewController.view];
+//        [window makeKeyAndVisible];
+        
+ */
+        
     
         return true
     }
@@ -69,6 +98,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // self.saveContext()
     }
     
+    
+    // MARK: - Notifications
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // let deviceTokenBytes = deviceToken.bytes
+        // registered = true;
+        
+        // send token to johannes
+        print("token: \(String(data: deviceToken, encoding: NSUTF8StringEncoding)))")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Remote Notification Error: \(error.description)")
+    }
+    
+//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+//        print("Received remote notification!")
+//    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        // Tells the app that a remote notification arrived that indicates there is data to be fetched.
+    }
+
+    
+    
     @available(iOS, introduced=8.0, deprecated=9.0)
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication!, annotation: annotation)
@@ -77,6 +131,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func appDelegate () -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+    
+    
+    // MARK: - Fabric
+    
+    func logUser(username: String) {
+        Crashlytics.sharedInstance().setUserIdentifier(username)
+        Crashlytics.sharedInstance().setUserName(username)
+    }
+
     
     // MARK: - Rotation
 
