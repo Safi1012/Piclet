@@ -46,7 +46,7 @@ class ChallengeViewController: UIViewController {
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.addActivityIndicatorView()
+        tableView.addActivityIndicatorFooterView()
         
         addDefaultPullToRefresh(tableView, selector: "refresh")
     }

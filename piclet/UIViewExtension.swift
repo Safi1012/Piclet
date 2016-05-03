@@ -18,4 +18,21 @@ extension UIView {
         self.superview?.addConstraints(horizontalConstraints)
         self.superview?.addConstraints(verticalConstraints)
     }
+    
+    func addActivityIndicatorSubview() {
+        let activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
+        activityIndicator.bounds =  CGRectMake(0.0, 0.0, 35.0, 35.0)
+        activityIndicator.center.x = self.center.x
+        activityIndicator.center.y = CGRectGetMidY(self.bounds) / 2
+        
+        self.addSubview(activityIndicator)
+    }
+    
+    func startAnimatingIndicatorView() {
+        (self.subviews[0] as? ActivityIndicatorView)?.startAnimating()
+    }
+    
+    func stopAnimatingIndicatorView() {
+        (self.subviews[0] as? ActivityIndicatorView)?.stopAnimating()
+    }
 }

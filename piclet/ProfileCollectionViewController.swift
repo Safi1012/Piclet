@@ -52,19 +52,27 @@ class ProfileCollectionViewController: UICollectionViewController {
         
         ApiProxy().fetchUserCreatedPosts(userAccount.username, offset: offset, success: { (userPosts) -> () in
             
-            self.userPostIds = userPosts
-            
+            if offset == 0 {
+                self.userPostIds = [PostInformation]()
+            }
+            for postId in userPosts {
+                self.userPostIds.append(postId)
+            }
             if self.userPostIds.count == 0 {
                 self.addCenteredLabel("You don't have any posts. \n Let's go and create some!", view: self.collectionView!)
                 self.view.viewWithTag(1)?.center.y -= 30
+                
             } else {
                 self.removeCentered(self.collectionView!)
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
+                    self.collectionView?.viewWithTag(2)?.stopAnimatingIndicatorView()
                 })
+                
             }
             
         }) { (errorCode) -> () in
+            self.collectionView?.viewWithTag(2)?.stopAnimatingIndicatorView()
             self.displayAlert(errorCode)
             
         }
@@ -84,14 +92,18 @@ class ProfileCollectionViewController: UICollectionViewController {
             if self.userPostIds.count == 0 {
                 self.addCenteredLabel("You didn't like any posts. \n Let's go and share some ♥️", view: self.collectionView!)
                 self.view.viewWithTag(1)?.center.y -= 30
+                
             } else {
                 self.removeCentered(self.collectionView!)
                 dispatch_async(dispatch_get_main_queue(), {
                     self.collectionView?.reloadData()
+                    self.collectionView?.viewWithTag(2)?.stopAnimatingIndicatorView()
                 })
+                
             }
 
         }) { (errorCode) -> () in
+            self.collectionView?.viewWithTag(2)?.stopAnimatingIndicatorView()
             self.displayAlert(errorCode)
             
         }
@@ -257,7 +269,8 @@ class ProfileCollectionViewController: UICollectionViewController {
         
         if (kind == UICollectionElementKindSectionFooter) {
             let footerView = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "footer", forIndexPath: indexPath)
-            footerView.addActivityIndicatorView()
+            footerView.addActivityIndicatorSubview()
+            footerView.tag = 2
             
             return footerView
         }
@@ -295,15 +308,15 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: UIScreen.mainScreen().bounds.width, height: 70.0)
     }
     
-//    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        let currentOffset = scrollView.contentOffset.y
-//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-//
-//        if (maximumOffset - currentOffset) <= 70 {
-//            fetchPosts((userPostIds.count - 20) + 20)
-//        }
-//    }
-    
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+
+        if (maximumOffset - currentOffset) <= 70 {
+            self.collectionView?.viewWithTag(2)?.startAnimatingIndicatorView()
+            fetchPosts((userPostIds.count - 20) + 20)
+        }
+    }
 }
 
 

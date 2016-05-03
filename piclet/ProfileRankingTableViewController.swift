@@ -20,7 +20,7 @@ class ProfileRankingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.addActivityIndicatorView()
+        tableView.addActivityIndicatorSubview()
     }
     
     override func viewWillAppear(animated: Bool) {

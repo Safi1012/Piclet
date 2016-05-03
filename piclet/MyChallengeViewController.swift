@@ -27,7 +27,7 @@ class MyChallengeViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.addActivityIndicatorView()
+        tableView.addActivityIndicatorFooterView()
     }
     
     override func viewDidAppear(animated: Bool) {

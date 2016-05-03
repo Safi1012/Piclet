@@ -17,6 +17,8 @@ class PostsViewController: UIViewController {
     var challenge: Challenge!
     var posts = [Post]()
     private var isRequesting = false
+    
+    // setUp infinite Scrolling and activityLoadingFooterView
 
     override func viewDidLoad() {
         super.viewDidLoad()

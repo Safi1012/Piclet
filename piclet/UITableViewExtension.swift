@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView {
     
-    func addActivityIndicatorView() {
+    func addActivityIndicatorFooterView() {
         let activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
             activityIndicator.frame =  CGRectMake(0.0, 0.0, 35.0, 35.0)
         
@@ -24,13 +24,5 @@ extension UITableView {
         activityIndicatorView.layer.addSublayer(border)
         activityIndicator.center = activityIndicatorView.center;
         tableFooterView = activityIndicatorView
-    }
-    
-    func startAnimatingIndicatorView() {
-        (tableFooterView?.subviews[0] as? ActivityIndicatorView)?.startAnimating()
-    }
-    
-    func stopAnimatingIndicatorView() {
-        (tableFooterView?.subviews[0] as? ActivityIndicatorView)?.stopAnimating()
     }
 }
