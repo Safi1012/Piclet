@@ -56,16 +56,13 @@ class JWTParser {
         return ""
     }
     
-    // Base64String must end with an equal sign
-    // The string's length must be a multiple of four to be valid! -> if not fill the remaing characters with equal signs
+    // Base64String's length must be a multiple of four to be valid! -> if not fill the remaing characters with equal signs
     func appendEqualSignToMatchBase64Specification(token: String) -> String {
         var base64String = token
 
-        repeat {
+        while base64String.characters.count % 4 != 0 {
             base64String += "="
-        } while base64String.characters.count % 4 != 0
-        
-        print(base64String)
+        }
         
         return base64String
     }

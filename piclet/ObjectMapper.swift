@@ -170,6 +170,16 @@ class ObjectMapper {
         }
         return allRanks
     }
+    
+    func parseAspectRatios(json: AnyObject) -> NSDictionary {
+        guard
+            let dict = json as? NSDictionary
+        else {
+            print("Could not parse aspectRatios")
+            return NSDictionary()
+        }
+        return dict
+    }
 }
 
 

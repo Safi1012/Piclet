@@ -130,6 +130,17 @@ class ApiProxy {
         }
     }
     
+    func fetchAspectRatios(challengeId: String, success: (aspectRatios: NSDictionary) -> (), failure: (errorCode: String) -> ()){
+        
+        NetworkHandler().requestJSON([:], apiPath: "challenges/\(challengeId)/aspectRatios", httpVerb: .get, token: nil, success: { (json) in
+            success(aspectRatios: ObjectMapper().parseAspectRatios(json))
+            
+        }) { (errorCode) in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+
     
     // MARK: - Posts
     

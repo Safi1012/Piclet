@@ -16,9 +16,12 @@ class PostsViewController: UIViewController {
     
     var challenge: Challenge!
     var posts = [Post]()
+    
+    private var aspectRatios = NSDictionary()
     private var isRequesting = false
     
-    // setUp infinite Scrolling and activityLoadingFooterView
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,53 +30,17 @@ class PostsViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.estimatedRowHeight = 300.0
+        
+        tableView.estimatedRowHeight = 999.0
         tableView.rowHeight = UITableViewAutomaticDimension
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.viewDidAppear(animated)
+        
+        fetchAllPostInformations()
+    }
 
-    override func viewDidAppear(animated: Bool) {
-        refreshPosts()
-    }
-    
-    func downloadAndCacheImages() {
-        var uncachedURL = [NSURL]()
-        
-        for post in posts {
-            let url = NSURL(string: "https://flash1293.de/challenges/\(challenge.id)/posts/\(post.id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)")!
-            if !SDImageCache.sharedImageCache().diskImageExistsWithKey(url.URLString) {
-                uncachedURL.append(url)
-            }
-        }
-        cacheImages(uncachedURL)
-    }
-    
-    func cacheImages(uncachedURL: [NSURL]) {
-        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
-        
-        
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        let group = dispatch_group_create();
-        
-        for url in uncachedURL {
-            dispatch_group_enter(group)
-            SDWebImageDownloader.sharedDownloader().downloadImageWithURL(url, options: SDWebImageDownloaderOptions.AllowInvalidSSLCertificates, progress: { (a, b) in
-                print("a: \(a)")
-                print("b: \(b)")
-                
-            }, completed: { (image, data, error, completed) in
-                SDImageCache.sharedImageCache().storeImage(image, forKey: url.URLString, toDisk: true)
-                dispatch_group_leave(group)
-                
-            })
-        }
-        
-        dispatch_group_notify(group, queue) { () -> Void in
-            self.dismissLoadingSpinner()
-            self.displayTableView()
-            self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
-        }
-    }
-    
     
     // MARK: - UI
     
@@ -115,25 +82,40 @@ class PostsViewController: UIViewController {
 
     // MARK: - Posts
     
-    func refreshPosts() {
-        
+    func fetchAllPostInformations() {
+        fetchAllPostsAspectRatios {
+            self.fetchAllPostsMetaData({ 
+                self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
+            })
+        }
+    }
+    
+    func fetchAllPostsAspectRatios(success: () -> ()) {
+        ApiProxy().fetchAspectRatios(challenge.id, success: { (aspectRatios) in
+            self.aspectRatios = aspectRatios
+            success()
+            
+        }) { (errorCode) in
+            self.displayAlert(errorCode)
+            
+        }
+    }
+    
+    func fetchAllPostsMetaData(success: () -> ()) {
         ApiProxy().fetchChallengePosts(challenge.id, success: { (posts) -> () in
             self.posts = posts
             
             if self.posts.count > 0 {
-                
-                // self.dismissLoadingSpinner()
                 self.displayTableView()
-                self.tableView.performSelectorOnMainThread(#selector(UITableView.reloadData), withObject: nil, waitUntilDone: true)
                 
-                // self.downloadAndCacheImages()
             } else {
                 self.displayMascotView()
             }
-        
+            success()
+            
         }) { (errorCode) -> () in
             self.displayAlert(errorCode)
-                
+            
         }
     }
     
@@ -191,7 +173,7 @@ class PostsViewController: UIViewController {
         return false
     }
     
-    
+
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -220,7 +202,8 @@ extension PostsViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
         let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-
+        
+        challenge.archived! ? [cell.postLikeButton.hidden = true] : [cell.postLikeButton.hidden = false]
         cell.post = posts[indexPath.row]
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
@@ -228,19 +211,9 @@ extension PostsViewController: UITableViewDataSource {
         cell.postVotesLabel.text = Formater().formatSingularAndPlural(posts[indexPath.row].votes, singularWord: "Vote")
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
-        
-        if challenge.archived! {
-            cell.postLikeButton.hidden = true
-        }
-        
-        SDWebImageDownloader.sharedDownloader().downloadImageWithURL(NSURL(string: url), options: SDWebImageDownloaderOptions.AllowInvalidSSLCertificates, progress: { (a, b) in
-            print("a: \(a)")
-            print("b: \(b)")
-            
-        }, completed: { (image, data, error, completed) in
-            cell.setPostedImage(image)
-                
-        })
+        cell.postImage.contentMode = UIViewContentMode.ScaleAspectFit
+        cell.postImage.clipsToBounds = true
+        cell.postImage.sd_setImageWithURL(NSURL(string: url))
         
         if let user = UserAccess.sharedInstance.getUser() {
             for username in posts[indexPath.row].voters {
@@ -271,6 +244,15 @@ extension PostsViewController: UITableViewDelegate {
         let imageViewer = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.Image, backgroundStyle: JTSImageViewControllerBackgroundOptions.Blurred)
         imageViewer.optionsDelegate = self
         imageViewer.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOffscreen)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        if let aspectRatio = aspectRatios[posts[indexPath.row].id] as? Double {
+            return (UIScreen.mainScreen().bounds.width / CGFloat(aspectRatio)) + 74.5
+        } else {
+            return UIScreen.mainScreen().bounds.width + 74.5
+        }
     }
 }
 
