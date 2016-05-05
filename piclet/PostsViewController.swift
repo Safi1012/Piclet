@@ -31,8 +31,10 @@ class PostsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.estimatedRowHeight = 999.0
+        tableView.estimatedRowHeight = 400.0
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -127,7 +129,7 @@ class PostsViewController: UIViewController {
         }) { (errorCode) -> () in
             post.votes! -= 1
             cell.postLikeButton.setImage(UIImage(named: "likeFilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
+            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "vote")
             self.isRequesting = false
             self.displayAlert(errorCode)
             
@@ -142,7 +144,7 @@ class PostsViewController: UIViewController {
         }) { (errorCode) -> () in
             post.votes! += 1
             cell.postLikeButton.setImage(UIImage(named: "likeUnfilled"), forState: UIControlState.Normal)
-            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
+            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "vote")
             self.isRequesting = false
             self.displayAlert(errorCode)
             
@@ -208,7 +210,7 @@ extension PostsViewController: UITableViewDataSource {
         cell.delegate = self
         cell.addDoubleTapGestureRecognizer(self)
         cell.postDescriptionLabel.text = posts[indexPath.row].description
-        cell.postVotesLabel.text = Formater().formatSingularAndPlural(posts[indexPath.row].votes, singularWord: "Vote")
+        cell.postVotesLabel.text = Formater().formatSingularAndPlural(posts[indexPath.row].votes, singularWord: "vote")
         cell.postUsernameLabel.text = posts[indexPath.row].creator
         cell.postTimeLabel.text = TimeHandler().getPostedTimestampFormated(posts[indexPath.row].posted)
         cell.postImage.contentMode = UIViewContentMode.ScaleAspectFit
@@ -249,9 +251,9 @@ extension PostsViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if let aspectRatio = aspectRatios[posts[indexPath.row].id] as? Double {
-            return (UIScreen.mainScreen().bounds.width / CGFloat(aspectRatio)) + 74.5
+            return (UIScreen.mainScreen().bounds.width / CGFloat(aspectRatio)) + 67
         } else {
-            return UIScreen.mainScreen().bounds.width + 74.5
+            return UIScreen.mainScreen().bounds.width + 67
         }
     }
 }
@@ -282,7 +284,7 @@ extension PostsViewController: PostsTableViewDelegate {
             }
             
             // check if neccesary
-            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "Vote")
+            cell.postVotesLabel.text = Formater().formatSingularAndPlural(post.votes, singularWord: "vote")
         }
     }
 }
