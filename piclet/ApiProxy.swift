@@ -12,11 +12,13 @@ import Alamofire
 
 class ApiProxy {
     
+    var deviceToken = ""
+    
     
     // MARK: - User Account
     
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
+        let parameter = ["username" : (username), "password" :  (password), "deviceId": (deviceToken), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -30,7 +32,7 @@ class ApiProxy {
     
     // add later device id, for push
     func createUserWithThirdPartyService(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "os" : "ios"]
+        let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "deviceId": (deviceToken), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -43,7 +45,7 @@ class ApiProxy {
     }
     
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
+        let parameter = ["username" : (username), "password" :  (password), "deviceId": (deviceToken), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -56,7 +58,7 @@ class ApiProxy {
     }
     
     func signInUserWithThirdPartyService(oauthtoken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "os" : "ios"]
+        let parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "deviceId": (deviceToken), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) in
             UserAccount().createUserToken(json)
@@ -78,7 +80,7 @@ class ApiProxy {
     }
     
     func changePassword(token: String, username: String, oldPassword: String, newPassword: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
+        let parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "deviceId": (deviceToken), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "users/\(username)", httpVerb: HTTPVerb.put, token: token, success: { (json) in
             success()
@@ -298,92 +300,8 @@ class ApiProxy {
             
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-/*
-    
-    
-    // TEST -> use for change password
-    
-    func deleteAllUserAccessTokens(token: String, success: () -> (), failed: (errorCode: String) -> ()) {
-        
-        networkHandler.createRequest([:], apiPath: "tokens", httpVerb: "DELETE", bearerToken: token, validRequest: { (validResponseData) -> () in
-            success() // dont forget to log the user out!
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-        }
-    }
-    
-    
-    
-    // TEST -> use for userProfil, ask Johannes -> This call should require a jwt token!
-    
-
-    
-    
-
-    
-    
-
-    
-    
-    // TEST - Avatar user Image
-    
-    func getUserAvatar(username: String, imageSize: ImageSize, imageFormat: ImageFormat, success: () -> (), failed: (errorCode: String) -> () ) {
-        //GET /users/<nick>/avatar-<size>.<format>
-        let apiPath = "users/" + username + "/avatar-" + imageSize.rawValue + "." + imageFormat.rawValue
-        
-        networkHandler.createRequest([:], apiPath: apiPath, httpVerb: "GET", bearerToken: nil, validRequest: { (validResponseData) -> () in
-            self.objectMapper.saveImageAvatar(validResponseData, username: username, imageSize: imageSize)
-            success()
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-    
-    
-    // TEST!
-    
-    func changeUserPassword(username: String, oldPassword: String, newPassword: String, token: String, success: () -> (), failed: (errorCode: String) -> () ) {
-        // PUT /users/<nick>
-        
-        let apiPath = "users/" + username
-        let requestBody = ["oldPassword" : (oldPassword), "newPassword" : (newPassword), "os" : "ios"]
-        
-        networkHandler.createRequest(requestBody, apiPath: apiPath, httpVerb: "PUT", bearerToken: token, validRequest: { (validResponseData) -> () in
-            success()
-            
-        }, inValidRequest: { (invalidResponseData) -> () in
-            failed(errorCode: self.objectMapper.parseError(invalidResponseData))
-            
-        }) { (errorCode) -> () in
-            failed(errorCode: errorCode)
-            
-        }
-    }
-
-    
-
-
-*/
-
 }
+
 
 enum ImageSize: String {
     case small = "small"

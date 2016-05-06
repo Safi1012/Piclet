@@ -72,8 +72,19 @@ class ErrorHandler {
         case "PasswordNewTooShort":
             return ("Password is too short", "Your new password must be at least 4 characters long.")
             
+        case "ImagePixelTooBig":
+            return ("Image resolution is too high", "Please choose an image with a lower resolution.")
+            
+        case "WrongAspectRatio", "IncompatibleImage":
+            return ("Image is not supported", "Please choose a different image. Try shooting one with you camera.")
+            
+        case "ImageTooBig":
+            return ("Image size is too big", "Please choose a smaller image. The maximum image size is 3 Mb.")
+            
         default:
             return ("", "")
         }
     }
 }
+
+

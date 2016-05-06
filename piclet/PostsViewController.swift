@@ -33,13 +33,12 @@ class PostsViewController: UIViewController {
         
         tableView.estimatedRowHeight = 400.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
         self.viewDidAppear(animated)
         
+        hideAddNavButton()
         fetchAllPostInformations()
     }
 
@@ -79,6 +78,12 @@ class PostsViewController: UIViewController {
     func displayTableView() {
         tableView.hidden = false
         mascotView.hidden = true
+    }
+    
+    func hideAddNavButton() {
+        if challenge.archived! {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
 

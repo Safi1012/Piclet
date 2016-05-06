@@ -19,6 +19,9 @@ class ImagePickerViewController: UIViewController {
     var previewImageView: UIImageView?
     var challengeID: String!
     
+    let MAX_IMAGE_PIXEL_SIZE = 10000000
+    let MAX_IMAGE_SIZE_IN_BYTE = 3145728
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +107,29 @@ class ImagePickerViewController: UIViewController {
         }
     }
     
+    func validateImageData(image: UIImage) -> Bool {
+        guard
+            let compressedImage = ImageHandler().convertPostsImageForUpload(image, imageSize: ImagePostsServerWidth.large)
+        else {
+            self.displayAlert("IncompatibleImage")
+            return false
+        }
+    
+        if (image.size.width * image.size.height) >= CGFloat(MAX_IMAGE_PIXEL_SIZE) {
+            self.displayAlert("ImagePixelTooBig")
+            return false
+        }
+        if (image.size.width / image.size.height) > 3 || (image.size.width / image.size.height) < 0.3 {
+            self.displayAlert("WrongAspectRatio")
+            return false
+        }
+        if compressedImage.length >= MAX_IMAGE_SIZE_IN_BYTE {
+            self.displayAlert("ImageTooBig")
+            return false
+        }
+        return true
+    }
+    
     
     // MARK: - PreviewImageView
     
@@ -174,9 +200,12 @@ extension ImagePickerViewController: UIImagePickerControllerDelegate, UINavigati
             if picker.sourceType == UIImagePickerControllerSourceType.Camera {
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             }
-            hideButtonView()
-            previewImageView = createPreviewImageView(image)
-            createClosePreviewButton(previewImageView!)
+            
+            if validateImageData(image) {
+                hideButtonView()
+                previewImageView = createPreviewImageView(image)
+                createClosePreviewButton(previewImageView!)
+            }
         }
         picker.dismissViewControllerAnimated(true, completion: nil)
     }

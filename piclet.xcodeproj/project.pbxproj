@@ -735,6 +735,11 @@
 					D469120E1BAC03C30012CE7C = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = MSTZLMN72L;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					D4BE33F71C91DE2900483576 = {
 						CreatedOnToolsVersion = 7.2.1;

@@ -47,7 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // fabric
         Fabric.with([Crashlytics.self])
         
-        /*
+        
+        
+        
         
         // register the supported interaction types
         let notifcationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
@@ -59,17 +61,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // handling the notification
         if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? UILocalNotification {
             print("\(remoteNotification.userInfo)")
+            application.applicationIconBadgeNumber = remoteNotification.applicationIconBadgeNumber - 1;
             
 //            NSString *itemName = [localNotif.userInfo objectForKey:ToDoItemKey];
 //            [viewController displayItem:itemName];  // custom method
 //            app.applicationIconBadgeNumber = localNotif.applicationIconBadgeNumber-1;
         }
         
+        
+        // not sure why?
 //        [window addSubview:viewController.view];
 //        [window makeKeyAndVisible];
-        
- */
-        
     
         return true
     }
@@ -102,23 +104,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Notifications
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        // let deviceTokenBytes = deviceToken.bytes
-        // registered = true;
+        let characterSet: NSCharacterSet = NSCharacterSet(charactersInString: "<>")
         
-        // send token to johannes
-        print("token: \(String(data: deviceToken, encoding: NSUTF8StringEncoding)))")
+        let deviceTokenString: String = (deviceToken.description as NSString)
+            .stringByTrimmingCharactersInSet(characterSet)
+            .stringByReplacingOccurrencesOfString( " ", withString: "") as String
+        
+        print("\n \(deviceTokenString)")
+        print(deviceToken.description)
+        
+        ApiProxy().deviceToken = deviceTokenString
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Remote Notification Error: \(error.description)")
     }
     
-//    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-//        print("Received remote notification!")
-//    }
-    
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         // Tells the app that a remote notification arrived that indicates there is data to be fetched.
+        
+        let state = application.applicationState
+        
+        if state == .Inactive {
+            // show the view with the content of the push
+            completionHandler(UIBackgroundFetchResult.NewData)
+            
+        } else if state == .Background {
+            // refresh local model
+            completionHandler(UIBackgroundFetchResult.NewData)
+            
+        } else if state == .Active {
+            // show alert
+            completionHandler(UIBackgroundFetchResult.NewData)
+            
+        }
+        
+        // the completetion handlet must be called -> see other examples
+        completionHandler(UIBackgroundFetchResult.NoData)
     }
 
     
@@ -131,6 +153,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func appDelegate () -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+    
+    
     
     
     // MARK: - Fabric
@@ -156,5 +180,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIInterfaceOrientationMask.Portrait;
     }
 }
-
 
