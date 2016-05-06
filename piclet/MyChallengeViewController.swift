@@ -30,11 +30,13 @@ class MyChallengeViewController: UIViewController {
         tableView.addActivityIndicatorFooterView()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
-        tableView.flashScrollIndicators()
-        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
+        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
+        
         refreshChallenges(0)
     }
     
@@ -58,6 +60,7 @@ class MyChallengeViewController: UIViewController {
     
     func fetchChallenges(offset: Int, displayIndicator: Bool) {
         isRequesting = true
+        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         
         ApiProxy().fetchUserCreatedChallenges(userAccount.username, offset: offset, success: { (userChallenges) -> () in
             self.fetchUserSuccess(offset, userChallenges: userChallenges)
@@ -69,6 +72,7 @@ class MyChallengeViewController: UIViewController {
     
     func fetchWonChallenges(offset: Int, displayIndicator: Bool) {
         isRequesting = true
+        showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         
         ApiProxy().fetchWonChallenges(offset, username: userAccount.username, success: { (userChallenges) in
             self.fetchUserSuccess(offset, userChallenges: userChallenges)

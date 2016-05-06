@@ -20,7 +20,7 @@ class ProfileRankingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.addActivityIndicatorSubview()
+        tableView.addActivityIndicatorFooterView()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,14 +58,14 @@ class ProfileRankingTableViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.tableView.reloadData()
                 self.isRequesting = false
-                self.tableView.stopAnimatingIndicatorView()
+                self.tableView.tableFooterView?.stopAnimatingIndicatorView()
                 self.dismissLoadingSpinner()
             })
             
         }) { (errorCode) in
             self.displayAlert(errorCode)
             self.isRequesting = false
-            self.tableView.stopAnimatingIndicatorView()
+            self.tableView.tableFooterView?.stopAnimatingIndicatorView()
             self.dismissLoadingSpinner()
             
         }
@@ -101,7 +101,7 @@ class ProfileRankingTableViewController: UITableViewController {
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         
         if (maximumOffset - currentOffset) <= 70 {
-            tableView.startAnimatingIndicatorView()
+            tableView.tableFooterView?.startAnimatingIndicatorView()
             refreshRanks((self.userRanks.count - 20) + 20)
         }
     }

@@ -47,10 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // fabric
         Fabric.with([Crashlytics.self])
         
-        
-        
-        
-        
         // register the supported interaction types
         let notifcationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(notifcationSettings)
@@ -104,15 +100,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Notifications
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let characterSet: NSCharacterSet = NSCharacterSet(charactersInString: "<>")
+        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(deviceToken.bytes), count:deviceToken.length)
+        let deviceTokenString = bytes.map { String(format: "%02hhx", $0) }.reduce("", combine: { $0 + $1 })
         
-        let deviceTokenString: String = (deviceToken.description as NSString)
-            .stringByTrimmingCharactersInSet(characterSet)
-            .stringByReplacingOccurrencesOfString( " ", withString: "") as String
-        
-        print("\n \(deviceTokenString)")
-        print(deviceToken.description)
-        
+        print("\n\(deviceTokenString)\n")
         ApiProxy().deviceToken = deviceTokenString
     }
     
@@ -153,8 +144,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func appDelegate () -> AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-    
-    
     
     
     // MARK: - Fabric

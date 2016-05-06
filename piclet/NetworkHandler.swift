@@ -87,6 +87,12 @@ class NetworkHandler: NSObject {
     func generateHeaders(token: String?) -> [String: String] {
         return (token != nil) ? ["Authorization": "Bearer \(token!)"] : ["": ""]
     }
+    
+    func appendDeviceTokenIdToParameters(inout parameters: [String : String], deviceToken: String) {
+        if deviceToken.characters.count > 0 {
+            parameters.updateValue((deviceToken), forKey: "deviceId")
+        }
+    }
 }
 
 enum HTTPVerb: String {

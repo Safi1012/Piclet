@@ -18,7 +18,8 @@ class ApiProxy {
     // MARK: - User Account
     
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "password" :  (password), "deviceId": (deviceToken), "os" : "ios"]
+        var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -30,9 +31,9 @@ class ApiProxy {
         }
     }
     
-    // add later device id, for push
     func createUserWithThirdPartyService(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "deviceId": (deviceToken), "os" : "ios"]
+        var parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "os" : "ios"]
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -45,7 +46,8 @@ class ApiProxy {
     }
     
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["username" : (username), "password" :  (password), "deviceId": (deviceToken), "os" : "ios"]
+        var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -58,7 +60,8 @@ class ApiProxy {
     }
     
     func signInUserWithThirdPartyService(oauthtoken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "deviceId": (deviceToken), "os" : "ios"]
+        var parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "os" : "ios"]
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) in
             UserAccount().createUserToken(json)
@@ -80,7 +83,8 @@ class ApiProxy {
     }
     
     func changePassword(token: String, username: String, oldPassword: String, newPassword: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        let parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "deviceId": (deviceToken), "os" : "ios"]
+        var parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
         
         NetworkHandler().requestJSON(parameter, apiPath: "users/\(username)", httpVerb: HTTPVerb.put, token: token, success: { (json) in
             success()
@@ -95,7 +99,6 @@ class ApiProxy {
     // MARK: - Challenges
     
     func fetchChallenges(offset: Int, orderby: SegmentedControlState, archived: Bool, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
-        
         let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
         let apiPath = "challenges?offset=\(offset)&orderby=\(orderbyString)&archived=\(archived)"
         
@@ -301,7 +304,6 @@ class ApiProxy {
         }
     }
 }
-
 
 enum ImageSize: String {
     case small = "small"

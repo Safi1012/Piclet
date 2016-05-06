@@ -61,6 +61,7 @@ class ChallengeViewController: UIViewController {
     
     @IBAction func pressedSegmentedControl(sender: UISegmentedControl) {
         challengeCollection.offsetY = tableView.contentOffset.y
+        removeCentered(tableView)
         
         switch sender.selectedSegmentIndex {
             
@@ -101,6 +102,12 @@ class ChallengeViewController: UIViewController {
             refresh()
         } else {
             tableView.reloadData()
+            
+            if challengeCollection.challenge.count == 0 {
+                addCenteredLabel("There are no challenges yet. \n Let's go and create one!", view: tableView)
+            } else {
+                removeCentered(tableView)
+            }
         }
     }
     
@@ -125,7 +132,7 @@ class ChallengeViewController: UIViewController {
     
     func fetchChallenges(offset: Int, displayIndicator: Bool, isFullRefetch: Bool, archived: Bool) {
         isRequesting = true
-        if displayIndicator { tableView.startAnimatingIndicatorView() }
+        if displayIndicator { tableView.tableFooterView?.startAnimatingIndicatorView() }
         
         ApiProxy().fetchChallenges(offset, orderby: self.challengeCollection.section, archived: archived, success: { (challenges) -> () in
             if offset == 0 {
@@ -150,7 +157,7 @@ class ChallengeViewController: UIViewController {
         tableView.hidden = false
         self.makePullToRefreshEndRefreshing()
         self.dismissLoadingSpinner()
-        self.tableView.stopAnimatingIndicatorView()
+        self.tableView.tableFooterView?.stopAnimatingIndicatorView()
         
         isRequesting = false
         

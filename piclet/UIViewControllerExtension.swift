@@ -85,6 +85,13 @@ extension UIViewController {
         label.text = text
         label.textAlignment = .Center
         label.tag = 1
+        
+        if #available(iOS 8.2, *) {
+            label.font = UIFont.systemFontOfSize(15.0, weight: UIFontWeightLight)
+        } else {
+            label.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        }
+        
         view.addSubview(label)
     }
     
