@@ -52,12 +52,7 @@ class UserViewController: UIViewController {
     
     @IBAction func signUpButtonPressed(sender: UIButton) {
         if validateTextFields() {
-            if !userAcceptedTos {
-                view.endEditing(true)
-                loadTermsOfServiceViewController()
-            } else {
-                signUpUser()
-            }
+            signUpUser()
         }
     }
     
@@ -122,11 +117,6 @@ class UserViewController: UIViewController {
     
     
     // MARK: - Navigation
-    
-    func loadTermsOfServiceViewController() {
-        let tosViewController = TosViewController(nibName: "TosViewController", bundle: NSBundle.mainBundle())
-        addChildViewController(tosViewController, toContainerView: view)
-    }
     
     func navigateToChallengesViewController() {
         performSegueWithIdentifier("toChallengesViewController", sender: self)

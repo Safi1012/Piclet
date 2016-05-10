@@ -88,20 +88,6 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     
     
     // MARK: - SignIn / SignUp
-    
-    func loadThirdPartySignInService() {
-        switch thirdPartySignInService {
-            
-        case .facebook:
-            break
-            
-        case .google:
-            break
-            
-        default:
-            break
-        }
-    }
 
     func signInInPiclet(jwt: String) {
         ApiProxy().signInUserWithThirdPartyService(jwt, tokenType: TokenType.google, success: { () in
@@ -109,7 +95,7 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
             
         }) { (errorCode) in
             if errorCode == "UsernameNotFoundError" {
-                self.loadTermsOfServiceViewController()
+                self.performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
             } else {
                 self.displayAlert(errorCode)
             }
@@ -119,28 +105,15 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
     
     // MARK: - Navigation
     
-    func loadTermsOfServiceViewController() {
-        let tosViewController = TosViewController(nibName: "TosViewController", bundle: NSBundle.mainBundle())
-        addChildViewController(tosViewController, toContainerView: view)
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toThirdPartyServiceViewController" {
-            removeLastChildViewController(self)
-            let thirdPartyViewController = segue.destinationViewController as! ThirdPartyServiceViewController
-            
-            thirdPartyViewController.oauthToken = oauthToken!
-            thirdPartyViewController.thirdPartySignInService = thirdPartySignInService
+            let thirdPartyServiceViewController = segue.destinationViewController as? ThirdPartyServiceViewController
+            thirdPartyServiceViewController?.oauthToken = oauthToken
+            thirdPartyServiceViewController?.thirdPartySignInService = thirdPartySignInService
         }
     }
     
     @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {}
-    
-    func dismissTosAndSignUp() {
-        removeLastChildViewController(self)
-        performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
-    }
-
 }
 
 
@@ -154,7 +127,7 @@ extension WelcomeViewController: GIDSignInDelegate {
             oauthToken = user.authentication.idToken
             signInInPiclet(user.authentication.idToken)
         } else {
-            removeLastChildViewController(self)
+            print("\(error.description)")
         }
     }
 }

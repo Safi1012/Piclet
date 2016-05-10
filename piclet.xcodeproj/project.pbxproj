@@ -21,10 +21,6 @@
 		D42F96A51BCBFC3B00544C69 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */; };
 		D43721071CB16BFA0058B262 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721061CB16BFA0058B262 /* UserViewController.swift */; };
 		D43721081CB16BFA0058B262 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721061CB16BFA0058B262 /* UserViewController.swift */; };
-		D437210B1CB16DAB0058B262 /* TosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721091CB16DAB0058B262 /* TosViewController.swift */; };
-		D437210C1CB16DAB0058B262 /* TosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721091CB16DAB0058B262 /* TosViewController.swift */; };
-		D437210D1CB16DAB0058B262 /* TosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D437210A1CB16DAB0058B262 /* TosViewController.xib */; };
-		D437210E1CB16DAB0058B262 /* TosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D437210A1CB16DAB0058B262 /* TosViewController.xib */; };
 		D43721111CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */; };
 		D43721121CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */; };
 		D4422FC71CA92FB900216C72 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4422FC61CA92FB900216C72 /* StoreKit.framework */; };
@@ -176,8 +172,6 @@
 		D42B5D3A1C1CC87800BE771D /* ImageViewer.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = ImageViewer.framework.dSYM; path = Carthage/Build/iOS/ImageViewer.framework.dSYM; sourceTree = "<group>"; };
 		D42F96A41BCBFC3B00544C69 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		D43721061CB16BFA0058B262 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		D43721091CB16DAB0058B262 /* TosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TosViewController.swift; sourceTree = "<group>"; };
-		D437210A1CB16DAB0058B262 /* TosViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TosViewController.xib; sourceTree = "<group>"; };
 		D43721101CB179C50058B262 /* ThirdPartyServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyServiceViewController.swift; sourceTree = "<group>"; };
 		D4422FC61CA92FB900216C72 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
@@ -347,15 +341,6 @@
 				D46799401C18463500B24EF2 /* ProfileCollectionViewCell.swift */,
 			);
 			name = ProfileCollection;
-			sourceTree = "<group>";
-		};
-		D43721011CB16A180058B262 /* TermsOfService */ = {
-			isa = PBXGroup;
-			children = (
-				D43721091CB16DAB0058B262 /* TosViewController.swift */,
-				D437210A1CB16DAB0058B262 /* TosViewController.xib */,
-			);
-			name = TermsOfService;
 			sourceTree = "<group>";
 		};
 		D43721051CB16BCA0058B262 /* User */ = {
@@ -620,11 +605,11 @@
 		D4CBA8821C2DF0FD00B47820 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				D4F9BFEE1CD8E1DF00C99427 /* Password */,
 				D4B5832E1CAD9ECA005C5AD9 /* Welcome */,
 				D43721051CB16BCA0058B262 /* User */,
 				D437210F1CB179A10058B262 /* ThirdParty */,
-				D43721011CB16A180058B262 /* TermsOfService */,
+				D4F9BFEE1CD8E1DF00C99427 /* Password */,
+				D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -677,7 +662,6 @@
 		D4F9BFEE1CD8E1DF00C99427 /* Password */ = {
 			isa = PBXGroup;
 			children = (
-				D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */,
 			);
 			name = Password;
 			sourceTree = "<group>";
@@ -784,7 +768,6 @@
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
-				D437210D1CB16DAB0058B262 /* TosViewController.xib in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,7 +776,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D437210E1CB16DAB0058B262 /* TosViewController.xib in Resources */,
 				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
@@ -868,7 +850,6 @@
 				D459D6971C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */,
 				D44248F31BE5567800C88B50 /* UIImageExtenstion.swift in Sources */,
 				D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */,
-				D437210B1CB16DAB0058B262 /* TosViewController.swift in Sources */,
 				D4105BEF1BBE65AC006D742D /* ApiProxy.swift in Sources */,
 				D462CB741BCBD3EE00701EFF /* Post.swift in Sources */,
 				D44E04A61C352E40003B502C /* ProfileHistoryTableViewController.swift in Sources */,
@@ -913,7 +894,6 @@
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
 				D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
 				D43721121CB179C50058B262 /* ThirdPartyServiceViewController.swift in Sources */,
-				D437210C1CB16DAB0058B262 /* TosViewController.swift in Sources */,
 				D4CCE3D01CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */,
 				D4CCE3D31CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */,
 				D45E2B9C1CAABC9800002BC3 /* EAIntroPage.m in Sources */,
