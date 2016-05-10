@@ -88,7 +88,9 @@ class NetworkHandler: NSObject {
         return (token != nil) ? ["Authorization": "Bearer \(token!)"] : ["": ""]
     }
     
-    func appendDeviceTokenIdToParameters(inout parameters: [String : String], deviceToken: String) {
+    func appendDeviceTokenIdToParameters(inout parameters: [String : String]) {
+        let deviceToken = (UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
+        
         if deviceToken.characters.count > 0 {
             parameters.updateValue((deviceToken), forKey: "deviceId")
         }

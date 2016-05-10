@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var welcomeViewController: WelcomeViewController?
+    var deviceToken = ""
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -104,7 +105,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceTokenString = bytes.map { String(format: "%02hhx", $0) }.reduce("", combine: { $0 + $1 })
         
         print("\n\(deviceTokenString)\n")
-        ApiProxy().deviceToken = deviceTokenString
+        self.deviceToken = deviceTokenString
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

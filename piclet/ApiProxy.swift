@@ -19,7 +19,7 @@ class ApiProxy {
     
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -33,7 +33,7 @@ class ApiProxy {
     
     func createUserWithThirdPartyService(username: String, oauthToken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["username" : (username), "oauthtoken" :  (oauthToken), "tokentype": (tokenType.rawValue), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -47,7 +47,7 @@ class ApiProxy {
     
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -61,7 +61,7 @@ class ApiProxy {
     
     func signInUserWithThirdPartyService(oauthtoken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) in
             UserAccount().createUserToken(json)
@@ -84,7 +84,7 @@ class ApiProxy {
     
     func changePassword(token: String, username: String, oldPassword: String, newPassword: String, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter, deviceToken: deviceToken)
+        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
         
         NetworkHandler().requestJSON(parameter, apiPath: "users/\(username)", httpVerb: HTTPVerb.put, token: token, success: { (json) in
             success()

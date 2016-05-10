@@ -36,6 +36,10 @@ class MyChallengeViewController: UIViewController {
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         refreshChallenges(0)
     }
