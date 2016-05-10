@@ -46,9 +46,6 @@ class ThirdPartyServiceViewController: UIViewController {
     @IBAction func pressedCreateAccount(sender: UIButton) {
         switch thirdPartySignInService! {
         
-        case .facebook:
-            print("fb")
-        
         case .google:
             signUpInPiclet()
         
@@ -66,11 +63,7 @@ class ThirdPartyServiceViewController: UIViewController {
             usernameTextField.text = "Username"
         }
     }
-    
-    @IBAction func pressedCancel(sender: UIButton) {
-        print("Pressed")
-    }
-    
+
     
     // MARK: - SignIn / SignUp
     

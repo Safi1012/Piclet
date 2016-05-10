@@ -34,18 +34,21 @@ class ProfileHistoryTableViewController: UITableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        if cell == postsCell {
-            self.parentViewController?.performSegueWithIdentifier("toProfileCollectionView", sender: userAccount!)
+        if let userAccount = userAccount {
+            if cell == postsCell {
+                self.parentViewController?.performSegueWithIdentifier("toProfileCollectionView", sender: userAccount)
+            }
+            if cell == challengesCell {
+                self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount)
+            }
+            if cell == likedCell {
+                self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: userAccount)
+            }
+            if cell == wonCell {
+                self.parentViewController?.performSegueWithIdentifier("toWonChallenges", sender: userAccount)
+            }
         }
-        if cell == challengesCell {
-            self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount!)
-        }
-        if cell == likedCell {
-            self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: userAccount!)
-        }
-        if cell == wonCell {
-            self.parentViewController?.performSegueWithIdentifier("toWonChallenges", sender: userAccount!)
-        }
+        
     }
     
     

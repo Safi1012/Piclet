@@ -609,7 +609,6 @@
 				D43721051CB16BCA0058B262 /* User */,
 				D437210F1CB179A10058B262 /* ThirdParty */,
 				D4F9BFEE1CD8E1DF00C99427 /* Password */,
-				D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -662,6 +661,7 @@
 		D4F9BFEE1CD8E1DF00C99427 /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				D4F9BFEF1CD8E1F700C99427 /* ChangePasswordViewController.swift */,
 			);
 			name = Password;
 			sourceTree = "<group>";
