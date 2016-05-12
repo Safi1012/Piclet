@@ -41,6 +41,8 @@
 		D445264F1BF3BF65007FE8D8 /* WebImage.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D445264E1BF3BF65007FE8D8 /* WebImage.framework.dSYM */; };
 		D44E04A21C352E1A003B502C /* ProfileStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */; };
 		D44E04A61C352E40003B502C /* ProfileHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E04A51C352E40003B502C /* ProfileHistoryTableViewController.swift */; };
+		D4549AD91CE279D300F56F69 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4549AD81CE279D300F56F69 /* Authentication.storyboard */; };
+		D4549ADA1CE279D300F56F69 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4549AD81CE279D300F56F69 /* Authentication.storyboard */; };
 		D45650411C059E3400C428EE /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */; };
 		D459D6971C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */; };
 		D459D69A1C1CDB81003A26E4 /* JTSImageInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D459D68E1C1CDB81003A26E4 /* JTSImageInfo.m */; };
@@ -193,6 +195,7 @@
 		D44526501BF3C28A007FE8D8 /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
 		D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStatsTableViewController.swift; sourceTree = "<group>"; };
 		D44E04A51C352E40003B502C /* ProfileHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHistoryTableViewController.swift; sourceTree = "<group>"; };
+		D4549AD81CE279D300F56F69 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		D45650401C059E3400C428EE /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		D459D68B1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JTSAnimatedGIFUtility.h; path = Frameworks/JTSAnimatedGIFUtility.h; sourceTree = "<group>"; };
 		D459D68C1C1CDB81003A26E4 /* JTSAnimatedGIFUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JTSAnimatedGIFUtility.m; path = Frameworks/JTSAnimatedGIFUtility.m; sourceTree = "<group>"; };
@@ -488,6 +491,7 @@
 			children = (
 				D46912161BAC03C30012CE7C /* Main.storyboard */,
 				D469121E1BAC03C30012CE7C /* LaunchScreen.storyboard */,
+				D4549AD81CE279D300F56F69 /* Authentication.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -723,6 +727,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					D4BE33F71C91DE2900483576 = {
@@ -764,6 +771,7 @@
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
 				D4B583211CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,
+				D4549AD91CE279D300F56F69 /* Authentication.storyboard in Resources */,
 				D41190B71CB5A22100BB09F7 /* termsOfService.txt in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
@@ -776,6 +784,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4549ADA1CE279D300F56F69 /* Authentication.storyboard in Resources */,
 				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
