@@ -8,12 +8,13 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
+class WelcomeViewController: UIViewController {
     
-    @IBOutlet weak var googleButton: UIButton!
-    @IBOutlet weak var usernameButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var setupServerButton: UIButton!
     
-    var thirdPartySignInService = ThirdPartySignInService.username
+    
+    // var thirdPartySignInService = ThirdPartySignInService.username
     var oauthToken: String?
     
     
@@ -28,13 +29,25 @@ class WelcomeViewController: UIViewController, GIDSignInUIDelegate {
         uiStyling()
         
         // Google SignIn Service setup
-        GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().delegate = self
+        // GIDSignIn.sharedInstance().uiDelegate = self
+        // GIDSignIn.sharedInstance().delegate = self
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    
+    // MARK: - UI
+    
+    func uiStyling() {
+        signInButton.addBoarderTop()
+        setupServerButton.addBoarderTop()
+        setupServerButton.addBoarderBottom()
+    }
+    
+}
+/*
     
     
     // MARK: - Onboarding
@@ -141,4 +154,4 @@ enum ThirdPartySignInService {
     case username
 }
 
-
+*/

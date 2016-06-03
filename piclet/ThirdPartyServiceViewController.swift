@@ -1,3 +1,6 @@
+
+/*
+
 //
 //  ThirdPartyServiceViewController.swift
 //  piclet
@@ -133,4 +136,4 @@ extension ThirdPartyServiceViewController: UITextFieldDelegate {
 }
 
 
-
+*/

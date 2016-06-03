@@ -11,21 +11,21 @@ import UIKit
 extension UIButton {
     
     func addRoundButtonBorder() {
-        self.layer.borderWidth = 1.0
+        self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.whiteColor().CGColor
         self.layer.cornerRadius = 5.0
         self.layer.masksToBounds = true
     }
     
     func addBoarderTop() {
-        let topLineView = UIView(frame: CGRectMake(0, 0, self.frame.size.width, 1))
-        topLineView.backgroundColor = UIColor(red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0) // UIColor.lightTextColor()
+        let topLineView = UIView(frame: CGRectMake(0, 0, self.frame.size.width, 0.5))
+        topLineView.backgroundColor = UIColor(red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 0.85)
         self.addSubview(topLineView)
     }
     
     func addBoarderBottom() {
-        let topLineView = UIView(frame: CGRectMake(0, self.frame.size.height, self.frame.size.width, 1))
-        topLineView.backgroundColor = UIColor(red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0)
+        let topLineView = UIView(frame: CGRectMake(0, self.frame.size.height, self.frame.size.width, 0.5))
+        topLineView.backgroundColor = UIColor(red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 0.85)
         self.addSubview(topLineView)
     }
 }

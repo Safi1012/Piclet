@@ -42,33 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "navBarBack")
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
-        // google sign-In
-        GIDSignIn.sharedInstance().clientID = "341730212595-ir18hmkfcji9ke2h7opc4t7ovdlbfj68.apps.googleusercontent.com"
-        
         // fabric
         Fabric.with([Crashlytics.self])
-        
-        // register the supported interaction types
-        let notifcationSettings = UIUserNotificationSettings(forTypes: [.Badge, .Sound, .Alert], categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(notifcationSettings)
-        
-        // register for remote notifications
-        UIApplication.sharedApplication().registerForRemoteNotifications()
-        
-        // handling the notification
-        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? UILocalNotification {
-            print("\(remoteNotification.userInfo)")
-            application.applicationIconBadgeNumber = remoteNotification.applicationIconBadgeNumber - 1;
-            
-//            NSString *itemName = [localNotif.userInfo objectForKey:ToDoItemKey];
-//            [viewController displayItem:itemName];  // custom method
-//            app.applicationIconBadgeNumber = localNotif.applicationIconBadgeNumber-1;
-        }
-        
-        
-        // not sure why?
-//        [window addSubview:viewController.view];
-//        [window makeKeyAndVisible];
     
         return true
     }
@@ -95,51 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         // self.saveContext()
-    }
-    
-    
-    // MARK: - Notifications
-    
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(deviceToken.bytes), count:deviceToken.length)
-        let deviceTokenString = bytes.map { String(format: "%02hhx", $0) }.reduce("", combine: { $0 + $1 })
-        
-        print("\n\(deviceTokenString)\n")
-        self.deviceToken = deviceTokenString
-    }
-    
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("Remote Notification Error: \(error.description)")
-    }
-    
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        // Tells the app that a remote notification arrived that indicates there is data to be fetched.
-        
-        let state = application.applicationState
-        
-        if state == .Inactive {
-            // show the view with the content of the push
-            completionHandler(UIBackgroundFetchResult.NewData)
-            
-        } else if state == .Background {
-            // refresh local model
-            completionHandler(UIBackgroundFetchResult.NewData)
-            
-        } else if state == .Active {
-            // show alert
-            completionHandler(UIBackgroundFetchResult.NewData)
-            
-        }
-        
-        // the completetion handlet must be called -> see other examples
-        completionHandler(UIBackgroundFetchResult.NoData)
-    }
-
-    
-    
-    @available(iOS, introduced=8.0, deprecated=9.0)
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: sourceApplication!, annotation: annotation)
     }
     
     func appDelegate () -> AppDelegate {
