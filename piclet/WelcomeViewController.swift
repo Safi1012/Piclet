@@ -14,10 +14,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var setupServerButton: UIButton!
     
     
-    // var thirdPartySignInService = ThirdPartySignInService.username
-    var oauthToken: String?
-    
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -46,6 +42,18 @@ class WelcomeViewController: UIViewController {
         setupServerButton.addBoarderBottom()
     }
     
+    
+    // MARK: - Actions
+    
+    @IBAction func pressedSignInButton(sender: UIButton) {
+        performSegueWithIdentifier("toUserViewController", sender: self)
+    }
+    
+    @IBAction func pressedSetupServer(sender: AnyObject) {
+        // performSegueWithIdentifier("toSetupServerViewController", sender: self)
+    }
+    
+    @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {}
 }
 /*
     
@@ -75,83 +83,4 @@ class WelcomeViewController: UIViewController {
         intro.showInView(self.view, animateDuration: 0.0)
     }
     
-    
-    // MARK: - UI
-    
-    func uiStyling() {
-        googleButton.addBoarderTop()
-        usernameButton.addBoarderTop()
-        usernameButton.addBoarderBottom()
-    }
-    
-    @IBAction func pressedGoogleButton(sender: UIButton) {
-        thirdPartySignInService = ThirdPartySignInService.google
-        GIDSignIn.sharedInstance().signOut()    // remove later
-        GIDSignIn.sharedInstance().signIn()
-    }
-    
-    @IBAction func pressedUsernameButton(sender: UIButton) {
-        thirdPartySignInService = ThirdPartySignInService.username
-        performSegueWithIdentifier("toUserViewController", sender: self)
-    }
-    
-    @IBAction func pressedSkipButton(sender: AnyObject) {
-        performSegueWithIdentifier("toChallengesViewController", sender: self)
-    }
-    
-    
-    // MARK: - SignIn / SignUp
-
-    func signInInPiclet(jwt: String) {
-        ApiProxy().signInUserWithThirdPartyService(jwt, tokenType: TokenType.google, success: { () in
-            self.performSegueWithIdentifier("toChallengesViewController", sender: self)
-            
-        }) { (errorCode) in
-            if errorCode == "UsernameNotFoundError" {
-                self.performSegueWithIdentifier("toThirdPartyServiceViewController", sender: self)
-            } else {
-                self.displayAlert(errorCode)
-            }
-        }
-    }
-
-    
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "toThirdPartyServiceViewController" {
-            let thirdPartyServiceViewController = segue.destinationViewController as? ThirdPartyServiceViewController
-            thirdPartyServiceViewController?.oauthToken = oauthToken
-            thirdPartyServiceViewController?.thirdPartySignInService = thirdPartySignInService
-        }
-    }
-    
-    @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {}
-}
-
-
-// MARK: - GIDSignInDelegate
-
-extension WelcomeViewController: GIDSignInDelegate {
-    
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
-        
-        if (error == nil) {
-            oauthToken = user.authentication.idToken
-            signInInPiclet(user.authentication.idToken)
-        } else {
-            print("\(error.description)")
-        }
-    }
-}
-
-
-// MARK: - Enum - ThirdPartySignInService
-
-enum ThirdPartySignInService {
-    case facebook
-    case google
-    case username
-}
-
-*/
+ */

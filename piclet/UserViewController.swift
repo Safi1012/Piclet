@@ -17,8 +17,6 @@ class UserViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var scrollView: UIScrollView!
     
-    var userAcceptedTos = false
-    
     
     // MARK: - Lifecycle
 
@@ -48,7 +46,7 @@ class UserViewController: UIViewController {
     }
     
     
-    // MARK: - UI
+    // MARK: - Actions
     
     @IBAction func signUpButtonPressed(sender: UIButton) {
         if validateTextFields() {
@@ -59,7 +57,7 @@ class UserViewController: UIViewController {
     @IBAction func signInButtonPressed(sender: UIButton) {
         signInUser()
     }
-    
+
     
     // MARK: - SignIn / SignUp
     
@@ -109,17 +107,46 @@ class UserViewController: UIViewController {
         }
         return true
     }
-    
-    func dismissTosAndSignUp() {
-        removeLastChildViewController(self)
-        signUpUser()
-    }
-    
+
     
     // MARK: - Navigation
     
     func navigateToChallengesViewController() {
-        performSegueWithIdentifier("toChallengesViewController", sender: self)
+//        let navigationStoryboard = UIStoryboard(name: "Navigation", bundle: nil)
+//        let vc = navigationStoryboard.instantiateViewControllerWithIdentifier("TabBarViewController")
+//
+//        presentViewController(vc, animated: true, completion: nil)
+        
+        
+//        var tabBarViewController: UITabBarController
+//        
+//        if (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController != nil {
+//            tabBarViewController = (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController
+//        } else {
+//            tabBarViewController
+//        }
+        
+        
+        
+        
+        
+        
+        
+        var tabBarViewController = (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController
+        
+        if tabBarViewController == nil {
+            tabBarViewController = TabBarViewController()
+        }
+
+        presentViewController(tabBarViewController!, animated: true, completion: nil)
+        
+        
+        
+        // access tabBar from
+//        let tabBarViewController = UITabBarController()
+//        presentViewController(UITabBarController(), animated: true, completion: nil)
+        
+        
     }
 
     

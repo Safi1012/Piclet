@@ -19,14 +19,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var welcomeViewController: WelcomeViewController?
     var deviceToken = ""
+    
+    var tabBarViewController: UITabBarController?
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        // create tabBar
+        
+        // tabBarViewController = UITabBarController()
+        
+//        let challengeNavigationController = UIStoryboard(name: "Challenge", bundle: nil).instantiateInitialViewController()
+        
+        
+        
+        
+        
+        // tabBarViewController.viewControllers
+        
+        
+        
+        
+        
         
         // forcing navigationBar to change UIBar -> preferredStatusBarStyle will get called on childs
         UINavigationBar.appearance().barStyle = UIBarStyle.Black
         
         if (UserAccess.sharedInstance.isUserLoggedIn()) {
-            self.window?.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewControllerWithIdentifier("ChallengeProfile")
+//            let navigationStoryboard = UIStoryboard(name: "Navigation", bundle: nil)
+//            let tabBarViewController = navigationStoryboard.instantiateViewControllerWithIdentifier("TabBarViewController")
+//        
+//            self.window?.rootViewController = tabBarViewController
         }
         
         // tabBar styling
