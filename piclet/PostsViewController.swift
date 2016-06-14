@@ -160,7 +160,15 @@ class PostsViewController: UIViewController {
 
         if UserAccess.sharedInstance.isUserLoggedIn() {
             displayTableView()
-            performSegueWithIdentifier("toImagePickerViewController", sender: self)
+//            performSegueWithIdentifier("toImagePickerViewController", sender: self)
+            
+            
+            let postCreateNavigationVC = UIStoryboard.init(name: "PostCreate", bundle: nil).instantiateInitialViewController() as! UINavigationController
+            let imagePickerVC = (postCreateNavigationVC.viewControllers[0] as! ImagePickerViewController)
+            
+            imagePickerVC.challengeID = challenge.id
+            
+            presentViewController(postCreateNavigationVC, animated: true, completion: nil)
             
         } else {
             self.displayAlert("NotLoggedIn")

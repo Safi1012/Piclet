@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GvX-Gj-Kn7">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Create Challenge-->
+        <scene sceneID="ezk-B8-aNp">
+            <objects>
+                <viewController id="B36-qJ-hPB" customClass="CreateChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZGs-Hc-T0E"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mi8-gf-7Wy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LDx-gH-z2Q">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBG-lJ-KWF">
+                                <rect key="frame" x="228" y="209" width="145" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="kCu-V5-eew"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ruw-Gb-Q17" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="215" y="250" width="171" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Rjp-U9-FJD"/>
+                                    <constraint firstAttribute="width" constant="171" id="rob-9P-MEl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LBG-lJ-KWF" firstAttribute="top" secondItem="ZGs-Hc-T0E" secondAttribute="bottom" constant="209" id="Ef2-tS-5h9"/>
+                            <constraint firstItem="Ruw-Gb-Q17" firstAttribute="centerX" secondItem="LDx-gH-z2Q" secondAttribute="centerX" id="VQ0-WS-71F"/>
+                            <constraint firstItem="LBG-lJ-KWF" firstAttribute="centerX" secondItem="LDx-gH-z2Q" secondAttribute="centerX" id="WL3-s4-QFu"/>
+                            <constraint firstItem="Ruw-Gb-Q17" firstAttribute="top" secondItem="LBG-lJ-KWF" secondAttribute="bottom" constant="17" id="el2-Kp-nlz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Challenge" id="WQ3-QB-RFU">
+                        <barButtonItem key="leftBarButtonItem" image="navBarCancel" id="mmA-ZX-Yb7">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="aey-6c-Rwf" kind="unwind" identifier="unwindToChallengeViewController" unwindAction="unwindToChallengeViewController:" id="Cb3-CV-Wpi"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="OO3-wa-ccq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="pressedCreateTabBar:" destination="B36-qJ-hPB" id="8UR-kI-ETF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="Ruw-Gb-Q17" id="a2Y-Gi-GvR"/>
+                        <segue destination="aey-6c-Rwf" kind="unwind" identifier="unwindToWelcomeViewController" unwindAction="unwindToWelcomeViewController:" id="Q8P-zX-sjc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHm-MW-acu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="aey-6c-Rwf" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4038" y="-859"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WiV-Gj-qet">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GvX-Gj-Kn7" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="R7k-Be-DA6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="B36-qJ-hPB" kind="relationship" relationship="rootViewController" id="Rr7-Yz-fLW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GBy-Cg-j8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3293" y="-859"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="navBarCancel" width="22" height="22"/>
+    </resources>
+</document>

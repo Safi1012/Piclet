@@ -41,6 +41,18 @@ class ChallengeViewController: UIViewController {
     }
 
     
+    // MARK: - Action
+    
+    @IBAction func pressedCreateButton(sender: UIBarButtonItem) {
+        if (UserAccess.sharedInstance.getUser() != nil) {
+            let createChallengeNavgiationController = UIStoryboard.init(name: "ChallengeCreate", bundle: nil).instantiateInitialViewController()!
+            presentViewController(createChallengeNavgiationController, animated: true, completion: nil)
+        } else {
+            displayAlert("NotLoggedIn")
+        }
+    }
+    
+    
     // MARK: - SetupUI
     
     func setupTableView() {

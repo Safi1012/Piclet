@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eYD-au-Y74">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Add a Post-->
+        <scene sceneID="bCP-bN-dla">
+            <objects>
+                <viewController id="gtP-Y1-tR4" customClass="ImagePickerViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TUP-8j-325"/>
+                        <viewControllerLayoutGuide type="bottom" id="UdB-Zn-ylZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aG5-N4-Lah">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnP-0b-P6X" userLabel="buttonView">
+                                <rect key="frame" x="215" y="215" width="170.5" height="89"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmd-b8-PI2" userLabel="descriptionLabel">
+                                        <rect key="frame" x="0.0" y="1" width="170.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsK-sR-9xh" userLabel="cameraRollButton">
+                                        <rect key="frame" x="17" y="25" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="Vjg-7b-qHM"/>
+                                            <constraint firstAttribute="width" constant="64" id="tt3-dT-4fn"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="cameraRollMovie"/>
+                                        <connections>
+                                            <action selector="pressedCameraRoll:" destination="gtP-Y1-tR4" eventType="touchUpInside" id="Ijz-y6-8M6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mth-bT-RIU" userLabel="cameraButton">
+                                        <rect key="frame" x="89" y="25" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="6sy-eq-yAH"/>
+                                            <constraint firstAttribute="width" constant="64" id="xau-T2-BON"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" image="cameraUnfilled"/>
+                                        <connections>
+                                            <action selector="pressedCamera:" destination="gtP-Y1-tR4" eventType="touchUpInside" id="xEy-Cv-seN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="jmd-b8-PI2" firstAttribute="leading" secondItem="LnP-0b-P6X" secondAttribute="leading" id="3jN-lz-vjV"/>
+                                    <constraint firstAttribute="trailing" secondItem="jmd-b8-PI2" secondAttribute="trailing" id="6UI-iU-CNa"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mth-bT-RIU" secondAttribute="bottom" id="9ph-IW-nLN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mth-bT-RIU" secondAttribute="trailing" constant="17.5" id="AN7-dj-THB"/>
+                                    <constraint firstAttribute="width" constant="170.5" id="BqN-fK-qzR"/>
+                                    <constraint firstItem="OsK-sR-9xh" firstAttribute="top" secondItem="jmd-b8-PI2" secondAttribute="bottom" id="ClP-ee-FsN"/>
+                                    <constraint firstItem="jmd-b8-PI2" firstAttribute="top" secondItem="LnP-0b-P6X" secondAttribute="top" constant="1" id="Wt1-wG-GRT"/>
+                                    <constraint firstItem="Mth-bT-RIU" firstAttribute="top" secondItem="jmd-b8-PI2" secondAttribute="bottom" id="ZCf-jm-gO9"/>
+                                    <constraint firstItem="Mth-bT-RIU" firstAttribute="leading" secondItem="OsK-sR-9xh" secondAttribute="trailing" constant="8" id="jH7-gY-M8R"/>
+                                    <constraint firstAttribute="height" constant="89" id="kkF-tY-q8N"/>
+                                    <constraint firstAttribute="bottom" secondItem="OsK-sR-9xh" secondAttribute="bottom" id="ll8-Gv-Ld1"/>
+                                    <constraint firstItem="OsK-sR-9xh" firstAttribute="leading" secondItem="LnP-0b-P6X" secondAttribute="leading" constant="17" id="uxP-Ji-5L1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LnP-0b-P6X" firstAttribute="top" secondItem="TUP-8j-325" secondAttribute="bottom" constant="215" id="GLG-dq-XX2"/>
+                            <constraint firstItem="LnP-0b-P6X" firstAttribute="centerX" secondItem="aG5-N4-Lah" secondAttribute="centerX" id="eBK-xW-vz8"/>
+                            <constraint firstItem="UdB-Zn-ylZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LnP-0b-P6X" secondAttribute="bottom" constant="232" id="jIj-ne-axY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add a Post" id="1EZ-0z-gI7">
+                        <barButtonItem key="leftBarButtonItem" image="navBarCancel" id="RuG-Jy-PR9">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="KAC-WF-Dtn" kind="unwind" identifier="unwindToPostTableViewController" unwindAction="unwindToPostTableViewController:" id="PA3-oq-L0m"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="navBarNext" id="9V1-k6-uen">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="pressedNextNavBarItem:" destination="gtP-Y1-tR4" id="xBN-aZ-Hx8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonView" destination="LnP-0b-P6X" id="Jpg-R8-4nb"/>
+                        <outlet property="cameraButton" destination="Mth-bT-RIU" id="rH5-Zz-wj6"/>
+                        <segue destination="mjJ-Ve-BZW" kind="show" identifier="toImageUploadViewController" id="173-Vh-6dc">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="stM-fy-HHE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KAC-WF-Dtn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5662" y="-103"/>
+        </scene>
+        <!--Add a Title-->
+        <scene sceneID="HLX-Xd-kjV">
+            <objects>
+                <viewController id="mjJ-Ve-BZW" customClass="ImageUploadViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DEL-6T-uAm"/>
+                        <viewControllerLayoutGuide type="bottom" id="qK3-1g-Fkc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rAB-Ik-0Yv">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiI-ez-9y1">
+                                <rect key="frame" x="228" y="209" width="145" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="4h5-kl-EmW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="type here..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BH7-Ry-J6q" customClass="CreateTextField" customModule="piclet" customModuleProvider="target">
+                                <rect key="frame" x="215" y="241" width="171" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="171" id="8ZA-Xe-8H4"/>
+                                    <constraint firstAttribute="height" constant="25" id="n3a-mV-aaa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kiI-ez-9y1" firstAttribute="centerX" secondItem="rAB-Ik-0Yv" secondAttribute="centerX" id="Fqr-1h-l2T"/>
+                            <constraint firstItem="BH7-Ry-J6q" firstAttribute="top" secondItem="kiI-ez-9y1" secondAttribute="bottom" constant="8" id="ZPV-q6-Huq"/>
+                            <constraint firstItem="BH7-Ry-J6q" firstAttribute="centerX" secondItem="rAB-Ik-0Yv" secondAttribute="centerX" id="bh1-hQ-peV"/>
+                            <constraint firstItem="kiI-ez-9y1" firstAttribute="top" secondItem="DEL-6T-uAm" secondAttribute="bottom" constant="209" id="h5P-uz-Ava"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add a Title" id="10D-1I-PFy">
+                        <barButtonItem key="rightBarButtonItem" title="Upload" id="K9M-5W-C39">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="pressedUploadNavBarItem:" destination="mjJ-Ve-BZW" id="jJF-jc-fAg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleTextField" destination="BH7-Ry-J6q" id="SiR-PL-aor"/>
+                        <segue destination="R78-w4-66a" kind="unwind" identifier="unwindToWelcomeViewController" unwindAction="unwindToWelcomeViewController:" id="mrU-92-Ol1"/>
+                        <segue destination="R78-w4-66a" kind="unwind" identifier="unwindToPostTableViewController" unwindAction="unwindToPostTableViewController:" id="yal-uv-AsC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="znB-yW-Qrv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="R78-w4-66a" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="6381" y="-103"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WnO-5t-1oZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eYD-au-Y74" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xSb-bU-TOH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gtP-Y1-tR4" kind="relationship" relationship="rootViewController" id="TyF-Cq-Fiy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rKh-Mw-QMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4942" y="-103"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cameraRollMovie" width="32" height="32"/>
+        <image name="cameraUnfilled" width="32" height="32"/>
+        <image name="navBarCancel" width="22" height="22"/>
+        <image name="navBarNext" width="22" height="22"/>
+    </resources>
+</document>

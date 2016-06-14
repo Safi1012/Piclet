@@ -111,6 +111,10 @@
 		D4CB085E1D102BC2004F7E24 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */; };
 		D4CB08601D1073EB004F7E24 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */; };
 		D4CB08611D1073EB004F7E24 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */; };
+		D4CB08631D108262004F7E24 /* ChallengeCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */; };
+		D4CB08641D108262004F7E24 /* ChallengeCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */; };
+		D4CB08661D1087B7004F7E24 /* PostCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB08651D1087B7004F7E24 /* PostCreate.storyboard */; };
+		D4CB08671D1087B7004F7E24 /* PostCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB08651D1087B7004F7E24 /* PostCreate.storyboard */; };
 		D4CCE3CF1CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */; };
 		D4CCE3D01CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */; };
 		D4CCE3D21CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCE3D11CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift */; };
@@ -260,6 +264,8 @@
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
 		D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
+		D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChallengeCreate.storyboard; sourceTree = "<group>"; };
+		D4CB08651D1087B7004F7E24 /* PostCreate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCreate.storyboard; sourceTree = "<group>"; };
 		D4CCE3CE1CD57A56001D70D3 /* ProfileRankingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRankingTableViewController.swift; sourceTree = "<group>"; };
 		D4CCE3D11CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileRankingTableViewCell.swift; sourceTree = "<group>"; };
 		D4CDEAAE1BDDFCDD00F4C51B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -500,6 +506,8 @@
 				D4549AD81CE279D300F56F69 /* Authentication.storyboard */,
 				D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */,
 				D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */,
+				D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */,
+				D4CB08651D1087B7004F7E24 /* PostCreate.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -771,7 +779,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CB08661D1087B7004F7E24 /* PostCreate.storyboard in Resources */,
 				D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
+				D4CB08631D108262004F7E24 /* ChallengeCreate.storyboard in Resources */,
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D4B5834B1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
@@ -798,7 +808,9 @@
 				D4549ADA1CE279D300F56F69 /* Authentication.storyboard in Resources */,
 				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
+				D4CB08641D108262004F7E24 /* ChallengeCreate.storyboard in Resources */,
 				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
+				D4CB08671D1087B7004F7E24 /* PostCreate.storyboard in Resources */,
 				D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4CB085E1D102BC2004F7E24 /* Navigation.storyboard in Resources */,

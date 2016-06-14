@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var welcomeViewController: WelcomeViewController?
     var deviceToken = ""
     
-    var tabBarViewController: UITabBarController?
+    var tabBarViewController: TabBarViewController?
     
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -47,6 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barStyle = UIBarStyle.Black
         
         if (UserAccess.sharedInstance.isUserLoggedIn()) {
+            tabBarViewController = TabBarViewController()
+            self.window?.rootViewController = tabBarViewController
+            
+            
+            
+            
 //            let navigationStoryboard = UIStoryboard(name: "Navigation", bundle: nil)
 //            let tabBarViewController = navigationStoryboard.instantiateViewControllerWithIdentifier("TabBarViewController")
 //        
