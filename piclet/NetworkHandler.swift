@@ -16,8 +16,11 @@ class NetworkHandler: NSObject {
         let headers = generateHeaders(token)
         let httpVerb = Alamofire.Method(rawValue: httpVerb.rawValue)!
         let encoding = apiParameters.count > 0 ? ParameterEncoding.JSON : ParameterEncoding.URL
-
-        Alamofire.request(httpVerb, "https://flash1293.de/\(apiPath)", parameters: apiParameters, encoding: encoding, headers: headers)
+        
+        let manager = Alamofire.Manager.sharedInstance
+        manager.session.configuration.timeoutIntervalForRequest = 5
+        
+        manager.request(httpVerb, "https://flash1293.de/\(apiPath)", parameters: apiParameters, encoding: encoding, headers: headers)
             .responseJSON { response in
                 
                 switch response.result {

@@ -15,11 +15,14 @@ class TabBarViewController: UITabBarController {
         
         // add viewControllers
         let challengeNavigationController = UIStoryboard.init(name: "Challenge", bundle: nil).instantiateInitialViewController()!
-        self.viewControllers = [challengeNavigationController]
+        let profileNavigationController = UIStoryboard.init(name: "Profile", bundle: nil).instantiateInitialViewController()!
+        self.viewControllers = [challengeNavigationController, profileNavigationController]
         
         // add tabBar icons
         let challengeIcon = UIImage(named: "tabBarChallenges")
+        let profileIcon = UIImage(named: "tabBarProfil")
         challengeNavigationController.tabBarItem = UITabBarItem(title: "Challenge", image: challengeIcon, tag: 1)
+        profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: profileIcon, tag: 2)
         
         // style tabBar icons
         for item in self.tabBar.items! {

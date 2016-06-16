@@ -10,10 +10,19 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var profileImageContainer: UIView!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var profileStatsContainer: UIView!
+    @IBOutlet weak var profileStatsHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var profileHistoryContainer: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var profileHistoryHeightConstraint: NSLayoutConstraint!
+    
+    
+//    @IBOutlet weak var profileImageContainer: UIView!
+//    @IBOutlet weak var profileStatsContainer: UIView!
+//    @IBOutlet weak var profileHistoryContainer: UIView!
+//    @IBOutlet weak var scrollView: UIScrollView!
     
     var userName: String?
     var token: String?
@@ -25,18 +34,45 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+//        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+//        
+//        getLoginInformation()
+//        embedProfileAvatar()
+//        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
         
-        getLoginInformation()
-        embedProfileAvatar()
-        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
+        embedProfileInformation()
     }
     
     override func viewWillAppear(animated: Bool) {
-        fetchUserInformation()
+        // fetchUserInformation()
     }
     
     
+    func embedProfileInformation() {
+        let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
+        let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
+
+        profileStatsHeightConstraint.constant = profileStatsViewController.getTableViewHeight()
+        
+        addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
+        profileStatsDelegate = profileStatsViewController
+        
+        
+        
+        
+        
+        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
+        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
+        
+        profileHistoryHeightConstraint.constant = profileHistoryViewController.getTableViewHeight()
+        
+        addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
+        profileHistoryDelegate = profileHistoryViewController
+        
+    }
+}
+
+/*
     // MARK: - Setup
     
     func embedProfileAvatar() {
@@ -193,3 +229,5 @@ class ProfileViewController: UIViewController {
     
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
 }
+ 
+ */

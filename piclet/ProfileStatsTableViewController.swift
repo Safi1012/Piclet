@@ -13,6 +13,7 @@ class ProfileStatsTableViewController: UITableViewController {
     @IBOutlet weak var rankCell: UITableViewCell!
     @IBOutlet weak var totalLikesCell: UITableViewCell!
     
+
     
     // MARK: - UITableViewDelegate
     

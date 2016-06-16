@@ -17,10 +17,6 @@ class ProfileHistoryTableViewController: UITableViewController {
     
     var userAccount: UserAccount?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(animated: Bool) {
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)

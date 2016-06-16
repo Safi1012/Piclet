@@ -39,6 +39,10 @@
 		D4438DD41BD61767000CB909 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4438DD31BD61767000CB909 /* UIAlertControllerExtension.swift */; };
 		D4445B801BB84D76005D155F /* ObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4445B7F1BB84D76005D155F /* ObjectMapper.swift */; };
 		D445264F1BF3BF65007FE8D8 /* WebImage.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D445264E1BF3BF65007FE8D8 /* WebImage.framework.dSYM */; };
+		D44706E71D12CC0C00AF1C46 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44706E61D12CC0C00AF1C46 /* Profile.storyboard */; };
+		D44706E81D12CC0C00AF1C46 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44706E61D12CC0C00AF1C46 /* Profile.storyboard */; };
+		D44706EA1D12E95200AF1C46 /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44706E91D12E95200AF1C46 /* UITableViewControllerExtension.swift */; };
+		D44706EB1D12E95200AF1C46 /* UITableViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44706E91D12E95200AF1C46 /* UITableViewControllerExtension.swift */; };
 		D44E04A21C352E1A003B502C /* ProfileStatsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */; };
 		D44E04A61C352E40003B502C /* ProfileHistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44E04A51C352E40003B502C /* ProfileHistoryTableViewController.swift */; };
 		D4549AD91CE279D300F56F69 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4549AD81CE279D300F56F69 /* Authentication.storyboard */; };
@@ -107,8 +111,6 @@
 		D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = D4FED0951C74BC0E007633FB /* SVProgressHUD.framework.dSYM */; };
 		D4C225C21C343169002169DF /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C11C343169002169DF /* ProfileImageViewController.swift */; };
 		D4C225C61C34329F002169DF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C225C51C34329F002169DF /* UIViewExtension.swift */; };
-		D4CB085D1D102BC2004F7E24 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */; };
-		D4CB085E1D102BC2004F7E24 /* Navigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */; };
 		D4CB08601D1073EB004F7E24 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */; };
 		D4CB08611D1073EB004F7E24 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */; };
 		D4CB08631D108262004F7E24 /* ChallengeCreate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */; };
@@ -201,6 +203,8 @@
 		D4445B7F1BB84D76005D155F /* ObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapper.swift; sourceTree = "<group>"; };
 		D445264E1BF3BF65007FE8D8 /* WebImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = WebImage.framework.dSYM; path = Carthage/Build/iOS/WebImage.framework.dSYM; sourceTree = "<group>"; };
 		D44526501BF3C28A007FE8D8 /* piclet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "piclet-Bridging-Header.h"; sourceTree = "<group>"; };
+		D44706E61D12CC0C00AF1C46 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		D44706E91D12E95200AF1C46 /* UITableViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewControllerExtension.swift; sourceTree = "<group>"; };
 		D44E04A11C352E1A003B502C /* ProfileStatsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileStatsTableViewController.swift; sourceTree = "<group>"; };
 		D44E04A51C352E40003B502C /* ProfileHistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHistoryTableViewController.swift; sourceTree = "<group>"; };
 		D4549AD81CE279D300F56F69 /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
@@ -262,7 +266,6 @@
 		D4BE33FC1C91DE2900483576 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4C225C11C343169002169DF /* ProfileImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		D4C225C51C34329F002169DF /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Navigation.storyboard; sourceTree = "<group>"; };
 		D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
 		D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ChallengeCreate.storyboard; sourceTree = "<group>"; };
 		D4CB08651D1087B7004F7E24 /* PostCreate.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PostCreate.storyboard; sourceTree = "<group>"; };
@@ -394,6 +397,7 @@
 				D4422FD11CA98D5B00216C72 /* UITextFieldExtension.swift */,
 				D4422FD41CA98F9500216C72 /* UIButtonExtension.swift */,
 				D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */,
+				D44706E91D12E95200AF1C46 /* UITableViewControllerExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -504,10 +508,10 @@
 				D46912161BAC03C30012CE7C /* Main.storyboard */,
 				D469121E1BAC03C30012CE7C /* LaunchScreen.storyboard */,
 				D4549AD81CE279D300F56F69 /* Authentication.storyboard */,
-				D4CB085C1D102BC2004F7E24 /* Navigation.storyboard */,
 				D4CB085F1D1073EB004F7E24 /* Challenge.storyboard */,
 				D4CB08621D108262004F7E24 /* ChallengeCreate.storyboard */,
 				D4CB08651D1087B7004F7E24 /* PostCreate.storyboard */,
+				D44706E61D12CC0C00AF1C46 /* Profile.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -785,6 +789,7 @@
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
 				D4B5834B1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
+				D44706E71D12CC0C00AF1C46 /* Profile.storyboard in Resources */,
 				D4B5831E1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
@@ -793,7 +798,6 @@
 				D41190B71CB5A22100BB09F7 /* termsOfService.txt in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
-				D4CB085D1D102BC2004F7E24 /* Navigation.storyboard in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
 				D4CB08601D1073EB004F7E24 /* Challenge.storyboard in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
@@ -810,10 +814,10 @@
 				D4B5834C1CADCBDD005C5AD9 /* GoogleService-Info.plist in Resources */,
 				D4CB08641D108262004F7E24 /* ChallengeCreate.storyboard in Resources */,
 				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
+				D44706E81D12CC0C00AF1C46 /* Profile.storyboard in Resources */,
 				D4CB08671D1087B7004F7E24 /* PostCreate.storyboard in Resources */,
 				D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
-				D4CB085E1D102BC2004F7E24 /* Navigation.storyboard in Resources */,
 				D4B583221CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,
 				D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */,
 			);
@@ -899,6 +903,7 @@
 				D4B5833F1CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D4FED09C1C775DD3007633FB /* Formater.swift in Sources */,
 				D477B76C1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
+				D44706EA1D12E95200AF1C46 /* UITableViewControllerExtension.swift in Sources */,
 				D47C56521C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
@@ -920,6 +925,7 @@
 				D4BE34061C91E0F300483576 /* UserDataValidator.swift in Sources */,
 				D45E2BA21CAABCBE00002BC3 /* EARestrictedScrollView.m in Sources */,
 				D4BE34071C91E0FC00483576 /* ErrorHandler.swift in Sources */,
+				D44706EB1D12E95200AF1C46 /* UITableViewControllerExtension.swift in Sources */,
 				D4B583401CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
 				D4AE6A331CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */,
