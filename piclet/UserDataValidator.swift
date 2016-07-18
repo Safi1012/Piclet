@@ -45,4 +45,5 @@ class UserDataValidator {
     func isPasswordEqual(firstPassword: String, secondPassword: String) -> Bool {
         return firstPassword == secondPassword ? true : false
     }
+
 }

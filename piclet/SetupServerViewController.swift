@@ -34,8 +34,27 @@ class SetupServerViewController: UIViewController {
     // MARK: - User Interaction
     
     @IBAction func pressedSetupButton(sender: UIButton) {
-        performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
+        
+        if serverAddressTextField.text != nil && serverPasswordTextField.text != nil {
+            
+            // request to Johannes
+            // if successfull -> addServer to DB
+            
+            
+            
+//            ServerAccess.sharedInstance.addServer(serverAddressTextField.text)
+            performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
+            
+        } else {
+            
+            
+        }
     }
+    
+    
+    
+    
+    
     
     
     // MARK: - Stying

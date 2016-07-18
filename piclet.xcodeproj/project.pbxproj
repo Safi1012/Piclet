@@ -15,6 +15,10 @@
 		D4133F4C1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */; };
 		D416289B1D3CEE4400182E6D /* SetupServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D416289A1D3CEE4400182E6D /* SetupServerViewController.swift */; };
 		D416289C1D3CEE4400182E6D /* SetupServerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D416289A1D3CEE4400182E6D /* SetupServerViewController.swift */; };
+		D416289E1D3CF4B500182E6D /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = D416289D1D3CF4B500182E6D /* Server.swift */; };
+		D416289F1D3CF4B500182E6D /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = D416289D1D3CF4B500182E6D /* Server.swift */; };
+		D41628A11D3CF52800182E6D /* ServerAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41628A01D3CF52800182E6D /* ServerAccess.swift */; };
+		D41628A21D3CF52800182E6D /* ServerAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41628A01D3CF52800182E6D /* ServerAccess.swift */; };
 		D4181CC81BAC4456001155B6 /* UserDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CC71BAC4456001155B6 /* UserDataValidator.swift */; };
 		D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */; };
 		D427341D1C91807E006BA9DB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D427341C1C91807E006BA9DB /* ProfileViewController.swift */; };
@@ -175,6 +179,8 @@
 		D41190B61CB5A22100BB09F7 /* termsOfService.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = termsOfService.txt; sourceTree = "<group>"; };
 		D4133F4B1C3955F40093D167 /* UIImagePickerControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImagePickerControllerExtension.swift; sourceTree = "<group>"; };
 		D416289A1D3CEE4400182E6D /* SetupServerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupServerViewController.swift; sourceTree = "<group>"; };
+		D416289D1D3CF4B500182E6D /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		D41628A01D3CF52800182E6D /* ServerAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerAccess.swift; sourceTree = "<group>"; };
 		D4181CC71BAC4456001155B6 /* UserDataValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidator.swift; sourceTree = "<group>"; };
 		D4181CCB1BAC4C28001155B6 /* UserDataValidatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataValidatorTests.swift; sourceTree = "<group>"; };
 		D4181CCD1BAC62F0001155B6 /* NetworkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
@@ -558,6 +564,8 @@
 			children = (
 				D4431D091BBECB4B00086759 /* User.swift */,
 				D4A27E161C919032007DC1E1 /* UserAccess.swift */,
+				D416289D1D3CF4B500182E6D /* Server.swift */,
+				D41628A01D3CF52800182E6D /* ServerAccess.swift */,
 			);
 			name = Realm;
 			sourceTree = "<group>";
@@ -790,6 +798,7 @@
 				D4D588E11C25B6A100BBC9C6 /* ActivityIndicatorView.swift in Sources */,
 				D427341D1C91807E006BA9DB /* ProfileViewController.swift in Sources */,
 				D459D69D1C1CDB81003A26E4 /* JTSImageViewController.m in Sources */,
+				D416289E1D3CF4B500182E6D /* Server.swift in Sources */,
 				D4A27E171C919032007DC1E1 /* UserAccess.swift in Sources */,
 				D44248F71BE583E100C88B50 /* ChallengeCollection.swift in Sources */,
 				D4422FD51CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
@@ -837,6 +846,7 @@
 				D4181CCE1BAC62F0001155B6 /* NetworkHandler.swift in Sources */,
 				D4438DBB1BD57883000CB909 /* CreateTextField.swift in Sources */,
 				D4AE6A321CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */,
+				D41628A11D3CF52800182E6D /* ServerAccess.swift in Sources */,
 				D4133F4C1C3955F50093D167 /* UIImagePickerControllerExtension.swift in Sources */,
 				D4431D0B1BBECB4B00086759 /* User.swift in Sources */,
 			);
@@ -858,7 +868,9 @@
 				D4B583401CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D4422FD61CA98F9500216C72 /* UIButtonExtension.swift in Sources */,
 				D4AE6A331CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */,
+				D416289F1D3CF4B500182E6D /* Server.swift in Sources */,
 				D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */,
+				D41628A21D3CF52800182E6D /* ServerAccess.swift in Sources */,
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
 				D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
 				D4CCE3D01CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */,

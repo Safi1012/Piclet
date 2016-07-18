@@ -98,6 +98,10 @@ class NetworkHandler: NSObject {
             parameters.updateValue((deviceToken), forKey: "deviceId")
         }
     }
+    
+    func checkIfHostIsReachable() {
+
+    }
 }
 
 enum HTTPVerb: String {
