@@ -81,6 +81,15 @@ class ErrorHandler {
         case "ImageTooBig":
             return ("Image size is too big", "Please choose a smaller image. The maximum image size is 3 Mb.")
             
+        case "ServerAddressEmpty":
+            return ("Server Address is empty", "Please type a sever address to complete the setup.")
+            
+        case "PasswordEmpty":
+            return ("Password is empty", "Please type a password to complete the setup.")
+            
+        case "HostNotReachable":
+            return ("Server Address is not reachable", "Please check the server address you entered.")
+            
         default:
             return ("", "")
         }
