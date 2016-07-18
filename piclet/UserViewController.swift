@@ -43,6 +43,8 @@ class UserViewController: UIViewController {
         passwordTextField.addBottomBorder(UIColor.whiteColor())
         
         signInButton.addRoundButtonBorder()
+        
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
     }
     
     

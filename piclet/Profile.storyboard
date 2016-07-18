@@ -159,7 +159,7 @@
         <!--Profile View Controller-->
         <scene sceneID="z7H-5y-57k">
             <objects>
-                <viewController id="1hz-Hp-N86" customClass="ProfileViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="1hz-Hp-N86" customClass="ProfileViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="K45-of-hdu"/>
                         <viewControllerLayoutGuide type="bottom" id="Wjl-L3-EYU"/>
@@ -242,7 +242,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="tabBarProfil" id="roW-3D-YgX"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ok8-7d-tGZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="Ok8-7d-tGZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1450980392" green="0.41568627450000001" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -777,7 +777,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Go-jv-sqq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1XF-dz-fz2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3328" y="2011"/>
+            <point key="canvasLocation" x="2464" y="2009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Hs-TQ-tCd">

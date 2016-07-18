@@ -12,17 +12,11 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileLabel: UILabel!
+
     @IBOutlet weak var profileStatsContainer: UIView!
-    @IBOutlet weak var profileStatsHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var profileHistoryContainer: UIView!
+    @IBOutlet weak var profileStatsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileHistoryHeightConstraint: NSLayoutConstraint!
-    
-    
-//    @IBOutlet weak var profileImageContainer: UIView!
-//    @IBOutlet weak var profileStatsContainer: UIView!
-//    @IBOutlet weak var profileHistoryContainer: UIView!
-//    @IBOutlet weak var scrollView: UIScrollView!
     
     var userName: String?
     var token: String?
@@ -31,66 +25,32 @@ class ProfileViewController: UIViewController {
     var profileHistoryDelegate: ProfileViewControllerDelegate?
     
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-//        
-//        getLoginInformation()
+        self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+
+        getLoginInformation()
 //        embedProfileAvatar()
 //        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
-        
-        embedProfileInformation()
     }
     
     override func viewWillAppear(animated: Bool) {
-        // fetchUserInformation()
+        fetchUserInformation()
     }
     
-    
     func embedProfileInformation() {
-        let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
-        let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
-
+        let profileStatsViewController = UIStoryboard(name: "ProfileStats", bundle: nil).instantiateInitialViewController() as! ProfileStatsTableViewController
         profileStatsHeightConstraint.constant = profileStatsViewController.getTableViewHeight()
-        
         addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
         profileStatsDelegate = profileStatsViewController
         
-        
-        
-        
-        
-        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
-        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
-        
+        let profileHistoryViewController = UIStoryboard(name: "ProfileHistory", bundle: nil).instantiateInitialViewController() as! ProfileHistoryTableViewController
         profileHistoryHeightConstraint.constant = profileHistoryViewController.getTableViewHeight()
-        
         addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
         profileHistoryDelegate = profileHistoryViewController
-        
-    }
-}
-
-/*
-    // MARK: - Setup
-    
-    func embedProfileAvatar() {
-        let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
-        let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
-        addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
-    }
-    
-    func embedProfileInformation() {
-        let storyboardProfileHistory = UIStoryboard(name: "ProfileHistory", bundle: nil)
-        let profileHistoryViewController = storyboardProfileHistory.instantiateInitialViewController() as! ProfileHistoryTableViewController
-        addChildViewController(profileHistoryViewController, toContainerView: profileHistoryContainer)
-        profileHistoryDelegate = profileHistoryViewController
-        
-        let storyboardProfileStats = UIStoryboard(name: "ProfileStats", bundle: nil)
-        let profileStatsViewController = storyboardProfileStats.instantiateInitialViewController() as! ProfileStatsTableViewController
-        addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
-        profileStatsDelegate = profileStatsViewController
     }
     
     
@@ -111,7 +71,6 @@ class ProfileViewController: UIViewController {
             self.userName = user.username
             self.token = user.token
             embedProfileInformation()
-            scrollView.scrollEnabled = true
             
             return true
         }
@@ -125,12 +84,12 @@ class ProfileViewController: UIViewController {
             
         }) { (errorCode) -> () in
             if errorCode != "NotLoggedIn" {self.displayAlert(errorCode)}
-                
+            
         }
     }
     
     
-    // MARK: - NavBar
+    // MARK: - NavigationBar
     
     func createNavbarButton(buttonTitle: String, action: String, isLeftButton: Bool) {
         let logoutNavbarItem = UIBarButtonItem(title: buttonTitle, style: UIBarButtonItemStyle.Plain, target: self, action: Selector(action))
@@ -162,11 +121,33 @@ class ProfileViewController: UIViewController {
     }
     
     func pressedChangePWNavbarButton(sender: UIBarButtonItem) {
-        performSegueWithIdentifier("toChangePasswordViewController", sender: self)
+        let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
+        let authenticationVC = storyboard.instantiateViewControllerWithIdentifier("ChangePasswordViewController") as! ChangePasswordViewController
+        
+        
+        self.navigationController?.presentViewController(authenticationVC, animated: true, completion: nil)
+        
+//        self.presentViewController(authenticationVC, animated: true, completion: {() -> Void in
+//            authenticationVC.view.setNeedsDisplay()
+//            authenticationVC.view.layoutIfNeeded()
+//        })
     }
     
     
     // MARK: - Navigation
+    
+    func navigatoToWelcomeViewController() {
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            if (UIApplication.sharedApplication().delegate as! AppDelegate).welcomeViewController != nil {
+                self.performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
+            } else {
+                let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
+                let loginVC = storyboard.instantiateInitialViewController() as! WelcomeViewController
+                self.presentViewController(loginVC, animated: true, completion: nil)
+            }
+        }
+    }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if (identifier == "embedProfileStatsTableViewController") || (identifier == "embedProfileHistoryTableViewController") {
@@ -214,20 +195,15 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func navigatoToWelcomeViewController() {
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            if (UIApplication.sharedApplication().delegate as! AppDelegate).welcomeViewController != nil {
-                self.performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
-            } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let loginVC = storyboard.instantiateViewControllerWithIdentifier("WelcomeViewController")
-                self.presentViewController(loginVC, animated: true, completion: nil)
-            }
-        }
-    }
-    
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
 }
- 
+
+/*
+    // MARK: - Setup
+    
+    func embedProfileAvatar() {
+        let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
+        let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
+        addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
+    }
  */
