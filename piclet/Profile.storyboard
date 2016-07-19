@@ -800,7 +800,7 @@
         <image name="tabBarProfil" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="eW7-G8-Nm0"/>
+        <segue reference="MS0-EC-JhE"/>
         <segue reference="YPU-Wz-IJA"/>
     </inferredMetricsTieBreakers>
 </document>

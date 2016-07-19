@@ -80,6 +80,12 @@
 		D477B76C1CB04B4D00ED06D3 /* JWTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */; };
 		D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */; };
 		D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
+		D47AFEDE1D3E44BC0079011A /* ProfileRank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */; };
+		D47AFEDF1D3E44BC0079011A /* ProfileRank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */; };
+		D47AFEE11D3E49850079011A /* ProfilePosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEE01D3E49850079011A /* ProfilePosts.storyboard */; };
+		D47AFEE21D3E49850079011A /* ProfilePosts.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEE01D3E49850079011A /* ProfilePosts.storyboard */; };
+		D47AFEE41D3E50560079011A /* ProfileChallenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEE31D3E50560079011A /* ProfileChallenge.storyboard */; };
+		D47AFEE51D3E50560079011A /* ProfileChallenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEE31D3E50560079011A /* ProfileChallenge.storyboard */; };
 		D47C56521C41A838004F8FAC /* MyChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */; };
 		D47E5E221BD2939B003E9351 /* PostsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */; };
 		D48E3C7D1BCCF76C006C702A /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */; };
@@ -95,12 +101,6 @@
 		D4A27E1D1C919457007DC1E1 /* Realm.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */; };
 		D4AE6A321CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */; };
 		D4AE6A331CD5FB4C0012EAF6 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */; };
-		D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */; };
-		D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */; };
-		D4B5831E1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */; };
-		D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */; };
-		D4B583211CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */; };
-		D4B583221CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */; };
 		D4B5833F1CADB459005C5AD9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */; };
 		D4B583401CADB459005C5AD9 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */; };
 		D4BE33EF1C91D86200483576 /* ProfileViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */; };
@@ -248,6 +248,9 @@
 		D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTParser.swift; sourceTree = "<group>"; };
 		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileRank.storyboard; sourceTree = "<group>"; };
+		D47AFEE01D3E49850079011A /* ProfilePosts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilePosts.storyboard; sourceTree = "<group>"; };
+		D47AFEE31D3E50560079011A /* ProfileChallenge.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileChallenge.storyboard; sourceTree = "<group>"; };
 		D47C56511C41A838004F8FAC /* MyChallengeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyChallengeViewController.swift; sourceTree = "<group>"; };
 		D47E5E211BD2939B003E9351 /* PostsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsTableViewCell.swift; sourceTree = "<group>"; };
 		D48E3C7C1BCCF76C006C702A /* ErrorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
@@ -260,9 +263,6 @@
 		D4A27E1A1C919434007DC1E1 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D4A27E1C1C919457007DC1E1 /* Realm.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Realm.framework.dSYM; path = Carthage/Build/iOS/Realm.framework.dSYM; sourceTree = "<group>"; };
 		D4AE6A311CD5FB4C0012EAF6 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
-		D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_0.xib; sourceTree = "<group>"; };
-		D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_1.xib; sourceTree = "<group>"; };
-		D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Onboarding_Screen_2.xib; sourceTree = "<group>"; };
 		D4B5833D1CADB459005C5AD9 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		D4BE33EE1C91D86200483576 /* ProfileViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerDelegate.swift; sourceTree = "<group>"; };
 		D4BE33F81C91DE2900483576 /* picletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = picletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -392,16 +392,6 @@
 			name = EAIntroView;
 			sourceTree = "<group>";
 		};
-		D45E2BA31CAABE5200002BC3 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				D4B5831A1CAD8798005C5AD9 /* Onboarding_Screen_0.xib */,
-				D4B5831D1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib */,
-				D4B583201CAD8819005C5AD9 /* Onboarding_Screen_2.xib */,
-			);
-			name = Onboarding;
-			sourceTree = "<group>";
-		};
 		D46912061BAC03C30012CE7C = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +427,6 @@
 		D46912431BAC0D590012CE7C /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D45E2BA31CAABE5200002BC3 /* Onboarding */,
 				D4CBA8821C2DF0FD00B47820 /* Login */,
 				D47E5E251BD293A0003E9351 /* Challenges */,
 				D4438DB51BD521B2000CB909 /* CreateChallenge */,
@@ -483,6 +472,9 @@
 				D4689B3A1C88CD2400647DDB /* ProfileImage.storyboard */,
 				D4689B361C88C80E00647DDB /* ProfileStats.storyboard */,
 				D4689B3F1C88D06200647DDB /* ProfileHistory.storyboard */,
+				D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */,
+				D47AFEE01D3E49850079011A /* ProfilePosts.storyboard */,
+				D47AFEE31D3E50560079011A /* ProfileChallenge.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -718,17 +710,17 @@
 				D4CB08661D1087B7004F7E24 /* PostCreate.storyboard in Resources */,
 				D4CF2F2B1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
 				D4CB08631D108262004F7E24 /* ChallengeCreate.storyboard in Resources */,
+				D47AFEE11D3E49850079011A /* ProfilePosts.storyboard in Resources */,
 				D4438DC61BD60ABD000CB909 /* Localizable.strings in Resources */,
-				D4B5831B1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D44706E71D12CC0C00AF1C46 /* Profile.storyboard in Resources */,
-				D4B5831E1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4689B3B1C88CD2400647DDB /* ProfileImage.storyboard in Resources */,
 				D4689B401C88D06200647DDB /* ProfileHistory.storyboard in Resources */,
-				D4B583211CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,
+				D47AFEDE1D3E44BC0079011A /* ProfileRank.storyboard in Resources */,
 				D4549AD91CE279D300F56F69 /* Authentication.storyboard in Resources */,
 				D41190B71CB5A22100BB09F7 /* termsOfService.txt in Resources */,
 				D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */,
 				D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */,
+				D47AFEE41D3E50560079011A /* ProfileChallenge.storyboard in Resources */,
 				D46912181BAC03C30012CE7C /* Main.storyboard in Resources */,
 				D4CB08601D1073EB004F7E24 /* Challenge.storyboard in Resources */,
 				D4689B371C88C80E00647DDB /* ProfileStats.storyboard in Resources */,
@@ -740,15 +732,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4CB08611D1073EB004F7E24 /* Challenge.storyboard in Resources */,
+				D47AFEE21D3E49850079011A /* ProfilePosts.storyboard in Resources */,
+				D47AFEE51D3E50560079011A /* ProfileChallenge.storyboard in Resources */,
 				D4549ADA1CE279D300F56F69 /* Authentication.storyboard in Resources */,
-				D4B5831C1CAD8798005C5AD9 /* Onboarding_Screen_0.xib in Resources */,
 				D4CB08641D108262004F7E24 /* ChallengeCreate.storyboard in Resources */,
 				D41190B81CB5A22100BB09F7 /* termsOfService.txt in Resources */,
 				D44706E81D12CC0C00AF1C46 /* Profile.storyboard in Resources */,
 				D4CB08671D1087B7004F7E24 /* PostCreate.storyboard in Resources */,
-				D4B5831F1CAD87DC005C5AD9 /* Onboarding_Screen_1.xib in Resources */,
 				D4CF2F2C1CA3E2F000FC0AE0 /* GoogleSignIn.bundle in Resources */,
-				D4B583221CAD8819005C5AD9 /* Onboarding_Screen_2.xib in Resources */,
+				D47AFEDF1D3E44BC0079011A /* ProfileRank.storyboard in Resources */,
 				D4BE34091C91E12D00483576 /* SVProgressHUD.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

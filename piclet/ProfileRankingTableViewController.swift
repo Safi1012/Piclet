@@ -83,12 +83,13 @@ class ProfileRankingTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ProfileRankingTableViewCell
-        let url = NSURL(string: "https://flash1293.de/users/\(userRanks[indexPath.row].username)/avatar-\(ImageSize.medium).\(ImageFormat.jpeg)")
+        SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
+        let url = NSURL(string: "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/users/\(userRanks[indexPath.row].username)/avatar-\(ImageSize.medium).\(ImageFormat.jpeg)")
         
-        cell.rankLabel.text = "\(userRanks[indexPath.row].rank)"
-        cell.usernameLabel.text = userRanks[indexPath.row].username
-        cell.avatarImageView.sd_setImageWithURL(url)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ProfileRankingTableViewCell
+            cell.rankLabel.text = "\(userRanks[indexPath.row].rank)"
+            cell.usernameLabel.text = userRanks[indexPath.row].username
+            cell.avatarImageView.sd_setImageWithURL(url)
        
         return cell
     }

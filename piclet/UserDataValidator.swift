@@ -11,14 +11,14 @@ import Foundation
 class UserDataValidator {
     
     func isUsernameLongEnough(userName: String) -> Bool {
-        if (userName.characters.count >= 4) {
+        if (userName.characters.count >= 3) {
             return true
         }
         return false
     }
     
     func isPasswordLongEnough(password: String) -> Bool {
-        if (password.characters.count >= 4) {
+        if (password.characters.count >= 3) {
             return true
         }
         return false

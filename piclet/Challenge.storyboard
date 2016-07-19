@@ -659,7 +659,7 @@
         <!--Challenges-->
         <scene sceneID="LKt-Ox-v71">
             <objects>
-                <viewController id="FqG-gT-0E5" customClass="ChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChallengeViewController" id="FqG-gT-0E5" customClass="ChallengeViewController" customModule="piclet" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M59-I1-NRG"/>
                         <viewControllerLayoutGuide type="bottom" id="hN8-nf-TrN"/>

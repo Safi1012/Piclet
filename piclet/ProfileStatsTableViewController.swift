@@ -13,7 +13,13 @@ class ProfileStatsTableViewController: UITableViewController {
     @IBOutlet weak var rankCell: UITableViewCell!
     @IBOutlet weak var totalLikesCell: UITableViewCell!
     
-
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
+        }
+    }
     
     // MARK: - UITableViewDelegate
     
@@ -22,7 +28,8 @@ class ProfileStatsTableViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
         if cell == rankCell {
-            self.parentViewController?.performSegueWithIdentifier("toRanking", sender: nil)
+            let profileRankViewController = UIStoryboard(name: "ProfileRank", bundle: nil).instantiateInitialViewController() as! ProfileRankingTableViewController
+            self.parentViewController?.navigationController?.pushViewController(profileRankViewController, animated: true)
         }
         if cell == totalLikesCell {
             // self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount!)

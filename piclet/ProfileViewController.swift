@@ -33,32 +33,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-
         getLoginInformation()
         
-        
-        
 //        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
-        
-        
-//        let url = "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
-//        SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
-//        profileImageView.sd_setImageWithURL(<#T##url: NSURL!##NSURL!#>)
-//        
-//        
-//        
-//        cell.postImage.sd_setImageWithURL(NSURL(string: url))
-        
-        
-        
-        
-        
     }
-    
-    
-    // MARK: - Setup
-    
-
     
     override func viewWillAppear(animated: Bool) {
         fetchUserInformation()
@@ -148,14 +126,8 @@ class ProfileViewController: UIViewController {
     func pressedChangePWNavbarButton(sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
         let authenticationVC = storyboard.instantiateViewControllerWithIdentifier("ChangePasswordViewController") as! ChangePasswordViewController
-        
-        
+
         self.navigationController?.presentViewController(authenticationVC, animated: true, completion: nil)
-        
-//        self.presentViewController(authenticationVC, animated: true, completion: {() -> Void in
-//            authenticationVC.view.setNeedsDisplay()
-//            authenticationVC.view.layoutIfNeeded()
-//        })
     }
     
     
@@ -179,45 +151,6 @@ class ProfileViewController: UIViewController {
             return false
         }
         return true
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if let identifier = segue.identifier {
-            
-            switch (identifier) {
-                
-            case "embedProfileStatsTableViewController":
-                let destinationVC = segue.destinationViewController as! ProfileStatsTableViewController
-                self.profileStatsDelegate = destinationVC
-                
-            case "embedProfileHistoryTableViewController":
-                let destinationVC = segue.destinationViewController as! ProfileHistoryTableViewController
-                self.profileHistoryDelegate = destinationVC
-                
-            case "toProfileCollectionView":
-                let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
-                destinationVC.downloadUserCreatedPosts = true // put guard here
-                destinationVC.userAccount = sender as! UserAccount
-                
-            case "toUserChallenges":
-                let destinationVC = segue.destinationViewController as! MyChallengeViewController
-                destinationVC.userAccount = sender as! UserAccount // put guard here
-                
-            case "toWonChallenges":
-                let destinationVC = segue.destinationViewController as! MyChallengeViewController
-                destinationVC.userAccount = sender as! UserAccount // put guard here
-                destinationVC.wonChallenges = true
-                
-            case "toLikedPosts":
-                let destinationVC = segue.destinationViewController as! ProfileCollectionViewController
-                destinationVC.downloadUserCreatedPosts = false
-                destinationVC.userAccount = sender as! UserAccount
-                
-            default:
-                break
-            }
-        }
     }
     
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}

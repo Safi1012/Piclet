@@ -32,19 +32,33 @@ class ProfileHistoryTableViewController: UITableViewController {
         
         if let userAccount = userAccount {
             if cell == postsCell {
-                self.parentViewController?.performSegueWithIdentifier("toProfileCollectionView", sender: userAccount)
-            }
-            if cell == challengesCell {
-                self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount)
+                let profileCollectionViewController = UIStoryboard(name: "ProfilePosts", bundle: nil).instantiateInitialViewController() as! ProfileCollectionViewController
+                    profileCollectionViewController.downloadUserCreatedPosts = true
+                    profileCollectionViewController.userAccount = userAccount
+                
+                self.parentViewController?.navigationController?.pushViewController(profileCollectionViewController, animated: true)
             }
             if cell == likedCell {
-                self.parentViewController?.performSegueWithIdentifier("toLikedPosts", sender: userAccount)
+                let profileCollectionViewController = UIStoryboard(name: "ProfilePosts", bundle: nil).instantiateInitialViewController() as! ProfileCollectionViewController
+                    profileCollectionViewController.downloadUserCreatedPosts = false
+                    profileCollectionViewController.userAccount = userAccount
+                
+                self.parentViewController?.navigationController?.pushViewController(profileCollectionViewController, animated: true)
+            }
+            if cell == challengesCell {
+                let profileChallengeViewController = UIStoryboard(name: "ProfileChallenge", bundle: nil).instantiateInitialViewController() as! MyChallengeViewController
+                    profileChallengeViewController.userAccount = userAccount
+                
+                self.parentViewController?.navigationController?.pushViewController(profileChallengeViewController, animated: true)
             }
             if cell == wonCell {
-                self.parentViewController?.performSegueWithIdentifier("toWonChallenges", sender: userAccount)
+                let profileChallengeViewController = UIStoryboard(name: "ProfileChallenge", bundle: nil).instantiateInitialViewController() as! MyChallengeViewController
+                    profileChallengeViewController.userAccount = userAccount
+                    profileChallengeViewController.wonChallenges = true
+                
+                self.parentViewController?.navigationController?.pushViewController(profileChallengeViewController, animated: true)
             }
         }
-        
     }
     
     
