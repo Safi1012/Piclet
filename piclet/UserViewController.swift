@@ -114,41 +114,13 @@ class UserViewController: UIViewController {
     // MARK: - Navigation
     
     func navigateToChallengesViewController() {
-//        let navigationStoryboard = UIStoryboard(name: "Navigation", bundle: nil)
-//        let vc = navigationStoryboard.instantiateViewControllerWithIdentifier("TabBarViewController")
-//
-//        presentViewController(vc, animated: true, completion: nil)
-        
-        
-//        var tabBarViewController: UITabBarController
+//        var tabBarViewController = (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController
 //        
-//        if (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController != nil {
-//            tabBarViewController = (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController
-//        } else {
-//            tabBarViewController
+//        if tabBarViewController == nil {
+//            tabBarViewController = TabBarViewController()
 //        }
-        
-        
-        
-        
-        
-        
-        
-        var tabBarViewController = (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController
-        
-        if tabBarViewController == nil {
-            tabBarViewController = TabBarViewController()
-        }
 
-        presentViewController(tabBarViewController!, animated: true, completion: nil)
-        
-        
-        
-        // access tabBar from
-//        let tabBarViewController = UITabBarController()
-//        presentViewController(UITabBarController(), animated: true, completion: nil)
-        
-        
+        presentViewController(TabBarViewController(), animated: true, completion: nil)
     }
 
     

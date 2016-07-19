@@ -13,11 +13,11 @@ class NetworkHandler: NSObject {
     
     func requestJSON(apiParameters: [String: String], apiPath: String, httpVerb: HTTPVerb, token: String?, success: (json: AnyObject) -> (), failure: (errorCode: String) -> () ) {
         
-        let headers = generateHeaders(token)
-        let httpVerb = Alamofire.Method(rawValue: httpVerb.rawValue)!
-        let encoding = apiParameters.count > 0 ? ParameterEncoding.JSON : ParameterEncoding.URL
-        
         if let serverAddress = ServerAccess.sharedInstance.getServer()?.serverAddress {
+            let headers = generateHeaders(token)
+            let httpVerb = Alamofire.Method(rawValue: httpVerb.rawValue)!
+            let encoding = apiParameters.count > 0 ? ParameterEncoding.JSON : ParameterEncoding.URL
+        
             Alamofire.request(httpVerb, "\(serverAddress)/\(apiPath)", parameters: apiParameters, encoding: encoding, headers: headers)
                 .responseJSON { response in
                     
@@ -39,7 +39,7 @@ class NetworkHandler: NSObject {
             }
             
         } else {
-            
+            failure(errorCode: "NetworkError")
             
         }
     }
@@ -47,48 +47,52 @@ class NetworkHandler: NSObject {
     func uploadImage(apiParameters: Dictionary<String, String>, apiPath: String, httpVerb: HTTPVerb, token: String?, image: NSData,
         success: (json: AnyObject) -> (), failure: (errorCode: String) -> () ) {
         
-        let headers = generateHeaders(token)
-        let json = try! NSJSONSerialization.dataWithJSONObject(apiParameters, options: NSJSONWritingOptions.PrettyPrinted)
-        let verb = Alamofire.Method(rawValue: httpVerb.rawValue)!
-        let serverAddress = ServerAccess.sharedInstance.getServer()?.serverAddress
-        
-        Alamofire.upload (
-            verb,
-            "\(serverAddress)/\(apiPath)",
-            headers: headers,
-            multipartFormData: { multipartFormData in
-                multipartFormData.appendBodyPart(
-                    data: json,
-                    name: "header"
-                )
-                multipartFormData.appendBodyPart(
-                    data: image,
-                    name: "file",
-                    fileName: "file.jpeg",
-                    mimeType: "image/jpeg"
-                )
-            },
-            encodingCompletion: { encodingResult in
-                switch encodingResult {
-                    
-                case .Success(let upload, _, _):
-                    upload.responseJSON { response in
+        if let serverAddress = ServerAccess.sharedInstance.getServer()?.serverAddress {
+            let headers = generateHeaders(token)
+            let json = try! NSJSONSerialization.dataWithJSONObject(apiParameters, options: NSJSONWritingOptions.PrettyPrinted)
+            let verb = Alamofire.Method(rawValue: httpVerb.rawValue)!
+            
+            Alamofire.upload (
+                verb,
+                "\(serverAddress)/\(apiPath)",
+                headers: headers,
+                multipartFormData: { multipartFormData in
+                    multipartFormData.appendBodyPart(
+                        data: json,
+                        name: "header"
+                    )
+                    multipartFormData.appendBodyPart(
+                        data: image,
+                        name: "file",
+                        fileName: "file.jpeg",
+                        mimeType: "image/jpeg"
+                    )
+                },
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
                         
-                        switch (response.response?.statusCode)! {
+                    case .Success(let upload, _, _):
+                        upload.responseJSON { response in
                             
-                        case 200...299:
-                            success(json: response.result.value!)
-                            
-                        default:
-                            failure(errorCode: ErrorHandler().getErrorCode(response.result.value!))
+                            switch (response.response?.statusCode)! {
+                                
+                            case 200...299:
+                                success(json: response.result.value!)
+                                
+                            default:
+                                failure(errorCode: ErrorHandler().getErrorCode(response.result.value!))
+                            }
                         }
+                        
+                    case .Failure:
+                        failure(errorCode: "NetworkError")
                     }
-                    
-                case .Failure:
-                    failure(errorCode: "NetworkError")
                 }
-            }
-        )
+            )
+        } else {
+            failure(errorCode: "NetworkError")
+            
+        }
     }
     
     func generateHeaders(token: String?) -> [String: String] {

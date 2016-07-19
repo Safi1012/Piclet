@@ -215,8 +215,9 @@ extension PostsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! PostsTableViewCell
-        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        let url = "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
         
         challenge.archived! ? [cell.postLikeButton.hidden = true] : [cell.postLikeButton.hidden = false]
         cell.post = posts[indexPath.row]
@@ -249,8 +250,9 @@ extension PostsViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
         let imageView = UIImageView()
-        let url = "https://flash1293.de/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+        let url = "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
         imageView.sd_setImageWithURL(NSURL(string: url), placeholderImage: UIImage(named: "grayPlaceholder"))
         
         let imageInfo = JTSImageInfo()

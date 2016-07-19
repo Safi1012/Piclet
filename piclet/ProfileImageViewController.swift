@@ -13,6 +13,8 @@ class ProfileImageViewController: UIViewController {
 
     @IBOutlet weak var profileImageButton: UIButton!
     @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var profileImageButtonTopConstraint: NSLayoutConstraint!
+    
     
     var username: String!
     var imagePickerController = UIImagePickerController()
@@ -39,6 +41,13 @@ class ProfileImageViewController: UIViewController {
     }
     
     
+    
+    func getViewHeight() -> CGFloat {
+        view.layoutIfNeeded()
+        return profileImageButton.bounds.height + profileNameLabel.bounds.height + profileImageButtonTopConstraint.constant + 16.0
+    }
+    
+    
     // MARK: UI
     
     func styleProfileButton() {
@@ -48,7 +57,8 @@ class ProfileImageViewController: UIViewController {
     }
     
     func loadUserProfileImage() {
-        let url = NSURL(string: "https://flash1293.de/users/\(username)/avatar-large.jpeg")
+        SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
+        let url = NSURL(string: "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/users/\(username)/avatar-large.jpeg")
         profileImageButton.sd_setBackgroundImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "userProfileRoundPlacholder"))
     }
     
@@ -105,7 +115,8 @@ class ProfileImageViewController: UIViewController {
             displayNewUserImage(UIImage(data: avatarImage)!)
             
             ApiProxy().uploadUserProfileImage(user.username, image: avatarImage, success: { () -> () in
-                SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "https://flash1293.de/users/\(user.username)/avatar-large.jpeg", toDisk: true)
+                SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
+                SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/users/\(user.username)/avatar-large.jpeg", toDisk: true)
                 
             }) { (errorCode) -> () in
                 self.loadUserProfileImage()

@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import WebImage
 
 class ProfileViewController: UIViewController {
     
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var profileLabel: UILabel!
-
+    @IBOutlet weak var profileImageContainer: UIView!
     @IBOutlet weak var profileStatsContainer: UIView!
     @IBOutlet weak var profileHistoryContainer: UIView!
+    
+    
+    @IBOutlet weak var profileImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileStatsHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileHistoryHeightConstraint: NSLayoutConstraint!
     
@@ -33,15 +35,41 @@ class ProfileViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
 
         getLoginInformation()
-//        embedProfileAvatar()
+        
+        
+        
 //        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
+        
+        
+//        let url = "\(ServerAccess.sharedInstance.getServer()!.serverAddress)/challenges/\(challenge.id)/posts/\(posts[indexPath.row].id)/image-\(ImageSize.medium).\(ImageFormat.jpeg)"
+//        SDWebImageManager.sharedManager().imageDownloader.setValue("Bearer \(UserAccess.sharedInstance.getUser()!.token)", forHTTPHeaderField: "Authorization")
+//        profileImageView.sd_setImageWithURL(<#T##url: NSURL!##NSURL!#>)
+//        
+//        
+//        
+//        cell.postImage.sd_setImageWithURL(NSURL(string: url))
+        
+        
+        
+        
+        
     }
+    
+    
+    // MARK: - Setup
+    
+
     
     override func viewWillAppear(animated: Bool) {
         fetchUserInformation()
     }
     
     func embedProfileInformation() {
+        let profileImageViewController = UIStoryboard(name: "ProfileImage", bundle: nil).instantiateInitialViewController() as! ProfileImageViewController
+        profileImageHeightConstraint.constant = profileImageViewController.getViewHeight()
+        addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
+        // delegate?
+        
         let profileStatsViewController = UIStoryboard(name: "ProfileStats", bundle: nil).instantiateInitialViewController() as! ProfileStatsTableViewController
         profileStatsHeightConstraint.constant = profileStatsViewController.getTableViewHeight()
         addChildViewController(profileStatsViewController, toContainerView: profileStatsContainer)
@@ -195,12 +223,6 @@ class ProfileViewController: UIViewController {
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}
 }
 
-/*
-    // MARK: - Setup
-    
-    func embedProfileAvatar() {
-        let storyboardProfileImage = UIStoryboard(name: "ProfileImage", bundle: nil)
-        let profileImageViewController = storyboardProfileImage.instantiateInitialViewController() as! ProfileImageViewController
-        addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
-    }
- */
+
+
+
