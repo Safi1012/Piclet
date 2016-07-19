@@ -26,7 +26,7 @@ class CreateChallengeViewController: UIViewController {
             showLoadingSpinner(UIOffset(horizontal: 0.0, vertical: 50.0), color: UIColor.blackColor())
             nameTextField.endEditing(true)
             
-            ApiProxy().createNewChallenge(token, challengeName: nameTextField.text!, success: { () -> () in
+            ApiProxy().createNewChallenge(nameTextField.text!, success: { () -> () in
                 self.performSegueWithIdentifier("unwindToChallengeViewController", sender: self)
                 self.dismissLoadingSpinner()
                 

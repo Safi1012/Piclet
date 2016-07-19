@@ -78,7 +78,7 @@ class ChangePasswordViewController: UIViewController {
         if checkIfPasswordIsValid() {
             if let user = UserAccess.sharedInstance.getUser() {
                 
-                ApiProxy().changePassword(user.token, username: user.username, oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!, success: {
+                ApiProxy().changePassword(user.username, oldPassword: oldPasswordTextField.text!, newPassword: newPasswordTextField.text!, success: {
                     self.fetchNewToken(user, newPassword: self.newPasswordTextField.text!)
                     self.oldPasswordTextField.resignFirstResponder()
                     self.newPasswordTextField.resignFirstResponder()

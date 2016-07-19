@@ -57,17 +57,14 @@ class ImageUploadViewController: UIViewController {
     
     func uploadPost(title: String, image: NSData) {
         
-        if let token = UserAccess.sharedInstance.getUser()?.token {
+        ApiProxy().addPostToChallenge(challengeID, image: image, description: title, success: { () -> () in
+            self.dismissLoadingSpinner()
+            self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)
             
-            ApiProxy().addPostToChallenge(token, challengeID: challengeID, image: image, description: title, success: { () -> () in
-                self.dismissLoadingSpinner()
-                self.performSegueWithIdentifier("unwindToPostTableViewController", sender: self)
-    
-            }) { (errorCode) -> () in
-                self.dismissLoadingSpinner()
-                self.displayAlert(errorCode)
-                
-            }
+        }) { (errorCode) -> () in
+            self.dismissLoadingSpinner()
+            self.displayAlert(errorCode)
+            
         }
     }
 }

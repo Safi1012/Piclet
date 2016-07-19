@@ -128,7 +128,7 @@ class PostsViewController: UIViewController {
     
     func likeChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
         
-        ApiProxy().likePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
+        ApiProxy().likePost(challenge.id, postID: post.id, success: { () -> () in
             self.isRequesting = false
             
         }) { (errorCode) -> () in
@@ -143,7 +143,7 @@ class PostsViewController: UIViewController {
     
     func revertChallengePost(post: Post, cell: PostsTableViewCell, token: String) {
         
-        ApiProxy().revertLikePost(token, challengeID: challenge.id, postID: post.id, success: { () -> () in
+        ApiProxy().revertLikePost(challenge.id, postID: post.id, success: { () -> () in
             self.isRequesting = false
             
         }) { (errorCode) -> () in

@@ -11,6 +11,11 @@ import RealmSwift
 
 class Server: Object {
     
-    dynamic var serverAddress = ""
+    dynamic var serverAddress: String = ""
+    dynamic var serverPassword = ""
+    
+    override static func primaryKey() -> String? {
+        return "serverAddress"
+    }
     
 }

@@ -118,7 +118,7 @@ class ProfileCollectionViewController: UICollectionViewController {
         for selectedPost in selectedPosts {
             dispatch_group_enter(group)
             
-            ApiProxy().deleteUserPost(userAccount.token, challengeID: selectedPost.challengeID, postID: selectedPost.postID, success: { () -> () in
+            ApiProxy().deleteUserPost(selectedPost.challengeID, postID: selectedPost.postID, success: { () -> () in
                 dispatch_group_leave(group)
                 
             }, failure: { (errorCode) -> () in

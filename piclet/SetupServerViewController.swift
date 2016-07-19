@@ -34,11 +34,8 @@ class SetupServerViewController: UIViewController {
     // MARK: - User Interaction
     
     @IBAction func pressedSetupButton(sender: UIButton) {
-        
         if validateTextFields() {
-            // request to Johannes
-            // if successfull -> addServer to DB
-            
+            ServerAccess.sharedInstance.addServer(serverAddressTextField.text!, serverPassword: serverPasswordTextField.text!)
             performSegueWithIdentifier("unwindToWelcomeViewController", sender: self)
         }
     }
@@ -50,10 +47,10 @@ class SetupServerViewController: UIViewController {
             self.displayAlert("ServerAddressEmpty")
             return false
         }
-        if !NetworkHandler().isHostReachable(serverAddressTextField.text!) {
-            self.displayAlert("HostNotReachable")
-            return false
-        }
+//        if !NetworkHandler().isHostReachable(serverAddressTextField.text!) {
+//            self.displayAlert("HostNotReachable")
+//            return false
+//        }
         if serverPasswordTextField.text!.characters.count == 0 {
             self.displayAlert("PasswordEmpty")
             return false

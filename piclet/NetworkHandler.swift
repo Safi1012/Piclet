@@ -17,28 +17,31 @@ class NetworkHandler: NSObject {
         let httpVerb = Alamofire.Method(rawValue: httpVerb.rawValue)!
         let encoding = apiParameters.count > 0 ? ParameterEncoding.JSON : ParameterEncoding.URL
         
-        let manager = Alamofire.Manager.sharedInstance
-        manager.session.configuration.timeoutIntervalForRequest = 5
-        
-        manager.request(httpVerb, "https://flash1293.de/\(apiPath)", parameters: apiParameters, encoding: encoding, headers: headers)
-            .responseJSON { response in
-                
-                switch response.result {
-
-                case .Success:
-                    switch (response.response?.statusCode)! {
-                        
-                    case 200...299:
-                        success(json: response.result.value!)
-                        
-                    default:
-                        failure(errorCode: ErrorHandler().getErrorCode(response.result.value!))
-                    }
+        if let serverAddress = ServerAccess.sharedInstance.getServer()?.serverAddress {
+            Alamofire.request(httpVerb, "\(serverAddress)/\(apiPath)", parameters: apiParameters, encoding: encoding, headers: headers)
+                .responseJSON { response in
                     
-                case .Failure:
-                    failure(errorCode: "NetworkError")
-                }
+                    switch response.result {
+                        
+                    case .Success:
+                        switch (response.response?.statusCode)! {
+                            
+                        case 200...299:
+                            success(json: response.result.value!)
+                            
+                        default:
+                            failure(errorCode: ErrorHandler().getErrorCode(response.result.value!))
+                        }
+                        
+                    case .Failure:
+                        failure(errorCode: "NetworkError")
+                    }
             }
+            
+        } else {
+            
+            
+        }
     }
     
     func uploadImage(apiParameters: Dictionary<String, String>, apiPath: String, httpVerb: HTTPVerb, token: String?, image: NSData,
@@ -47,10 +50,11 @@ class NetworkHandler: NSObject {
         let headers = generateHeaders(token)
         let json = try! NSJSONSerialization.dataWithJSONObject(apiParameters, options: NSJSONWritingOptions.PrettyPrinted)
         let verb = Alamofire.Method(rawValue: httpVerb.rawValue)!
+        let serverAddress = ServerAccess.sharedInstance.getServer()?.serverAddress
         
         Alamofire.upload (
             verb,
-            "https://flash1293.de/\(apiPath)",
+            "\(serverAddress)/\(apiPath)",
             headers: headers,
             multipartFormData: { multipartFormData in
                 multipartFormData.appendBodyPart(
@@ -88,7 +92,12 @@ class NetworkHandler: NSObject {
     }
     
     func generateHeaders(token: String?) -> [String: String] {
-        return (token != nil) ? ["Authorization": "Bearer \(token!)"] : ["": ""]
+        if token != nil {
+            return ["Authorization": "Bearer \(token!)"]
+        } else {
+            let auth = "server:\(ServerAccess.sharedInstance.getServer()!.serverPassword)".dataUsingEncoding(NSUTF8StringEncoding)!.base64EncodedStringWithOptions([])
+            return ["Authorization": "Basic \(auth)"]
+        }
     }
     
     func appendDeviceTokenIdToParameters(inout parameters: [String : String]) {
@@ -98,24 +107,7 @@ class NetworkHandler: NSObject {
             parameters.updateValue((deviceToken), forKey: "deviceId")
         }
     }
-    
-    func isHostReachable(serverAddress: String) -> Bool {
-        let host = CFHostCreateWithName(nil, serverAddress).takeRetainedValue()
-        CFHostStartInfoResolution(host, .Addresses, nil)
-        var success: DarwinBoolean = false
-        if let addresses = CFHostGetAddressing(host, &success)?.takeUnretainedValue() as NSArray?,
-            let theAddress = addresses.firstObject as? NSData {
-            var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
-            if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length), &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
-                if let numAddress = String.fromCString(hostname) {
-                    print("Host dns: \(numAddress)")
-                }
-            }
-            return true
-        } else {
-            return false
-        }
-    }
+        
 }
 
 enum HTTPVerb: String {

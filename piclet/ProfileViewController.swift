@@ -103,16 +103,13 @@ class ProfileViewController: UIViewController {
     }
     
     func pressedLogoutNavbarButton(sender: UIBarButtonItem) {
-        if let newToken = UserAccess.sharedInstance.getUser()?.token {
+        ApiProxy().deleteThisUserToken({ () -> () in
+            UserAccess.sharedInstance.deleteAllUsers()
+            self.navigatoToWelcomeViewController()
             
-            ApiProxy().deleteThisUserToken(newToken, success: { () -> () in
-                UserAccess.sharedInstance.deleteAllUsers()
-                self.navigatoToWelcomeViewController()
-                
-            }) { (errorCode) -> () in
-                self.displayAlert(errorCode)
-                
-            }
+        }) { (errorCode) -> () in
+            self.displayAlert(errorCode)
+            
         }
     }
     

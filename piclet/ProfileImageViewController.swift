@@ -104,7 +104,7 @@ class ProfileImageViewController: UIViewController {
             let avatarImage = ImageHandler().convertAvatarImageForUpload(pickedImage, imageSize: ImageAvatarServerWidth.large)!
             displayNewUserImage(UIImage(data: avatarImage)!)
             
-            ApiProxy().uploadUserProfileImage(user.token, username: user.username, image: avatarImage, success: { () -> () in
+            ApiProxy().uploadUserProfileImage(user.username, image: avatarImage, success: { () -> () in
                 SDImageCache.sharedImageCache().storeImage(pickedImage, forKey: "https://flash1293.de/users/\(user.username)/avatar-large.jpeg", toDisk: true)
                 
             }) { (errorCode) -> () in

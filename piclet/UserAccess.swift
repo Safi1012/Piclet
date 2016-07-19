@@ -31,7 +31,9 @@ class UserAccess {
     
     func deleteAllUsers() {
         try! realm.write {
-            realm.deleteAll()
+            if let user = getUser() {
+                realm.delete(user)
+            }
         }
     }
     
