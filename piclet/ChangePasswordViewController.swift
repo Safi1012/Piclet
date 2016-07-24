@@ -25,16 +25,14 @@ class ChangePasswordViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserViewController.keyboardWillShow(_:)), name:UIKeyboardWillShowNotification, object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
     }
-
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
     
-    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
     
     // MARK: - Stying
@@ -64,12 +62,6 @@ class ChangePasswordViewController: UIViewController {
         alert.addAction(alertAction)
         presentViewController(alert, animated: true, completion: nil)
     }
-    
-    @IBAction func pressedCancelButton(sender: UIButton) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
     
     
     // MARK: - Password handling

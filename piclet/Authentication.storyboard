@@ -287,7 +287,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
-                                                    <outlet property="delegate" destination="TOY-HX-48Z" id="zYQ-Bf-Fdi"/>
+                                                    <outlet property="delegate" destination="TOY-HX-48Z" id="MpT-x6-gKb"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please choose a new password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2AS-fo-dCr">
@@ -299,7 +299,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <outlet property="delegate" destination="TOY-HX-48Z" id="VWe-yI-a3U"/>
+                                                    <outlet property="delegate" destination="TOY-HX-48Z" id="JlT-3S-yhp"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdT-rN-WaE">
@@ -307,6 +307,9 @@
                                                 <state key="normal" title="Change">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="pressedChangePasswordButton:" destination="TOY-HX-48Z" eventType="touchUpInside" id="gBw-kU-Pt8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6da-Uf-v4e">
                                                 <rect key="frame" x="8" y="16" width="25" height="25"/>
@@ -316,8 +319,7 @@
                                                 </constraints>
                                                 <state key="normal" image="navBarCancel"/>
                                                 <connections>
-                                                    <action selector="pressedCancelButton:" destination="TOY-HX-48Z" eventType="touchUpInside" id="smz-od-Jgg"/>
-                                                    <segue destination="lGV-cm-XA2" kind="unwind" unwindAction="unwindToProfileViewController:" id="ydl-oQ-qDA"/>
+                                                    <segue destination="lGV-cm-XA2" kind="unwind" identifier="unwindToProfileViewController" unwindAction="unwindToProfileViewController:" id="Bpz-Ia-esm"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -356,26 +358,27 @@
                             <constraint firstItem="GMZ-O1-QRY" firstAttribute="leading" secondItem="Mxw-3z-6fb" secondAttribute="leadingMargin" constant="-20" id="Hhu-jh-aPz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p6Y-zf-rdC" secondAttribute="trailing" constant="-20" id="IA7-yj-Llr"/>
                             <constraint firstItem="RHv-R9-Pgd" firstAttribute="leading" secondItem="Mxw-3z-6fb" secondAttribute="leadingMargin" constant="-20" id="L8O-98-ifi"/>
-                            <constraint firstItem="RHv-R9-Pgd" firstAttribute="top" secondItem="36z-w7-U3u" secondAttribute="bottom" constant="-20" id="PXJ-fc-2lO"/>
+                            <constraint firstItem="RHv-R9-Pgd" firstAttribute="top" secondItem="36z-w7-U3u" secondAttribute="bottom" id="PXJ-fc-2lO"/>
                             <constraint firstItem="JSL-Ev-Lfu" firstAttribute="top" secondItem="RHv-R9-Pgd" secondAttribute="bottom" id="QnN-32-xtM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RHv-R9-Pgd" secondAttribute="trailing" constant="-20" id="RVH-Da-xn7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="GMZ-O1-QRY" secondAttribute="trailing" constant="-20" id="TfW-iO-HOu"/>
-                            <constraint firstItem="p6Y-zf-rdC" firstAttribute="top" secondItem="36z-w7-U3u" secondAttribute="bottom" constant="-20" id="YYY-Gz-Lo8"/>
+                            <constraint firstItem="p6Y-zf-rdC" firstAttribute="top" secondItem="36z-w7-U3u" secondAttribute="bottom" id="YYY-Gz-Lo8"/>
                             <constraint firstItem="p6Y-zf-rdC" firstAttribute="leading" secondItem="Mxw-3z-6fb" secondAttribute="leadingMargin" constant="-20" id="mqA-PQ-XDg"/>
-                            <constraint firstItem="GMZ-O1-QRY" firstAttribute="top" secondItem="36z-w7-U3u" secondAttribute="bottom" constant="-20" id="ofk-qJ-iQP"/>
+                            <constraint firstItem="GMZ-O1-QRY" firstAttribute="top" secondItem="36z-w7-U3u" secondAttribute="bottom" id="ofk-qJ-iQP"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="changePasswordButton" destination="tdT-rN-WaE" id="ytn-3A-DGK"/>
-                        <outlet property="newPasswordTextField" destination="2AS-fo-dCr" id="z5z-rI-Bif"/>
-                        <outlet property="oldPasswordTextField" destination="4ur-dh-xXU" id="rIz-dl-cqG"/>
+                        <outlet property="changePasswordButton" destination="tdT-rN-WaE" id="eGj-Ws-w6b"/>
+                        <outlet property="newPasswordTextField" destination="2AS-fo-dCr" id="wW8-y4-wmq"/>
+                        <outlet property="oldPasswordTextField" destination="4ur-dh-xXU" id="HD0-rI-NYD"/>
                         <outlet property="scrollView" destination="p6Y-zf-rdC" id="qtm-zs-oq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfd-LC-D7M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="lGV-cm-XA2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-922" y="-324"/>
+            <point key="canvasLocation" x="-922" y="1452"/>
         </scene>
         <!--Setup Server View Controller-->
         <scene sceneID="hNF-2f-cUV">
