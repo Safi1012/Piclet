@@ -34,7 +34,6 @@ class ProfileViewController: UIViewController {
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         getLoginInformation()
-        
         addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
     }
     
@@ -71,7 +70,6 @@ class ProfileViewController: UIViewController {
     }
     
     func getLoggedInUser() -> Bool {
-        
         if let user = UserAccess.sharedInstance.getUser() {
             self.userName = user.username
             self.token = user.token
@@ -118,17 +116,6 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func pressedLoginNavbarButton(sender: UIBarButtonItem) {
-        navigatoToWelcomeViewController()
-    }
-    
-    func pressedChangePWNavbarButton(sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
-        let authenticationVC = storyboard.instantiateViewControllerWithIdentifier("ChangePasswordViewController") as! ChangePasswordViewController
-
-        self.navigationController?.presentViewController(authenticationVC, animated: true, completion: nil)
-    }
-    
     
     // MARK: - Navigation
     
@@ -150,6 +137,17 @@ class ProfileViewController: UIViewController {
             return false
         }
         return true
+    }
+    
+    func pressedLoginNavbarButton(sender: UIBarButtonItem) {
+        navigatoToWelcomeViewController()
+    }
+    
+    func pressedChangePWNavbarButton(sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
+        let authenticationVC = storyboard.instantiateViewControllerWithIdentifier("ChangePasswordViewController") as! ChangePasswordViewController
+        
+        self.navigationController?.presentViewController(authenticationVC, animated: true, completion: nil)
     }
     
     @IBAction func unwindToProfileViewController(segue: UIStoryboardSegue) {}

@@ -33,6 +33,12 @@ class MyChallengeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        if wonChallenges {
+            navigationItem.title = "Won Challenges"
+        } else {
+            navigationItem.title = "My Challenges"
+        }
+        
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
             tableView.deselectRowAtIndexPath(selectedIndexPath, animated: true)
         }
