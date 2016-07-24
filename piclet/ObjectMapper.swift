@@ -109,11 +109,12 @@ class ObjectMapper {
         for element in objects {
             guard
                 let postId = element.valueForKey("_id") as? String,
-                let challengeId = element.valueForKey("challenge") as? String
+                let challengeId = element.valueForKey("challenge") as? String,
+                let votes = element.valueForKey("votes") as? Int
             else {
                 break
             }
-            postIds.append(PostInformation(postId: postId, challengeId: challengeId))
+            postIds.append(PostInformation(postId: postId, challengeId: challengeId, votes: votes))
         }
         return postIds
     }
@@ -188,6 +189,7 @@ class ObjectMapper {
 struct PostInformation {
     var postId: String
     var challengeId: String
+    var votes: Int
 }
 
 // MARK: - Rank

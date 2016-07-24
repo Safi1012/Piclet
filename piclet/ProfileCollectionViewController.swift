@@ -16,7 +16,10 @@ class ProfileCollectionViewController: UICollectionViewController {
     var userAccount: UserAccount!
     var userPostIds: [PostInformation] = []
     var selectedPosts: [SelectedPost] = []
-    var downloadUserCreatedPosts = true
+//    var downloadUserCreatedPosts = true
+    
+    var loadPostType: LoadPostsType!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +30,21 @@ class ProfileCollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        if downloadUserCreatedPosts {
+        switch loadPostType.rawValue {
+            
+        case LoadPostsType.ownPosts.rawValue:
             navigationItem.title = "Your Posts"
-        } else {
+            
+        case LoadPostsType.likedPosts.rawValue:
             navigationItem.title = "Liked Posts"
             navigationItem.setRightBarButtonItem(nil, animated: true)
+        
+        case LoadPostsType.earnedLikesPosts.rawValue:
+            navigationItem.title = "Received Likes"
+            navigationItem.setRightBarButtonItem(nil, animated: true)
+            
+        default:
+            break
         }
         fetchPosts(0)
     }
@@ -40,10 +53,21 @@ class ProfileCollectionViewController: UICollectionViewController {
     // Handle Data
     
     func fetchPosts(offset: Int) {
-        if downloadUserCreatedPosts {
+        
+        switch loadPostType.rawValue {
+            
+        case LoadPostsType.ownPosts.rawValue:
             fetchUserCreatedPosts(offset)
-        } else {
+            
+        case LoadPostsType.likedPosts.rawValue:
             fetchUserLikedPosts(offset)
+            
+        case LoadPostsType.earnedLikesPosts.rawValue:
+            fetchUserReceivedLikesPosts(offset)
+            
+        default:
+            break
+        
         }
     }
     
@@ -109,6 +133,37 @@ class ProfileCollectionViewController: UICollectionViewController {
         }
     }
     
+    func fetchUserReceivedLikesPosts(offset: Int) {
+        self.removeCentered(self.collectionView!)
+        
+        ApiProxy().fetchReceivedLikesPosts(userAccount.username, offset: offset, success: { (userPosts) in
+            
+            if offset == 0 {
+                self.userPostIds = [PostInformation]()
+            }
+            for postId in userPosts {
+                self.userPostIds.append(postId)
+            }
+            if self.userPostIds.count == 0 {
+                self.addCenteredLabel("You didn't receive any likes. \n Let's go and upload more images.", view: self.collectionView!)
+                self.view.viewWithTag(1)?.center.y -= 30
+                
+            } else {
+                self.removeCentered(self.collectionView!)
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.collectionView?.reloadData()
+                    self.collectionView?.viewWithTag(2)?.stopAnimatingIndicatorView()
+                })
+                
+            }
+            
+        }) { (errorCode) in
+            self.collectionView?.viewWithTag(2)?.stopAnimatingIndicatorView()
+            self.displayAlert(errorCode)
+            
+        }
+    }
+    
     func deleteUserPost() {
         showLoadingSpinner(UIOffset(), color: UIColor.blackColor())
         
@@ -131,7 +186,10 @@ class ProfileCollectionViewController: UICollectionViewController {
             self.dismissLoadingSpinner()
             self.removeDeleteMarkers()
             self.selectedPosts = []
-            self.fetchPosts(0)
+            
+            dispatch_async(dispatch_get_main_queue(),{
+                self.fetchPosts(0) // exucute in main thread because realm objects are not thread safe
+            })
         }
     }
 
@@ -233,7 +291,10 @@ class ProfileCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDelegate
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if downloadUserCreatedPosts {
+        
+        switch loadPostType.rawValue {
+            
+        case LoadPostsType.ownPosts.rawValue:
             if editBarButtonItem.title == "Edit" {
                 showPostInFullscreen(indexPath)
                 
@@ -242,7 +303,7 @@ class ProfileCollectionViewController: UICollectionViewController {
                 
             }
             
-        } else {
+        default:
             showPostInFullscreen(indexPath)
             
         }
@@ -343,5 +404,11 @@ struct SelectedPost {
     var indexPath: NSIndexPath!
     var postID: String!
     var challengeID: String!
+}
+
+enum LoadPostsType: Int {
+    case ownPosts = 0
+    case likedPosts = 1
+    case earnedLikesPosts = 2
 }
 

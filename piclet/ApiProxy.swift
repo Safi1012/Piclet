@@ -286,6 +286,29 @@ class ApiProxy {
         }
     }
     
+    func fetchReceivedLikesPosts(username: String, offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
+        let token = UserAccess.sharedInstance.getUser()!.token
+        let apiPath = "users/\(username)/posts?offset=\(offset)"
+        
+        NetworkHandler().requestJSON([:], apiPath: apiPath, httpVerb: HTTPVerb.get, token: token, success: { (json) -> () in
+            
+            let allPosts = ObjectMapper().parsePostIds(json)
+            var filteredPosts = [PostInformation]()
+            
+            for post in allPosts {
+                if post.votes > 0 {
+                    filteredPosts.append(post)
+                }
+            }
+            success(userPosts: filteredPosts)
+            
+        }) { (errorCode) -> () in
+            failure(errorCode: errorCode)
+            
+        }
+    }
+    
+    
     
     // MARK: - Rank
     

@@ -13,6 +13,8 @@ class ProfileStatsTableViewController: UITableViewController {
     @IBOutlet weak var rankCell: UITableViewCell!
     @IBOutlet weak var totalLikesCell: UITableViewCell!
     
+    var userAccount: UserAccount?
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -32,7 +34,11 @@ class ProfileStatsTableViewController: UITableViewController {
             self.parentViewController?.navigationController?.pushViewController(profileRankViewController, animated: true)
         }
         if cell == totalLikesCell {
-            // self.parentViewController?.performSegueWithIdentifier("toUserChallenges", sender: userAccount!)
+            let profileCollectionViewController = UIStoryboard(name: "ProfilePosts", bundle: nil).instantiateInitialViewController() as! ProfileCollectionViewController
+                profileCollectionViewController.loadPostType = LoadPostsType.earnedLikesPosts
+                profileCollectionViewController.userAccount = userAccount
+            
+            self.parentViewController?.navigationController?.pushViewController(profileCollectionViewController, animated: true)
         }
     }
 }
@@ -43,6 +49,8 @@ class ProfileStatsTableViewController: UITableViewController {
 extension ProfileStatsTableViewController: ProfileViewControllerDelegate {
     
     func userDataWasRefreshed(profileViewController: ProfileViewController, userAccount: UserAccount) {
+        self.userAccount = userAccount
+        
         rankCell.detailTextLabel?.text = "\(userAccount.rank)"
         totalLikesCell.detailTextLabel?.text = "\(userAccount.totalVotes)"
         

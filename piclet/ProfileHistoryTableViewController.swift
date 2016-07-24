@@ -33,14 +33,14 @@ class ProfileHistoryTableViewController: UITableViewController {
         if let userAccount = userAccount {
             if cell == postsCell {
                 let profileCollectionViewController = UIStoryboard(name: "ProfilePosts", bundle: nil).instantiateInitialViewController() as! ProfileCollectionViewController
-                    profileCollectionViewController.downloadUserCreatedPosts = true
+                    profileCollectionViewController.loadPostType = LoadPostsType.ownPosts
                     profileCollectionViewController.userAccount = userAccount
                 
                 self.parentViewController?.navigationController?.pushViewController(profileCollectionViewController, animated: true)
             }
             if cell == likedCell {
                 let profileCollectionViewController = UIStoryboard(name: "ProfilePosts", bundle: nil).instantiateInitialViewController() as! ProfileCollectionViewController
-                    profileCollectionViewController.downloadUserCreatedPosts = false
+                    profileCollectionViewController.loadPostType = LoadPostsType.likedPosts
                     profileCollectionViewController.userAccount = userAccount
                 
                 self.parentViewController?.navigationController?.pushViewController(profileCollectionViewController, animated: true)
