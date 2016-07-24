@@ -36,7 +36,7 @@
                                     <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressedSignInButton:" destination="C45-ov-RWv" eventType="touchUpInside" id="m31-WP-zZX"/>
+                                    <segue destination="Oqy-sC-mGf" kind="presentation" identifier="toUserViewController" id="8Tq-VL-B6e"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Piclet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfr-Jb-vdi">
@@ -64,7 +64,6 @@
                                     <color key="titleColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="pressedSetupServer:" destination="C45-ov-RWv" eventType="touchUpInside" id="Y60-bR-iAD"/>
                                     <segue destination="pS9-9R-BsT" kind="presentation" identifier="toSetupServerViewController" id="B7o-my-3ho"/>
                                 </connections>
                             </button>
@@ -95,7 +94,6 @@
                     <connections>
                         <outlet property="setupServerButton" destination="vwR-a8-H7S" id="kol-OW-pln"/>
                         <outlet property="signInButton" destination="yo1-TB-9nd" id="Xar-FP-djI"/>
-                        <segue destination="Oqy-sC-mGf" kind="presentation" identifier="toUserViewController" modalTransitionStyle="crossDissolve" id="LYb-U5-YMI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RY9-Nv-2Nz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -212,7 +210,7 @@
                                 </constraints>
                                 <state key="normal" image="navBarCancel"/>
                                 <connections>
-                                    <segue destination="tMV-MI-ebf" kind="unwind" unwindAction="unwindToWelcomeViewController:" id="mt7-Sg-dXb"/>
+                                    <segue destination="tMV-MI-ebf" kind="unwind" unwindAction="unwindToWelcomeViewController:" id="VZ2-5Q-a5D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -411,7 +409,7 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://" placeholder="Server Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ivq-Bn-ixb">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Server Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ivq-Bn-ixb">
                                                 <rect key="frame" x="85" y="154" width="430" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="1Rz-Qu-QLt"/>
@@ -451,6 +449,18 @@
                                                     <constraint firstAttribute="width" constant="25" id="hjq-uV-Lvw"/>
                                                 </constraints>
                                                 <state key="normal" image="navBarCancel"/>
+                                                <connections>
+                                                    <segue destination="wS5-J8-bdP" kind="unwind" unwindAction="unwindToWelcomeViewController:" id="qwN-Hy-QHh"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMU-cd-Rp0">
+                                                <rect key="frame" x="553" y="14" width="39" height="30"/>
+                                                <state key="normal" title="Reset">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="pressedResetSettings:" destination="pS9-9R-BsT" eventType="touchUpInside" id="7SE-Y8-7dg"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -459,6 +469,8 @@
                                             <constraint firstItem="GCC-6y-HWu" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="100" id="ATr-O9-qXT"/>
                                             <constraint firstItem="WaX-bt-e2b" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="8" id="F1p-5Z-hgQ"/>
                                             <constraint firstItem="GCC-6y-HWu" firstAttribute="top" secondItem="w4D-fD-neE" secondAttribute="bottom" constant="33" id="Mdz-Vm-kJ1"/>
+                                            <constraint firstAttribute="trailing" secondItem="OMU-cd-Rp0" secondAttribute="trailing" constant="8" id="PdV-di-AWh"/>
+                                            <constraint firstItem="OMU-cd-Rp0" firstAttribute="top" secondItem="Pme-mt-T0e" secondAttribute="top" constant="14" id="VsU-a9-uiF"/>
                                             <constraint firstItem="sYR-QS-pjT" firstAttribute="centerX" secondItem="Pme-mt-T0e" secondAttribute="centerX" id="cQG-5A-Pdu"/>
                                             <constraint firstItem="Ivq-Bn-ixb" firstAttribute="top" secondItem="sYR-QS-pjT" secondAttribute="bottom" constant="28" id="dOU-0X-0hN"/>
                                             <constraint firstItem="w4D-fD-neE" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="85" id="eRD-Dw-KOd"/>

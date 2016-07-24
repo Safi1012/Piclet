@@ -70,6 +70,7 @@
                         <outlet property="profileImageHeightConstraint" destination="K9x-Op-Enq" id="UdY-Vx-g6q"/>
                         <outlet property="profileStatsContainer" destination="oMY-wH-pYh" id="MFe-HX-9br"/>
                         <outlet property="profileStatsHeightConstraint" destination="CBC-Cc-n6d" id="2MD-5D-Vdt"/>
+                        <outlet property="scrollView" destination="mQc-b4-9xt" id="nT6-mJ-8tu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W52-JH-bto" userLabel="First Responder" sceneMemberID="firstResponder"/>

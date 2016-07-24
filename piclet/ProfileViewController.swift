@@ -14,7 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImageContainer: UIView!
     @IBOutlet weak var profileStatsContainer: UIView!
     @IBOutlet weak var profileHistoryContainer: UIView!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var profileImageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileStatsHeightConstraint: NSLayoutConstraint!
@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         getLoginInformation()
         
-//        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
+        addDefaultPullToRefresh(scrollView, selector: "fetchUserInformation")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,7 +46,6 @@ class ProfileViewController: UIViewController {
         let profileImageViewController = UIStoryboard(name: "ProfileImage", bundle: nil).instantiateInitialViewController() as! ProfileImageViewController
         profileImageHeightConstraint.constant = profileImageViewController.getViewHeight()
         addChildViewController(profileImageViewController, toContainerView: profileImageContainer)
-        // delegate?
         
         let profileStatsViewController = UIStoryboard(name: "ProfileStats", bundle: nil).instantiateInitialViewController() as! ProfileStatsTableViewController
         profileStatsHeightConstraint.constant = profileStatsViewController.getTableViewHeight()

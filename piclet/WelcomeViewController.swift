@@ -19,14 +19,11 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // todo: check if app was opened for the first time
-        // showOnboarding()
-        
         uiStyling()
-        
-        // Google SignIn Service setup
-        // GIDSignIn.sharedInstance().uiDelegate = self
-        // GIDSignIn.sharedInstance().delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        shoudlHideSignInButton()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -42,45 +39,16 @@ class WelcomeViewController: UIViewController {
         setupServerButton.addBoarderBottom()
     }
     
+    func shoudlHideSignInButton() {
+        if ServerAccess.sharedInstance.getServer() != nil {
+            signInButton.hidden = false
+        } else {
+            signInButton.hidden = true
+        }
+    }
+    
     
     // MARK: - Actions
     
-    @IBAction func pressedSignInButton(sender: UIButton) {
-        performSegueWithIdentifier("toUserViewController", sender: self)
-    }
-    
-    @IBAction func pressedSetupServer(sender: AnyObject) {
-        // performSegueWithIdentifier("toSetupServerViewController", sender: self)
-    }
-    
     @IBAction func unwindToWelcomeViewController(segue: UIStoryboardSegue) {}
 }
-/*
-    
-    
-    // MARK: - Onboarding
-    
-    func showOnboarding() {
-        // let page0 = EAIntroPage()
-        // page0.title = "Welcome to Piclet"
-        // page0.titlePositionY = 30.0
-        // page0.desc = "Start sharing your Pictures and particacipate \n in competive challeneges."
-        // page0.descPositionY = 100.0
-        // page0.titleIconPositionY = 100.0
-        // page0.titleIconView = UIImageView(image: UIImage(named: "picletIcon"))
-        
-        // build pages
-        let page0 = EAIntroPage(customViewFromNibNamed: "Onboarding_Screen_0", bundle: NSBundle.mainBundle())
-        let page1 = EAIntroPage(customViewFromNibNamed: "Onboarding_Screen_1", bundle: NSBundle.mainBundle())
-        let page2 = EAIntroPage(customViewFromNibNamed: "Onboarding_Screen_2", bundle: NSBundle.mainBundle())
-        
-        // create introduction view
-        let intro = EAIntroView(frame: self.view.bounds, andPages: [page0, page1, page2])
-        intro.bgImage = UIImage(named: "backgroundLogin")
-        // intro.delegate = self
-        
-        // display introduction view
-        intro.showInView(self.view, animateDuration: 0.0)
-    }
-    
- */

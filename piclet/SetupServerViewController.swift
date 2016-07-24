@@ -24,6 +24,7 @@ class SetupServerViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SetupServerViewController.keyboardWillHide(_:)), name:UIKeyboardWillHideNotification, object: nil);
         
         uiStyling()
+        loadUserSettings()
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -40,6 +41,12 @@ class SetupServerViewController: UIViewController {
         }
     }
     
+    @IBAction func pressedResetSettings(sender: UIButton) {
+        ServerAccess.sharedInstance.deleteServer()
+        
+        serverAddressTextField.text = ""
+        serverPasswordTextField.text = ""
+    }
     
     func validateTextFields() -> Bool {
         
@@ -47,10 +54,6 @@ class SetupServerViewController: UIViewController {
             self.displayAlert("ServerAddressEmpty")
             return false
         }
-//        if !NetworkHandler().isHostReachable(serverAddressTextField.text!) {
-//            self.displayAlert("HostNotReachable")
-//            return false
-//        }
         if serverPasswordTextField.text!.characters.count == 0 {
             self.displayAlert("PasswordEmpty")
             return false
@@ -70,6 +73,14 @@ class SetupServerViewController: UIViewController {
         serverAddressTextField.changePlaceholderColoring(UIColor.lightTextColor())
         serverPasswordTextField.changePlaceholderColoring(UIColor.lightTextColor())
     }
+    
+    func loadUserSettings() {
+        if ServerAccess.sharedInstance.getServer() != nil {
+            serverAddressTextField.text = ServerAccess.sharedInstance.getServer()?.serverAddress
+            serverPasswordTextField.text = ServerAccess.sharedInstance.getServer()?.serverPassword
+        }
+    }
+    
     
     // MARK: - Keyboard
     
