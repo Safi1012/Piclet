@@ -418,7 +418,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
-                                                    <outlet property="delegate" destination="pS9-9R-BsT" id="eb3-d5-Pry"/>
+                                                    <outlet property="delegate" destination="pS9-9R-BsT" id="wa0-eu-C65"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Server Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w4D-fD-neE">
@@ -430,11 +430,14 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
                                                 <connections>
-                                                    <outlet property="delegate" destination="pS9-9R-BsT" id="z7u-6b-4tA"/>
+                                                    <outlet property="delegate" destination="pS9-9R-BsT" id="HnO-tq-Rp5"/>
                                                 </connections>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GCC-6y-HWu">
                                                 <rect key="frame" x="100" y="243" width="400" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="TKa-FJ-c8t"/>
+                                                </constraints>
                                                 <state key="normal" title="Setup">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -443,7 +446,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaX-bt-e2b">
-                                                <rect key="frame" x="8" y="16" width="25" height="25"/>
+                                                <rect key="frame" x="8" y="10" width="25" height="25"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="25" id="Z0Z-St-4jR"/>
                                                     <constraint firstAttribute="width" constant="25" id="hjq-uV-Lvw"/>
@@ -454,7 +457,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMU-cd-Rp0">
-                                                <rect key="frame" x="553" y="14" width="39" height="30"/>
+                                                <rect key="frame" x="553" y="8" width="39" height="30"/>
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -470,13 +473,13 @@
                                             <constraint firstItem="WaX-bt-e2b" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="8" id="F1p-5Z-hgQ"/>
                                             <constraint firstItem="GCC-6y-HWu" firstAttribute="top" secondItem="w4D-fD-neE" secondAttribute="bottom" constant="33" id="Mdz-Vm-kJ1"/>
                                             <constraint firstAttribute="trailing" secondItem="OMU-cd-Rp0" secondAttribute="trailing" constant="8" id="PdV-di-AWh"/>
-                                            <constraint firstItem="OMU-cd-Rp0" firstAttribute="top" secondItem="Pme-mt-T0e" secondAttribute="top" constant="14" id="VsU-a9-uiF"/>
+                                            <constraint firstItem="OMU-cd-Rp0" firstAttribute="top" secondItem="Pme-mt-T0e" secondAttribute="top" constant="8" id="VsU-a9-uiF"/>
                                             <constraint firstItem="sYR-QS-pjT" firstAttribute="centerX" secondItem="Pme-mt-T0e" secondAttribute="centerX" id="cQG-5A-Pdu"/>
                                             <constraint firstItem="Ivq-Bn-ixb" firstAttribute="top" secondItem="sYR-QS-pjT" secondAttribute="bottom" constant="28" id="dOU-0X-0hN"/>
                                             <constraint firstItem="w4D-fD-neE" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="85" id="eRD-Dw-KOd"/>
                                             <constraint firstItem="Ivq-Bn-ixb" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="85" id="nwN-wD-Urv"/>
                                             <constraint firstItem="w4D-fD-neE" firstAttribute="top" secondItem="Ivq-Bn-ixb" secondAttribute="bottom" constant="8" id="qt3-0B-qU7"/>
-                                            <constraint firstItem="WaX-bt-e2b" firstAttribute="top" secondItem="Pme-mt-T0e" secondAttribute="top" constant="16" id="reQ-J5-5Um"/>
+                                            <constraint firstItem="WaX-bt-e2b" firstAttribute="top" secondItem="Pme-mt-T0e" secondAttribute="top" constant="10" id="reQ-J5-5Um"/>
                                             <constraint firstAttribute="trailing" secondItem="Ivq-Bn-ixb" secondAttribute="trailing" constant="85" id="tm0-aX-zm7"/>
                                             <constraint firstAttribute="trailing" secondItem="GCC-6y-HWu" secondAttribute="trailing" constant="100" id="v9M-Nr-BMg"/>
                                         </constraints>

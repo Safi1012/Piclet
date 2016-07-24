@@ -114,12 +114,6 @@ class UserViewController: UIViewController {
     // MARK: - Navigation
     
     func navigateToChallengesViewController() {
-//        var tabBarViewController = (UIApplication.sharedApplication().delegate as! AppDelegate).tabBarViewController
-//        
-//        if tabBarViewController == nil {
-//            tabBarViewController = TabBarViewController()
-//        }
-
         presentViewController(TabBarViewController(), animated: true, completion: nil)
     }
 

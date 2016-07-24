@@ -10,6 +10,13 @@ import UIKit
 
 extension UIImage {
     
+    /**
+     Tint an image with a color
+     
+     - parameter color1: the color which should be applied to the selected image
+     
+     - returns: the new tinted image
+     */
     func imageWithColor(color1: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         color1.setFill()
