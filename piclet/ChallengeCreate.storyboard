@@ -33,14 +33,18 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="B36-qJ-hPB" id="jnT-wp-wLM"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LBG-lJ-KWF" firstAttribute="top" secondItem="ZGs-Hc-T0E" secondAttribute="bottom" constant="209" id="Ef2-tS-5h9"/>
-                            <constraint firstItem="Ruw-Gb-Q17" firstAttribute="centerX" secondItem="LDx-gH-z2Q" secondAttribute="centerX" id="VQ0-WS-71F"/>
-                            <constraint firstItem="LBG-lJ-KWF" firstAttribute="centerX" secondItem="LDx-gH-z2Q" secondAttribute="centerX" id="WL3-s4-QFu"/>
-                            <constraint firstItem="Ruw-Gb-Q17" firstAttribute="top" secondItem="LBG-lJ-KWF" secondAttribute="bottom" constant="17" id="el2-Kp-nlz"/>
+                            <constraint firstItem="LBG-lJ-KWF" firstAttribute="centerX" secondItem="LDx-gH-z2Q" secondAttribute="centerX" id="OPm-WB-ZpX"/>
+                            <constraint firstItem="Ruw-Gb-Q17" firstAttribute="top" secondItem="LBG-lJ-KWF" secondAttribute="bottom" priority="750" constant="17" id="a0n-Ud-4ro"/>
+                            <constraint firstItem="Mi8-gf-7Wy" firstAttribute="top" secondItem="Ruw-Gb-Q17" secondAttribute="bottom" priority="250" constant="261" id="jOL-NH-n5Q"/>
+                            <constraint firstItem="LBG-lJ-KWF" firstAttribute="top" relation="lessThanOrEqual" secondItem="ZGs-Hc-T0E" secondAttribute="bottom" constant="209" id="lnm-Mw-1Wd"/>
+                            <constraint firstItem="Ruw-Gb-Q17" firstAttribute="centerX" secondItem="LDx-gH-z2Q" secondAttribute="centerX" id="w3m-49-Awv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Challenge" id="WQ3-QB-RFU">

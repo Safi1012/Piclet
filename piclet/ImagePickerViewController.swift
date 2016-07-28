@@ -19,8 +19,8 @@ class ImagePickerViewController: UIViewController {
     var previewImageView: UIImageView?
     var challengeID: String!
     
-    let MAX_IMAGE_PIXEL_SIZE = 10000000
-    let MAX_IMAGE_SIZE_IN_BYTE = 3145728
+    let MAX_IMAGE_PIXEL_SIZE = 90000000
+    let MAX_IMAGE_SIZE_IN_BYTE = 5242880 // max upload size is 5MByte
     
     
     override func viewDidLoad() {

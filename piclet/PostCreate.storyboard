@@ -69,9 +69,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LnP-0b-P6X" firstAttribute="top" secondItem="TUP-8j-325" secondAttribute="bottom" constant="215" id="GLG-dq-XX2"/>
+                            <constraint firstItem="LnP-0b-P6X" firstAttribute="top" relation="lessThanOrEqual" secondItem="TUP-8j-325" secondAttribute="bottom" constant="215" id="GLG-dq-XX2"/>
                             <constraint firstItem="LnP-0b-P6X" firstAttribute="centerX" secondItem="aG5-N4-Lah" secondAttribute="centerX" id="eBK-xW-vz8"/>
-                            <constraint firstItem="UdB-Zn-ylZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LnP-0b-P6X" secondAttribute="bottom" constant="232" id="jIj-ne-axY"/>
+                            <constraint firstItem="UdB-Zn-ylZ" firstAttribute="top" secondItem="LnP-0b-P6X" secondAttribute="bottom" priority="250" constant="232" id="jIj-ne-axY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a Post" id="1EZ-0z-gI7">
@@ -135,9 +135,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kiI-ez-9y1" firstAttribute="centerX" secondItem="rAB-Ik-0Yv" secondAttribute="centerX" id="Fqr-1h-l2T"/>
-                            <constraint firstItem="BH7-Ry-J6q" firstAttribute="top" secondItem="kiI-ez-9y1" secondAttribute="bottom" constant="8" id="ZPV-q6-Huq"/>
+                            <constraint firstItem="BH7-Ry-J6q" firstAttribute="top" secondItem="kiI-ez-9y1" secondAttribute="bottom" priority="750" constant="8" id="ZPV-q6-Huq"/>
                             <constraint firstItem="BH7-Ry-J6q" firstAttribute="centerX" secondItem="rAB-Ik-0Yv" secondAttribute="centerX" id="bh1-hQ-peV"/>
-                            <constraint firstItem="kiI-ez-9y1" firstAttribute="top" secondItem="DEL-6T-uAm" secondAttribute="bottom" constant="209" id="h5P-uz-Ava"/>
+                            <constraint firstItem="kiI-ez-9y1" firstAttribute="top" relation="lessThanOrEqual" secondItem="DEL-6T-uAm" secondAttribute="bottom" constant="209" id="h5P-uz-Ava"/>
+                            <constraint firstItem="qK3-1g-Fkc" firstAttribute="top" secondItem="BH7-Ry-J6q" secondAttribute="bottom" priority="250" constant="270" id="hhX-80-JPv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add a Title" id="10D-1I-PFy">

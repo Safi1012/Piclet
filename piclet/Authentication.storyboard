@@ -457,7 +457,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMU-cd-Rp0">
-                                                <rect key="frame" x="553" y="8" width="39" height="30"/>
+                                                <rect key="frame" x="545" y="8" width="39" height="30"/>
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -472,7 +472,7 @@
                                             <constraint firstItem="GCC-6y-HWu" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="100" id="ATr-O9-qXT"/>
                                             <constraint firstItem="WaX-bt-e2b" firstAttribute="leading" secondItem="Pme-mt-T0e" secondAttribute="leading" constant="8" id="F1p-5Z-hgQ"/>
                                             <constraint firstItem="GCC-6y-HWu" firstAttribute="top" secondItem="w4D-fD-neE" secondAttribute="bottom" constant="33" id="Mdz-Vm-kJ1"/>
-                                            <constraint firstAttribute="trailing" secondItem="OMU-cd-Rp0" secondAttribute="trailing" constant="8" id="PdV-di-AWh"/>
+                                            <constraint firstAttribute="trailing" secondItem="OMU-cd-Rp0" secondAttribute="trailing" constant="16" id="PdV-di-AWh"/>
                                             <constraint firstItem="OMU-cd-Rp0" firstAttribute="top" secondItem="Pme-mt-T0e" secondAttribute="top" constant="8" id="VsU-a9-uiF"/>
                                             <constraint firstItem="sYR-QS-pjT" firstAttribute="centerX" secondItem="Pme-mt-T0e" secondAttribute="centerX" id="cQG-5A-Pdu"/>
                                             <constraint firstItem="Ivq-Bn-ixb" firstAttribute="top" secondItem="sYR-QS-pjT" secondAttribute="bottom" constant="28" id="dOU-0X-0hN"/>

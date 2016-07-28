@@ -11,14 +11,7 @@ import UIKit
 class CreateChallengeViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var createButton: UIButton!
     var token: String!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        nameTextField.delegate = self
-    }
 
     @IBAction func pressedCreateTabBar(sender: UIBarButtonItem) {
         
@@ -57,7 +50,6 @@ class CreateChallengeViewController: UIViewController {
         }
         return true
     }
-
 }
 
 
