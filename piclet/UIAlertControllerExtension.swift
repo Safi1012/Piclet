@@ -9,8 +9,16 @@
 import Foundation
 import UIKit
 
+// MARK: - UIAlertController
 extension UIAlertController {
     
+    /*!
+     Creates an simple error alert
+     
+     - parameter errorCode: this errorCode is used to decide which error message should be displayed
+     
+     - returns: UIAlertController
+     */
     public class func createErrorAlert(errorCode: String) -> UIAlertController {
         let error = ErrorHandler().getTitleAndMessageError(errorCode)
         

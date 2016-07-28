@@ -14,11 +14,21 @@ class ServerAccess {
     static let sharedInstance = ServerAccess()
     private init() {}
     
-    
+    /*!
+     Returns the persited server information
+     
+     - returns: the first saved server object
+     */
     func getServer() -> Server? {
         return realm.objects(Server.self).first
     }
     
+    /*!
+     Adds server information to the database
+     
+     - parameter serverAddress:  the server address. The server must use an secured https connection
+     - parameter serverPassword: the server password
+     */
     func addServer(serverAddress: String, serverPassword: String) {
         if (getServer() != nil) {
             deleteServer()
@@ -33,6 +43,9 @@ class ServerAccess {
         }
     }
 
+    /*!
+     Deletes all saved objects from the server table
+     */
     func deleteServer() {
         try! realm.write {
             if let server = getServer() {

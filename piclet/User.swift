@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+/// User table in the realm database
 class User: Object {
     
     dynamic var username: String = ""

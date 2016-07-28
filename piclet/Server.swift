@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 
+/// Server table in the realm database
 class Server: Object {
     
     dynamic var serverAddress: String = ""

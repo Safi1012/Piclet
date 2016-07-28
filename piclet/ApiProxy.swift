@@ -10,13 +10,21 @@ import Foundation
 import UIKit
 import Alamofire
 
+/// This class helps to access the server.
 class ApiProxy {
     
     var deviceToken = ""
     
-    
     // MARK: - User Account
     
+    /**
+     Creates a user account if the parameters are valid
+     
+     - parameter username: the users unique username
+     - parameter password: the users password
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
@@ -31,6 +39,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Generates a token which is needed to verify the identity when communicating with the server
+     
+     - parameter username: the users unique username
+     - parameter password: the users password
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
@@ -45,22 +61,12 @@ class ApiProxy {
         }
     }
     
-    func signInUserWithThirdPartyService(oauthtoken: String, tokenType: TokenType, success: () -> (), failure: (errorCode: String) -> ()) {
-        var parameter = ["oauthtoken" : (oauthtoken), "tokentype": (tokenType.rawValue), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
-        
-        let token = UserAccess.sharedInstance.getUser()!.token
-        
-        NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: token, success: { (json) in
-            UserAccount().createUserToken(json)
-            success()
-            
-        }) { (errorCode) in
-            failure(errorCode: errorCode)
-            
-        }
-    }
-    
+    /**
+     Tells the server to delete the user token. Should be called when changing the users password
+     
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func deleteThisUserToken(success: () -> (), failure: (errorCode: String) -> ()) {
         let token = UserAccess.sharedInstance.getUser()!.token
         
@@ -72,6 +78,15 @@ class ApiProxy {
         }
     }
     
+    /**
+     Changes the users password
+     
+     - parameter username:    the users unique username
+     - parameter oldPassword: the users current password
+     - parameter newPassword: the new user password
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func changePassword(username: String, oldPassword: String, newPassword: String, success: () -> (), failure: (errorCode: String) -> ()) {
         var parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
         NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
@@ -89,6 +104,15 @@ class ApiProxy {
     
     // MARK: - Challenges
     
+    /**
+     Fetches all challenges which matches the filter options in the parameters
+     
+     - parameter offset:   omit the first offset challenges. Use this for pagination (defaults to 0)
+     - parameter orderby:  hot for sort by best or new for sort by new (defaults to new) challenges
+     - parameter archived: whether to show only archived (=true) or only not archived (=false) challenges
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func fetchChallenges(offset: Int, orderby: SegmentedControlState, archived: Bool, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
         let orderbyString = orderby.rawValue == SegmentedControlState.hot.rawValue ? "hot" : "new"
         let apiPath = "challenges?offset=\(offset)&orderby=\(orderbyString)&archived=\(archived)"
@@ -103,6 +127,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Fetches all won challenges by a user
+     
+     - parameter offset:   omit the first offset challenges. Use this for pagination (defaults to 0)
+     - parameter username: the users unique username
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func fetchWonChallenges(offset: Int, username: String, success: (challenges: [Challenge]) -> (), failure: (errorCode: String) -> ()) {
         let apiPath = "users/\(username)/wonChallenges?offset=\(offset)"
         let token = UserAccess.sharedInstance.getUser()!.token
@@ -116,7 +148,13 @@ class ApiProxy {
         }
     }
     
-    
+    /**
+     Creates a new challenges
+     
+     - parameter challengeName: the challenge name
+     - parameter success:       success callback if the request was successful
+     - parameter failure:       failure callback if the request was not successful
+     */
     func createNewChallenge(challengeName: String, success: () -> (), failure: (errorCode: String) -> () ) {
         let token = UserAccess.sharedInstance.getUser()!.token
         
@@ -129,6 +167,13 @@ class ApiProxy {
         }
     }
     
+    /**
+     Fetch all aspect ratios of a chosen challenge
+     
+     - parameter challengeId:   the unique challenge id
+     - parameter success:       success callback if the request was successful
+     - parameter failure:       failure callback if the request was not successful     
+     */
     func fetchAspectRatios(challengeId: String, success: (aspectRatios: NSDictionary) -> (), failure: (errorCode: String) -> ()) {
         let token = UserAccess.sharedInstance.getUser()!.token
         
@@ -144,6 +189,13 @@ class ApiProxy {
     
     // MARK: - Posts
     
+    /**
+     Fetch all posts of a challenge
+     
+     - parameter challengeID:   the unique challenge id
+     - parameter success:       success callback if the request was successful
+     - parameter failure:       failure callback if the request was not successful
+     */
     func fetchChallengePosts(challengeID: String, success: (posts: [Post]) -> (), failure: (errorCode: String) -> ()) {
         let token = UserAccess.sharedInstance.getUser()!.token
         
@@ -156,6 +208,15 @@ class ApiProxy {
         }
     }
     
+    /**
+     Uploads an image to a chosen challenge
+     
+     - parameter challengeID: the unique challenge id
+     - parameter image:       the image which should be uploaded
+     - parameter description: the post description
+     - parameter success:     success callback if the request was successful
+     - parameter failure:     failure callback if the request was not successful
+     */
     func addPostToChallenge(challengeID: String, image: NSData, description: String, success: () -> (), failure: (errorCode: String) -> ()) {
         let apiPath = "challenges/" + "\(challengeID)" + "/posts"
         let token = UserAccess.sharedInstance.getUser()!.token
@@ -169,6 +230,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Like a chosen post in a challenge
+     
+     - parameter challengeID: the unique challenge id
+     - parameter postID:      the unique post id
+     - parameter success:     success callback if the request was successful
+     - parameter failure:     failure callback if the request was not successful
+     */
     func likePost(challengeID: String, postID: String, success: () -> (), failure: (errorCode: String) -> () ) {
         let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
         let token = UserAccess.sharedInstance.getUser()!.token
@@ -182,6 +251,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Revert a like to a chosen post in a challenge
+     
+     - parameter challengeID: the unique challenge id
+     - parameter postID:      the unique post id
+     - parameter success:     success callback if the request was successful
+     - parameter failure:     failure callback if the request was not successful
+     */
     func revertLikePost(challengeID: String, postID: String, success: () -> (), failure: (errorCode: String) -> () ) {
         let apiPath = "challenges/\(challengeID)/posts/\(postID)/like"
         let body = ["challenge-id" : (challengeID), "post-id" : (postID)]
@@ -196,6 +273,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Deletes a user post in a challenge
+     
+     - parameter challengeID: the unique challenge id
+     - parameter postID:      the unique post id
+     - parameter success:     success callback if the request was successful
+     - parameter failure:     failure callback if the request was not successful
+     */
     func deleteUserPost(challengeID: String, postID: String, success: () -> (), failure: (errorCode: String) -> () ) {
         let apiPath = "challenges/\(challengeID)/posts/\(postID)"
         let token = UserAccess.sharedInstance.getUser()!.token
@@ -212,6 +297,14 @@ class ApiProxy {
 
     // MARK: - User profile
     
+    /**
+     Upload a user profile image
+     
+     - parameter username: the users unique username
+     - parameter image:    the users profile image
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func uploadUserProfileImage(username: String, image: NSData, success: () -> (), failure: (errorCode: String) -> ()) {
         let apiPath = "users/\(username)/avatar"
         let token = UserAccess.sharedInstance.getUser()!.token
@@ -225,6 +318,12 @@ class ApiProxy {
         }
     }
     
+    /**
+     Fetches the users account information
+     
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func fetchUserAccountInformation(success: (userAccount: UserAccount) -> (), failure: (errorCode: String) -> () ) {
         let token = UserAccess.sharedInstance.getUser()!.token
         
@@ -242,6 +341,14 @@ class ApiProxy {
         failure(errorCode: "NotLoggedIn")
     }
     
+    /**
+     Fetches all posts which have been created by an user
+     
+     - parameter username: the users unique username
+     - parameter offset:   omit the first offset posts. Use this for pagination (defaults to 0)
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func fetchUserCreatedPosts(username: String, offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
         let token = UserAccess.sharedInstance.getUser()!.token
         let apiPath = "users/\(username)/posts?offset=\(offset)"
@@ -255,6 +362,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Fetches all challenges which are created by an user
+     
+     - parameter username: the users unique username
+     - parameter offset:   omit the first offset challenges. Use this for pagination (defaults to 0)
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func fetchUserCreatedChallenges(username: String, offset: Int, success: (userChallenges: [Challenge]) -> (), failure: (errorCode: String) -> () ) {
         let token = UserAccess.sharedInstance.getUser()!.token
         let apiPath = "users/\(username)/challenges?offset=\(offset)"
@@ -268,6 +383,13 @@ class ApiProxy {
         }
     }
     
+    /**
+     Fetches all liked posts by an user
+     
+     - parameter offset:  omit the first offset posts. Use this for pagination (defaults to 0)
+     - parameter success: success callback if the request was successful
+     - parameter failure: failure callback if the request was not successful
+     */
     func fetchLikedPosts(offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
         
         if let user = UserAccess.sharedInstance.getUser() {
@@ -286,6 +408,14 @@ class ApiProxy {
         }
     }
     
+    /**
+     Fetches all received posts of an user
+     
+     - parameter username: the users unique username
+     - parameter offset:   omit the first offset posts. Use this for pagination (defaults to 0)
+     - parameter success:  success callback if the request was successful
+     - parameter failure:  failure callback if the request was not successful
+     */
     func fetchReceivedLikesPosts(username: String, offset: Int, success: (userPosts: [PostInformation]) -> (), failure: (errorCode: String) -> () ) {
         let token = UserAccess.sharedInstance.getUser()!.token
         let apiPath = "users/\(username)/posts?offset=\(offset)"
@@ -312,6 +442,13 @@ class ApiProxy {
     
     // MARK: - Rank
     
+    /**
+     Fetches the ranking of all users
+     
+     - parameter offset:  omit the first offset ranks. Use this for pagination (defaults to 0)
+     - parameter success: success callback if the request was successful
+     - parameter failure: failure callback if the request was not successful
+     */
     func fetchRanks(offset: Int, success: (ranks: [UserRank]) -> (), failure: (errorCode: String) -> () ) {
         let token = UserAccess.sharedInstance.getUser()!.token
         let apiPath = "users?offset=\(offset)"
