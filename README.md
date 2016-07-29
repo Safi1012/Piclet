@@ -1,6 +1,29 @@
 
-# iOS Documentation
-This documentation helps you to get started. It explains what tools you need to install, to compile and to run *Piclet* on an *iOS Device* or *iOS Simulator*. The *Piclet iOS App* was created with the open source programming language Swift 2.0 and supports all iPhone / iPod Touch Devices running iOS 8.0 and later. 
+# Piclet
+Piclet is a social sharing image platform with the ability to create and compete different challenges. 
+This repo contains the iOS Piclet Application. 
+
+Here are some screenshots for a better understanding what this app does: 
+
+<img src="https://cloud.githubusercontent.com/assets/3514796/17260108/dd792856-55ce-11e6-9748-e7951c753f75.PNG" 
+alt="welcome" width="240px" height="auto">
+<img src="https://cloud.githubusercontent.com/assets/3514796/17260025/64b9bb2e-55ce-11e6-913d-61a27a63a934.PNG" alt="challenges" width="240px" height="auto">
+<img src="https://cloud.githubusercontent.com/assets/3514796/17260023/64b8304c-55ce-11e6-95a0-1dd5bd57d9fb.PNG" 
+alt="createChallenge" width="240px" height="auto">
+</div>
+
+<img src="https://cloud.githubusercontent.com/assets/3514796/17260021/64b638fa-55ce-11e6-9691-867cee399083.PNG" 
+alt="posts" width="240px" height="auto">
+<img src="https://cloud.githubusercontent.com/assets/3514796/17260020/64b5502a-55ce-11e6-92cf-4fbee449702a.PNG" 
+alt="profile" width="240px" height="auto">
+<img src="https://cloud.githubusercontent.com/assets/3514796/17260024/64b928c6-55ce-11e6-8fdf-37232812dd03.PNG" 
+alt="receivedLikes" width="240px" height="auto">
+
+
+
+# Getting started
+
+This section explains what tools you need to install, to compile and to run *Piclet* on an *iOS Device* or *iOS Simulator*. The *Piclet iOS App* was created with the open source programming language Swift 2.0 and supports all iPhone / iPod Touch Devices running iOS 8.0 and later. 
 
 
 
