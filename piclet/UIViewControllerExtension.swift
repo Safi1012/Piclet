@@ -13,8 +13,15 @@ import BRYXBanner
 
 var refreshControl = UIRefreshControl()
 
+// MARK: - Extends the UIViewController class
 extension UIViewController {
     
+    /**
+     Adds a pull to refresh animation to a given view
+     
+     - parameter view:     the pull to refresh animation will be added to this UIView
+     - parameter selector: the selector which will be called when initiating the pull to refresh animation
+     */
     func addDefaultPullToRefresh(view: UIView, selector: String) {
         refreshControl.tintColor = UIColor.blackColor()
         refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
@@ -23,6 +30,9 @@ extension UIViewController {
         view.insertSubview(refreshControl, atIndex: 0)
     }
     
+    /**
+     Stops the pull to refresh animation
+     */
     func makePullToRefreshEndRefreshing() {
         refreshControl.endRefreshing()
     }
@@ -30,6 +40,13 @@ extension UIViewController {
     
     // MARK: - ReloadData
     
+    /**
+     Determines if new data should be refreshed
+     
+     - parameter timestamp: a unix timestamp
+     
+     - returns: true if the current data should be refreshed, false if not
+     */
     func shouldRefreshData(inout timestamp: NSDate?) -> Bool {
         
         if timestamp != nil {
@@ -46,6 +63,15 @@ extension UIViewController {
     
     // MARK: - Banner
     
+    /**
+     Displays a banner on top of a UIView
+     
+     - parameter title:           the banner title
+     - parameter subtitle:        the banner subtitle
+     - parameter image:           the banner image
+     - parameter backgroundColor: the banner background color
+     - parameter view:            the view which will show the banner
+     */
     func showBanner(title: String, subtitle: String, image: UIImage?, backgroundColor: UIColor, view: UIView) {
         let banner = Banner(title: title, subtitle: subtitle, image: image, backgroundColor: backgroundColor)
         banner.dismissesOnTap = true
@@ -56,6 +82,12 @@ extension UIViewController {
     
     // MARK: - Loading Spinner
     
+    /**
+     Display a loading spinner
+     
+     - parameter offset: the offset which should be applies
+     - parameter color:  the loading spinner color
+     */
     func showLoadingSpinner(offset: UIOffset, color: UIColor) {
         SVProgressHUD.setForegroundColor(color)
         SVProgressHUD.setBackgroundColor(UIColor(white: 1, alpha: 0.0))
@@ -65,6 +97,9 @@ extension UIViewController {
         SVProgressHUD.show()
     }
 
+    /**
+     Dismisses the loading spinner
+     */
     func dismissLoadingSpinner() {
         dispatch_async(dispatch_get_main_queue()) {
             SVProgressHUD.dismiss()
@@ -74,6 +109,12 @@ extension UIViewController {
     
     // MARK: - Text
     
+    /**
+     Adds a centered label to an UIView
+     
+     - parameter text: the text of the label
+     - parameter view: the UIView which will the label will be added
+     */
     func addCenteredLabel(text: String, view: UIView) {
         let label = UILabel()
         label.frame.size.height = 42
@@ -95,23 +136,24 @@ extension UIViewController {
         view.addSubview(label)
     }
     
+    /**
+     Removes the centered label (see 'addCenteredLabel()')
+     
+     - parameter view: the UIView which contains the added label
+     */
     func removeCentered(view: UIView) {
         view.viewWithTag(1)?.removeFromSuperview()
     }
     
     
-    // MARK: - TableViewFooter (infinite loading) -- DELETE THIS
-    
-    func addInfiniteLoadingTableViewFooter(tableViewFooter: UIView) {
-        let border = CALayer()
-        border.backgroundColor = UIColor(red: 200.0/255.0, green: 199.0/255.0, blue: 204.0/255.0, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 15, y: 0, width: tableViewFooter.frame.width - 15.0, height: 0.5)
-        tableViewFooter.layer.addSublayer(border)
-    }
-    
-    
     // MARK: - ChildViewController
     
+    /**
+     Adds a viewController (child) to a another viewController (parent)
+     
+     - parameter viewController: the child viewController
+     - parameter view:           the viewControllers (parent) container view which will hold the view of the added child viewController
+     */
     func addChildViewController(viewController: UIViewController, toContainerView view: UIView) {
         addChildViewController(viewController)
         
@@ -123,31 +165,13 @@ extension UIViewController {
     }
     
     
-    // MARK: - ChildViewController
-    
-    func addChildViewController(viewController: UIViewController, toView view: UIView) {
-        self.addChildViewController(viewController)
-        view.addSubview(viewController.view)
-        viewController.view.pinToSuperView()
-        viewController.didMoveToParentViewController(self)
-    }
-    
-    func removeLastChildViewController(viewController: UIViewController) {
-        let vc = viewController.childViewControllers.last
-        vc?.willMoveToParentViewController(nil)
-
-        UIView.animateWithDuration(0.2, animations: { 
-            vc?.view.alpha = 0.0
-            
-        }) { (finished) in
-            vc?.view.removeFromSuperview()
-            vc?.removeFromParentViewController()
-        }
-    }
-    
-    
     // MARK: - Alert
     
+    /**
+     Creates and displays an error Alert
+     
+     - parameter errorCode: the errorCode which will be used to find the appropriate errorMessage. See 'ErrorHandler' for more information
+     */
     func displayAlert(errorCode: String) {
         var alertController: UIAlertController
         

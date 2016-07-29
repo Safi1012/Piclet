@@ -8,14 +8,15 @@
 
 import UIKit
 
+// MARK: - Extends the UIImage class
 extension UIImage {
     
     /**
-     Tint an image with a color
+     Tints an image (icon) with color.
      
-     - parameter color1: the color which should be applied to the selected image
+     - parameter color1: the color which should be applied to the image
      
-     - returns: the new tinted image
+     - returns: the new colored image
      */
     func imageWithColor(color1: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)

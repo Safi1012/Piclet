@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Contains all information of an user account
 class UserAccount {
     
     var username: String!
@@ -20,6 +21,12 @@ class UserAccount {
     var rank: Int!
     var token: String!
     
+    /**
+     Extracts the token from a valid json formated object and saves it to the user table in the realm database
+     
+     - parameter json:     json formated data (the servers response)
+     - parameter username: the users unique username
+     */
     func createUserToken(json: AnyObject, username: String) {
         guard
             let dict = json as? NSDictionary,
@@ -32,6 +39,11 @@ class UserAccount {
         UserAccess.sharedInstance.addUser(username, token: token)
     }
     
+    /**
+     Extracts the token from a valid json formated object and saves it to the user table in the realm database
+     
+     - parameter json: json formated data (the servers response)
+     */
     func createUserToken(json: AnyObject) {
         guard
             let dict = json as? NSDictionary,

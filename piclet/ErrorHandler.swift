@@ -8,8 +8,16 @@
 
 import Foundation
 
+/// This class handles the errors
 class ErrorHandler {
     
+    /**
+     Extracts the errorCode and errorMessage from a valid formted json object
+     
+     - parameter json: json formated data (the servers response)
+     
+     - returns: an errorCode which indicates the type of error
+     */
     func getErrorCode(json: AnyObject) -> String {
         guard
             let jsonDict = json as? NSDictionary,
@@ -23,6 +31,13 @@ class ErrorHandler {
         return errorCode
     }
     
+    /**
+     Return to an given errorCode the appropriate error message
+     
+     - parameter errorCode: the error code
+     
+     - returns: the error message
+     */
     func getTitleAndMessageError(errorCode: String) -> (title: String, message: String) {
         
         switch(errorCode) {

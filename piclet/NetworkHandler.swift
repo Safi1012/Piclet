@@ -9,8 +9,19 @@
 import Foundation
 import Alamofire
 
+/// Handles all network requests
 class NetworkHandler: NSObject {
     
+    /**
+     Creates an asyncronous request
+     
+     - parameter apiParameters: the HTTP-Body information
+     - parameter apiPath:       the servers api path where the requested information lies
+     - parameter httpVerb:      the HTTP Verb: GET, POST, PUT or DELETE
+     - parameter token:         this param is optional. This token is used to verify the users identity to the server
+     - parameter success:       success callback with a json formated object, if the request was successful
+     - parameter failure:       failure callback with an errorCode, if the request was not successful
+     */
     func requestJSON(apiParameters: [String: String], apiPath: String, httpVerb: HTTPVerb, token: String?, success: (json: AnyObject) -> (), failure: (errorCode: String) -> () ) {
         
         if let serverAddress = ServerAccess.sharedInstance.getServer()?.serverAddress {
@@ -44,6 +55,17 @@ class NetworkHandler: NSObject {
         }
     }
     
+    /**
+     Creates an ayncronous HTTP-Request to upload an image to the server
+     
+     - parameter apiParameters: the HTTP-Body information
+     - parameter apiPath:       the servers api path where the requested information lies
+     - parameter httpVerb:      the HTTP Verb: GET, POST, PUT or DELETE
+     - parameter token:         this param is optional. This token is used to verify the users identity to the server
+     - parameter image:         the image data
+     - parameter success:       success callback with a json formated object, if the request was successful
+     - parameter failure:       failure callback with an errorCode, if the request was not successful
+     */
     func uploadImage(apiParameters: Dictionary<String, String>, apiPath: String, httpVerb: HTTPVerb, token: String?, image: NSData,
         success: (json: AnyObject) -> (), failure: (errorCode: String) -> () ) {
         
@@ -95,6 +117,13 @@ class NetworkHandler: NSObject {
         }
     }
     
+    /**
+     Generates an HTTP-Header
+     
+     - parameter token: this param is optional. This token is used to verify the users identity to the server
+     
+     - returns: if the token was not empty the return the header uses Bearer as the autorization, if not it uses a Basic autorization as the header information
+     */
     func generateHeaders(token: String?) -> [String: String] {
         if token != nil {
             return ["Authorization": "Bearer \(token!)"]
@@ -103,15 +132,6 @@ class NetworkHandler: NSObject {
             return ["Authorization": "Basic \(auth)"]
         }
     }
-    
-    func appendDeviceTokenIdToParameters(inout parameters: [String : String]) {
-        let deviceToken = (UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
-        
-        if deviceToken.characters.count > 0 {
-            parameters.updateValue((deviceToken), forKey: "deviceId")
-        }
-    }
-        
 }
 
 enum HTTPVerb: String {

@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-// MARK: - UIAlertController
+// MARK: - Extends the UIAlertController class
 extension UIAlertController {
     
-    /*!
-     Creates an simple error alert
+    /**
+     Creates an UIAlertController with a error message
      
-     - parameter errorCode: this errorCode is used to decide which error message should be displayed
+     - parameter errorCode: this errorCode is used to identify which error message should be displayed. For more information see: 'ErrorHandler'
      
      - returns: UIAlertController
      */
@@ -28,6 +28,14 @@ extension UIAlertController {
         return alertController
     }
     
+    /**
+     Creates an UIAlertController with an error message and a segue which leads to the welcomeView when pressing the 'Signup' Button of the Alert
+     
+     - parameter errorCode:      this errorCode is used to identify which error message should be displayed. For more information see: 'ErrorHandler'
+     - parameter viewController: the viewController which should present the welcomeView
+     
+     - returns: UIAlertController
+     */
     public class func createAlertWithLoginSegue(errorCode: String, viewController: UIViewController) -> UIAlertController {
         let error = ErrorHandler().getTitleAndMessageError(errorCode)
         

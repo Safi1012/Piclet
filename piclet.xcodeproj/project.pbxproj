@@ -77,8 +77,6 @@
 		D469121D1BAC03C30012CE7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D469121C1BAC03C30012CE7C /* Assets.xcassets */; };
 		D46912201BAC03C30012CE7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D469121E1BAC03C30012CE7C /* LaunchScreen.storyboard */; };
 		D46D1AF91C02E5C000C712C7 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */; };
-		D477B76C1CB04B4D00ED06D3 /* JWTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */; };
-		D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */; };
 		D4783E6C1BEDE179007FAF9E /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */; };
 		D47AFEDE1D3E44BC0079011A /* ProfileRank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */; };
 		D47AFEDF1D3E44BC0079011A /* ProfileRank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */; };
@@ -246,7 +244,6 @@
 		D469121F1BAC03C30012CE7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D46912211BAC03C30012CE7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D46D1AF81C02E5C000C712C7 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
-		D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JWTParser.swift; sourceTree = "<group>"; };
 		D4783E6B1BEDE179007FAF9E /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		D47AFEDD1D3E44BC0079011A /* ProfileRank.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfileRank.storyboard; sourceTree = "<group>"; };
 		D47AFEE01D3E49850079011A /* ProfilePosts.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProfilePosts.storyboard; sourceTree = "<group>"; };
@@ -454,7 +451,6 @@
 				D46494841BEF900C00AA48C4 /* UserAccount.swift */,
 				D4085C511BF0FAD700051436 /* ImageHandler.swift */,
 				D4FED09B1C775DD3007633FB /* Formater.swift */,
-				D477B76B1CB04B4D00ED06D3 /* JWTParser.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -825,7 +821,6 @@
 				D4B5833F1CADB459005C5AD9 /* WelcomeViewController.swift in Sources */,
 				D416289B1D3CEE4400182E6D /* SetupServerViewController.swift in Sources */,
 				D4FED09C1C775DD3007633FB /* Formater.swift in Sources */,
-				D477B76C1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
 				D44706EA1D12E95200AF1C46 /* UITableViewControllerExtension.swift in Sources */,
 				D47C56521C41A838004F8FAC /* MyChallengeViewController.swift in Sources */,
 				D459D6A31C1CDB81003A26E4 /* UIApplication+JTSImageViewController.m in Sources */,
@@ -858,7 +853,6 @@
 				D4BE34021C91DE3F00483576 /* UserDataValidatorTests.swift in Sources */,
 				D41628A21D3CF52800182E6D /* ServerAccess.swift in Sources */,
 				D4BE34031C91DE5C00483576 /* NetworkHandler.swift in Sources */,
-				D477B76D1CB04B4D00ED06D3 /* JWTParser.swift in Sources */,
 				D4CCE3D01CD57A56001D70D3 /* ProfileRankingTableViewController.swift in Sources */,
 				D4CCE3D31CD57A6B001D70D3 /* ProfileRankingTableViewCell.swift in Sources */,
 				D45E2B9C1CAABC9800002BC3 /* EAIntroPage.m in Sources */,

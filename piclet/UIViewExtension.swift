@@ -8,8 +8,12 @@
 
 import Foundation
 
+// MARK: - Extends the UIView class
 extension UIView {
     
+    /**
+     Pins a view to its superView
+     */
     func pinToSuperView() {
         self.translatesAutoresizingMaskIntoConstraints = true
         
@@ -19,6 +23,9 @@ extension UIView {
         self.superview?.addConstraints(verticalConstraints)
     }
     
+    /**
+     Adds an activity indicator as subview. This indicator should be used when new challenges or posts are beeing loaded
+     */
     func addActivityIndicatorSubview() {
         let activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
         activityIndicator.bounds =  CGRectMake(0.0, 0.0, 35.0, 35.0)
@@ -28,10 +35,16 @@ extension UIView {
         self.addSubview(activityIndicator)
     }
     
+    /**
+     Starts animating the indicator view
+     */
     func startAnimatingIndicatorView() {
         (self.subviews[0] as? ActivityIndicatorView)?.startAnimating()
     }
     
+    /**
+     Stops and hides the animating indicator view
+     */
     func stopAnimatingIndicatorView() {
         (self.subviews[0] as? ActivityIndicatorView)?.stopAnimating()
     }

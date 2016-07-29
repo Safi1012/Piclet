@@ -9,18 +9,43 @@
 import Foundation
 import UIKit
 
+/// This class offers methods to crop, compress and convtert iamges.
 class ImageHandler {
     
     let documentPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
     
+    /**
+     Crops the image so it can be uplaoded later to the server
+     
+     - parameter image:     the users chosen image
+     - parameter imageSize: the size which the image should be cropped
+     
+     - returns: the tranformed user image
+     */
     func convertAvatarImageForUpload(image: UIImage, imageSize: ImageAvatarServerWidth) -> NSData? {
         return cropImage(image, imageSize: imageSize.rawValue)
     }
     
+    /**
+     Crompresses an image to save space and data traffic for a later upload
+     
+     - parameter image:     the users chosen image
+     - parameter imageSize: the new image size
+     
+     - returns: the transformed user image
+     */
     func convertPostsImageForUpload(image: UIImage, imageSize: ImagePostsServerWidth) -> NSData? {
         return compressImage(image, imageSize: imageSize.rawValue)
     }
     
+    /**
+     Crops images to the requested size
+     
+     - parameter image:     the users chosen image
+     - parameter imageSize: the new image size
+     
+     - returns: the cropped user image
+     */
     private func cropImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat!
         let newHeight: CGFloat!
@@ -56,6 +81,14 @@ class ImageHandler {
         return imageData
     }
     
+    /**
+     Compress a image to 70% quality
+     
+     - parameter image:     the users image
+     - parameter imageSize: the new image size
+     
+     - returns: the cropped user image
+     */
     private func compressImage(image: UIImage, imageSize: CGFloat) -> NSData? {
         let newWidth: CGFloat
         let newHeight: CGFloat

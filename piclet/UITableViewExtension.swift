@@ -8,8 +8,12 @@
 
 import UIKit
 
+// MARK: - Extends the UITableView class
 extension UITableView {
     
+    /**
+     Adds an acitvity indicator view as a footer view
+     */
     func addActivityIndicatorFooterView() {
         let activityIndicator = ActivityIndicatorView(image: UIImage(named: "blueSpinner")!)
             activityIndicator.frame =  CGRectMake(0.0, 0.0, 35.0, 35.0)

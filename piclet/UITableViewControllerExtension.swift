@@ -8,8 +8,14 @@
 
 import UIKit
 
+// MARK: - Extends the UITableViewController class
 extension UITableViewController {
 
+    /**
+     Calculate the tables view height
+     
+     - returns: the table view height in CGFLoat
+     */
     func getTableViewHeight() -> CGFloat {
         tableView.reloadData()
         tableView.layoutIfNeeded()

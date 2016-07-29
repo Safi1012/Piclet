@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Contains all informations of a post
 class Post {
     
     var id: String!

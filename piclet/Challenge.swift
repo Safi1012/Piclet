@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Contains all informations of a challenge
 class Challenge {
     
     var id: String!

@@ -8,8 +8,16 @@
 
 import Foundation
 
+/// This class handles the time. Use this class to convert and format time
 class TimeHandler {
     
+    /**
+     Generates the number of seconds / minutes / hours / days / weeks / months / years of a given date object
+     
+     - parameter datePosted: a date object
+     
+     - returns: a string containing the amount of seconds / minutes / hours / days / weeks / months / years
+     */
     func getPostedTimestampFormated(datePosted: NSDate) -> String {
         let calendar = NSCalendar.currentCalendar().components([.Year, .Month, .Weekday, .Day, .Hour, .Minute, .Second], fromDate: datePosted, toDate: NSDate(), options: [])
         
@@ -34,10 +42,24 @@ class TimeHandler {
         return calendar.second > 1 ? "\(calendar.second) seconds" : "\(calendar.second) second"
     }
     
+    /**
+     Converts an unix timestamp in milliseconds to an NSDate object
+     
+     - parameter millisecons: an unix timestamp in milliseconds
+     
+     - returns: an NSDate object
+     */
     func convertTimestampToNSDate(millisecons: Int64) -> NSDate {
         return NSDate(timeIntervalSince1970: NSTimeInterval(Double(millisecons / 1000)))
     }
     
+    /**
+     The number of seconds passed between a given timestamp and now
+     
+     - parameter timestamp: an unix timestamp
+     
+     - returns: the number in seconds
+     */
     func secondsPassedSinceDate(timestamp: NSDate) -> Int {
         let calendar = NSCalendar.currentCalendar().components([.Second], fromDate: timestamp, toDate: NSDate(), options: [])
         return calendar.second

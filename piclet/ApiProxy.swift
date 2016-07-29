@@ -26,8 +26,7 @@ class ApiProxy {
      - parameter failure:  failure callback if the request was not successful
      */
     func createUserAccount(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
+        let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "users", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -48,8 +47,7 @@ class ApiProxy {
      - parameter failure:  failure callback if the request was not successful
      */
     func signInUser(username: String, password: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        var parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
+        let parameter = ["username" : (username), "password" :  (password), "os" : "ios"]
         
         NetworkHandler().requestJSON(parameter, apiPath: "tokens", httpVerb: HTTPVerb.post, token: nil, success: { (json) -> () in
             UserAccount().createUserToken(json, username: username)
@@ -88,8 +86,7 @@ class ApiProxy {
      - parameter failure:  failure callback if the request was not successful
      */
     func changePassword(username: String, oldPassword: String, newPassword: String, success: () -> (), failure: (errorCode: String) -> ()) {
-        var parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
-        NetworkHandler().appendDeviceTokenIdToParameters(&parameter)
+        let parameter = ["oldPassword" : (oldPassword), "newPassword": (newPassword), "os" : "ios"]
         let token = UserAccess.sharedInstance.getUser()!.token
         
         NetworkHandler().requestJSON(parameter, apiPath: "users/\(username)", httpVerb: HTTPVerb.put, token: token, success: { (json) in

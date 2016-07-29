@@ -8,8 +8,15 @@
 
 import Foundation
 
+/// Maps json to swift objects
 class ObjectMapper {
     
+    /**
+     Extract the token from a valid json formated object and saves it to the user table in the realm database
+     
+     - parameter jsonData: json formated data (the servers response)
+     - parameter username: the users unique username
+     */
     func createUserToken(jsonData: NSData, username: String) {
         guard
             let jsonDict = try? NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers),
@@ -22,6 +29,13 @@ class ObjectMapper {
         UserAccess.sharedInstance.addUser(username, token: token)
     }
     
+    /**
+     Extracts the challenge informations from a valid json formated object
+     
+     - parameter json: json formated data (the servers response)
+     
+     - returns: an array with Challenge objects
+     */
     func parseChallenges(json: AnyObject) -> [Challenge] {
         var challenges = [Challenge]()
         
@@ -60,6 +74,13 @@ class ObjectMapper {
         return challenges
     }
     
+    /**
+     Extracts the post information from a valid json formated object
+     
+     - parameter json: json formated data (the servers response)
+     
+     - returns: an array with Post objects
+     */
     func parsePosts(json: AnyObject) -> [Post] {
         var posts = [Post]()
         
@@ -96,6 +117,13 @@ class ObjectMapper {
         return posts
     }
     
+    /**
+     Extracts the postIds from a valid json formated object
+     
+     - parameter json: json formated data (the servers response)
+     
+     - returns: an array with PostInformation objects
+     */
     func parsePostIds(json: AnyObject) -> [PostInformation] {
         
         var postIds = [PostInformation]()
@@ -119,6 +147,13 @@ class ObjectMapper {
         return postIds
     }
     
+    /**
+     Extracts the user account information from a valid json formated object
+     
+     - parameter json: json formated data (the servers response)
+     
+     - returns: an UserAccount object
+     */
     func parseUserAccountInformations(json: AnyObject) -> UserAccount {
         guard
             let dict = json as? NSDictionary,
@@ -150,6 +185,13 @@ class ObjectMapper {
         return userAccount
     }
     
+    /**
+     Extracts the ranking information from a valid json formated object
+     
+     - parameter json: json formated data (the servers response)
+     
+     - returns: an array with UserRank objects
+     */
     func parseRanks(json: AnyObject) -> [UserRank] {
         var allRanks = [UserRank]()
         
