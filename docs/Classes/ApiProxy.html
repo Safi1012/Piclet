@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ApiProxy Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ApiProxy" class="dashAnchor"></a>
+    <a title="ApiProxy Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html"> Docs</a> (42% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ApiProxy Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ApiProxy.html">ApiProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C6piclet9Challenge">Challenge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ErrorHandler.html">ErrorHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ImageHandler.html">ImageHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/NetworkHandler.html">NetworkHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ObjectMapper.html">ObjectMapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C6piclet6Server">Server</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TimeHandler.html">TimeHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C6piclet4User">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C6piclet10UserAccess">UserAccess</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UserAccount.html">UserAccount</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/UIButton.html">UIButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIImagePickerController.html">UIImagePickerController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ApiProxy</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">class</span> <span class="kt">ApiProxy</span></code></pre>
+
+                </div>
+              </div>
+            <p>This class helps to access the server.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/User%20Account"></a>
+                <a name="//apple_ref/swift/Section/User Account" class="dashAnchor"></a>
+                <a href="#/User%20Account">
+                  <h3 class="section-name">User Account</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy17createUserAccountFTSS8passwordSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/createUserAccount(_:password:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy17createUserAccountFTSS8passwordSS7successFT_T_7failureFT9errorCodeSS_T__T_">createUserAccount(_:password:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a user account if the parameters are valid</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">createUserAccount</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users password</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy10signInUserFTSS8passwordSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/signInUser(_:password:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy10signInUserFTSS8passwordSS7successFT_T_7failureFT9errorCodeSS_T__T_">signInUser(_:password:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Generates a token which is needed to verify the identity when communicating with the server</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">signInUser</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>password</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users password</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy19deleteThisUserTokenFTFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/deleteThisUserToken(_:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy19deleteThisUserTokenFTFT_T_7failureFT9errorCodeSS_T__T_">deleteThisUserToken(_:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells the server to delete the user token. Should be called when changing the users password</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteThisUserToken</span><span class="p">(</span><span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy14changePasswordFTSS11oldPasswordSS11newPasswordSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/changePassword(_:oldPassword:newPassword:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy14changePasswordFTSS11oldPasswordSS11newPasswordSS7successFT_T_7failureFT9errorCodeSS_T__T_">changePassword(_:oldPassword:newPassword:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Changes the users password</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">changePassword</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">oldPassword</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">newPassword</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>oldPassword</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users current password</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>newPassword</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the new user password</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Challenges"></a>
+                <a name="//apple_ref/swift/Section/Challenges" class="dashAnchor"></a>
+                <a href="#/Challenges">
+                  <h3 class="section-name">Challenges</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy15fetchChallengesFTSi7orderbyOS_21SegmentedControlState8archivedSb7successFT10challengesGSaCS_9Challenge__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchChallenges(_:orderby:archived:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy15fetchChallengesFTSi7orderbyOS_21SegmentedControlState8archivedSb7successFT10challengesGSaCS_9Challenge__T_7failureFT9errorCodeSS_T__T_">fetchChallenges(_:orderby:archived:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches all challenges which matches the filter options in the parameters</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchChallenges</span><span class="p">(</span><span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">orderby</span><span class="p">:</span> <span class="kt">SegmentedControlState</span><span class="p">,</span> <span class="nv">archived</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">challenges</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes.html#/s:C6piclet9Challenge">Challenge</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset challenges. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>orderby</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>hot for sort by best or new for sort by new (defaults to new) challenges</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>archived</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>whether to show only archived (=true) or only not archived (=false) challenges</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy18fetchWonChallengesFTSi8usernameSS7successFT10challengesGSaCS_9Challenge__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchWonChallenges(_:username:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy18fetchWonChallengesFTSi8usernameSS7successFT10challengesGSaCS_9Challenge__T_7failureFT9errorCodeSS_T__T_">fetchWonChallenges(_:username:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches all won challenges by a user</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchWonChallenges</span><span class="p">(</span><span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">challenges</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes.html#/s:C6piclet9Challenge">Challenge</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset challenges. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy18createNewChallengeFTSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/createNewChallenge(_:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy18createNewChallengeFTSS7successFT_T_7failureFT9errorCodeSS_T__T_">createNewChallenge(_:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a new challenges</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">createNewChallenge</span><span class="p">(</span><span class="nv">challengeName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the challenge name</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy17fetchAspectRatiosFTSS7successFT12aspectRatiosCSo12NSDictionary_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchAspectRatios(_:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy17fetchAspectRatiosFTSS7successFT12aspectRatiosCSo12NSDictionary_T_7failureFT9errorCodeSS_T__T_">fetchAspectRatios(_:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetch all aspect ratios of a chosen challenge</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchAspectRatios</span><span class="p">(</span><span class="nv">challengeId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">aspectRatios</span><span class="p">:</span> <span class="kt">NSDictionary</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique challenge id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Posts"></a>
+                <a name="//apple_ref/swift/Section/Posts" class="dashAnchor"></a>
+                <a href="#/Posts">
+                  <h3 class="section-name">Posts</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy19fetchChallengePostsFTSS7successFT5postsGSaCS_4Post__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchChallengePosts(_:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy19fetchChallengePostsFTSS7successFT5postsGSaCS_4Post__T_7failureFT9errorCodeSS_T__T_">fetchChallengePosts(_:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetch all posts of a challenge</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchChallengePosts</span><span class="p">(</span><span class="nv">challengeID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">posts</span><span class="p">:</span> <span class="p">[</span><span class="kt">Post</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique challenge id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy18addPostToChallengeFTSS5imageCSo6NSData11descriptionSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/addPostToChallenge(_:image:description:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy18addPostToChallengeFTSS5imageCSo6NSData11descriptionSS7successFT_T_7failureFT9errorCodeSS_T__T_">addPostToChallenge(_:image:description:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Uploads an image to a chosen challenge</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">addPostToChallenge</span><span class="p">(</span><span class="nv">challengeID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">NSData</span><span class="p">,</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique challenge id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>image</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the image which should be uploaded</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>description</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the post description</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy8likePostFTSS6postIDSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/likePost(_:postID:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy8likePostFTSS6postIDSS7successFT_T_7failureFT9errorCodeSS_T__T_">likePost(_:postID:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Like a chosen post in a challenge</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">likePost</span><span class="p">(</span><span class="nv">challengeID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">postID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique challenge id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>postID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique post id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy14revertLikePostFTSS6postIDSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/revertLikePost(_:postID:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy14revertLikePostFTSS6postIDSS7successFT_T_7failureFT9errorCodeSS_T__T_">revertLikePost(_:postID:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Revert a like to a chosen post in a challenge</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">revertLikePost</span><span class="p">(</span><span class="nv">challengeID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">postID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique challenge id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>postID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique post id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy14deleteUserPostFTSS6postIDSS7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/deleteUserPost(_:postID:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy14deleteUserPostFTSS6postIDSS7successFT_T_7failureFT9errorCodeSS_T__T_">deleteUserPost(_:postID:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Deletes a user post in a challenge</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">deleteUserPost</span><span class="p">(</span><span class="nv">challengeID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">postID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique challenge id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>postID</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the unique post id</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/User%20profile"></a>
+                <a name="//apple_ref/swift/Section/User profile" class="dashAnchor"></a>
+                <a href="#/User%20profile">
+                  <h3 class="section-name">User profile</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy22uploadUserProfileImageFTSS5imageCSo6NSData7successFT_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/uploadUserProfileImage(_:image:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy22uploadUserProfileImageFTSS5imageCSo6NSData7successFT_T_7failureFT9errorCodeSS_T__T_">uploadUserProfileImage(_:image:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Upload a user profile image</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">uploadUserProfileImage</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">NSData</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>image</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users profile image</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy27fetchUserAccountInformationFTFT11userAccountCS_11UserAccount_T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchUserAccountInformation(_:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy27fetchUserAccountInformationFTFT11userAccountCS_11UserAccount_T_7failureFT9errorCodeSS_T__T_">fetchUserAccountInformation(_:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches the users account information</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchUserAccountInformation</span><span class="p">(</span><span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">userAccount</span><span class="p">:</span> <span class="kt"><a href="../Classes/UserAccount.html">UserAccount</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy21fetchUserCreatedPostsFTSS6offsetSi7successFT9userPostsGSaVS_15PostInformation__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchUserCreatedPosts(_:offset:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy21fetchUserCreatedPostsFTSS6offsetSi7successFT9userPostsGSaVS_15PostInformation__T_7failureFT9errorCodeSS_T__T_">fetchUserCreatedPosts(_:offset:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches all posts which have been created by an user</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchUserCreatedPosts</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">userPosts</span><span class="p">:</span> <span class="p">[</span><span class="kt">PostInformation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset posts. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy26fetchUserCreatedChallengesFTSS6offsetSi7successFT14userChallengesGSaCS_9Challenge__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchUserCreatedChallenges(_:offset:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy26fetchUserCreatedChallengesFTSS6offsetSi7successFT14userChallengesGSaCS_9Challenge__T_7failureFT9errorCodeSS_T__T_">fetchUserCreatedChallenges(_:offset:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches all challenges which are created by an user</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchUserCreatedChallenges</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">userChallenges</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes.html#/s:C6piclet9Challenge">Challenge</a></span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset challenges. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy15fetchLikedPostsFTSi7successFT9userPostsGSaVS_15PostInformation__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchLikedPosts(_:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy15fetchLikedPostsFTSi7successFT9userPostsGSaVS_15PostInformation__T_7failureFT9errorCodeSS_T__T_">fetchLikedPosts(_:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches all liked posts by an user</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchLikedPosts</span><span class="p">(</span><span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">userPosts</span><span class="p">:</span> <span class="p">[</span><span class="kt">PostInformation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset posts. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy23fetchReceivedLikesPostsFTSS6offsetSi7successFT9userPostsGSaVS_15PostInformation__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchReceivedLikesPosts(_:offset:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy23fetchReceivedLikesPostsFTSS6offsetSi7successFT9userPostsGSaVS_15PostInformation__T_7failureFT9errorCodeSS_T__T_">fetchReceivedLikesPosts(_:offset:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches all received posts of an user</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchReceivedLikesPosts</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">userPosts</span><span class="p">:</span> <span class="p">[</span><span class="kt">PostInformation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>username</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the users unique username</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset posts. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Rank"></a>
+                <a name="//apple_ref/swift/Section/Rank" class="dashAnchor"></a>
+                <a href="#/Rank">
+                  <h3 class="section-name">Rank</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC6piclet8ApiProxy10fetchRanksFTSi7successFT5ranksGSaVS_8UserRank__T_7failureFT9errorCodeSS_T__T_"></a>
+                    <a name="//apple_ref/swift/Method/fetchRanks(_:success:failure:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC6piclet8ApiProxy10fetchRanksFTSi7successFT5ranksGSaVS_8UserRank__T_7failureFT9errorCodeSS_T__T_">fetchRanks(_:success:failure:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Fetches the ranking of all users</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">fetchRanks</span><span class="p">(</span><span class="nv">offset</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">success</span><span class="p">:</span> <span class="p">(</span><span class="nv">ranks</span><span class="p">:</span> <span class="p">[</span><span class="kt">UserRank</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(),</span> <span class="nv">failure</span><span class="p">:</span> <span class="p">(</span><span class="nv">errorCode</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>offset</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>omit the first offset ranks. Use this for pagination (defaults to 0)</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>success</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>success callback if the request was successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>failure</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>failure callback if the request was not successful</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

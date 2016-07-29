@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (42% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" />
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/ApiProxy.html">ApiProxy</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C6piclet9Challenge">Challenge</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ErrorHandler.html">ErrorHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ImageHandler.html">ImageHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/NetworkHandler.html">NetworkHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ObjectMapper.html">ObjectMapper</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C6piclet6Server">Server</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TimeHandler.html">TimeHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C6piclet4User">User</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C6piclet10UserAccess">UserAccess</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/UserAccount.html">UserAccount</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/UIButton.html">UIButton</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIImage.html">UIImage</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIImagePickerController.html">UIImagePickerController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITableView.html">UITableView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UITextField.html">UITextField</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/UIView.html">UIView</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#ios-documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='ios-documentation'>iOS Documentation</h1>
+
+<p>This documentation helps you to get started. It explains what tools you need to install, to compile and to run <em>Piclet</em> on an <em>iOS Device</em> or <em>iOS Simulator</em>. The <em>Piclet iOS App</em> was created with the open source programming language Swift 2.0 and supports all iPhone / iPod Touch Devices running iOS 8.0 and later. </p>
+<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<ul>
+<li>Login / create account</li>
+<li>Sort the running challenges through a ‘hot’ and ‘new’ section</li>
+<li>Each challenge displays additional informations like: ‘number of posts’, ‘number of total votes’ and ‘age’</li>
+<li>Discover interesting and hopefully challenging posts</li>
+<li>Ability to like a user post</li>
+<li>Each user can create new challenges and posts</li>
+<li>The Profile view shows the user stats and history</li>
+<li>The stats contain the rank and the ‘total number of likes’ the user earned</li>
+<li>The history contains all ‘posts’, ‘likes’ and ‘challenges’ the user created</li>
+<li>The user can upload his own avatar</li>
+</ul>
+
+<hr>
+<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+
+<p>The following list contains the requirements you need to be able to compile <em>Piclet</em> on your computer. </p>
+<a href='#strong-mac-os-x-strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='strong-mac-os-x-strong'><strong>Mac OS X</strong></h4>
+
+<p>You need a computer which runs <em>Mac OS X</em> as your Operation System. This constraint comes from Apple and applies for every <em>iOS Application</em>.</p>
+<a href='#strong-xcode-strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='strong-xcode-strong'><strong>Xcode</strong></h4>
+
+<p><em>Xcode</em> is an Integrated Development Environment (IDE) which also contains the <em>iOS</em> software development kit (SDK) which enables <em>iOS</em> development. To compile the <em>Piclet</em> Application you need to install Xcode. </p>
+
+<p>There are two ways to obtain a copy. The easiest is to install <em>Xcode</em> through the <em>Mac App Store</em>. The <em>Mac App Store</em> comes pre installed in <em>Mac OS X v10.6.6</em> or later.</p>
+
+<p>The other way is to create an Apple Developer Account and download <em>Xcode</em> from the Apple Developer Website. Here you can also get a copy of a Beta version of <em>Xcode</em>.</p>
+<a href='#strong-carthage-strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='strong-carthage-strong'><strong>Carthage</strong></h4>
+
+<p><em>Carthage</em> is a decentralized dependency manager. I used <em>Carthage</em> to simplify the process of obtaining and managing frameworks that I added to the <em>Piclet</em> project. There are two ways to install <em>Carthage</em> on your system:</p>
+
+<ol>
+<li><p>Download the <em>Carthage.pkg</em> and install it on your machine. You can get the file from the github repository.
+<a href="https://github.com/Carthage/Carthage">https://github.com/Carthage/Carthage</a></p></li>
+<li><p>You can also install <em>Carthage</em> through <em>Homebrew</em>. The only requirement is that <em>Homebrew</em> and <em>Xcode 7.1</em> or newer is installed on your machine. To install execute the following commands on your command line.</p></li>
+</ol>
+<pre class="highlight plaintext"><code>brew update
+brew install carthage
+</code></pre>
+
+<p>For more details on how this dependency manager works, please check the <em>Carthage</em> Github project Site. </p>
+
+<hr>
+<a href='#run-the-app' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='run-the-app'>Run the App</h2>
+
+<p>The following steps describe how to download and compile the project in <em>Xcode</em>. Before you start make sure that you fulfil all the requirements listed above.</p>
+<a href='#strong-download-the-project-strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='strong-download-the-project-strong'><strong>Download the Project</strong></h4>
+
+<p>First you need to push or download the <em>iOS Piclet</em> repository. To pull the repository just execute the following on your command line:</p>
+<pre class="highlight plaintext"><code>git pull https://Safi1012@bitbucket.org/Safi1012/piclet-ios.git
+</code></pre>
+
+<p>The repository should now be downloaded and saved to your selected destination.</p>
+<a href='#strong-install-the-dependencies-strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='strong-install-the-dependencies-strong'><strong>Install the dependencies</strong></h4>
+
+<p>The next step is to download and install the required dependencies for the project. This process is simple thanks to <em>Carthage</em>. Just navigate on your command line to the <em>Piclet</em> destination path you selected above and execute:</p>
+<pre class="highlight plaintext"><code>carthage bootstrap
+</code></pre>
+
+<p>When the process finishes, all the existing project dependencies should be installed.</p>
+<a href='#strong-execute-piclet-strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='strong-execute-piclet-strong'><strong>Execute Piclet</strong></h4>
+
+<p>Open Xcode and select ‘open another Project’ and select the path where you saved the <em>Piclet</em> Project. After <em>Xcode</em> finished loading you should see the <em>Piclet</em> Project and all files which it includes. </p>
+
+<p>To compile the App press the ‘Run’ (triangle) Button and select the <em>iOS Simulator</em> or your connected Device as the target.</p>
+
+<p>After compiling the project, the <em>Piclet App</em> should be open on your selected target device.</p>
+
+<p>You should now have a running copy on your target device. </p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2016-07-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
