@@ -30,15 +30,15 @@ This section explains which tools you need to install, to compile and to run *Pi
 
 ## Features
 
-* Signin / signup account
+* Signup / signin account
 * Sort the running challenges through a ‘hot’, ‘new’ and ’archived’ section
-* Each challenge displays additional informations like: ‘number of posts’, ‘number of total votes’ and ‘age’ 
+* Each challenge displays additional informations like: ‘number of posts’, ‘number of total votes’ and ‘age of post’ 
 * Discover interesting and hopefully challenging posts
 * Ability to like a user post 
 * Each user can create new challenges and posts
-* The profile view shows the user stats and history
-* The stats contain the rank and the ‘total number of likes’ the user earned
-* The history contains all ‘posts’, ‘likes’ and ‘challenges’ the user created
+* The profile view shows stats and history of the user
+* Stats contain the rank and the ‘total number of likes’ the user earned
+* History contains all ‘posts’, ‘likes’ and ‘challenges’ the user created
 * The user can upload his own avatar
 
 
@@ -87,7 +87,7 @@ The following steps describe how to download and compile the project in *Xcode*.
 First you need to push or download the *iOS Piclet* repository. To pull the repository just execute the following line on your command line:
 
 ```
-git pull https://Safi1012@bitbucket.org/Safi1012/piclet-ios.git
+git pull https://github.com/Safi1012/Piclet.git
 ```
 
 The repository should now be downloaded and saved to your selected destination.
